@@ -10,7 +10,7 @@
       "item": "unusualend:music_disc_endstone_golem_theme"
     }
   ],
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "create",
       "type": "neoforge:mod_loaded"

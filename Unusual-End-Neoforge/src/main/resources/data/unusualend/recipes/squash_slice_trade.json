@@ -9,7 +9,7 @@
     "item": "unusualend:warped_squash_wedge",
     "count": 1
   },
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "farmersdelight",
       "type": "neoforge:mod_loaded"

@@ -1,2 +1,7 @@
 /locate biome unusualend:gloopstone_lands
 /tp @s -517 61 1150
+/execute in minecraft:the_end run tp ~ ~ ~
+/locate structure unusualend:ancient_end_tower
+/tp @s -1632 ~ 544
+/enchant Dev minecraft:protection 5
+/enchant Dev minecraft:protection 4

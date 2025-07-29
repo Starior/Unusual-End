@@ -6,7 +6,7 @@
       "item": "unusualend:leeching_wand"
     }
   ],
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "jeed",
       "type": "neoforge:mod_loaded"

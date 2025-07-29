@@ -19,7 +19,7 @@
     }
   ],
   "processingTime": 250,
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "create",
       "type": "neoforge:mod_loaded"

@@ -1,0 +1,12 @@
+package net.sweety.unusualend.procedures;
+
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.LevelAccessor;
+import net.sweety.unusualend.init.UnusualEndMiscRegister;
+
+public class BolokBootsBootsTickEventProcedure {
+	public static void execute(LevelAccessor world, double x, double y, double z) {
+		if (world instanceof ServerLevel _level)
+			_level.sendParticles(UnusualEndMiscRegister.BOLOK_PARTICLE.get(), x, (y + 0.1), z, 1, 0.2, 0.2, 0.2, 0);
+	}
+}

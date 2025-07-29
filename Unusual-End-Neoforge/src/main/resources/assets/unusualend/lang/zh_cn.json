@@ -16,7 +16,7 @@
   "biome.unusualend.gloopstone_lands": "颂黏石高地",
   "death.attack.spunkler_damages.player": "%1$s被%2$s击飞致死",
   "lore.unusualend.player_non_solid": "对玩家来说不是实心的",
-  "block.unusualend.warped_endstone_sprouts": "诡异苗",
+  "block.unusualend.warped_sprouts": "诡异苗",
   "effect.unusualend.crystallization.description": "取消所有伤害，但效果结束时返还所有已取消的伤害",
   "lore.unusualend.blob_shield_1": "推开试图伤害你的对手",
   "item.minecraft.lingering_potion.effect.end_infection": "滞留型末影病药水",

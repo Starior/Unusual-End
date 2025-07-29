@@ -1,0 +1,32 @@
+package net.sweety.unusualend.procedures;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.phys.Vec3;
+
+public class BouncyGloopslateEntityWalksOnTheBlockProcedure {
+	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+		if (entity == null)
+			return;
+		if (entity instanceof Player) {
+			if (!entity.isShiftKeyDown()) {
+				entity.setDeltaMovement(new Vec3(0, 0.85, 0));
+				entity.fallDistance = 0;
+				if (world.isClientSide()) {
+					if (world instanceof Level _level) {
+						if (!_level.isClientSide()) {
+							_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.SLIME_JUMP_SMALL, SoundSource.BLOCKS, (float) 0.9, (float) 1.5);
+						} else {
+							_level.playLocalSound(x, y, z, SoundEvents.SLIME_JUMP_SMALL, SoundSource.BLOCKS, (float) 0.9, (float) 1.5, false);
+						}
+					}
+				}
+			}
+		}
+	}
+}

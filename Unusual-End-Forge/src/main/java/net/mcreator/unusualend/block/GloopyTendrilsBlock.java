@@ -44,12 +44,10 @@ public class GloopyTendrilsBlock extends FlowerBlock {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		//BlockPos blockpos = context.getClickedPos();
 		if ((context.getLevel().getBlockState(context.getClickedPos().below())).getBlock() == Blocks.END_STONE)
 			return this.defaultBlockState().setValue(GLOOPY, false);
 		return this.defaultBlockState().setValue(GLOOPY, true);
-	}//(world.getBlockState(BlockPos.containing(x,y-1,z)))
-		//		if (context.getLevel().getBlockState(blockpos.containing(blockpos.below())).getBlock() == Blocks.END_STONE)
+	}
 
 	@Override
 	public int getEffectDuration() {

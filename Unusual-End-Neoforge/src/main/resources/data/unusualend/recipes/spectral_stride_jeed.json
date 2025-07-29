@@ -9,7 +9,7 @@
       "item": "unusualend:spectral_cloth"
     }
   ],
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "jeed",
       "type": "neoforge:mod_loaded"

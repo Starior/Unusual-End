@@ -6,7 +6,7 @@
       "item": "unusualend:crystal_flower"
     }
   ],
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "jeed",
       "type": "neoforge:mod_loaded"

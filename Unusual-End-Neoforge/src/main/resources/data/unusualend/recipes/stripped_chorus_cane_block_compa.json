@@ -18,7 +18,7 @@
     "type": "farmersdelight:tool_action",
     "action": "axe_strip"
   },
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "farmersdelight",
       "type": "neoforge:mod_loaded"

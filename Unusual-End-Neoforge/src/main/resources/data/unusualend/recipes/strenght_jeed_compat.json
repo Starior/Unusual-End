@@ -6,7 +6,7 @@
       "item": "unusualend:warped_spear"
     }
   ],
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "jeed",
       "type": "neoforge:mod_loaded"

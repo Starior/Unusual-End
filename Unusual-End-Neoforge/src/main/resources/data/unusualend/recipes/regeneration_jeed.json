@@ -9,7 +9,7 @@
       "item": "unusualend:healing_lantern"
     }
   ],
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "jeed",
       "type": "neoforge:mod_loaded"

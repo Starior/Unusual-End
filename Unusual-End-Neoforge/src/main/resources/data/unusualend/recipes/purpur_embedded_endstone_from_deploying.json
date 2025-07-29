@@ -14,7 +14,7 @@
     }
   ],
   "keepHeldItem": false,
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "create",
       "type": "neoforge:mod_loaded"

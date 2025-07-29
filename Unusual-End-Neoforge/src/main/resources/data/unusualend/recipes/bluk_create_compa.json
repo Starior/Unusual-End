@@ -15,7 +15,7 @@
       "item": "unusualend:bluk_au_chocolat"
     }
   ],
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "create",
       "type": "neoforge:mod_loaded"

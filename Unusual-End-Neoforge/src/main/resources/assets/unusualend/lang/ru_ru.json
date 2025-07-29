@@ -15,7 +15,7 @@
   "block.unusualend.chiseled_endstone_friendship": "Резной эндерняк",
   "biome.unusualend.gloopstone_lands": "Вязкомератовые равнины",
   "death.attack.spunkler_damages.player": "%1$ был сбит %2$",
-  "block.unusualend.warped_endstone_sprouts": "Искажённые ростки",
+  "block.unusualend.warped_sprouts": "Искажённые ростки",
   "lore.unusualend.player_non_solid": "Может пройти только игрок",
   "effect.unusualend.crystallization.description": "Блокирует весь входящий урон. После окончания действия эффекта наносит весь поглощённый ранее урон.",
   "lore.unusualend.blob_shield_1": "Отталкивает врагов",

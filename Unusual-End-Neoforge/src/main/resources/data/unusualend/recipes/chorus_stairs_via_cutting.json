@@ -19,7 +19,7 @@
     }
   ],
   "sound": "minecraft:item.axe.strip",
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "farmersdelight",
       "type": "neoforge:mod_loaded"

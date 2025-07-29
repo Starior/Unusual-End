@@ -12,7 +12,7 @@
       "item": "unusualend:endstone_golem_spawn_egg"
     }
   ],
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "jeed",
       "type": "neoforge:mod_loaded"

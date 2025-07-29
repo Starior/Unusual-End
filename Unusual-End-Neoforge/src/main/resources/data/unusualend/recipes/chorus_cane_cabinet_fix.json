@@ -18,7 +18,7 @@
     "item": "everycomp:fd/unusualend/chorus_cane_cabinet",
     "count": 1
   },
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "farmersdelight",
       "type": "neoforge:mod_loaded"

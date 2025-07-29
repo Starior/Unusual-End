@@ -9,7 +9,7 @@
       "item": "unusualend:ender_blob_spawn_egg"
     }
   ],
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "jeed",
       "type": "neoforge:mod_loaded"

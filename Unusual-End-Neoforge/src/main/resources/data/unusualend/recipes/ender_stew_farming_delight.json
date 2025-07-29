@@ -23,7 +23,7 @@
   },
   "experience": 1.0,
   "cookingtime": 200,
-  "conditions": [
+  "neoforge:conditions": [
     {
       "modid": "farmersdelight",
       "type": "neoforge:mod_loaded"
