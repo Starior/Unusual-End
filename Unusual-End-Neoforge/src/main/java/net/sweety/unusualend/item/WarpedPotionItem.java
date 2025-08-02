@@ -4,20 +4,21 @@ package net.sweety.unusualend.item;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.sweety.unusualend.procedures.WarpedPotionPlayerFinishesUsingItemProcedure;
 import net.sweety.unusualend.procedures.WarpedPotionRightclickedOnBlockProcedure;
 
 import java.util.List;
 
 public class WarpedPotionItem extends Item {
 	public WarpedPotionItem() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(0).saturationMod(0f).alwaysEat().build()));
+		super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(0).saturationModifier(0f).alwaysEdible().build()));
 	}
 
 	@Override
@@ -26,22 +27,23 @@ public class WarpedPotionItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, level, list, flag);
+	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, context, list, flag);
 		list.add(Component.literal("Nausea (0:10)").withStyle(ChatFormatting.RED));
 	}
 
 	@Override
 	public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
-		ItemStack retval = new ItemStack(Items.GLASS_BOTTLE);
+		ItemStack returnStack = new ItemStack(Items.GLASS_BOTTLE);
 		super.finishUsingItem(itemstack, world, entity);
-		WarpedPotionPlayerFinishesUsingItemProcedure.execute(entity);
+		if (!entity.level().isClientSide())
+			entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 0));
 		if (itemstack.isEmpty()) {
-			return retval;
+			return returnStack;
 		} else {
 			if (entity instanceof Player player && !player.getAbilities().instabuild) {
-				if (!player.getInventory().add(retval))
-					player.drop(retval, false);
+				if (!player.getInventory().add(returnStack))
+					player.drop(returnStack, false);
 			}
 			return itemstack;
 		}

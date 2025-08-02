@@ -1,7 +1,7 @@
 {
   "required": true,
   "package": "net.sweety.unusualend.mixins",
-  "compatibilityLevel": "JAVA_17",
+  "compatibilityLevel": "JAVA_21",
   "refmap": "mixins.unusualend.refmap.json",
   "mixins": [
     "BiomeSourceMixin",

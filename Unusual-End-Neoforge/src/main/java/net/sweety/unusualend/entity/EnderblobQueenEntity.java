@@ -34,7 +34,6 @@ public class EnderblobQueenEntity extends Monster {
 
     public EnderblobQueenEntity(EntityType<EnderblobQueenEntity> type, Level world) {
         super(type, world);
-        setMaxUpStep(1f);
         xpReward = 5000;
         setNoAi(false);
         setPersistenceRequired();

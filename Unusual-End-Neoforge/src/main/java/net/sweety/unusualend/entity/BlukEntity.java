@@ -3,6 +3,7 @@
 package net.sweety.unusualend.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
@@ -84,13 +85,8 @@ public class BlukEntity extends Monster {
         this.goalSelector.addGoal(18, new FloatGoal(this));
     }
 
-    @Override
-    public MobType getMobType() {
-        return MobType.WATER;
-    }
-
-    protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHitIn) {
-        super.dropCustomDeathLoot(source, looting, recentlyHitIn);
+    protected void dropCustomDeathLoot(ServerLevel level, DamageSource damageSource, boolean recentlyHitIn) {
+        super.dropCustomDeathLoot(level, damageSource, recentlyHitIn);
         this.spawnAtLocation(new ItemStack(UnusualendModItems.RAW_BLUK.get()));
     }
 

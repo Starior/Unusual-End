@@ -14,7 +14,7 @@ import java.util.List;
 
 public class WarpedInfusionItem extends Item {
 	public WarpedInfusionItem() {
-		super(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON).food((new FoodProperties.Builder()).nutrition(0).saturationMod(0f).alwaysEat().build()));
+		super(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON).food((new FoodProperties.Builder()).nutrition(0).saturationModifier(0f).alwaysEdible().build()));
 	}
 
 	@Override
@@ -23,11 +23,11 @@ public class WarpedInfusionItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
+	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
 		double minute = (UEConfig.TENACITY_TIME.get() / 60);
 		double seconds = (UEConfig.TENACITY_TIME.get() - (Math.floor(minute) * 60));
 		String time = new java.text.DecimalFormat("00").format(minute) + ":" + new java.text.DecimalFormat("00").format(seconds);
-		super.appendHoverText(itemstack, level, list, flag);
+		super.appendHoverText(itemstack, context, list, flag);
 		list.add(Component.literal(Component.translatable("effect.unusualend.warped_tenacity").getString() + " +1 (" + time + ")").withStyle(ChatFormatting.BLUE));
 	}
 

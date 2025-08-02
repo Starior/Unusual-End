@@ -47,15 +47,15 @@ public class Modelenderbulb<T extends Entity> extends EntityModel<T> {
 	}
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		eye_1.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		eye_2.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		eye_3.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
+		eye_1.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
+		eye_2.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
+		eye_3.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
 	}
 
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.eye_3.yRot = netHeadYaw / (180F / (float) Math.PI);
-		this.eye_2.xRot = Mth.cos(limbSwing * 1.0F) * 1.0F * limbSwingAmount;
+		this.eye_2.xRot = Mth.cos(limbSwing) * 1.0F * limbSwingAmount;
 		this.eye_1.xRot = headPitch / (180F / (float) Math.PI);
 	}
 }

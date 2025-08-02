@@ -18,8 +18,8 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.event.TickEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.sweety.unusualend.BiomeMusicLibrary;
 import net.sweety.unusualend.entity.EnderblobQueenEntity;
 import net.sweety.unusualend.entity.EndstoneGolemEntity;
@@ -27,16 +27,14 @@ import net.sweety.unusualend.network.UnusualendModVariables;
 
 import javax.annotation.Nullable;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class PlayerTickProcedure {
     @SubscribeEvent
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if (event.phase == TickEvent.Phase.END) {
-            playMusic(event.player.level(), event.player);
-            updateMusic(event, event.player.level(), event.player.getX(), event.player.getY(), event.player.getZ(), event.player);
-            overlayUpdate(event.player.level(), event.player.getX(), event.player.getY(), event.player.getZ(), event.player);
-            onReturnMusic(event, event.player.level(), event.player.getX(), event.player.getY(), event.player.getZ(), event.player);
-        }
+    public static void onPlayerTick(PlayerTickEvent.Post event) {
+        playMusic(event.getEntity().level(), event.getEntity());
+        updateMusic(event, event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getEntity());
+        overlayUpdate(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getEntity());
+        onReturnMusic(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getEntity());
     }
 
     private static void playMusic(LevelAccessor world, Entity entity) {
@@ -50,11 +48,11 @@ public class PlayerTickProcedure {
         }
     }
 
-    private static void updateMusic(Event event, LevelAccessor world, double x, double y, double z, Entity entity) {
+    private static void updateMusic(Event event, LevelAccessor accessor, double x, double y, double z, Entity entity) {
         if (entity == null)
             return;
-        if (!world.isClientSide()) {
-            if (!onReturnMusic(null, world, x, y, z, entity)) {
+        if (!accessor.isClientSide()) {
+            if (!onReturnMusic(accessor, x, y, z, entity)) {
                 UnusualendModVariables.PlayerVariables variables = entity.getData(UnusualendModVariables.PLAYER_VARIABLES.get());
                 variables.PlayerMusic = -1;
                 variables.syncPlayerVariables(entity);
@@ -96,16 +94,16 @@ public class PlayerTickProcedure {
         }
     }
 
-    private static boolean onReturnMusic(@Nullable TickEvent.PlayerTickEvent event, LevelAccessor world, double x, double y, double z, Entity entity) {
+    private static boolean onReturnMusic(LevelAccessor accessor, double x, double y, double z, Entity entity) {
         if (entity == null)
             return false;
         boolean music = false;
         UnusualendModVariables.PlayerVariables variables = entity.getData(UnusualendModVariables.PLAYER_VARIABLES.get());
-        if (!world.getEntitiesOfClass(EndstoneGolemEntity.class, AABB.ofSize(new Vec3(x, y, z), 100, 100, 100), e -> true).isEmpty()) {
+        if (!accessor.getEntitiesOfClass(EndstoneGolemEntity.class, AABB.ofSize(new Vec3(x, y, z), 100, 100, 100), e -> true).isEmpty()) {
             variables.PlayerMusic = 0;
             variables.syncPlayerVariables(entity);
             music = true;
-        } else if (!world.getEntitiesOfClass(EnderblobQueenEntity.class, AABB.ofSize(new Vec3(x, y, z), 100, 100, 100), e -> true).isEmpty()) {
+        } else if (!accessor.getEntitiesOfClass(EnderblobQueenEntity.class, AABB.ofSize(new Vec3(x, y, z), 100, 100, 100), e -> true).isEmpty()) {
             variables.PlayerMusic = 1;
             variables.syncPlayerVariables(entity);
             music = true;

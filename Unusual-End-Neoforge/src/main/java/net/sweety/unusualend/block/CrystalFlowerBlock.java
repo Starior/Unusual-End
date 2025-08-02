@@ -22,7 +22,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -32,7 +32,7 @@ import net.sweety.unusualend.procedures.CrystalFlowerUpdateTickProcedure;
 
 public class CrystalFlowerBlock extends FlowerBlock {
 	public CrystalFlowerBlock() {
-		super(() -> MobEffects.CONFUSION, 100, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).randomTicks().sound(SoundType.SMALL_DRIPLEAF).strength(0.4f, 1f).speedFactor(0.7f).jumpFactor(0.9f).lightLevel(s -> 10).noCollission()
+		super(MobEffects.CONFUSION, 100, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).randomTicks().sound(SoundType.SMALL_DRIPLEAF).strength(0.4f, 1f).speedFactor(0.7f).jumpFactor(0.9f).lightLevel(s -> 10).noCollission()
 				.offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
 	}
 
@@ -42,8 +42,8 @@ public class CrystalFlowerBlock extends FlowerBlock {
 	}
 
 	@Override
-	public BlockPathTypes getBlockPathType(BlockState state, BlockGetter world, BlockPos pos, Mob entity) {
-		return BlockPathTypes.DANGER_OTHER;
+	public PathType getBlockPathType(BlockState state, BlockGetter world, BlockPos pos, Mob entity) {
+		return PathType.DANGER_OTHER;
 	}
 
 	@Override
@@ -90,9 +90,8 @@ public class CrystalFlowerBlock extends FlowerBlock {
 	}
 
 	@Override
-	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
-		super.use(blockstate, world, pos, entity, hand, hit);
-		CrystalFlowerMobplayerCollidesWithPlantProcedure.execute(entity);
+	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+		CrystalFlowerMobplayerCollidesWithPlantProcedure.execute(player);
 		return InteractionResult.SUCCESS;
 	}
 }

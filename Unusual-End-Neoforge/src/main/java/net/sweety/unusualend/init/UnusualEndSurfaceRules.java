@@ -11,12 +11,13 @@ import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.mixins.NoiseGeneratorSettingsAccess;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class UnusualEndSurfaceRules {
 	@SubscribeEvent
 	public static void init(ServerAboutToStartEvent event) {

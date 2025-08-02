@@ -20,14 +20,13 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.common.PlantType;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.procedures.DrippingGloopstoneAdditionalPlacinggrowthConditionProcedure;
 import net.sweety.unusualend.procedures.GloopilonStemNeighbourBlockChangesProcedure;
 
 public class GloopilonStemBlock extends FlowerBlock {
 	public GloopilonStemBlock() {
-		super(() -> MobEffects.MOVEMENT_SPEED, 100,
+		super(MobEffects.MOVEMENT_SPEED, 100,
 				BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_MAGENTA).sound(SoundType.CORAL_BLOCK).instabreak().noCollission().offsetType(BlockBehaviour.OffsetType.NONE).pushReaction(PushReaction.DESTROY));
 	}
 
@@ -70,11 +69,6 @@ public class GloopilonStemBlock extends FlowerBlock {
 		BlockPos blockpos = pos.below();
 		BlockState groundState = worldIn.getBlockState(blockpos);
 		return this.mayPlaceOn(groundState, worldIn, blockpos);
-	}
-
-	@Override
-	public PlantType getPlantType(BlockGetter world, BlockPos pos) {
-		return PlantType.CAVE;
 	}
 
 	@Override

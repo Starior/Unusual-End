@@ -24,7 +24,6 @@ public class LargeBubbleEntity extends Animal {
 
     public LargeBubbleEntity(EntityType<LargeBubbleEntity> type, Level world) {
         super(type, world);
-        setMaxUpStep(0f);
         xpReward = 0;
         setNoAi(false);
         setPersistenceRequired();
@@ -40,11 +39,6 @@ public class LargeBubbleEntity extends Animal {
     protected void registerGoals() {
         super.registerGoals();
         this.goalSelector.addGoal(1, new FloatGoal(this));
-    }
-
-    @Override
-    public MobType getMobType() {
-        return MobType.UNDEFINED;
     }
 
     @Override

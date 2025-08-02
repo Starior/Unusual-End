@@ -43,18 +43,17 @@ public class EndstoneGolemEntity extends Monster {
 
 	public EndstoneGolemEntity(EntityType<EndstoneGolemEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
 		xpReward = 500;
 		setNoAi(false);
 		setPersistenceRequired();
 	}
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(DATA_aoe_cooldown, 0);
-		this.entityData.define(DATA_aoe_animtime, 0);
-		this.entityData.define(DATA_texture, 0);
-		this.entityData.define(DATA_push, 0);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(DATA_aoe_cooldown, 0);
+		builder.define(DATA_aoe_animtime, 0);
+		builder.define(DATA_texture, 0);
+		builder.define(DATA_push, 0);
 	}
 
 	@Override
@@ -98,10 +97,6 @@ public class EndstoneGolemEntity extends Monster {
 	@Override
 	public boolean isWithinMeleeAttackRange(LivingEntity pEntity) {
 		return this.getAttackBoundingBox().intersects(pEntity.getBoundingBox().inflate(2));
-	}
-	@Override
-	public MobType getMobType() {
-		return MobType.UNDEFINED;
 	}
 
 	@Override
@@ -213,11 +208,6 @@ public class EndstoneGolemEntity extends Monster {
 
 	@Override
 	public boolean isPushedByFluid() {
-		return false;
-	}
-
-	@Override
-	public boolean canChangeDimensions() {
 		return false;
 	}
 

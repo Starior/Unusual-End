@@ -24,7 +24,6 @@ public class VoidCrackEntity extends PathfinderMob {
 
 	public VoidCrackEntity(EntityType<VoidCrackEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
 		xpReward = 0;
 		setNoAi(true);
 		setPersistenceRequired();
@@ -33,11 +32,6 @@ public class VoidCrackEntity extends PathfinderMob {
 	@Override
 	protected PathNavigation createNavigation(Level world) {
 		return new FlyingPathNavigation(this, world);
-	}
-
-	@Override
-	public MobType getMobType() {
-		return MobType.UNDEFINED;
 	}
 
 	@Override

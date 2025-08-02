@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
+import net.sweety.unusualend.UnusualEnd;
 
 public class BonemealChorusProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -24,14 +25,14 @@ public class BonemealChorusProcedure {
 		if (!world.getBlockState(BlockPos.containing(x, y + 1, z)).canOcclude() && !world.getBlockState(BlockPos.containing(x, y + 2, z)).canOcclude() && !world.getBlockState(BlockPos.containing(x, y + 3, z)).canOcclude()) {
 			if (Math.random() < 0.2) {
 				if (world instanceof ServerLevel _serverworld) {
-					StructureTemplate template = _serverworld.getStructureManager().getOrCreate(new ResourceLocation("unusualend", "chorus_tree_1"));
+					StructureTemplate template = _serverworld.getStructureManager().getOrCreate(UnusualEnd.makeUEID("chorus_tree_1"));
 					if (template != null) {
 						template.placeInWorld(_serverworld, BlockPos.containing(x, y, z), BlockPos.containing(x, y, z), new StructurePlaceSettings().setRotation(Rotation.NONE).setMirror(Mirror.NONE).setIgnoreEntities(false), _serverworld.random, 3);
 					}
 				}
 			} else if (Math.random() < 0.2) {
 				if (world instanceof ServerLevel _serverworld) {
-					StructureTemplate template = _serverworld.getStructureManager().getOrCreate(new ResourceLocation("unusualend", "chorus_tree_2"));
+					StructureTemplate template = _serverworld.getStructureManager().getOrCreate(UnusualEnd.makeUEID("chorus_tree_2"));
 					if (template != null) {
 						template.placeInWorld(_serverworld, BlockPos.containing(x, y, z), BlockPos.containing(x, y, z), new StructurePlaceSettings().setRotation(Rotation.NONE).setMirror(Mirror.NONE).setIgnoreEntities(false), _serverworld.random, 3);
 					}

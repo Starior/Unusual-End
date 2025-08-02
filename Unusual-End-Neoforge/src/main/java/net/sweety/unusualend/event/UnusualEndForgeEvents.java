@@ -39,18 +39,18 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
-import net.neoforged.neoforge.event.TickEvent;
-import net.neoforged.neoforge.event.entity.living.LivingAttackEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
 import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.configuration.UEConfig;
 import net.sweety.unusualend.entity.BolokEntity;
@@ -67,7 +67,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME)
 public class UnusualEndForgeEvents {
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
@@ -89,13 +89,13 @@ public class UnusualEndForgeEvents {
     }
 
     @SubscribeEvent
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        Player entity = event.player;
+    public static void onPlayerTick(PlayerTickEvent.Post event) {
+        Player entity = event.getEntity();
         double x = entity.getX();
         double y = entity.getY();
         double z = entity.getZ();
-        Level level = event.player.level();
-        if (event.phase == TickEvent.Phase.END && entity.containerMenu instanceof InfuserGUIMenu)
+        Level level = event.getEntity().level();
+        if (entity.containerMenu instanceof InfuserGUIMenu)
             InfuserGUIWhileThisGUIIsOpenTickProcedure.execute(entity);
 
         if (EnchantmentHelper.getTagEnchantmentLevel(UnusualEndMiscRegister.BOLOKS_WINGS.get(), (entity .getItemBySlot(EquipmentSlot.CHEST))) != 0) {
@@ -376,7 +376,12 @@ public class UnusualEndForgeEvents {
         else if (itemstack.is(UnusualendModBlocks.STRIPPED_CHORUS_CANE_BLOCK.get().asItem()))
             event.setBurnTime(400);
     }
-
+    @SubscribeEvent
+    public static void onPlayerRespawned(PlayerEvent.PlayerRespawnEvent event) {
+        if (event.getEntity().level() instanceof ServerLevel level)
+            level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, event.getEntity().position(), Vec2.ZERO, level, 4, "", Component.literal(""), level.getServer(), null).withSuppressedOutput(),
+                    ("stopsound " + event.getEntity().getDisplayName().getString() + " music"));
+    }
     @SubscribeEvent
     public static void onEntityAttacked(LivingHurtEvent event) {
         LivingEntity entity = event.getEntity();
@@ -412,8 +417,6 @@ public class UnusualEndForgeEvents {
                                     } else
                                         level.playLocalSound(x, y, z, SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.PLAYERS, 1, 1, false);
                                     if (amount <= UEConfig.MAX_DAMAGE_CHORUS_HELMET_CAN_DODGE_WITH_TP_.get()) {
-                                        if (event != null)
-                                            event.setCanceled(true);
                                         if (!(entity instanceof ServerPlayer _plr18 && _plr18.level() instanceof ServerLevel
                                                 && _plr18.getAdvancements().getOrStartProgress(_plr18.server.getAdvancements().get(UnusualEnd.makeUEID("use_chorus_helmet"))).isDone())) {
                                             if (entity instanceof ServerPlayer _player) {

@@ -46,17 +46,16 @@ public class SummonedDraglingEntity extends TamableAnimal {
 
 	public SummonedDraglingEntity(EntityType<SummonedDraglingEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
 		xpReward = 0;
 		setNoAi(false);
 		setPersistenceRequired();
 		this.moveControl = new FlyingMoveControl(this, 10, true);
 	}
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(DATA_despawn, 1200);
-		this.entityData.define(DATA_atk, false);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(DATA_despawn, 1200);
+		builder.define(DATA_atk, false);
 	}
 
 	@Override
@@ -74,11 +73,7 @@ public class SummonedDraglingEntity extends TamableAnimal {
 			}
 
 			public boolean canUse() {
-				if (SummonedDraglingEntity.this.getTarget() != null && !SummonedDraglingEntity.this.getMoveControl().hasWanted()) {
-					return true;
-				} else {
-					return false;
-				}
+                return SummonedDraglingEntity.this.getTarget() != null && !SummonedDraglingEntity.this.getMoveControl().hasWanted();
 			}
 
 			@Override
@@ -119,7 +114,7 @@ public class SummonedDraglingEntity extends TamableAnimal {
 				return new Vec3(dir_x, dir_y, dir_z);
 			}
 		});
-		this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1, (float) 10, (float) 2, false));
+		this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 1,  10, 2));
 		this.targetSelector.addGoal(7, new HurtByTargetGoal(this).setAlertOthers());
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
 	}
@@ -131,11 +126,6 @@ public class SummonedDraglingEntity extends TamableAnimal {
 			this.idleAnimationState.animateWhen(!this.walkAnimation.isMoving() && !this.getEntityData().get(SummonedDraglingEntity.DATA_atk) == true, this.tickCount);
 		}
 		super.tick();
-	}
-
-	@Override
-	public MobType getMobType() {
-		return MobType.UNDEAD;
 	}
 
 	@Override

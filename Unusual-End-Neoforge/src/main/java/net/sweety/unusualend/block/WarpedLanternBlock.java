@@ -5,8 +5,10 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.TooltipFlag;
@@ -27,7 +29,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.sweety.unusualend.procedures.WarpedLanternOnRandomClientDisplayTickProcedure;
+import net.sweety.unusualend.init.UnusualEndMiscRegister;
 
 import java.util.List;
 
@@ -43,8 +45,8 @@ public class WarpedLanternBlock extends Block implements SimpleWaterloggedBlock 
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, level, list, flag);
+	public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, context, list, flag);
 		list.add(Component.translatable("lore.unusualend.when_redstone").withStyle(ChatFormatting.GRAY));
 		list.add(Component.translatable("lore.unusualend.produce_particles").withStyle(ChatFormatting.BLUE));
 	}
@@ -67,12 +69,7 @@ public class WarpedLanternBlock extends Block implements SimpleWaterloggedBlock 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return switch (state.getValue(FACING)) {
-			default -> switch (state.getValue(FACE)) {
-				case FLOOR -> box(4, 0, 4, 12, 16, 12);
-				case WALL -> box(4, 4, 0, 12, 12, 16);
-				case CEILING -> box(4, 0, 4, 12, 16, 12);
-			};
-			case NORTH -> switch (state.getValue(FACE)) {
+            case NORTH -> switch (state.getValue(FACE)) {
 				case FLOOR -> box(4, 0, 4, 12, 16, 12);
 				case WALL -> box(4, 4, 0, 12, 12, 16);
 				case CEILING -> box(4, 0, 4, 12, 16, 12);
@@ -87,7 +84,12 @@ public class WarpedLanternBlock extends Block implements SimpleWaterloggedBlock 
 				case WALL -> box(0, 4, 4, 16, 12, 12);
 				case CEILING -> box(4, 0, 4, 12, 16, 12);
 			};
-		};
+            default -> switch (state.getValue(FACE)) {
+                case FLOOR -> box(4, 0, 4, 12, 16, 12);
+                case WALL -> box(4, 4, 0, 12, 12, 16);
+                case CEILING -> box(4, 0, 4, 12, 16, 12);
+            };
+        };
 	}
 
 	@Override
@@ -133,11 +135,14 @@ public class WarpedLanternBlock extends Block implements SimpleWaterloggedBlock 
 
 	@OnlyIn(Dist.CLIENT)
 	@Override
-	public void animateTick(BlockState blockstate, Level world, BlockPos pos, RandomSource random) {
-		super.animateTick(blockstate, world, pos, random);
+	public void animateTick(BlockState blockstate, Level level, BlockPos pos, RandomSource random) {
+		super.animateTick(blockstate, level, pos, random);
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-		WarpedLanternOnRandomClientDisplayTickProcedure.execute(world, x, y, z);
+		if (level.hasNeighborSignal(BlockPos.containing(x, y, z))) {
+			level.addParticle(UnusualEndMiscRegister.CITRINE_SHINE.get(), (x + Mth.nextDouble(RandomSource.create(), 0.1, 0.9)), (y + Mth.nextDouble(RandomSource.create(), 0.1, 0.9)),
+					(z + Mth.nextDouble(RandomSource.create(), 0.1, 0.9)), 0, 0, 0);
+		}
 	}
 }

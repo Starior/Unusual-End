@@ -12,7 +12,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.neoforged.neoforge.common.PlantType;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 
 public class FloweringGloopyPileBlock extends DoublePlantBlock {
@@ -44,10 +43,5 @@ public class FloweringGloopyPileBlock extends DoublePlantBlock {
 			return groundState.is(this) && groundState.getValue(HALF) == DoubleBlockHalf.LOWER;
 		else
 			return this.mayPlaceOn(groundState, worldIn, blockpos);
-	}
-
-	@Override
-	public PlantType getPlantType(BlockGetter world, BlockPos pos) {
-		return PlantType.PLAINS;
 	}
 }

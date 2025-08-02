@@ -29,7 +29,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.sweety.unusualend.block.entity.AncientPodiumBlockEntity;
 import net.sweety.unusualend.procedures.AncientPodiumOnBlockRightClickedProcedure;
 import net.sweety.unusualend.procedures.PodiumSignalProcedure;
-import net.sweety.unusualend.procedures.PodiumtestOnTickUpdateProcedure;
 
 public class AncientPodiumBlock extends Block implements EntityBlock {
 	public AncientPodiumBlock() {
@@ -84,16 +83,15 @@ public class AncientPodiumBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
-		super.tick(blockstate, world, pos, random);
+	public void tick(BlockState blockstate, ServerLevel level, BlockPos pos, RandomSource random) {
+		super.tick(blockstate, level, pos, random);
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-		PodiumtestOnTickUpdateProcedure.execute(world, x, y, z);
-		if (!world.isClientSide()) {
-			world.sendBlockUpdated(pos, blockstate, blockstate, 3);
-		}
-		world.scheduleTick(pos, this, 1);
+			level.updateNeighborsAt(BlockPos.containing(x, y, z), level.getBlockState(BlockPos.containing(x, y, z)).getBlock());
+		if (!level.isClientSide())
+			level.sendBlockUpdated(pos, blockstate, blockstate, 3);
+		level.scheduleTick(pos, this, 1);
 	}
 
 	@Override

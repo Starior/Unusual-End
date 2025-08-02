@@ -10,6 +10,7 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.level.LevelAccessor;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.sweety.unusualend.UnusualEnd;
@@ -17,7 +18,7 @@ import net.sweety.unusualend.configuration.UEConfig;
 
 import java.io.File;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class OnBreakChorusProcedure {
 	@SubscribeEvent
 	public static void onBlockBreak(BlockEvent.BreakEvent event) {

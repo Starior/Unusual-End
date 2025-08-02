@@ -39,14 +39,13 @@ public class EnderblobEntity extends Monster {
 
 	public EnderblobEntity(EntityType<EnderblobEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
 		xpReward = 1;
 		setNoAi(false);
 	}
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(DATA_BrushTimer, 0);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(DATA_BrushTimer, 0);
 	}
 
 	@Override

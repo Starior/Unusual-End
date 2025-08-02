@@ -4,12 +4,15 @@ package net.sweety.unusualend.item;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.sweety.unusualend.init.UnusualendModItems;
 import net.sweety.unusualend.procedures.WarpedAnchorLivingEntityIsHitWithToolProcedure;
@@ -31,8 +34,9 @@ public class WarpedAnchorItem extends PickaxeItem {
                 return 13f;
             }
 
-            public int getLevel() {
-                return 3;
+            @Override
+            public TagKey<Block> getIncorrectBlocksForDrops() {
+                return BlockTags.INCORRECT_FOR_IRON_TOOL;
             }
 
             public int getEnchantmentValue() {
@@ -42,7 +46,7 @@ public class WarpedAnchorItem extends PickaxeItem {
             public Ingredient getRepairIngredient() {
                 return Ingredient.of(new ItemStack(Blocks.IRON_BLOCK));
             }
-        }, 1, -3.3f, new Item.Properties());
+        }, new Item.Properties());
     }
 
     @Override
@@ -52,8 +56,8 @@ public class WarpedAnchorItem extends PickaxeItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, world, list, flag);
+    public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(itemstack, context, list, flag);
         list.add(Component.translatable("lore.unusualend.on_hit").withStyle(ChatFormatting.GRAY));
         list.add(Component.literal("Heaviness II (0:05)").withStyle(ChatFormatting.BLUE));
         list.add(Component.translatable("lore.unusualend.when_offhand").withStyle(ChatFormatting.GRAY));

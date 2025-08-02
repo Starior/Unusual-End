@@ -17,8 +17,8 @@ public class ShulkerOrbItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, level, list, flag);
+	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, context, list, flag);
 		list.add(Component.literal(Component.translatable("lore.unusualend.when_hurt").getString() + "§8(Chance of 5%)"));
 		list.add(Component.translatable("lore.unusualend.shulker_orb").withStyle(ChatFormatting.BLUE));
 	}

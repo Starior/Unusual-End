@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
@@ -15,7 +16,9 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.client.model.Modelchorus_helmet;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
 import java.util.List;
@@ -24,47 +27,7 @@ import java.util.function.Consumer;
 
 public abstract class ChorusHelmetItem extends ArmorItem {
 	public ChorusHelmetItem(ArmorItem.Type type, Item.Properties properties) {
-		super(new ArmorMaterial() {
-			@Override
-			public int getDurabilityForType(ArmorItem.Type type) {
-				return new int[]{13, 15, 16, 11}[type.getSlot().getIndex()] * 9;
-			}
-
-			@Override
-			public int getDefenseForType(ArmorItem.Type type) {
-				return new int[]{0, 0, 0, 2}[type.getSlot().getIndex()];
-			}
-
-			@Override
-			public int getEnchantmentValue() {
-				return 0;
-			}
-
-			@Override
-			public SoundEvent getEquipSound() {
-				return SoundEvents.CHORUS_FLOWER_GROW;
-			}
-
-			@Override
-			public Ingredient getRepairIngredient() {
-				return Ingredient.of();
-			}
-
-			@Override
-			public String getName() {
-				return "chorus";
-			}
-
-			@Override
-			public float getToughness() {
-				return 0f;
-			}
-
-			@Override
-			public float getKnockbackResistance() {
-				return 0f;
-			}
-		}, type, properties);
+		super(ModArmorMaterials.CHORUS_ARMOR_MATERIAL, type, properties);
 	}
 
 	public static class Helmet extends ChorusHelmetItem {
@@ -91,16 +54,16 @@ public abstract class ChorusHelmetItem extends ArmorItem {
 		}
 
 		@Override
-		public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-			super.appendHoverText(itemstack, level, list, flag);
+		public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+			super.appendHoverText(itemstack, context, list, flag);
 			list.add(Component.translatable("lore.unusualend.when_hurt").withStyle(ChatFormatting.GRAY));
 			list.add(Component.translatable("lore.unusualend.chorus_helmet_1").withStyle(ChatFormatting.BLUE));
 			list.add(Component.translatable("lore.unusualend.chorus_helmet_2").withStyle(ChatFormatting.DARK_GRAY));
 		}
 
 		@Override
-		public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
-			return "unusualend:textures/models/armor/chorus__layer_1.png";
+		public @Nullable ResourceLocation getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, ArmorMaterial.Layer layer, boolean innerModel) {
+			return UnusualEnd.makeUEID("textures/models/armor/chorus__layer_1.png");
 		}
 	}
 }

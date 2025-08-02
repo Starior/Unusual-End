@@ -1,16 +1,21 @@
 package net.sweety.unusualend.event;
 
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLConstructModEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.common.BasicItemListing;
 import net.neoforged.neoforge.common.brewing.BrewingRecipeRegistry;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.village.WandererTradesEvent;
 import net.sweety.unusualend.block.entity.*;
 import net.sweety.unusualend.configuration.UEConfig;
 import net.sweety.unusualend.entity.*;
@@ -20,8 +25,17 @@ import net.sweety.unusualend.jei_recipes.InfuserRecipe;
 import net.sweety.unusualend.recipes.brewing.*;
 
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class UnusualEndEvents {
+    @SubscribeEvent
+    public static void registerWanderingTrades(WandererTradesEvent event) {
+        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, 5),
+
+                new ItemStack(UnusualendModItems.ENDERFIREFLY_BUCKET.get()), 2, 5, 0.05f));
+        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, 15),
+
+                new ItemStack(UnusualendModItems.VOID_TOTEM.get()), 1, 5, 0.05f));
+    }
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerItem(Capabilities.ItemHandler.ITEM, (stack, content) -> stack.getData(UnusualEndMiscRegister.BOLOK_NOTE_INVENTORY), UnusualendModItems.BOLOK_RESEARCH_NOTES.get());

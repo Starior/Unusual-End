@@ -20,8 +20,8 @@ public class VoidMirrorItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, world, list, flag);
+	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, context, list, flag);
 		list.add(Component.literal("\u00A77When Right-Clicking:"));
 		list.add(Component.literal("\u00A79Breach-Linked (5:00)"));
 		list.add(Component.literal("\u00A77When the Effect expire:"));

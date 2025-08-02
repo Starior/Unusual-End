@@ -9,18 +9,16 @@ import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
-import net.neoforged.neoforge.client.event.RenderGuiOverlayEvent;
-import net.neoforged.neoforge.client.gui.overlay.VanillaGuiOverlay;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
 import net.sweety.unusualend.procedures.*;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
 public class UnusualEndForgeClient {
     @SubscribeEvent
-    public static void renderOverlay(RenderGuiOverlayEvent.Pre event) {
+    public static void renderOverlay(RenderGuiEvent.Pre event) {
         Player player = Minecraft.getInstance().player;
         if (player != null && player.hasEffect(UnusualEndMiscRegister.CRYSTALLIZATION.get())) {
             if (VanillaGuiOverlay.PLAYER_HEALTH.type() == event.getOverlay()) {
@@ -34,8 +32,8 @@ public class UnusualEndForgeClient {
 
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public static void eventHandler(RenderGuiEvent.Pre event) {
-        int w = event.getWindow().getGuiScaledWidth();
-        int h = event.getWindow().getGuiScaledHeight();
+        int w = event.getGuiGraphics().guiWidth();
+        int h = event.getGuiGraphics().guiHeight();
         Level level = null;
         Player entity = Minecraft.getInstance().player;
         if (entity != null)

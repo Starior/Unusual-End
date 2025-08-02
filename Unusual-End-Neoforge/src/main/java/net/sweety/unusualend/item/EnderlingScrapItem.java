@@ -4,6 +4,7 @@ package net.sweety.unusualend.item;
 import com.google.common.collect.Iterables;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
@@ -12,54 +13,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
+import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.init.UnusualendModItems;
 import net.sweety.unusualend.procedures.EnderlingScrapLeggingsTickEventProcedure;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public abstract class EnderlingScrapItem extends ArmorItem {
 	public EnderlingScrapItem(ArmorItem.Type type, Item.Properties properties) {
-		super(new ArmorMaterial() {
-			@Override
-			public int getDurabilityForType(ArmorItem.Type type) {
-				return new int[]{13, 15, 16, 11}[type.getSlot().getIndex()] * 28;
-			}
-
-			@Override
-			public int getDefenseForType(ArmorItem.Type type) {
-				return new int[]{0, 5, 0, 0}[type.getSlot().getIndex()];
-			}
-
-			@Override
-			public int getEnchantmentValue() {
-				return 15;
-			}
-
-			@Override
-			public SoundEvent getEquipSound() {
-				return SoundEvents.ARMOR_EQUIP_LEATHER;
-			}
-
-			@Override
-			public Ingredient getRepairIngredient() {
-				return Ingredient.of(new ItemStack(UnusualendModItems.ENDERLING_SCRAP.get()));
-			}
-
-			@Override
-			public String getName() {
-				return "spectral";
-			}
-
-			@Override
-			public float getToughness() {
-				return 0f;
-			}
-
-			@Override
-			public float getKnockbackResistance() {
-				return 0f;
-			}
-		}, type, properties);
+		super(ModArmorMaterials.ENDERLING_ARMOR_MATERIAL, type, properties);
 	}
 
 	public static class Leggings extends EnderlingScrapItem {
@@ -68,15 +31,15 @@ public abstract class EnderlingScrapItem extends ArmorItem {
 		}
 
 		@Override
-		public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-			super.appendHoverText(itemstack, level, list, flag);
+		public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+			super.appendHoverText(itemstack, context, list, flag);
 			list.add(Component.translatable("lore.unusualend.when_sprint").withStyle(ChatFormatting.GRAY));
 			list.add(Component.literal("Spectral Stride (0:01)").withStyle(ChatFormatting.BLUE));
 		}
 
 		@Override
-		public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
-			return "unusualend:textures/models/armor/ender_scrap__layer_2.png";
+		public @Nullable ResourceLocation getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, ArmorMaterial.Layer layer, boolean innerModel) {
+			return UnusualEnd.makeUEID("textures/models/armor/ender_scrap__layer_2.png");
 		}
 
 		@Override

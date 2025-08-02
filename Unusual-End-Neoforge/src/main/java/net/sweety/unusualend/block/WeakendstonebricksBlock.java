@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.sweety.unusualend.procedures.WeakEndstoneWalkProcedure;
 
 public class WeakendstonebricksBlock extends Block {
 	public WeakendstonebricksBlock() {
@@ -35,8 +34,9 @@ public class WeakendstonebricksBlock extends Block {
 	}
 
 	@Override
-	public void stepOn(Level world, BlockPos pos, BlockState blockstate, Entity entity) {
-		super.stepOn(world, pos, blockstate, entity);
-		WeakEndstoneWalkProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
+	public void stepOn(Level level, BlockPos pos, BlockState blockstate, Entity entity) {
+		super.stepOn(level, pos, blockstate, entity);
+		if (entity instanceof Player)
+			level.destroyBlock(pos, false);
 	}
 }

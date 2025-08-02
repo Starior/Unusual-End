@@ -112,7 +112,7 @@ public class AncientPodiumOnBlockRightClickedProcedure {
 
     private static void playSound(LevelAccessor world, BlockPos pos, String soundEvent) {
         if (world instanceof Level level) {
-            ResourceLocation soundLocation = new ResourceLocation(soundEvent);
+            ResourceLocation soundLocation = ResourceLocation.parse(soundEvent);
             if (!level.isClientSide()) {
                 level.playSound(null, pos, BuiltInRegistries.SOUND_EVENT.get(soundLocation), SoundSource.BLOCKS, 1, 1.8f);
             } else {

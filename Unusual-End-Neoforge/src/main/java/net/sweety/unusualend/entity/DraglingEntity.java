@@ -37,15 +37,14 @@ public class DraglingEntity extends Monster {
 
 	public DraglingEntity(EntityType<DraglingEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
 		xpReward = 0;
 		setNoAi(false);
 		this.moveControl = new FlyingMoveControl(this, 10, true);
 	}
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(DATA_atk, false);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(DATA_atk, false);
 	}
 
 	@Override
@@ -119,11 +118,6 @@ public class DraglingEntity extends Monster {
 			this.idleAnimationState.animateWhen(!this.walkAnimation.isMoving() && !this.getEntityData().get(DraglingEntity.DATA_atk) == true, this.tickCount);
 		}
 		super.tick();
-	}
-
-	@Override
-	public MobType getMobType() {
-		return MobType.UNDEAD;
 	}
 
 	@Override

@@ -4,107 +4,67 @@ package net.sweety.unusualend.item;
 import com.google.common.collect.Iterables;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
-import net.sweety.unusualend.init.UnusualendModItems;
-import net.sweety.unusualend.procedures.BolokBootsBootsTickEventProcedure;
+import net.sweety.unusualend.UnusualEnd;
+import net.sweety.unusualend.init.UnusualEndMiscRegister;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public abstract class BolokBootsItem extends ArmorItem {
-	public BolokBootsItem(ArmorItem.Type type, Item.Properties properties) {
-		super(new ArmorMaterial() {
-			@Override
-			public int getDurabilityForType(ArmorItem.Type type) {
-				return new int[]{13, 15, 16, 11}[type.getSlot().getIndex()] * 30;
-			}
+    public BolokBootsItem(ArmorItem.Type type, Item.Properties properties) {
+        super(ModArmorMaterials.BOLOK_ARMOR_MATERIAL, type, properties);
+    }
 
-			@Override
-			public int getDefenseForType(ArmorItem.Type type) {
-				return new int[]{2, 0, 8, 0}[type.getSlot().getIndex()];
-			}
+    public static class Chestplate extends BolokBootsItem {
+        public Chestplate() {
+            super(ArmorItem.Type.CHESTPLATE, new Item.Properties());
+        }
 
-			@Override
-			public int getEnchantmentValue() {
-				return 12;
-			}
+        @Override
+        public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+            super.appendHoverText(itemstack, context, list, flag);
+            list.add(Component.translatable("lore.unusualend.when_hurt").withStyle(ChatFormatting.GRAY));
+            list.add(Component.literal("\u00A79Speed (0:03)"));
+            list.add(Component.literal("\u00A79Inflict Heaviness II (0:03)"));
+            list.add(Component.translatable("lore.unusualend.to_attacker").withStyle(ChatFormatting.BLUE));
+        }
 
-			@Override
-			public SoundEvent getEquipSound() {
-				return SoundEvents.ARMOR_EQUIP_LEATHER;
-			}
+        @Override
+        public @Nullable ResourceLocation getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, ArmorMaterial.Layer layer, boolean innerModel) {
+            return UnusualEnd.makeUEID("textures/models/armor/warped_bolok__layer_1.png");
+        }
+    }
 
-			@Override
-			public Ingredient getRepairIngredient() {
-				return Ingredient.of(new ItemStack(UnusualendModItems.BOLOK_SCALE.get()));
-			}
+    public static class Boots extends BolokBootsItem {
+        public Boots() {
+            super(ArmorItem.Type.BOOTS, new Item.Properties());
+        }
 
-			@Override
-			public String getName() {
-				return "warped";
-			}
+        @Override
+        public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+            super.appendHoverText(itemstack, context, list, flag);
+            list.add(Component.translatable("lore.unusualend.warped_boot_1").withStyle(ChatFormatting.BLUE));
+            list.add(Component.translatable("lore.unusualend.warped_boot_2").withStyle(ChatFormatting.BLUE));
+        }
 
-			@Override
-			public float getToughness() {
-				return 0f;
-			}
+        @Override
+        public @Nullable ResourceLocation getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, ArmorMaterial.Layer layer, boolean innerModel) {
+            return UnusualEnd.makeUEID("textures/models/armor/warped_bolok__layer_1.png");
+        }
 
-			@Override
-			public float getKnockbackResistance() {
-				return 0.3f;
-			}
-		}, type, properties);
-	}
-
-	public static class Chestplate extends BolokBootsItem {
-		public Chestplate() {
-			super(ArmorItem.Type.CHESTPLATE, new Item.Properties());
-		}
-
-		@Override
-		public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-			super.appendHoverText(itemstack, level, list, flag);
-			list.add(Component.translatable("lore.unusualend.when_hurt").withStyle(ChatFormatting.GRAY));
-			list.add(Component.literal("\u00A79Speed (0:03)"));
-			list.add(Component.literal("\u00A79Inflict Heaviness II (0:03)"));
-			list.add(Component.translatable("lore.unusualend.to_attacker").withStyle(ChatFormatting.BLUE));
-		}
-
-		@Override
-		public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
-			return "unusualend:textures/models/armor/warped_bolok__layer_1.png";
-		}
-	}
-
-	public static class Boots extends BolokBootsItem {
-		public Boots() {
-			super(ArmorItem.Type.BOOTS, new Item.Properties());
-		}
-
-		@Override
-		public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-			super.appendHoverText(itemstack, level, list, flag);
-			list.add(Component.translatable("lore.unusualend.warped_boot_1").withStyle(ChatFormatting.BLUE));
-			list.add(Component.translatable("lore.unusualend.warped_boot_2").withStyle(ChatFormatting.BLUE));
-		}
-
-		@Override
-		public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
-			return "unusualend:textures/models/armor/warped_bolok__layer_1.png";
-		}
-
-		@Override
-		public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
-			super.inventoryTick(itemstack, world, entity, slot, selected);
-			if (entity instanceof Player player && Iterables.contains(player.getArmorSlots(), itemstack)) {
-				BolokBootsBootsTickEventProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ());
-			}
-		}
-	}
+        @Override
+        public void inventoryTick(ItemStack itemstack, Level level, Entity entity, int slot, boolean selected) {
+            super.inventoryTick(itemstack, level, entity, slot, selected);
+            if (entity instanceof Player player && Iterables.contains(player.getArmorSlots(), itemstack)
+                    && level instanceof ServerLevel serverLevel)
+                serverLevel.sendParticles(UnusualEndMiscRegister.BOLOK_PARTICLE.get(), entity.getX(), entity.getY() + 0.1, entity.getZ(), 1, 0.2, 0.2, 0.2, 0);
+        }
+    }
 }

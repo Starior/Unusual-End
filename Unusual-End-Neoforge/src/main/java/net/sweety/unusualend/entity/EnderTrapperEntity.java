@@ -24,13 +24,8 @@ public class EnderTrapperEntity extends Monster {
 
 	public EnderTrapperEntity(EntityType<EnderTrapperEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
 		xpReward = 1;
 		setNoAi(true);
-	}
-	@Override
-	public MobType getMobType() {
-		return MobType.UNDEFINED;
 	}
 
 	@Override

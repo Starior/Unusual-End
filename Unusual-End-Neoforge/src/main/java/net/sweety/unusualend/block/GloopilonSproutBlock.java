@@ -19,7 +19,6 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.common.PlantType;
 import net.sweety.unusualend.procedures.DrippingGloopstoneAdditionalPlacinggrowthConditionProcedure;
 import net.sweety.unusualend.procedures.GloopilonSproutBoneMealSuccessConditionProcedure;
 import net.sweety.unusualend.procedures.GloopilonSproutUpdateTickProcedure;
@@ -27,7 +26,7 @@ import net.sweety.unusualend.procedures.GrowGloopilonProcedure;
 
 public class GloopilonSproutBlock extends FlowerBlock implements BonemealableBlock {
     public GloopilonSproutBlock() {
-        super(() -> MobEffects.MOVEMENT_SPEED, 100,
+        super(MobEffects.MOVEMENT_SPEED, 100,
                 BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_MAGENTA).randomTicks().sound(SoundType.CORAL_BLOCK).instabreak().noCollission().offsetType(BlockBehaviour.OffsetType.NONE).pushReaction(PushReaction.DESTROY));
     }
 
@@ -54,7 +53,6 @@ public class GloopilonSproutBlock extends FlowerBlock implements BonemealableBlo
             int x = pos.getX();
             int y = pos.getY() + 1;
             int z = pos.getZ();
-            BlockState blockstate = world.getBlockState(pos.above());
             additionalCondition = DrippingGloopstoneAdditionalPlacinggrowthConditionProcedure.execute(world, x, y, z);
         }
         return additionalCondition;
@@ -65,11 +63,6 @@ public class GloopilonSproutBlock extends FlowerBlock implements BonemealableBlo
         BlockPos blockpos = pos.below();
         BlockState groundState = worldIn.getBlockState(blockpos);
         return this.mayPlaceOn(groundState, worldIn, blockpos);
-    }
-
-    @Override
-    public PlantType getPlantType(BlockGetter world, BlockPos pos) {
-        return PlantType.CAVE;
     }
 
     @Override

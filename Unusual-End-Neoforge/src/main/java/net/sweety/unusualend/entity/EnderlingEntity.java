@@ -40,7 +40,6 @@ public class EnderlingEntity extends Monster {
 
 	public EnderlingEntity(EntityType<EnderlingEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
 		xpReward = 1;
 		setNoAi(false);
 		this.moveControl = new FlyingMoveControl(this, 10, true);
@@ -101,11 +100,6 @@ public class EnderlingEntity extends Monster {
 			}
 		});
 		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-	}
-
-	@Override
-	public MobType getMobType() {
-		return MobType.UNDEAD;
 	}
 
 	@Override

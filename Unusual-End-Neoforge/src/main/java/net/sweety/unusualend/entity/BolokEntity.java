@@ -1,5 +1,3 @@
-
-//spawn
 package net.sweety.unusualend.entity;
 
 import net.minecraft.core.BlockPos;
@@ -40,7 +38,6 @@ import net.sweety.unusualend.procedures.BucketBolokProcedure;
 public class BolokEntity extends Monster {
 	public BolokEntity(EntityType<BolokEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
 		xpReward = 1;
 		setNoAi(false);
 		this.moveControl = new FlyingMoveControl(this, 10, true);
@@ -79,10 +76,6 @@ public class BolokEntity extends Monster {
 	}
 
 	@Override
-	public MobType getMobType() {
-		return MobType.WATER;
-	}
-	@Override
 	protected float ridingOffset(Entity entity) {
 		return super.ridingOffset(entity)-0.2f;
 	}
@@ -109,13 +102,9 @@ public class BolokEntity extends Monster {
 
 	@Override
 	public boolean hurt(DamageSource damagesource, float amount) {
-		double x = this.getX();
-		double y = this.getY();
-		double z = this.getZ();
 		Level world = this.level();
 		Entity entity = this;
 		Entity sourceentity = damagesource.getEntity();
-		Entity immediatesourceentity = damagesource.getDirectEntity();
 		BolokEntityIsHurtProcedure.execute(world, entity, sourceentity);
 		if (damagesource.is(DamageTypes.DROWN))
 			return false;
@@ -124,7 +113,6 @@ public class BolokEntity extends Monster {
 
 	@Override
 	public InteractionResult mobInteract(Player sourceentity, InteractionHand hand) {
-		ItemStack itemstack = sourceentity.getItemInHand(hand);
 		InteractionResult retval = InteractionResult.sidedSuccess(this.level().isClientSide());
 		super.mobInteract(sourceentity, hand);
 		double x = this.getX();

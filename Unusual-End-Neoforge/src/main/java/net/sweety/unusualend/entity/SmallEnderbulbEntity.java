@@ -26,7 +26,6 @@ public class SmallEnderbulbEntity extends Monster {
 
 	public SmallEnderbulbEntity(EntityType<SmallEnderbulbEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.7f);
 		xpReward = 1;
 		setNoAi(false);
 	}

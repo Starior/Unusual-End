@@ -3,7 +3,6 @@ package net.sweety.unusualend.item;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.RecordItem;
 import net.sweety.unusualend.init.UnusualendModSounds;
 
 public class MusicdiscflyingshipsItem extends RecordItem {

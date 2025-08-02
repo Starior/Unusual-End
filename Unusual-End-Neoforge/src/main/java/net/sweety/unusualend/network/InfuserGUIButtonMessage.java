@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.PlayPayloadContext;
@@ -18,7 +19,7 @@ import net.sweety.unusualend.procedures.ConsumeCitrineProcedure;
 import net.sweety.unusualend.procedures.ConsumePrismaticProcedure;
 import net.sweety.unusualend.procedures.ConsumeShinyProcedure;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class InfuserGUIButtonMessage implements CustomPacketPayload {
     private final int buttonID, x, y, z;
     public static final ResourceLocation ID = UnusualEnd.makeUEID("infuser_gui_button_message_id");
@@ -102,5 +103,10 @@ public class InfuserGUIButtonMessage implements CustomPacketPayload {
     @Override
     public ResourceLocation id() {
         return ID;
+    }
+
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return null;
     }
 }

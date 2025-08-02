@@ -18,14 +18,14 @@ import java.util.HashMap;
 
 public class BolokNotesScreen extends AbstractContainerScreen<BolokNotesMenu> {
     private final static HashMap<String, Object> guistate = BolokNotesMenu.guistate;
-    private final Level world;
+    private final Level level;
     private final int x, y, z;
     private final Player entity;
     Button button_done;
 
     public BolokNotesScreen(BolokNotesMenu container, Inventory inventory, Component text) {
         super(container, inventory, text);
-        this.world = container.world;
+        this.level = container.world;
         this.x = container.x;
         this.y = container.y;
         this.z = container.z;

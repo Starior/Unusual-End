@@ -37,7 +37,6 @@ public class WarpedJellyfishEntity extends Monster {
 
 	public WarpedJellyfishEntity(EntityType<WarpedJellyfishEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
 		xpReward = 0;
 		setNoAi(false);
 		this.moveControl = new FlyingMoveControl(this, 10, true);
@@ -67,11 +66,6 @@ public class WarpedJellyfishEntity extends Monster {
 		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
 		this.goalSelector.addGoal(7, new RandomSwimmingGoal(this, 1, 40));
 		this.goalSelector.addGoal(8, new FloatGoal(this));
-	}
-
-	@Override
-	public MobType getMobType() {
-		return MobType.WATER;
 	}
 	@Override
 	protected float ridingOffset(Entity entity) {
@@ -184,7 +178,7 @@ public class WarpedJellyfishEntity extends Monster {
 		builder = builder.add(Attributes.FOLLOW_RANGE, 32);
 		builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 0.3);
 		builder = builder.add(Attributes.FLYING_SPEED, 0.4);
-		builder = builder.add(NeoForgeMod.SWIM_SPEED.value(), 0.4);
+		builder = builder.add(NeoForgeMod.SWIM_SPEED, 0.4);
 		return builder;
 	}
 }

@@ -23,7 +23,6 @@ public class SpunklerEntity extends Monster {
 
 	public SpunklerEntity(EntityType<SpunklerEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
 		xpReward = 7;
 		setNoAi(false);
 	}
@@ -33,11 +32,6 @@ public class SpunklerEntity extends Monster {
 		super.registerGoals();
 		this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, (float) 32));
 		this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
-	}
-
-	@Override
-	public MobType getMobType() {
-		return MobType.WATER;
 	}
 
 	@Override
