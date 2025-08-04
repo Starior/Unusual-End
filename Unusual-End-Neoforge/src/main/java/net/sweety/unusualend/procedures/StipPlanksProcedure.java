@@ -21,15 +21,15 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 
 import javax.annotation.Nullable;
 import java.util.Map;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class StipPlanksProcedure {
 	@SubscribeEvent
 	public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
@@ -102,10 +102,10 @@ public class StipPlanksProcedure {
 						}
 					}
 				}
-				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.CHORUS_NEST_PLANKS.get()) {
+				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.CHORUS_NEST_PLANKS.get()) {
 					{
 						BlockPos _bp = BlockPos.containing(x, y, z);
-						BlockState _bs = UnusualendModBlocks.STRIPPED_CHORUS_NEST_PLANKS.get().defaultBlockState();
+						BlockState _bs = UnusualEndBlocks.STRIPPED_CHORUS_NEST_PLANKS.get().defaultBlockState();
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 							Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -118,10 +118,10 @@ public class StipPlanksProcedure {
 						world.setBlock(_bp, _bs, 3);
 					}
 				}
-				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.CHORUS_NEST_STAIRS.get()) {
+				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.CHORUS_NEST_STAIRS.get()) {
 					{
 						BlockPos _bp = BlockPos.containing(x, y, z);
-						BlockState _bs = UnusualendModBlocks.STRIPPED_CHORUS_NEST_STAIRS.get().defaultBlockState();
+						BlockState _bs = UnusualEndBlocks.STRIPPED_CHORUS_NEST_STAIRS.get().defaultBlockState();
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 							Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -134,10 +134,10 @@ public class StipPlanksProcedure {
 						world.setBlock(_bp, _bs, 3);
 					}
 				}
-				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.CHORUS_NEST_SLAB.get()) {
+				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.CHORUS_NEST_SLAB.get()) {
 					{
 						BlockPos _bp = BlockPos.containing(x, y, z);
-						BlockState _bs = UnusualendModBlocks.STRIPPED_CHORUS_NEST_SLAB.get().defaultBlockState();
+						BlockState _bs = UnusualEndBlocks.STRIPPED_CHORUS_NEST_SLAB.get().defaultBlockState();
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 							Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -150,10 +150,10 @@ public class StipPlanksProcedure {
 						world.setBlock(_bp, _bs, 3);
 					}
 				}
-				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.CHORUS_CANE_BLOCK.get()) {
+				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.CHORUS_CANE_BLOCK.get()) {
 					{
 						BlockPos _bp = BlockPos.containing(x, y, z);
-						BlockState _bs = UnusualendModBlocks.STRIPPED_CHORUS_CANE_BLOCK.get().defaultBlockState();
+						BlockState _bs = UnusualEndBlocks.STRIPPED_CHORUS_CANE_BLOCK.get().defaultBlockState();
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 							Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -166,10 +166,10 @@ public class StipPlanksProcedure {
 						world.setBlock(_bp, _bs, 3);
 					}
 				}
-				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.BLOOMING_CHORUS_CANE.get()) {
+				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.BLOOMING_CHORUS_CANE.get()) {
 					{
 						BlockPos _bp = BlockPos.containing(x, y, z);
-						BlockState _bs = UnusualendModBlocks.CHORUS_CANE.get().defaultBlockState();
+						BlockState _bs = UnusualEndBlocks.CHORUS_CANE.get().defaultBlockState();
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 							Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());

@@ -22,7 +22,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.entity.EnderblobEntity;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 public class EnderblobRightClickedOnEntityProcedure {
     public static void execute(LevelAccessor world, Entity entity, Player player) {
@@ -39,7 +39,7 @@ public class EnderblobRightClickedOnEntityProcedure {
                 }
                 player.swing(InteractionHand.MAIN_HAND, true);
                 if (world instanceof ServerLevel _level) {
-                    ItemEntity entityToSpawn = new ItemEntity(_level, (entity.getX()), (entity.getY() + 0.3), (entity.getZ()), new ItemStack(UnusualendModItems.ENDERBLOB_MOULT.get()));
+                    ItemEntity entityToSpawn = new ItemEntity(_level, (entity.getX()), (entity.getY() + 0.3), (entity.getZ()), new ItemStack(UnusualEndItems.ENDERBLOB_MOULT.get()));
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }

@@ -18,14 +18,14 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 
 public class TurnToShulkerProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
 		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.END_STONE.asItem()) {
-			if ((world.getBlockState(BlockPos.containing(entity.getX(), entity.getY() - 1, entity.getZ()))).getBlock() == UnusualendModBlocks.INFESTED_END_STONE.get()) {
+			if ((world.getBlockState(BlockPos.containing(entity.getX(), entity.getY() - 1, entity.getZ()))).getBlock() == UnusualEndBlocks.INFESTED_END_STONE.get()) {
 				world.setBlock(BlockPos.containing(entity.getX(), entity.getY() - 1, entity.getZ()), Blocks.AIR.defaultBlockState(), 3);
 				world.setBlock(BlockPos.containing(entity.getX(), entity.getY() - 1, entity.getZ()), Blocks.END_STONE.defaultBlockState(), 3);
 				if (world instanceof ServerLevel _level)
@@ -48,7 +48,7 @@ public class TurnToShulkerProcedure {
 					_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
 				}
 				if (sourceentity instanceof Player _player) {
-					ItemStack _setstack = new ItemStack(UnusualendModBlocks.INFESTED_END_STONE.get()).copy();
+					ItemStack _setstack = new ItemStack(UnusualEndBlocks.INFESTED_END_STONE.get()).copy();
 					_setstack.setCount(1);
 					ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
 				}

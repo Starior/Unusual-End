@@ -11,7 +11,7 @@ import net.minecraft.world.level.material.MapColor;
 
 public class PolishedGloopslateStairsBlock extends StairBlock {
 	public PolishedGloopslateStairsBlock() {
-		super(() -> Blocks.AIR.defaultBlockState(), BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.COLOR_PURPLE).sound(SoundType.CORAL_BLOCK).strength(0.85f, 5f).dynamicShape());
+		super(Blocks.AIR.defaultBlockState(), BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.COLOR_PURPLE).sound(SoundType.CORAL_BLOCK).strength(0.85f, 5f).dynamicShape());
 	}
 
 	@Override

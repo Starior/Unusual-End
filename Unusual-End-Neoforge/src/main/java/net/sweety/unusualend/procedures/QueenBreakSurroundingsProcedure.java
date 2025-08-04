@@ -3,7 +3,7 @@ package net.sweety.unusualend.procedures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 
 public class QueenBreakSurroundingsProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -17,7 +17,7 @@ public class QueenBreakSurroundingsProcedure {
                     if (!world.isEmptyBlock(BlockPos.containing(x + sx, y + sy, z + sz))) {
                         if (world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz)).getDestroySpeed(world, BlockPos.containing(x + sx, y + sy, z + sz)) >= 0) {
                             world.destroyBlock(BlockPos.containing(x + sx, y + sy, z + sz), false);
-                            world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId(UnusualendModBlocks.VOID_PARTICLES_BLOCK.get().defaultBlockState()));
+                            world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId(UnusualEndBlocks.VOID_PARTICLES_BLOCK.get().defaultBlockState()));
                         }
                     }
                     sz = sz + 1;

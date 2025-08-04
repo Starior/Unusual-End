@@ -23,7 +23,6 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.procedures.WarpedMossBlockValidPlacementConditionProcedure;
 
 public class WarpedMossBlock extends Block implements SimpleWaterloggedBlock {
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -70,14 +69,10 @@ public class WarpedMossBlock extends Block implements SimpleWaterloggedBlock {
 	}
 
 	@Override
-	public boolean canSurvive(BlockState blockstate, LevelReader worldIn, BlockPos pos) {
-		if (worldIn instanceof LevelAccessor world) {
-			int x = pos.getX();
-			int y = pos.getY();
-			int z = pos.getZ();
-			return WarpedMossBlockValidPlacementConditionProcedure.execute(world, x, y, z);
-		}
-		return super.canSurvive(blockstate, worldIn, pos);
+	public boolean canSurvive(BlockState blockstate, LevelReader level, BlockPos pos) {
+		if (level instanceof LevelAccessor world)
+			return Blocks.MOSS_CARPET.defaultBlockState().canSurvive(world, pos);
+		return super.canSurvive(blockstate, level, pos);
 	}
 
 	@Override

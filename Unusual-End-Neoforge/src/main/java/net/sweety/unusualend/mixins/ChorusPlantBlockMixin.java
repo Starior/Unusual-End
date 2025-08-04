@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ChorusPlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -27,8 +27,8 @@ public abstract class ChorusPlantBlockMixin extends Block {
 	@Inject(method = "canSurvive", at = @At("HEAD"), cancellable = true)
 	private void canSurvive(BlockState state, LevelReader world, BlockPos pos, CallbackInfoReturnable<Boolean> info) {
 		BlockState blockstate = world.getBlockState(pos.below());
-		if (blockstate.is(UnusualendModBlocks.RAW_PURPUR_BLOCK.get()) || blockstate.is(UnusualendModBlocks.INFESTED_END_STONE.get()) || blockstate.is(UnusualendModBlocks.ROOTED_RAW_PURPUR.get()) || blockstate.is(UnusualendModBlocks.GLOOPSLATE.get())
-				|| blockstate.is(UnusualendModBlocks.GLOOPSTONE.get()) || blockstate.is(UnusualendModBlocks.WARPED_END_STONE.get()) || blockstate.is(UnusualendModBlocks.PURPUR_EMBEDDED_END_STONE.get()) || blockstate.is(Blocks.END_STONE)) {
+		if (blockstate.is(UnusualEndBlocks.RAW_PURPUR_BLOCK.get()) || blockstate.is(UnusualEndBlocks.INFESTED_END_STONE.get()) || blockstate.is(UnusualEndBlocks.ROOTED_RAW_PURPUR.get()) || blockstate.is(UnusualEndBlocks.GLOOPSLATE.get())
+				|| blockstate.is(UnusualEndBlocks.GLOOPSTONE.get()) || blockstate.is(UnusualEndBlocks.WARPED_END_STONE.get()) || blockstate.is(UnusualEndBlocks.PURPUR_EMBEDDED_END_STONE.get()) || blockstate.is(Blocks.END_STONE)) {
 			info.setReturnValue(true);
 		}
 	}
@@ -37,9 +37,9 @@ public abstract class ChorusPlantBlockMixin extends Block {
 	private void updateShape(BlockState state, Direction direction, BlockState newState, LevelAccessor world, BlockPos pos, BlockPos posFrom, CallbackInfoReturnable<BlockState> info) {
 		BlockState plant = info.getReturnValue();
 		BlockState blockstate = world.getBlockState(pos.below());
-		if (plant.is(Blocks.CHORUS_PLANT) && (blockstate.is(UnusualendModBlocks.RAW_PURPUR_BLOCK.get()) || blockstate.is(UnusualendModBlocks.INFESTED_END_STONE.get()) || blockstate.is(UnusualendModBlocks.ROOTED_RAW_PURPUR.get())
-				|| blockstate.is(UnusualendModBlocks.GLOOPSLATE.get()) || blockstate.is(UnusualendModBlocks.GLOOPSTONE.get()) || blockstate.is(UnusualendModBlocks.WARPED_END_STONE.get())
-				|| blockstate.is(UnusualendModBlocks.PURPUR_EMBEDDED_END_STONE.get()) || blockstate.is(Blocks.END_STONE))) {
+		if (plant.is(Blocks.CHORUS_PLANT) && (blockstate.is(UnusualEndBlocks.RAW_PURPUR_BLOCK.get()) || blockstate.is(UnusualEndBlocks.INFESTED_END_STONE.get()) || blockstate.is(UnusualEndBlocks.ROOTED_RAW_PURPUR.get())
+				|| blockstate.is(UnusualEndBlocks.GLOOPSLATE.get()) || blockstate.is(UnusualEndBlocks.GLOOPSTONE.get()) || blockstate.is(UnusualEndBlocks.WARPED_END_STONE.get())
+				|| blockstate.is(UnusualEndBlocks.PURPUR_EMBEDDED_END_STONE.get()) || blockstate.is(Blocks.END_STONE))) {
 			plant = plant.setValue(BlockStateProperties.DOWN, true);
 			info.setReturnValue(plant);
 		}
@@ -52,9 +52,9 @@ public abstract class ChorusPlantBlockMixin extends Block {
 		BlockState plant = info.getReturnValue();
 		BlockState blockstate = world.getBlockState(pos.below());
 		if (ctx.canPlace() && plant.is(Blocks.CHORUS_PLANT)
-				&& (blockstate.is(UnusualendModBlocks.RAW_PURPUR_BLOCK.get()) || blockstate.is(UnusualendModBlocks.INFESTED_END_STONE.get()) || blockstate.is(UnusualendModBlocks.ROOTED_RAW_PURPUR.get())
-				|| blockstate.is(UnusualendModBlocks.GLOOPSLATE.get()) || blockstate.is(UnusualendModBlocks.GLOOPSTONE.get()) || blockstate.is(UnusualendModBlocks.WARPED_END_STONE.get())
-				|| blockstate.is(UnusualendModBlocks.PURPUR_EMBEDDED_END_STONE.get()) || blockstate.is(Blocks.END_STONE))) {
+				&& (blockstate.is(UnusualEndBlocks.RAW_PURPUR_BLOCK.get()) || blockstate.is(UnusualEndBlocks.INFESTED_END_STONE.get()) || blockstate.is(UnusualEndBlocks.ROOTED_RAW_PURPUR.get())
+				|| blockstate.is(UnusualEndBlocks.GLOOPSLATE.get()) || blockstate.is(UnusualEndBlocks.GLOOPSTONE.get()) || blockstate.is(UnusualEndBlocks.WARPED_END_STONE.get())
+				|| blockstate.is(UnusualEndBlocks.PURPUR_EMBEDDED_END_STONE.get()) || blockstate.is(Blocks.END_STONE))) {
 			info.setReturnValue(plant.setValue(BlockStateProperties.DOWN, true));
 		}
 	}
@@ -63,9 +63,9 @@ public abstract class ChorusPlantBlockMixin extends Block {
 	private static void getStateForPlacement(BlockGetter pLevel, BlockPos pPos, BlockState pState, CallbackInfoReturnable<BlockState> cir) {
 		BlockState plant = cir.getReturnValue();
 		BlockState blockstate = pLevel.getBlockState(pPos.below());
-		if (plant.is(Blocks.CHORUS_PLANT) && (blockstate.is(UnusualendModBlocks.RAW_PURPUR_BLOCK.get()) || blockstate.is(UnusualendModBlocks.INFESTED_END_STONE.get()) || blockstate.is(UnusualendModBlocks.ROOTED_RAW_PURPUR.get())
-				|| blockstate.is(UnusualendModBlocks.GLOOPSLATE.get()) || blockstate.is(UnusualendModBlocks.GLOOPSTONE.get()) || blockstate.is(UnusualendModBlocks.WARPED_END_STONE.get())
-				|| blockstate.is(UnusualendModBlocks.PURPUR_EMBEDDED_END_STONE.get()) || blockstate.is(Blocks.END_STONE))) {
+		if (plant.is(Blocks.CHORUS_PLANT) && (blockstate.is(UnusualEndBlocks.RAW_PURPUR_BLOCK.get()) || blockstate.is(UnusualEndBlocks.INFESTED_END_STONE.get()) || blockstate.is(UnusualEndBlocks.ROOTED_RAW_PURPUR.get())
+				|| blockstate.is(UnusualEndBlocks.GLOOPSLATE.get()) || blockstate.is(UnusualEndBlocks.GLOOPSTONE.get()) || blockstate.is(UnusualEndBlocks.WARPED_END_STONE.get())
+				|| blockstate.is(UnusualEndBlocks.PURPUR_EMBEDDED_END_STONE.get()) || blockstate.is(Blocks.END_STONE))) {
 			cir.setReturnValue(plant.setValue(BlockStateProperties.DOWN, true));
 		}
 	}

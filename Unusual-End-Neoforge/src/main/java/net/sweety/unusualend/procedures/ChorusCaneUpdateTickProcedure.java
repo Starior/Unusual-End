@@ -14,23 +14,23 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 
 public class ChorusCaneUpdateTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		if (world.isEmptyBlock(BlockPos.containing(x, y + 1, z))) {
 			if (Math.random() < 0.4) {
 				if (Math.random() < 0.25) {
-					world.setBlock(BlockPos.containing(x, y + 1, z), UnusualendModBlocks.BLOOMING_CHORUS_CANE.get().defaultBlockState(), 3);
+					world.setBlock(BlockPos.containing(x, y + 1, z), UnusualEndBlocks.BLOOMING_CHORUS_CANE.get().defaultBlockState(), 3);
 					if (Math.random() < 0.25 && world.isEmptyBlock(BlockPos.containing(x, y + 2, z))) {
 						if (world instanceof ServerLevel _level)
 							_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, (y + 2), z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
 									"setblock ~ ~ ~ unusualend:chorus_cane_flower[face=floor]");
 					}
 				} else if (!world.isEmptyBlock(BlockPos.containing(x, y + 2, z))) {
-					world.setBlock(BlockPos.containing(x, y + 1, z), UnusualendModBlocks.BLOOMING_CHORUS_CANE.get().defaultBlockState(), 3);
+					world.setBlock(BlockPos.containing(x, y + 1, z), UnusualEndBlocks.BLOOMING_CHORUS_CANE.get().defaultBlockState(), 3);
 				} else {
-					world.setBlock(BlockPos.containing(x, y + 1, z), UnusualendModBlocks.CHORUS_CANE.get().defaultBlockState(), 3);
+					world.setBlock(BlockPos.containing(x, y + 1, z), UnusualEndBlocks.CHORUS_CANE.get().defaultBlockState(), 3);
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {

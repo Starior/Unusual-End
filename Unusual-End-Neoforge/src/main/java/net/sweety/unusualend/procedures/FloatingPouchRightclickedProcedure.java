@@ -18,13 +18,13 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.configuration.UEConfig;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 public class FloatingPouchRightclickedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
 		if (entity == null)
 			return;
-		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.FLOATING_POUCH.get()) {
+		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualEndItems.FLOATING_POUCH.get()) {
 			if (entity instanceof LivingEntity _entity)
 				_entity.swing(InteractionHand.MAIN_HAND, true);
 		} else {

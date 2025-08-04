@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 
 public class FadingBlockOnUpdateTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate) {
@@ -142,7 +142,7 @@ public class FadingBlockOnUpdateTickProcedure {
 				if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 			}
-			world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId(UnusualendModBlocks.FADING_BLOCK.get().defaultBlockState()));
+			world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId(UnusualEndBlocks.FADING_BLOCK.get().defaultBlockState()));
 		}
 		if (new Object() {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {

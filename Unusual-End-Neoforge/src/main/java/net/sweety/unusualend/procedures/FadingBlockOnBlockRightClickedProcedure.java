@@ -11,7 +11,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 
 public class FadingBlockOnBlockRightClickedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -36,7 +36,7 @@ public class FadingBlockOnBlockRightClickedProcedure {
 				for (int index1 = 0; index1 < 7; index1++) {
 					sz = -3;
 					for (int index2 = 0; index2 < 7; index2++) {
-						if ((world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz))).getBlock() == UnusualendModBlocks.FADING_BLOCK.get()
+						if ((world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz))).getBlock() == UnusualEndBlocks.FADING_BLOCK.get()
 								&& ((world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz))).getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip6
 										? (world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz))).getValue(_getip6)
 										: -1) == 0) {

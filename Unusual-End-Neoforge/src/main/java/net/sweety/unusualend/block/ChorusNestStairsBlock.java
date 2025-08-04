@@ -14,7 +14,7 @@ import net.minecraft.world.level.material.MapColor;
 
 public class ChorusNestStairsBlock extends StairBlock {
 	public ChorusNestStairsBlock() {
-		super(() -> Blocks.AIR.defaultBlockState(), BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.COLOR_RED).sound(SoundType.WOOD).strength(3f, 2f).dynamicShape());
+		super(Blocks.AIR.defaultBlockState(), BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.COLOR_RED).sound(SoundType.WOOD).strength(3f, 2f).dynamicShape());
 	}
 
 	@Override

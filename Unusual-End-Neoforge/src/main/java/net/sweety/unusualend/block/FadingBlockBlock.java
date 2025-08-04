@@ -5,7 +5,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
@@ -25,7 +24,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.block.entity.FadingBlockBlockEntity;
+import net.sweety.unusualend.block.entity.FadingBlockEntity;
 import net.sweety.unusualend.procedures.FadingBlockEmittedRedstonePowerProcedure;
 import net.sweety.unusualend.procedures.FadingBlockOnBlockRightClickedProcedure;
 import net.sweety.unusualend.procedures.FadingBlockOnUpdateTickProcedure;
@@ -117,16 +116,12 @@ public class FadingBlockBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
-		super.use(blockstate, world, pos, entity, hand, hit);
+	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+		super.useWithoutItem(state, level, pos, player, hitResult);
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-		double hitX = hit.getLocation().x;
-		double hitY = hit.getLocation().y;
-		double hitZ = hit.getLocation().z;
-		Direction direction = hit.getDirection();
-		FadingBlockOnBlockRightClickedProcedure.execute(world, x, y, z, entity);
+		FadingBlockOnBlockRightClickedProcedure.execute(level, x, y, z, player);
 		return InteractionResult.SUCCESS;
 	}
 
@@ -138,7 +133,7 @@ public class FadingBlockBlock extends Block implements EntityBlock {
 
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return new FadingBlockBlockEntity(pos, state);
+		return new FadingBlockEntity(pos, state);
 	}
 
 	@Override

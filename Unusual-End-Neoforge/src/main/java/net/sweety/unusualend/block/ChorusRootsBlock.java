@@ -20,13 +20,13 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.procedures.BonemealChorusProcedure;
 import net.sweety.unusualend.procedures.ChorusRootsBoneMealSuccessConditionProcedure;
 
 public class ChorusRootsBlock extends FlowerBlock implements BonemealableBlock {
 	public ChorusRootsBlock() {
-		super(() -> MobEffects.LEVITATION, 100,
+		super(MobEffects.LEVITATION, 100,
 				BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).sound(SoundType.ROOTS).instabreak().noCollission().replaceable().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
 	}
 
@@ -48,9 +48,9 @@ public class ChorusRootsBlock extends FlowerBlock implements BonemealableBlock {
 
 	@Override
 	public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
-		return groundState.is(UnusualendModBlocks.INFESTED_END_STONE.get()) || groundState.is(Blocks.END_STONE) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK)
-				|| groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL) || groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualendModBlocks.RAW_PURPUR_BLOCK.get())
-				|| groundState.is(UnusualendModBlocks.GNEISS.get()) || groundState.is(UnusualendModBlocks.WARPED_END_STONE.get()) || groundState.is(UnusualendModBlocks.ROOTED_RAW_PURPUR.get()) || groundState.is(UnusualendModBlocks.GLOOPSLATE.get());
+		return groundState.is(UnusualEndBlocks.INFESTED_END_STONE.get()) || groundState.is(Blocks.END_STONE) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK)
+				|| groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL) || groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualEndBlocks.RAW_PURPUR_BLOCK.get())
+				|| groundState.is(UnusualEndBlocks.GNEISS.get()) || groundState.is(UnusualEndBlocks.WARPED_END_STONE.get()) || groundState.is(UnusualEndBlocks.ROOTED_RAW_PURPUR.get()) || groundState.is(UnusualEndBlocks.GLOOPSLATE.get());
 	}
 
 	@Override

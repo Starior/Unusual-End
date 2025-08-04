@@ -5,7 +5,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
@@ -109,13 +108,13 @@ public class WarpedChestBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
-		super.use(blockstate, world, pos, entity, hand, hit);
+	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+		 super.useWithoutItem(state, level, pos, player, hitResult);
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-		Direction direction = hit.getDirection();
-		WarpedChestOnBlockRightClickedProcedure.execute(world, x, y, z, blockstate, direction, entity);
+		Direction direction = hitResult.getDirection();
+		WarpedChestOnBlockRightClickedProcedure.execute(level, x, y, z, state, direction, player);
 		return InteractionResult.SUCCESS;
 	}
 

@@ -17,7 +17,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.init.UnusualendModSounds;
+import net.sweety.unusualend.init.UnusualEndSounds;
 
 public class EndstoneGolemEntityDiesProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -57,9 +57,9 @@ public class EndstoneGolemEntityDiesProcedure {
             UnusualEnd.queueServerWork(15, () -> {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(x, y, z), UnusualendModSounds.ENDSTONE_GOLEM_DEATH.get(), SoundSource.HOSTILE, 2, 1);
+                        _level.playSound(null, BlockPos.containing(x, y, z), UnusualEndSounds.ENDSTONE_GOLEM_DEATH.get(), SoundSource.HOSTILE, 2, 1);
                     } else {
-                        _level.playLocalSound(x, y, z, UnusualendModSounds.ENDSTONE_GOLEM_DEATH.get(), SoundSource.HOSTILE, 2, 1, false);
+                        _level.playLocalSound(x, y, z, UnusualEndSounds.ENDSTONE_GOLEM_DEATH.get(), SoundSource.HOSTILE, 2, 1, false);
                     }
                 }
             });

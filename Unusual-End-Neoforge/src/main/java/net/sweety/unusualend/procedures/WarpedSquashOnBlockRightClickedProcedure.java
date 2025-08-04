@@ -17,11 +17,11 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class WarpedSquashOnBlockRightClickedProcedure {
 	@SubscribeEvent
 	public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
@@ -33,7 +33,7 @@ public class WarpedSquashOnBlockRightClickedProcedure {
 	private static void execute(PlayerInteractEvent.RightClickBlock event, LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.WARPED_SQUASH.get()) {
+		if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.WARPED_SQUASH.get()) {
 			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() instanceof ShearsItem) {
 				if (entity instanceof LivingEntity _entity)
 					_entity.swing(InteractionHand.MAIN_HAND, true);
@@ -45,7 +45,7 @@ public class WarpedSquashOnBlockRightClickedProcedure {
 						_prop = _bs.getBlock().getStateDefinition().getProperty("axis");
 						return _prop instanceof EnumProperty _ep && _ep.getPossibleValues().contains(newValue.getAxis()) ? _bs.setValue(_ep, newValue.getAxis()) : _bs;
 					}
-				}.with(UnusualendModBlocks.CARVED_WARPED_SQUASH.get().defaultBlockState(),
+				}.with(UnusualEndBlocks.CARVED_WARPED_SQUASH.get().defaultBlockState(),
 						(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(10)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getDirection()))), 3);
 				if (world.isClientSide()) {
 					if (world instanceof Level _level) {

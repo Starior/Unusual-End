@@ -1,5 +1,3 @@
-
-//nerf dmg to 3 + reach to 4
 package net.sweety.unusualend.entity;
 
 import net.minecraft.core.BlockPos;
@@ -63,11 +61,7 @@ public class DraglingEntity extends Monster {
 			}
 
 			public boolean canUse() {
-				if (DraglingEntity.this.getTarget() != null && !DraglingEntity.this.getMoveControl().hasWanted()) {
-					return true;
-				} else {
-					return false;
-				}
+                return DraglingEntity.this.getTarget() != null && !DraglingEntity.this.getMoveControl().hasWanted();
 			}
 
 			@Override
@@ -114,8 +108,8 @@ public class DraglingEntity extends Monster {
 	@Override
 	public void tick() {
 		if (level().isClientSide) {
-			this.attackAnimationState.animateWhen((this.getEntityData().get(DraglingEntity.DATA_atk) == true), this.tickCount);
-			this.idleAnimationState.animateWhen(!this.walkAnimation.isMoving() && !this.getEntityData().get(DraglingEntity.DATA_atk) == true, this.tickCount);
+			this.attackAnimationState.animateWhen((this.getEntityData().get(DraglingEntity.DATA_atk)), this.tickCount);
+			this.idleAnimationState.animateWhen(!this.walkAnimation.isMoving() && !this.getEntityData().get(DraglingEntity.DATA_atk), this.tickCount);
 		}
 		super.tick();
 	}
@@ -185,9 +179,6 @@ public class DraglingEntity extends Monster {
 	public void aiStep() {
 		super.aiStep();
 		this.setNoGravity(true);
-	}
-
-	public static void init() {
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {

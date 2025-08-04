@@ -8,9 +8,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.LevelAccessor;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 
 @EventBusSubscriber
 public class ReduceBouncyDamagesProcedure {
@@ -26,7 +25,7 @@ public class ReduceBouncyDamagesProcedure {
 			return;
 		if (entity instanceof Player) {
 			if (damagesource.is(DamageTypes.FALL)) {
-				if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualendModBlocks.BOUNCY_GLOOPSLATE.get()) {
+				if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualEndBlocks.BOUNCY_GLOOPSLATE.get()) {
 					if (amount < 3) {
 						entity.fallDistance = 0;
 						if (event != null) {

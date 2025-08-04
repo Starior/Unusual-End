@@ -13,8 +13,8 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
-import net.sweety.unusualend.init.UnusualendModItems;
 
 public class CitrineCandleOnBlockRightClickedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate, Entity entity) {
@@ -31,7 +31,7 @@ public class CitrineCandleOnBlockRightClickedProcedure {
 			CitrineCandleEffectsProcedure.execute(world, x, y, z, entity);
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.POOF, (x + 0.5), (y + 0.92), (z + 0.5), 5, 0.2, 0.1, 0.2, 0);
-		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.SHINY_CRYSTAL.get()) {
+		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualEndItems.SHINY_CRYSTAL.get()) {
 			{
 				int _value = 2;
 				BlockPos _pos = BlockPos.containing(x, y, z);
@@ -42,7 +42,7 @@ public class CitrineCandleOnBlockRightClickedProcedure {
 			CitrineCandleEffectsProcedure.execute(world, x, y, z, entity);
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(UnusualEndMiscRegister.PINK_FLAME.get(), (x + 0.5), (y + 0.92), (z + 0.5), 5, 0.2, 0.1, 0.2, 0);
-		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.CHORUS_PETAL.get()) {
+		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualEndItems.CHORUS_PETAL.get()) {
 			{
 				int _value = 3;
 				BlockPos _pos = BlockPos.containing(x, y, z);
@@ -53,7 +53,7 @@ public class CitrineCandleOnBlockRightClickedProcedure {
 			CitrineCandleEffectsProcedure.execute(world, x, y, z, entity);
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.EFFECT, (x + 0.5), (y + 0.92), (z + 0.5), 5, 0.2, 0.1, 0.2, 0);
-		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.WARPED_BERRIES.get()) {
+		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualEndItems.WARPED_BERRIES.get()) {
 			{
 				int _value = 4;
 				BlockPos _pos = BlockPos.containing(x, y, z);

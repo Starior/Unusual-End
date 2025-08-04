@@ -14,8 +14,8 @@ import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.entity.BlukEntity;
 import net.sweety.unusualend.entity.BolokEntity;
 import net.sweety.unusualend.entity.WarpedJellyfishEntity;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
-import net.sweety.unusualend.init.UnusualendModItems;
 
 public class WarpedBubbleEntityCollidesInTheBlockProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -24,7 +24,7 @@ public class WarpedBubbleEntityCollidesInTheBlockProcedure {
 		double dis = 0;
 		if (!(entity instanceof BolokEntity || entity instanceof WarpedJellyfishEntity || entity instanceof BlukEntity)) {
 			entity.fallDistance = 0;
-			if (!((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY).getItem() == UnusualendModItems.WARPED_BOOTS.get())) {
+			if (!((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY).getItem() == UnusualEndItems.WARPED_BOOTS.get())) {
 				world.destroyBlock(BlockPos.containing(x, y, z), false);
 				entity.setDeltaMovement(new Vec3((entity.getDeltaMovement().x() + entity.getLookAngle().x), (entity.getDeltaMovement().y() + 0.5 + entity.getLookAngle().y), (entity.getDeltaMovement().z() + entity.getLookAngle().z)));
 				if (world.isClientSide()) {

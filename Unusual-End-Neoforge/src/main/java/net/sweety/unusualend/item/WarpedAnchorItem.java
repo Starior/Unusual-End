@@ -14,7 +14,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.procedures.WarpedAnchorLivingEntityIsHitWithToolProcedure;
 
 import java.util.List;
@@ -67,7 +67,7 @@ public class WarpedAnchorItem extends PickaxeItem {
     @Override
     public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
         super.inventoryTick(itemstack, world, entity, slot, selected);
-        if (entity instanceof LivingEntity livingEntity && livingEntity.getOffhandItem().is(UnusualendModItems.WARPED_ANCHOR.get())) {
+        if (entity instanceof LivingEntity livingEntity && livingEntity.getOffhandItem().is(UnusualEndItems.WARPED_ANCHOR.get())) {
             if (livingEntity.hasEffect(MobEffects.LEVITATION))
                 livingEntity.removeEffect(MobEffects.LEVITATION);
 

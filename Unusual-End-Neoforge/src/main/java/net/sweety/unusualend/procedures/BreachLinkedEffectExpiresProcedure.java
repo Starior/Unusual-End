@@ -19,7 +19,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 public class BreachLinkedEffectExpiresProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
@@ -77,7 +77,7 @@ public class BreachLinkedEffectExpiresProcedure {
 				}
 			}
 			if (world.isClientSide())
-				Minecraft.getInstance().gameRenderer.displayItemActivation(new ItemStack(UnusualendModItems.VOID_MIRROR.get()));
+				Minecraft.getInstance().gameRenderer.displayItemActivation(new ItemStack(UnusualEndItems.VOID_MIRROR.get()));
 			entity.fallDistance = 0;
 			{
 				Entity _ent = entity;

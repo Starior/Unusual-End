@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
@@ -32,10 +31,10 @@ import net.sweety.unusualend.client.particle.CitrineShineParticle;
 import net.sweety.unusualend.client.particle.PinkFlameParticle;
 import net.sweety.unusualend.client.particle.WarpedBubblesParticle;
 import net.sweety.unusualend.client.renderer.*;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
 import net.sweety.unusualend.init.UnusualendModBlockEntities;
 import net.sweety.unusualend.init.UnusualendModEntities;
-import net.sweety.unusualend.init.UnusualendModItems;
 import net.sweety.unusualend.procedures.CrystalCatalystPropertyValueProviderProcedure;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -123,9 +122,9 @@ public class UnusualEndClient {
     @SubscribeEvent
     public static void clientLoad(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            ItemProperties.register(UnusualendModItems.CRYSTAL_CATALYST.get(), UnusualEnd.makeUEID("crystal_catalyst_is_renamed"),
+            ItemProperties.register(UnusualEndItems.CRYSTAL_CATALYST.get(), UnusualEnd.makeUEID("crystal_catalyst_is_renamed"),
                     (itemStackToRender, clientWorld, entity, itemEntityId) -> (float) CrystalCatalystPropertyValueProviderProcedure.execute(itemStackToRender));
-            ItemProperties.register(UnusualendModItems.ENDERBLOB_SHIELD.get(), ResourceLocation.withDefaultNamespace("blocking"), ItemProperties.getProperty(Items.SHIELD.getDefaultInstance(), ResourceLocation.withDefaultNamespace("blocking")));
+            ItemProperties.register(UnusualEndItems.ENDERBLOB_SHIELD.get(), ResourceLocation.withDefaultNamespace("blocking"), ItemProperties.getProperty(Items.SHIELD.getDefaultInstance(), ResourceLocation.withDefaultNamespace("blocking")));
         });
     }
 }

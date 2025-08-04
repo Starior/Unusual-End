@@ -7,20 +7,15 @@ import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.client.model.Modelspirit_mask_base;
-import net.sweety.unusualend.init.UnusualendModItems;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
@@ -37,7 +32,7 @@ public abstract class SpiritMaliceItem extends ArmorItem {
 		public Helmet() {
 			super(ArmorItem.Type.HELMET, new Item.Properties());
 		}
-
+		@SuppressWarnings("removal")
 		@Override
 		public void initializeClient(Consumer<IClientItemExtensions> consumer) {
 			consumer.accept(new IClientItemExtensions() {

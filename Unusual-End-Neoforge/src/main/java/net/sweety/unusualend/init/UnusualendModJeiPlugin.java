@@ -48,7 +48,7 @@ public class UnusualendModJeiPlugin implements IModPlugin {
 
 	@Override
 	public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-		registration.addRecipeCatalyst(new ItemStack(UnusualendModItems.BOLOK_SPAWN_EGG.get()), BolokTrading_Type);
-		registration.addRecipeCatalyst(new ItemStack(UnusualendModBlocks.PEARLESCENT_INFUSER.get().asItem()), Infuser_Type);
+		registration.addRecipeCatalyst(new ItemStack(UnusualEndItems.BOLOK_SPAWN_EGG.get()), BolokTrading_Type);
+		registration.addRecipeCatalyst(new ItemStack(UnusualEndBlocks.PEARLESCENT_INFUSER.get().asItem()), Infuser_Type);
 	}
 }

@@ -13,7 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 import java.util.EnumMap;
 import java.util.List;
@@ -27,7 +27,7 @@ public class ModArmorMaterials {
                 attribute.put(ArmorItem.Type.CHESTPLATE, 8);
                 attribute.put(ArmorItem.Type.HELMET, 0);
                 attribute.put(ArmorItem.Type.BODY, 11);
-            }), 12, 0f, 0.3f, UnusualendModItems.BOLOK_SCALE::get);
+            }), 12, 0f, 0.3f, UnusualEndItems.BOLOK_SCALE::get);
     public static final Holder<ArmorMaterial> SPIRIT_ARMOR_MATERIAL = register("spirit",
             Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {
                 attribute.put(ArmorItem.Type.BOOTS, 2);
@@ -35,7 +35,7 @@ public class ModArmorMaterials {
                 attribute.put(ArmorItem.Type.CHESTPLATE, 6);
                 attribute.put(ArmorItem.Type.HELMET, 2);
                 attribute.put(ArmorItem.Type.BODY, 10);
-            }), 2, 0f, 0f, UnusualendModItems.ENDERLING_SCRAP::get);
+            }), 2, 0f, 0f, UnusualEndItems.ENDERLING_SCRAP::get);
     public static final Holder<ArmorMaterial> ENDERLING_ARMOR_MATERIAL = register("enderling",
             Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {
                 attribute.put(ArmorItem.Type.BOOTS, 0);
@@ -43,7 +43,7 @@ public class ModArmorMaterials {
                 attribute.put(ArmorItem.Type.CHESTPLATE, 0);
                 attribute.put(ArmorItem.Type.HELMET, 0);
                 attribute.put(ArmorItem.Type.BODY, 10);
-            }), 15, 0f, 0f, UnusualendModItems.ENDERLING_SCRAP::get);
+            }), 15, 0f, 0f, UnusualEndItems.ENDERLING_SCRAP::get);
     public static final Holder<ArmorMaterial> CHORUS_ARMOR_MATERIAL = register("chorus",
             Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {
                 attribute.put(ArmorItem.Type.BOOTS, 0);

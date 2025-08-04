@@ -32,17 +32,18 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.entity.BolokEntity;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.jei_recipes.BolokTradingRecipe;
 
 import java.util.Iterator;
 import java.util.List;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class RideBolokProcedure {
 	@SubscribeEvent
 	public static void onRightClickEntity(PlayerInteractEvent.EntityInteract event) {
@@ -105,7 +106,7 @@ public class RideBolokProcedure {
 					if (sourceentity instanceof Player _player && !_player.level().isClientSide())
 						_player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.no_xp_bolok").getString())), true);
 				}
-			} else if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.SHINY_CRYSTAL.get()) {
+			} else if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualEndItems.SHINY_CRYSTAL.get()) {
 				((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).shrink(1);
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {

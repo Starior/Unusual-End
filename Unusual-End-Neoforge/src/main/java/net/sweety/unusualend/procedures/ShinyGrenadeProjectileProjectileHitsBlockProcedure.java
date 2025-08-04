@@ -4,11 +4,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.BoneMealItem;
 import net.minecraft.world.item.ItemStack;
@@ -46,8 +46,8 @@ public class ShinyGrenadeProjectileProjectileHitsBlockProcedure {
 			final Vec3 _center = new Vec3(x, y, z);
 			List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(8 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 			for (Entity entityiterator : _entfound) {
-				if (entityiterator instanceof BolokEntity || entityiterator instanceof LivingEntity _livEnt7 && _livEnt7.getMobType() == MobType.UNDEAD
-						|| entityiterator instanceof LivingEntity _livEnt8 && _livEnt8.getMobType() == MobType.ARTHROPOD) {
+				if (entityiterator instanceof BolokEntity || entityiterator instanceof LivingEntity _livEnt7 && _livEnt7.getType().is(EntityTypeTags.UNDEAD)
+						|| entityiterator instanceof LivingEntity _livEnt8 && _livEnt8.getType().is(EntityTypeTags.ARTHROPOD)) {
 					entityiterator.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.EXPLOSION)), 25);
 				} else if (entityiterator instanceof Monster) {
 					entityiterator.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.EXPLOSION)), 15);

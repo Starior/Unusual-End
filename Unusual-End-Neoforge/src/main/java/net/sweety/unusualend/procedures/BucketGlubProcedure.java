@@ -16,7 +16,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 public class BucketGlubProcedure {
 	public static void execute(LevelAccessor world, Entity entity, Entity sourceentity) {
@@ -25,7 +25,7 @@ public class BucketGlubProcedure {
 		ItemStack entity_bucket = ItemStack.EMPTY;
 		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BUCKET
 				|| (sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.BUCKET) {
-			entity_bucket = new ItemStack(UnusualendModItems.GLUB_BUCKET.get());
+			entity_bucket = new ItemStack(UnusualEndItems.GLUB_BUCKET.get());
 			if (!(new Object() {
 				public String getValue() {
 					CompoundTag dataIndex = new CompoundTag();

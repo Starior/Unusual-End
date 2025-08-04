@@ -20,7 +20,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.entity.EndstoneGolemEntity;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 
 import java.util.Comparator;
 import java.util.List;
@@ -158,9 +158,9 @@ public class EndstoneGolemOnEntityTickUpdateProcedure {
 		if (y <= -10) {
 			if ((entity.level().dimension()) == Level.END) {
 				if (world.isEmptyBlock(BlockPos.containing(entity.getPersistentData().getDouble("x"), entity.getPersistentData().getDouble("y"), entity.getPersistentData().getDouble("z")))) {
-					world.setBlock(BlockPos.containing(entity.getPersistentData().getDouble("x"), entity.getPersistentData().getDouble("y"), entity.getPersistentData().getDouble("z")), UnusualendModBlocks.GOLEM_ALTAR.get().defaultBlockState(), 3);
+					world.setBlock(BlockPos.containing(entity.getPersistentData().getDouble("x"), entity.getPersistentData().getDouble("y"), entity.getPersistentData().getDouble("z")), UnusualEndBlocks.GOLEM_ALTAR.get().defaultBlockState(), 3);
 					world.levelEvent(2001, BlockPos.containing(entity.getPersistentData().getDouble("x"), entity.getPersistentData().getDouble("y"), entity.getPersistentData().getDouble("z")),
-							Block.getId(UnusualendModBlocks.ANCIENT_ENCASED_END_STONE.get().defaultBlockState()));
+							Block.getId(UnusualEndBlocks.ANCIENT_ENCASED_END_STONE.get().defaultBlockState()));
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.REVERSE_PORTAL, x, y, z, 20, 2, 2, 2, 0.1);
 					if (world instanceof ServerLevel _level)

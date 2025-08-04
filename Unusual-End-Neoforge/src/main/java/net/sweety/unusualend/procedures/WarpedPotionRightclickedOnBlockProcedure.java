@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.init.UnusualendModEntities;
 
 public class WarpedPotionRightclickedOnBlockProcedure {
@@ -27,7 +27,7 @@ public class WarpedPotionRightclickedOnBlockProcedure {
 		if (entity == null)
 			return;
 		double YAW = 0;
-		if (blockstate.getBlock() == UnusualendModBlocks.SQUASH_O_LANTERN.get() || blockstate.getBlock() == UnusualendModBlocks.CARVED_WARPED_SQUASH.get()) {
+		if (blockstate.getBlock() == UnusualEndBlocks.SQUASH_O_LANTERN.get() || blockstate.getBlock() == UnusualEndBlocks.CARVED_WARPED_SQUASH.get()) {
 			itemstack.shrink(1);
 			if (entity instanceof Player _player) {
 				ItemStack _setstack = new ItemStack(Items.GLASS_BOTTLE).copy();

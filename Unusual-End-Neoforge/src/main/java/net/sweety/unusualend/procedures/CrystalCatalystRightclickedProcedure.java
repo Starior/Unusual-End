@@ -16,8 +16,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
-import net.sweety.unusualend.init.UnusualendModItems;
 
 public class CrystalCatalystRightclickedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
@@ -29,7 +29,7 @@ public class CrystalCatalystRightclickedProcedure {
 					itemstack.getOrCreateTag().putDouble("cataCooldown", 0);
 					if (entity instanceof Player _player)
 						_player.giveExperiencePoints(-(7));
-					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.CRYSTAL_CATALYST.get()) {
+					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualEndItems.CRYSTAL_CATALYST.get()) {
 						if (entity instanceof LivingEntity _entity)
 							_entity.swing(InteractionHand.MAIN_HAND, true);
 					} else {

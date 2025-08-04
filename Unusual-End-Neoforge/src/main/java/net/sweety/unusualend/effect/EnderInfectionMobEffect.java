@@ -14,10 +14,11 @@ public class EnderInfectionMobEffect extends MobEffect {
     }
 
     @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier) {
+    public boolean applyEffectTick(LivingEntity entity, int amplifier) {
         if (this.entity == null)
             this.entity = entity;
         EnderInfectionOnEffectActiveTickProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+        return super.applyEffectTick(entity, amplifier);
     }
 
     @Override

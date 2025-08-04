@@ -20,14 +20,14 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.procedures.ChorusRootsBoneMealSuccessConditionProcedure;
 import net.sweety.unusualend.procedures.WarpedVineOnBoneMealSuccessProcedure;
 import net.sweety.unusualend.procedures.WarpedVineUpdateTickProcedure;
 
 public class WarpedBushBlock extends FlowerBlock implements BonemealableBlock {
 	public WarpedBushBlock() {
-		super(() -> MobEffects.MOVEMENT_SPEED, 100,
+		super(MobEffects.MOVEMENT_SPEED, 100,
 				BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).randomTicks().sound(SoundType.ROOTS).strength(1f, 1f).noCollission().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
 	}
 
@@ -49,7 +49,7 @@ public class WarpedBushBlock extends FlowerBlock implements BonemealableBlock {
 
 	@Override
 	public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
-		return groundState.is(UnusualendModBlocks.WARPED_END_STONE.get()) || groundState.is(UnusualendModBlocks.WARPED_STONE.get()) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(UnusualendModBlocks.GNEISS.get())
+		return groundState.is(UnusualEndBlocks.WARPED_END_STONE.get()) || groundState.is(UnusualEndBlocks.WARPED_STONE.get()) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(UnusualEndBlocks.GNEISS.get())
 				|| groundState.is(Blocks.END_STONE);
 	}
 

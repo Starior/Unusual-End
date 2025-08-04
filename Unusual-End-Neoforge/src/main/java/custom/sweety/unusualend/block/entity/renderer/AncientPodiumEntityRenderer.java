@@ -17,7 +17,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.sweety.unusualend.block.entity.AncientPodiumBlockEntity;
 import net.sweety.unusualend.configuration.UEConfig;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 public class AncientPodiumEntityRenderer implements BlockEntityRenderer<AncientPodiumBlockEntity> {
 	public AncientPodiumEntityRenderer(BlockEntityRendererProvider.Context context) {
@@ -39,7 +39,7 @@ public class AncientPodiumEntityRenderer implements BlockEntityRenderer<AncientP
 		pPoseStack.translate(0.5f, 1.2f + offset, 0.5f);
 		if (itemStack.getItem() instanceof BlockItem) {
 			pPoseStack.scale(scaleblock, scaleblock, scaleblock);
-		} else if (itemStack.getItem() == UnusualendModItems.WARPED_ANCHOR.get()) {
+		} else if (itemStack.getItem() == UnusualEndItems.WARPED_ANCHOR.get()) {
 			pPoseStack.scale(0.2f, 0.2f, 0.2f);
 		} else {
 			pPoseStack.scale(scaleitem, scaleitem, scaleitem);

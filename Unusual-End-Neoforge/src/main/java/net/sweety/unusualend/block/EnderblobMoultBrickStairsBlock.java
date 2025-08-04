@@ -15,7 +15,7 @@ import net.minecraft.world.level.material.PushReaction;
 
 public class EnderblobMoultBrickStairsBlock extends StairBlock {
 	public EnderblobMoultBrickStairsBlock() {
-		super(() -> Blocks.AIR.defaultBlockState(), BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.HAT).mapColor(MapColor.COLOR_PURPLE).sound(SoundType.STEM).strength(0.4f, 5f).noOcclusion().pushReaction(PushReaction.DESTROY)
+		super(Blocks.AIR.defaultBlockState(), BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.HAT).mapColor(MapColor.COLOR_PURPLE).sound(SoundType.STEM).strength(0.4f, 5f).noOcclusion().pushReaction(PushReaction.DESTROY)
 				.isRedstoneConductor((bs, br, bp) -> false).dynamicShape());
 	}
 

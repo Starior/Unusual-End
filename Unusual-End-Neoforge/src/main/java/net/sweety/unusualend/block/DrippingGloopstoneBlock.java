@@ -19,7 +19,7 @@ import net.sweety.unusualend.procedures.DrippingGloopstoneAdditionalPlacinggrowt
 
 public class DrippingGloopstoneBlock extends FlowerBlock {
 	public DrippingGloopstoneBlock() {
-		super(() -> MobEffects.MOVEMENT_SPEED, 100,
+		super(MobEffects.MOVEMENT_SPEED, 100,
 				BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_MAGENTA).sound(SoundType.CORAL_BLOCK).instabreak().lightLevel(s -> 2).noCollission().offsetType(BlockBehaviour.OffsetType.NONE).pushReaction(PushReaction.DESTROY));
 	}
 

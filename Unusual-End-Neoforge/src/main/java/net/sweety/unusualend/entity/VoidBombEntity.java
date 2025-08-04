@@ -110,9 +110,6 @@ public class VoidBombEntity extends PathfinderMob {
 	protected void pushEntities() {
 	}
 
-	public static void init() {
-	}
-
 	public static AttributeSupplier.Builder createAttributes() {
 		AttributeSupplier.Builder builder = Mob.createMobAttributes();
 		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.3);

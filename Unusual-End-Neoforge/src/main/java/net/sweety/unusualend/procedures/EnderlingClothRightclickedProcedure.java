@@ -20,8 +20,8 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.scores.PlayerTeam;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
-import net.sweety.unusualend.init.UnusualendModItems;
 import net.sweety.unusualend.network.UnusualendModVariables;
 
 public class EnderlingClothRightclickedProcedure {
@@ -50,7 +50,7 @@ public class EnderlingClothRightclickedProcedure {
         if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
             _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.SPECTRAL_STRIDE.get(), 1200, 0, false, false));
         if (entity instanceof Player _player)
-            _player.getCooldowns().addCooldown(UnusualendModItems.SPECTRAL_CLOTH.get(), 100);
+            _player.getCooldowns().addCooldown(UnusualEndItems.SPECTRAL_CLOTH.get(), 100);
         if (world instanceof Level _level)
             _level.getScoreboard().addPlayerTeam((entity.getStringUUID()));
         {

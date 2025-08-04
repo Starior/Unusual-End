@@ -6,7 +6,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 public class SpectralAxeItem extends AxeItem {
 	public SpectralAxeItem() {
@@ -32,7 +32,7 @@ public class SpectralAxeItem extends AxeItem {
 			}
 
 			public Ingredient getRepairIngredient() {
-				return Ingredient.of(new ItemStack(UnusualendModItems.PEARLESCENT_INGOT.get()));
+				return Ingredient.of(new ItemStack(UnusualEndItems.PEARLESCENT_INGOT.get()));
 			}
 		}, 1, -3.2f, new Item.Properties());
 	}

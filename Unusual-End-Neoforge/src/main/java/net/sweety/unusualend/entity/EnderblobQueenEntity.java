@@ -56,11 +56,6 @@ public class EnderblobQueenEntity extends Monster {
     }
 
     @Override
-    public MobType getMobType() {
-        return MobType.ARTHROPOD;
-    }
-
-    @Override
     public boolean removeWhenFarAway(double distanceToClosestPlayer) {
         return false;
     }
@@ -149,11 +144,6 @@ public class EnderblobQueenEntity extends Monster {
     }
 
     @Override
-    public boolean canChangeDimensions() {
-        return false;
-    }
-
-    @Override
     public void startSeenByPlayer(ServerPlayer player) {
         super.startSeenByPlayer(player);
         this.bossInfo.addPlayer(player);
@@ -169,9 +159,6 @@ public class EnderblobQueenEntity extends Monster {
     public void customServerAiStep() {
         super.customServerAiStep();
         this.bossInfo.setProgress(this.getHealth() / this.getMaxHealth());
-    }
-
-    public static void init() {
     }
 
     public static AttributeSupplier.Builder createAttributes() {

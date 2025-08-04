@@ -10,13 +10,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.LevelAccessor;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 public class BucketBolokProcedure {
     public static void execute(LevelAccessor world, Entity entity, Entity sourceentity) {
         if (entity == null || sourceentity == null)
             return;
-        ItemStack entity_bucket = new ItemStack(UnusualendModItems.BOLOK_BUCKET.get());
+        ItemStack entity_bucket = new ItemStack(UnusualEndItems.BOLOK_BUCKET.get());
         if (!(new Object() {
             public String getValue() {
                 CompoundTag dataIndex = new CompoundTag();

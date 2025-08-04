@@ -12,8 +12,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.configuration.UEConfig;
 import net.sweety.unusualend.entity.WarpedBalloonProjEntity;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualendModEntities;
-import net.sweety.unusualend.init.UnusualendModItems;
 
 public class WarpedBalloonRangedItemShootsProjectileProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Player player, ItemStack itemstack) {
@@ -21,7 +21,7 @@ public class WarpedBalloonRangedItemShootsProjectileProcedure {
         if (!player.isCreative()) {
             itemstack.shrink(1);
         }
-        if (player.getMainHandItem().is(UnusualendModItems.WARPED_BALLOON.get()))
+        if (player.getMainHandItem().is(UnusualEndItems.WARPED_BALLOON.get()))
             player.swing(InteractionHand.MAIN_HAND, true);
         else
             player.swing(InteractionHand.OFF_HAND, true);

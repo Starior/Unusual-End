@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 
 import java.util.Map;
 
@@ -20,7 +20,7 @@ public class BuddingCitrineUpdateTickProcedure {
 			if (world.isEmptyBlock(BlockPos.containing(x, y + 1, z))) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y + 1, z);
-					BlockState _bs = UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.CITRINE_BUD.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -39,10 +39,10 @@ public class BuddingCitrineUpdateTickProcedure {
 					if (_bs.getBlock().getStateDefinition().getProperty("face") instanceof EnumProperty _enumProp && _enumProp.getValue(_value).isPresent())
 						world.setBlock(_pos, _bs.setValue(_enumProp, (Enum) _enumProp.getValue(_value).get()), 3);
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == UnusualEndBlocks.CITRINE_BUD.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y + 1, z);
-					BlockState _bs = UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.LARGE_CITRINE_BUD.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -54,10 +54,10 @@ public class BuddingCitrineUpdateTickProcedure {
 					}
 					world.setBlock(_bp, _bs, 3);
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == UnusualEndBlocks.LARGE_CITRINE_BUD.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y + 1, z);
-					BlockState _bs = UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.CITRINE_CLUSTER.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -74,7 +74,7 @@ public class BuddingCitrineUpdateTickProcedure {
 			if (world.isEmptyBlock(BlockPos.containing(x, y - 1, z))) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y - 1, z);
-					BlockState _bs = UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.CITRINE_BUD.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -93,10 +93,10 @@ public class BuddingCitrineUpdateTickProcedure {
 					if (_bs.getBlock().getStateDefinition().getProperty("face") instanceof EnumProperty _enumProp && _enumProp.getValue(_value).isPresent())
 						world.setBlock(_pos, _bs.setValue(_enumProp, (Enum) _enumProp.getValue(_value).get()), 3);
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualEndBlocks.CITRINE_BUD.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y - 1, z);
-					BlockState _bs = UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.LARGE_CITRINE_BUD.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -108,10 +108,10 @@ public class BuddingCitrineUpdateTickProcedure {
 					}
 					world.setBlock(_bp, _bs, 3);
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualEndBlocks.LARGE_CITRINE_BUD.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y - 1, z);
-					BlockState _bs = UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.CITRINE_CLUSTER.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -128,7 +128,7 @@ public class BuddingCitrineUpdateTickProcedure {
 			if (world.isEmptyBlock(BlockPos.containing(x, y, z - 1))) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z - 1);
-					BlockState _bs = UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.CITRINE_BUD.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -153,10 +153,10 @@ public class BuddingCitrineUpdateTickProcedure {
 							world.setBlock(_pos, _bs.setValue(_ap, _dir.getAxis()), 3);
 					}
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y, z - 1))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y, z - 1))).getBlock() == UnusualEndBlocks.CITRINE_BUD.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z - 1);
-					BlockState _bs = UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.LARGE_CITRINE_BUD.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -168,10 +168,10 @@ public class BuddingCitrineUpdateTickProcedure {
 					}
 					world.setBlock(_bp, _bs, 3);
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y, z - 1))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y, z - 1))).getBlock() == UnusualEndBlocks.LARGE_CITRINE_BUD.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z - 1);
-					BlockState _bs = UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.CITRINE_CLUSTER.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -188,7 +188,7 @@ public class BuddingCitrineUpdateTickProcedure {
 			if (world.isEmptyBlock(BlockPos.containing(x, y, z + 1))) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z + 1);
-					BlockState _bs = UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.CITRINE_BUD.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -213,10 +213,10 @@ public class BuddingCitrineUpdateTickProcedure {
 							world.setBlock(_pos, _bs.setValue(_ap, _dir.getAxis()), 3);
 					}
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y, z + 1))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y, z + 1))).getBlock() == UnusualEndBlocks.CITRINE_BUD.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z + 1);
-					BlockState _bs = UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.LARGE_CITRINE_BUD.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -228,10 +228,10 @@ public class BuddingCitrineUpdateTickProcedure {
 					}
 					world.setBlock(_bp, _bs, 3);
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y, z + 1))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
+			} else if ((world.getBlockState(BlockPos.containing(x, y, z + 1))).getBlock() == UnusualEndBlocks.LARGE_CITRINE_BUD.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z + 1);
-					BlockState _bs = UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.CITRINE_CLUSTER.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -248,7 +248,7 @@ public class BuddingCitrineUpdateTickProcedure {
 			if (world.isEmptyBlock(BlockPos.containing(x - 1, y, z))) {
 				{
 					BlockPos _bp = BlockPos.containing(x - 1, y, z);
-					BlockState _bs = UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.CITRINE_BUD.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -273,10 +273,10 @@ public class BuddingCitrineUpdateTickProcedure {
 							world.setBlock(_pos, _bs.setValue(_ap, _dir.getAxis()), 3);
 					}
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x - 1, y, z))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
+			} else if ((world.getBlockState(BlockPos.containing(x - 1, y, z))).getBlock() == UnusualEndBlocks.CITRINE_BUD.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x - 1, y, z);
-					BlockState _bs = UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.LARGE_CITRINE_BUD.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -288,10 +288,10 @@ public class BuddingCitrineUpdateTickProcedure {
 					}
 					world.setBlock(_bp, _bs, 3);
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x - 1, y, z))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
+			} else if ((world.getBlockState(BlockPos.containing(x - 1, y, z))).getBlock() == UnusualEndBlocks.LARGE_CITRINE_BUD.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x - 1, y, z);
-					BlockState _bs = UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.CITRINE_CLUSTER.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -308,7 +308,7 @@ public class BuddingCitrineUpdateTickProcedure {
 			if (world.isEmptyBlock(BlockPos.containing(x + 1, y, z))) {
 				{
 					BlockPos _bp = BlockPos.containing(x + 1, y, z);
-					BlockState _bs = UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.CITRINE_BUD.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -333,10 +333,10 @@ public class BuddingCitrineUpdateTickProcedure {
 							world.setBlock(_pos, _bs.setValue(_ap, _dir.getAxis()), 3);
 					}
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x + 1, y, z))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
+			} else if ((world.getBlockState(BlockPos.containing(x + 1, y, z))).getBlock() == UnusualEndBlocks.CITRINE_BUD.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x + 1, y, z);
-					BlockState _bs = UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.LARGE_CITRINE_BUD.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -348,10 +348,10 @@ public class BuddingCitrineUpdateTickProcedure {
 					}
 					world.setBlock(_bp, _bs, 3);
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x + 1, y, z))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
+			} else if ((world.getBlockState(BlockPos.containing(x + 1, y, z))).getBlock() == UnusualEndBlocks.LARGE_CITRINE_BUD.get()) {
 				{
 					BlockPos _bp = BlockPos.containing(x + 1, y, z);
-					BlockState _bs = UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.CITRINE_CLUSTER.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());

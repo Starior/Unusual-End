@@ -1,5 +1,3 @@
-
-//spawn
 package net.sweety.unusualend.entity;
 
 import net.minecraft.core.BlockPos;
@@ -7,14 +5,15 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
@@ -32,17 +31,14 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
-import net.sweety.unusualend.init.UnusualendModEntities;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.procedures.BlukOnEntityTickUpdateProcedure;
 import net.sweety.unusualend.procedures.BucketBlukProcedure;
 
 public class BlukEntity extends Monster {
     public BlukEntity(EntityType<BlukEntity> type, Level world) {
         super(type, world);
-        setMaxUpStep(0.6f);
         xpReward = 1;
         setNoAi(false);
         this.moveControl = new FlyingMoveControl(this, 10, true);
@@ -71,7 +67,7 @@ public class BlukEntity extends Monster {
         });
         this.goalSelector.addGoal(5, new RandomSwimmingGoal(this, 1, 40));
         this.goalSelector.addGoal(6, new FollowMobGoal(this, 1.2, (float) 10, (float) 6));
-        this.goalSelector.addGoal(7, new TemptGoal(this, 1.3, Ingredient.of(UnusualendModItems.WARPED_BERRIES.get()), true));
+        this.goalSelector.addGoal(7, new TemptGoal(this, 1.3, Ingredient.of(UnusualEndItems.WARPED_BERRIES.get()), true));
         this.goalSelector.addGoal(8, new TemptGoal(this, 1.3, Ingredient.of(Items.CARROT), true));
         this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, BolokEntity.class, (float) 6));
         this.goalSelector.addGoal(10, new LookAtPlayerGoal(this, BlukEntity.class, (float) 6));
@@ -87,7 +83,7 @@ public class BlukEntity extends Monster {
 
     protected void dropCustomDeathLoot(ServerLevel level, DamageSource damageSource, boolean recentlyHitIn) {
         super.dropCustomDeathLoot(level, damageSource, recentlyHitIn);
-        this.spawnAtLocation(new ItemStack(UnusualendModItems.RAW_BLUK.get()));
+        this.spawnAtLocation(new ItemStack(UnusualEndItems.RAW_BLUK.get()));
     }
 
     @Override
@@ -171,11 +167,6 @@ public class BlukEntity extends Monster {
     public void aiStep() {
         super.aiStep();
         this.setNoGravity(true);
-    }
-
-    public static void init() {
-        SpawnPlacements.register(UnusualendModEntities.BLUK.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, world, reason, pos, random) -> (world.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, world, reason, pos, random)));
     }
 
     public static AttributeSupplier.Builder createAttributes() {

@@ -264,9 +264,6 @@ public class SummonedDraglingEntity extends TamableAnimal {
 		this.setNoGravity(true);
 	}
 
-	public static void init() {
-	}
-
 	public static AttributeSupplier.Builder createAttributes() {
 		AttributeSupplier.Builder builder = Mob.createMobAttributes();
 		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.27);

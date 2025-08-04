@@ -25,8 +25,6 @@ import net.sweety.unusualend.entity.EnderblobQueenEntity;
 import net.sweety.unusualend.entity.EndstoneGolemEntity;
 import net.sweety.unusualend.network.UnusualendModVariables;
 
-import javax.annotation.Nullable;
-
 @EventBusSubscriber
 public class PlayerTickProcedure {
     @SubscribeEvent

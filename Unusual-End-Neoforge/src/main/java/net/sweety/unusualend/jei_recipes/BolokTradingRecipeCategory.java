@@ -11,7 +11,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualendModJeiPlugin;
 
 public class BolokTradingRecipeCategory implements IRecipeCategory<BolokTradingRecipe> {
@@ -22,7 +22,7 @@ public class BolokTradingRecipeCategory implements IRecipeCategory<BolokTradingR
 
 	public BolokTradingRecipeCategory(IGuiHelper helper) {
 		this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 51);
-		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(UnusualendModItems.BOLOK_BUCKET.get()));
+		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(UnusualEndItems.BOLOK_BUCKET.get()));
 	}
 
 	@Override

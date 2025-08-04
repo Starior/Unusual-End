@@ -2,6 +2,7 @@ package net.sweety.unusualend.block.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -21,102 +22,104 @@ import javax.annotation.Nullable;
 import java.util.stream.IntStream;
 
 public class WarpingWaystoneBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(0, ItemStack.EMPTY);
-	public SidedInvWrapper getHandler() {
-		return handler;
-	}
+    private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(0, ItemStack.EMPTY);
 
-	private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
-	public WarpingWaystoneBlockEntity(BlockPos position, BlockState state) {
-		super(UnusualendModBlockEntities.WARPING_WAYSTONE.get(), position, state);
-	}
+    public SidedInvWrapper getHandler() {
+        return handler;
+    }
 
-	@Override
-	public void load(CompoundTag compound) {
-		super.load(compound);
-		if (!this.tryLoadLootTable(compound))
-			this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-		ContainerHelper.loadAllItems(compound, this.stacks);
-	}
+    private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
 
-	@Override
-	public void saveAdditional(CompoundTag compound) {
-		super.saveAdditional(compound);
-		if (!this.trySaveLootTable(compound)) {
-			ContainerHelper.saveAllItems(compound, this.stacks);
-		}
-	}
+    public WarpingWaystoneBlockEntity(BlockPos position, BlockState state) {
+        super(UnusualendModBlockEntities.WARPING_WAYSTONE.get(), position, state);
+    }
 
-	@Override
-	public ClientboundBlockEntityDataPacket getUpdatePacket() {
-		return ClientboundBlockEntityDataPacket.create(this);
-	}
+    @Override
+    public void loadAdditional(CompoundTag compound, HolderLookup.Provider registries) {
+        super.loadAdditional(compound,registries);
+        if (!this.tryLoadLootTable(compound))
+            this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
+        ContainerHelper.loadAllItems(compound, this.stacks, registries);
+    }
 
-	@Override
-	public CompoundTag getUpdateTag() {
-		return this.saveWithFullMetadata();
-	}
+    @Override
+    public void saveAdditional(CompoundTag compound, HolderLookup.Provider registries) {
+        super.saveAdditional(compound, registries);
+        if (!this.trySaveLootTable(compound)) {
+            ContainerHelper.saveAllItems(compound, this.stacks, registries);
+        }
+    }
 
-	@Override
-	public int getContainerSize() {
-		return stacks.size();
-	}
+    @Override
+    public ClientboundBlockEntityDataPacket getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
 
-	@Override
-	public boolean isEmpty() {
-		for (ItemStack itemstack : this.stacks)
-			if (!itemstack.isEmpty())
-				return false;
-		return true;
-	}
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        return this.saveWithFullMetadata(registries);
+    }
 
-	@Override
-	public Component getDefaultName() {
-		return Component.literal("warping_waystone");
-	}
+    @Override
+    public int getContainerSize() {
+        return stacks.size();
+    }
 
-	@Override
-	public int getMaxStackSize() {
-		return 64;
-	}
+    @Override
+    public boolean isEmpty() {
+        for (ItemStack itemstack : this.stacks)
+            if (!itemstack.isEmpty())
+                return false;
+        return true;
+    }
 
-	@Override
-	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
-		return ChestMenu.threeRows(id, inventory);
-	}
+    @Override
+    public Component getDefaultName() {
+        return Component.literal("warping_waystone");
+    }
 
-	@Override
-	public Component getDisplayName() {
-		return Component.literal("Warping Waystone");
-	}
+    @Override
+    public int getMaxStackSize() {
+        return 64;
+    }
 
-	@Override
-	protected NonNullList<ItemStack> getItems() {
-		return this.stacks;
-	}
+    @Override
+    public AbstractContainerMenu createMenu(int id, Inventory inventory) {
+        return ChestMenu.threeRows(id, inventory);
+    }
 
-	@Override
-	protected void setItems(NonNullList<ItemStack> stacks) {
-		this.stacks = stacks;
-	}
+    @Override
+    public Component getDisplayName() {
+        return Component.literal("Warping Waystone");
+    }
 
-	@Override
-	public boolean canPlaceItem(int index, ItemStack stack) {
-		return true;
-	}
+    @Override
+    protected NonNullList<ItemStack> getItems() {
+        return this.stacks;
+    }
 
-	@Override
-	public int[] getSlotsForFace(Direction side) {
-		return IntStream.range(0, this.getContainerSize()).toArray();
-	}
+    @Override
+    protected void setItems(NonNullList<ItemStack> stacks) {
+        this.stacks = stacks;
+    }
 
-	@Override
-	public boolean canPlaceItemThroughFace(int index, ItemStack stack, @Nullable Direction direction) {
-		return this.canPlaceItem(index, stack);
-	}
+    @Override
+    public boolean canPlaceItem(int index, ItemStack stack) {
+        return true;
+    }
 
-	@Override
-	public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
-		return true;
-	}
+    @Override
+    public int[] getSlotsForFace(Direction side) {
+        return IntStream.range(0, this.getContainerSize()).toArray();
+    }
+
+    @Override
+    public boolean canPlaceItemThroughFace(int index, ItemStack stack, @Nullable Direction direction) {
+        return this.canPlaceItem(index, stack);
+    }
+
+    @Override
+    public boolean canTakeItemThroughFace(int index, ItemStack stack, Direction direction) {
+        return true;
+    }
 }

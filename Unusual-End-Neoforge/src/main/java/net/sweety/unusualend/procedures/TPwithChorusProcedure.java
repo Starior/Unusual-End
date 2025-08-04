@@ -25,14 +25,14 @@ import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.configuration.UEConfig;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.network.UnusualendModVariables;
 
 public class TPwithChorusProcedure {
     public static void execute(LevelAccessor world, Entity entity, ItemStack itemstack) {
         if (entity == null)
             return;
-        if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.PRISMATIC_MIRROR.get()) {
+        if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualEndItems.PRISMATIC_MIRROR.get()) {
             if (entity instanceof LivingEntity _entity)
                 _entity.swing(InteractionHand.MAIN_HAND, true);
         } else {

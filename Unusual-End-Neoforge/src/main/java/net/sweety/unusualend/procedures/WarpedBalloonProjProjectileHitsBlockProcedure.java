@@ -6,7 +6,7 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.configuration.UEConfig;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 public class WarpedBalloonProjProjectileHitsBlockProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -14,7 +14,7 @@ public class WarpedBalloonProjProjectileHitsBlockProcedure {
 			return;
 		if (UEConfig.SAVE_BALLOON.get()) {
 			if (world instanceof ServerLevel _level) {
-				ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(UnusualendModItems.WARPED_BALLOON.get()));
+				ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(UnusualEndItems.WARPED_BALLOON.get()));
 				entityToSpawn.setPickUpDelay(10);
 				_level.addFreshEntity(entityToSpawn);
 			}

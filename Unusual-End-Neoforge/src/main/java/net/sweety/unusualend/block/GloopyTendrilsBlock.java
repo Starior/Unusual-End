@@ -20,7 +20,7 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 
 public class GloopyTendrilsBlock extends FlowerBlock {
     public static final BooleanProperty GLOOPY = BooleanProperty.create("gloopy");
@@ -63,9 +63,9 @@ public class GloopyTendrilsBlock extends FlowerBlock {
     @Override
     public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
         return groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK) || groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL)
-                || groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualendModBlocks.GLOOPSTONE.get()) || groundState.is(UnusualendModBlocks.GLOOPSLATE.get()) || groundState.is(UnusualendModBlocks.SHINY_GLOOPSTONE.get())
-                || groundState.is(UnusualendModBlocks.BOUNCY_GLOOPSLATE.get()) || groundState.is(UnusualendModBlocks.RAW_PURPUR_BLOCK.get()) || groundState.is(UnusualendModBlocks.ROOTED_RAW_PURPUR.get()) || groundState.is(Blocks.END_STONE)
-                || groundState.is(UnusualendModBlocks.GLOOPSTONE_BRICKS.get()) || groundState.is(UnusualendModBlocks.POLISHED_GLOOPSTONE.get());
+                || groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualEndBlocks.GLOOPSTONE.get()) || groundState.is(UnusualEndBlocks.GLOOPSLATE.get()) || groundState.is(UnusualEndBlocks.SHINY_GLOOPSTONE.get())
+                || groundState.is(UnusualEndBlocks.BOUNCY_GLOOPSLATE.get()) || groundState.is(UnusualEndBlocks.RAW_PURPUR_BLOCK.get()) || groundState.is(UnusualEndBlocks.ROOTED_RAW_PURPUR.get()) || groundState.is(Blocks.END_STONE)
+                || groundState.is(UnusualEndBlocks.GLOOPSTONE_BRICKS.get()) || groundState.is(UnusualEndBlocks.POLISHED_GLOOPSTONE.get());
     }
 
     @Override

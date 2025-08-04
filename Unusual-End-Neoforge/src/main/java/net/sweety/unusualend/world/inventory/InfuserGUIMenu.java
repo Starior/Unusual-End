@@ -18,8 +18,8 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.SlotItemHandler;
 import net.neoforged.neoforge.items.wrapper.InvWrapper;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
-import net.sweety.unusualend.init.UnusualendModItems;
 import net.sweety.unusualend.procedures.ClearSlot3Procedure;
 
 import java.util.HashMap;
@@ -66,7 +66,7 @@ public class InfuserGUIMenu extends AbstractContainerMenu implements Supplier<Ma
 
                     @Override
                     public boolean mayPlace(ItemStack stack) {
-                        return UnusualendModItems.PRISMALITE_GEM.get() == stack.getItem();
+                        return UnusualEndItems.PRISMALITE_GEM.get() == stack.getItem();
                     }
                 }));
         this.customSlots.put(0, this.
@@ -76,7 +76,7 @@ public class InfuserGUIMenu extends AbstractContainerMenu implements Supplier<Ma
 
                     @Override
                     public boolean mayPlace(ItemStack stack) {
-                        return UnusualendModItems.CITRINE_CHUNK.get() == stack.getItem();
+                        return UnusualEndItems.CITRINE_CHUNK.get() == stack.getItem();
                     }
                 }));
         this.customSlots.put(1, this.
@@ -86,7 +86,7 @@ public class InfuserGUIMenu extends AbstractContainerMenu implements Supplier<Ma
 
                     @Override
                     public boolean mayPlace(ItemStack stack) {
-                        return UnusualendModItems.SHINY_CRYSTAL.get() == stack.getItem();
+                        return UnusualEndItems.SHINY_CRYSTAL.get() == stack.getItem();
                     }
                 }));
         this.customSlots.put(3, this.

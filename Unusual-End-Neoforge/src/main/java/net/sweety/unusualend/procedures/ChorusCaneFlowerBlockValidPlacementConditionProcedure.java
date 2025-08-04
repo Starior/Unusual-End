@@ -8,12 +8,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 
 public class ChorusCaneFlowerBlockValidPlacementConditionProcedure {
 	public static boolean execute(LevelAccessor world, double x, double y, double z, BlockState blockstate) {
 		if ((blockstate.getBlock().getStateDefinition().getProperty("face") instanceof EnumProperty _getep1 ? blockstate.getValue(_getep1).toString() : "").equals("FLOOR")
-				&& (world.getBlockState(BlockPos.containing(x, y - 1, z)).canOcclude() || (world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualendModBlocks.BLOOMING_CHORUS_CANE.get()
+				&& (world.getBlockState(BlockPos.containing(x, y - 1, z)).canOcclude() || (world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualEndBlocks.BLOOMING_CHORUS_CANE.get()
 						|| (world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == Blocks.CHAIN || (world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == Blocks.IRON_BARS
 						|| (world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == Blocks.END_ROD)
 				|| (blockstate.getBlock().getStateDefinition().getProperty("face") instanceof EnumProperty _getep12 ? blockstate.getValue(_getep12).toString() : "").equals("CEILING")

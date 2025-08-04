@@ -12,13 +12,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualendModEntities;
-import net.sweety.unusualend.init.UnusualendModItems;
 import net.sweety.unusualend.procedures.PhantomArrowWhileProjectileFlyingTickProcedure;
 
 @OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
 public class PhantomArrowProjectileEntity extends AbstractArrow implements ItemSupplier {
-	public static final ItemStack PROJECTILE_ITEM = new ItemStack(UnusualendModItems.PHANTOM_ARROW.get());
+	public static final ItemStack PROJECTILE_ITEM = new ItemStack(UnusualEndItems.PHANTOM_ARROW.get());
 
 	public PhantomArrowProjectileEntity(EntityType<? extends PhantomArrowProjectileEntity> type, Level world) {
 		super(type, world,ItemStack.EMPTY);

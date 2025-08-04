@@ -8,15 +8,12 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobType;
-import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FollowMobGoal;
@@ -29,8 +26,6 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.sweety.unusualend.init.UnusualendModEntities;
 import net.sweety.unusualend.procedures.EnderblobOnEntityTickUpdateProcedure;
 import net.sweety.unusualend.procedures.EnderblobRightClickedOnEntityProcedure;
 
@@ -57,11 +52,6 @@ public class EnderblobEntity extends Monster {
 		this.goalSelector.addGoal(4, new FollowMobGoal(this, 1, (float) 10, (float) 5));
 		this.goalSelector.addGoal(5, new RandomStrollGoal(this, 1));
 		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-	}
-
-	@Override
-	public MobType getMobType() {
-		return MobType.ARTHROPOD;
 	}
 
 	@Override
@@ -118,11 +108,6 @@ public class EnderblobEntity extends Monster {
 	public void baseTick() {
 		super.baseTick();
 		EnderblobOnEntityTickUpdateProcedure.execute(this);
-	}
-
-	public static void init() {
-		SpawnPlacements.register(UnusualendModEntities.ENDER_BLOB.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-				(entityType, world, reason, pos, random) -> (world.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, world, reason, pos, random)));
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {

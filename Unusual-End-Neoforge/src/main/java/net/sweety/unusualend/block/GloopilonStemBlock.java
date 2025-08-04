@@ -20,7 +20,7 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.procedures.DrippingGloopstoneAdditionalPlacinggrowthConditionProcedure;
 import net.sweety.unusualend.procedures.GloopilonStemNeighbourBlockChangesProcedure;
 
@@ -48,7 +48,7 @@ public class GloopilonStemBlock extends FlowerBlock {
 
 	@Override
 	public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
-		return new ItemStack(UnusualendModBlocks.GLOOPILON_SEEDS.get());
+		return new ItemStack(UnusualEndBlocks.GLOOPILON_SEEDS.get());
 	}
 
 	@Override

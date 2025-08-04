@@ -19,6 +19,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.living.LivingUseTotemEvent;
 import net.sweety.unusualend.configuration.UEConfig;
@@ -26,20 +27,16 @@ import net.sweety.unusualend.network.UnusualendModVariables;
 
 import javax.annotation.Nullable;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class LinkedTotemTriggerProcedure {
     @SubscribeEvent
     public static void whenEntityUsesTotem(LivingUseTotemEvent event) {
         if (event != null && event.getEntity() != null) {
-            execute(event, event.getEntity().level(), event.getEntity(), event.getTotem());
+            execute(event.getEntity().level(), event.getEntity(), event.getTotem());
         }
     }
 
-    public static void execute(LevelAccessor world, Entity entity, ItemStack itemstack) {
-        execute(null, world, entity, itemstack);
-    }
-
-    private static void execute(@Nullable Event event, LevelAccessor world, Entity entity, ItemStack itemstack) {
+    private static void execute(LevelAccessor world, Entity entity, ItemStack itemstack) {
         if (entity == null)
             return;
         if (itemstack.getOrCreateTag().getBoolean("LinkedTotem")) {

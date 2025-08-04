@@ -26,7 +26,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.init.UnusualendModEntities;
 
 import java.util.Comparator;
@@ -76,7 +76,7 @@ public class WeakEndermiteEggUpdateTickProcedure {
 				}
 			}
 			if (nearby_player == true) {
-				world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId(UnusualendModBlocks.CRACKED_ENDERMITE_EGGS.get().defaultBlockState()));
+				world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId(UnusualEndBlocks.CRACKED_ENDERMITE_EGGS.get().defaultBlockState()));
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
 						_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.TURTLE_EGG_CRACK, SoundSource.BLOCKS, 1, 1);

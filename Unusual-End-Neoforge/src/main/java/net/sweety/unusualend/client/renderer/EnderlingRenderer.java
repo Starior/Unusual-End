@@ -17,8 +17,7 @@ import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.client.model.Modelenderling;
 import net.sweety.unusualend.client.model.Modelenderling_mask;
 import net.sweety.unusualend.entity.EnderlingEntity;
-import net.sweety.unusualend.init.UnusualendModItems;
-import net.sweety.unusualend.procedures.*;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 public class EnderlingRenderer extends MobRenderer<EnderlingEntity, Modelenderling<EnderlingEntity>> {
     public EnderlingRenderer(EntityRendererProvider.Context context) {
@@ -28,7 +27,7 @@ public class EnderlingRenderer extends MobRenderer<EnderlingEntity, Modelenderli
 
             @Override
             public void render(PoseStack poseStack, MultiBufferSource bufferSource, int light, EnderlingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-                if (entity.getItemBySlot(EquipmentSlot.HEAD).is(UnusualendModItems.SPIRIT_GRIM_HELMET.get())) {
+                if (entity.getItemBySlot(EquipmentSlot.HEAD).is(UnusualEndItems.SPIRIT_GRIM_HELMET.get())) {
                     VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(LAYER_TEXTURE));
                     EntityModel model = new Modelenderling_mask(Minecraft.getInstance().getEntityModels().bakeLayer(Modelenderling_mask.LAYER_LOCATION));
                     this.getParentModel().copyPropertiesTo(model);
@@ -43,7 +42,7 @@ public class EnderlingRenderer extends MobRenderer<EnderlingEntity, Modelenderli
 
             @Override
             public void render(PoseStack poseStack, MultiBufferSource bufferSource, int light, EnderlingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-                if (entity.getItemBySlot(EquipmentSlot.HEAD).is(UnusualendModItems.SPIRIT_MALICE_HELMET.get())) {
+                if (entity.getItemBySlot(EquipmentSlot.HEAD).is(UnusualEndItems.SPIRIT_MALICE_HELMET.get())) {
                     VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(LAYER_TEXTURE));
                     EntityModel model = new Modelenderling_mask(Minecraft.getInstance().getEntityModels().bakeLayer(Modelenderling_mask.LAYER_LOCATION));
                     this.getParentModel().copyPropertiesTo(model);
@@ -58,7 +57,7 @@ public class EnderlingRenderer extends MobRenderer<EnderlingEntity, Modelenderli
 
             @Override
             public void render(PoseStack poseStack, MultiBufferSource bufferSource, int light, EnderlingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-                if (entity.getItemBySlot(EquipmentSlot.HEAD).is(UnusualendModItems.SPIRIT_MANIA_HELMET.get())) {
+                if (entity.getItemBySlot(EquipmentSlot.HEAD).is(UnusualEndItems.SPIRIT_MANIA_HELMET.get())) {
                     VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(LAYER_TEXTURE));
                     EntityModel model = new Modelenderling_mask(Minecraft.getInstance().getEntityModels().bakeLayer(Modelenderling_mask.LAYER_LOCATION));
                     this.getParentModel().copyPropertiesTo(model);
@@ -73,7 +72,7 @@ public class EnderlingRenderer extends MobRenderer<EnderlingEntity, Modelenderli
 
             @Override
             public void render(PoseStack poseStack, MultiBufferSource bufferSource, int light, EnderlingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-                if (entity.getItemBySlot(EquipmentSlot.HEAD).is(UnusualendModItems.SPIRIT_SMILE_HELMET.get())) {
+                if (entity.getItemBySlot(EquipmentSlot.HEAD).is(UnusualEndItems.SPIRIT_SMILE_HELMET.get())) {
                     VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(LAYER_TEXTURE));
                     EntityModel model = new Modelenderling_mask(Minecraft.getInstance().getEntityModels().bakeLayer(Modelenderling_mask.LAYER_LOCATION));
                     this.getParentModel().copyPropertiesTo(model);
@@ -88,7 +87,7 @@ public class EnderlingRenderer extends MobRenderer<EnderlingEntity, Modelenderli
 
             @Override
             public void render(PoseStack poseStack, MultiBufferSource bufferSource, int light, EnderlingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-                if (entity.getItemBySlot(EquipmentSlot.HEAD).is(UnusualendModItems.SPIRIT_TWIST_HELMET.get())) {
+                if (entity.getItemBySlot(EquipmentSlot.HEAD).is(UnusualEndItems.SPIRIT_TWIST_HELMET.get())) {
                     VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(LAYER_TEXTURE));
                     EntityModel model = new Modelenderling_mask(Minecraft.getInstance().getEntityModels().bakeLayer(Modelenderling_mask.LAYER_LOCATION));
                     this.getParentModel().copyPropertiesTo(model);
@@ -103,7 +102,7 @@ public class EnderlingRenderer extends MobRenderer<EnderlingEntity, Modelenderli
 
             @Override
             public void render(PoseStack poseStack, MultiBufferSource bufferSource, int light, EnderlingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-                if (entity.getItemBySlot(EquipmentSlot.HEAD).is(UnusualendModItems.SPIRIT_VICE_HELMET.get())) {
+                if (entity.getItemBySlot(EquipmentSlot.HEAD).is(UnusualEndItems.SPIRIT_VICE_HELMET.get())) {
                     VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(LAYER_TEXTURE));
                     EntityModel model = new Modelenderling_mask(Minecraft.getInstance().getEntityModels().bakeLayer(Modelenderling_mask.LAYER_LOCATION));
                     this.getParentModel().copyPropertiesTo(model);

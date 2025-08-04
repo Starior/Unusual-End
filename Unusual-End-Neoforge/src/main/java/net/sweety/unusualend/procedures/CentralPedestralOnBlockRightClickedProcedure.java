@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.items.wrapper.InvWrapper;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class CentralPedestralOnBlockRightClickedProcedure {
                 BlockPos.containing(x + 5, y, z + 5)
         };
         for (BlockPos pos : altarPositions) {
-            if (getItemStackInSlot(world, pos, 0).getItem() == UnusualendModBlocks.PRISMATIC_PEARL_DISPLAY.get().asItem()) {
+            if (getItemStackInSlot(world, pos, 0).getItem() == UnusualEndBlocks.PRISMATIC_PEARL_DISPLAY.get().asItem()) {
                 altars++;
             }
         }

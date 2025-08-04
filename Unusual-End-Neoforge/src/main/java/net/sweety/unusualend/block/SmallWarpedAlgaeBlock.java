@@ -20,13 +20,13 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.procedures.ChorusRootsBoneMealSuccessConditionProcedure;
 import net.sweety.unusualend.procedures.SmallWarpedAlgaeOnBoneMealSuccessProcedure;
 
 public class SmallWarpedAlgaeBlock extends FlowerBlock implements BonemealableBlock {
 	public SmallWarpedAlgaeBlock() {
-		super(() -> MobEffects.DAMAGE_RESISTANCE, 100, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).sound(SoundType.ROOTS).instabreak().noCollission().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
+		super(MobEffects.DAMAGE_RESISTANCE, 100, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).sound(SoundType.ROOTS).instabreak().noCollission().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
 	}
 
 	@Override
@@ -47,12 +47,12 @@ public class SmallWarpedAlgaeBlock extends FlowerBlock implements BonemealableBl
 
 	@Override
 	public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
-		return groundState.is(UnusualendModBlocks.INFESTED_END_STONE.get()) || groundState.is(Blocks.END_STONE) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK)
-				|| groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL) || groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualendModBlocks.GNEISS.get())
-				|| groundState.is(UnusualendModBlocks.WARPED_END_STONE.get()) || groundState.is(UnusualendModBlocks.GNEISS_BRICKS.get()) || groundState.is(UnusualendModBlocks.POLISHED_GNEISS.get())
-				|| groundState.is(UnusualendModBlocks.CHISELED_GNEISS_BRICK.get()) || groundState.is(UnusualendModBlocks.BOLOK_SCALE_BLOCK.get()) || groundState.is(UnusualendModBlocks.WARPED_STONE.get())
-				|| groundState.is(UnusualendModBlocks.POLISHED_WARPED_STONE.get()) || groundState.is(UnusualendModBlocks.CHISELED_POLISHED_WARPED_STONE.get()) || groundState.is(UnusualendModBlocks.WARPED_STONE_BRICKS.get())
-				|| groundState.is(UnusualendModBlocks.WARPED_STONE_TILES.get()) || groundState.is(UnusualendModBlocks.WARPED_STONE_PILLAR.get());
+		return groundState.is(UnusualEndBlocks.INFESTED_END_STONE.get()) || groundState.is(Blocks.END_STONE) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK)
+				|| groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL) || groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualEndBlocks.GNEISS.get())
+				|| groundState.is(UnusualEndBlocks.WARPED_END_STONE.get()) || groundState.is(UnusualEndBlocks.GNEISS_BRICKS.get()) || groundState.is(UnusualEndBlocks.POLISHED_GNEISS.get())
+				|| groundState.is(UnusualEndBlocks.CHISELED_GNEISS_BRICK.get()) || groundState.is(UnusualEndBlocks.BOLOK_SCALE_BLOCK.get()) || groundState.is(UnusualEndBlocks.WARPED_STONE.get())
+				|| groundState.is(UnusualEndBlocks.POLISHED_WARPED_STONE.get()) || groundState.is(UnusualEndBlocks.CHISELED_POLISHED_WARPED_STONE.get()) || groundState.is(UnusualEndBlocks.WARPED_STONE_BRICKS.get())
+				|| groundState.is(UnusualEndBlocks.WARPED_STONE_TILES.get()) || groundState.is(UnusualEndBlocks.WARPED_STONE_PILLAR.get());
 	}
 
 	@Override

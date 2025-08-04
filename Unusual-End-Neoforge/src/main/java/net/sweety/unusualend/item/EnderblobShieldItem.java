@@ -9,7 +9,7 @@ import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class EnderblobShieldItem extends ShieldItem {
 
 	@Override
 	public boolean isValidRepairItem(ItemStack itemstack, ItemStack repairitem) {
-		return Ingredient.of(new ItemStack(UnusualendModBlocks.ENDERBLOB_BLOCK.get())).test(repairitem);
+		return Ingredient.of(new ItemStack(UnusualEndBlocks.ENDERBLOB_BLOCK.get())).test(repairitem);
 	}
 
 	@Override

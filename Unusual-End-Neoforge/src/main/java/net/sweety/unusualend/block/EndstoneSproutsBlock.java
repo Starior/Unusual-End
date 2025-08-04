@@ -21,14 +21,14 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.procedures.ChorusRootsBoneMealSuccessConditionProcedure;
 import net.sweety.unusualend.procedures.EndstoneSproutsAdditionalPlacinggrowthConditionProcedure;
 import net.sweety.unusualend.procedures.EndstoneSproutsOnBoneMealSuccessProcedure;
 
 public class EndstoneSproutsBlock extends FlowerBlock implements BonemealableBlock {
 	public EndstoneSproutsBlock() {
-		super(() -> MobEffects.LEVITATION, 100,
+		super(MobEffects.LEVITATION, 100,
 				BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.NETHER_SPROUTS).instabreak().noCollission().replaceable().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
 	}
 
@@ -58,10 +58,10 @@ public class EndstoneSproutsBlock extends FlowerBlock implements BonemealableBlo
 			BlockState blockstate = world.getBlockState(pos.above());
 			additionalCondition = EndstoneSproutsAdditionalPlacinggrowthConditionProcedure.execute(world, x, y, z);
 		}
-		return (groundState.is(UnusualendModBlocks.INFESTED_END_STONE.get()) || groundState.is(Blocks.END_STONE) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK)
-				|| groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL) || groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualendModBlocks.RAW_PURPUR_BLOCK.get())
-				|| groundState.is(UnusualendModBlocks.ROOTED_RAW_PURPUR.get()) || groundState.is(Blocks.END_STONE_BRICKS) || groundState.is(UnusualendModBlocks.ENDSTONE_TILES.get()) || groundState.is(UnusualendModBlocks.POLISHED_PURPUR_BRICKS.get())
-				|| groundState.is(UnusualendModBlocks.POLISHED_PURPUR.get()) || groundState.is(UnusualendModBlocks.POLISHED_PURPUR_TILES.get())) && additionalCondition;
+		return (groundState.is(UnusualEndBlocks.INFESTED_END_STONE.get()) || groundState.is(Blocks.END_STONE) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK)
+				|| groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL) || groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualEndBlocks.RAW_PURPUR_BLOCK.get())
+				|| groundState.is(UnusualEndBlocks.ROOTED_RAW_PURPUR.get()) || groundState.is(Blocks.END_STONE_BRICKS) || groundState.is(UnusualEndBlocks.ENDSTONE_TILES.get()) || groundState.is(UnusualEndBlocks.POLISHED_PURPUR_BRICKS.get())
+				|| groundState.is(UnusualEndBlocks.POLISHED_PURPUR.get()) || groundState.is(UnusualEndBlocks.POLISHED_PURPUR_TILES.get())) && additionalCondition;
 	}
 
 	@Override

@@ -24,7 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.configuration.UEConfig;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.network.UnusualendModVariables;
 
 public class VoidTotemItemInInventoryTickProcedure {
@@ -36,12 +36,12 @@ public class VoidTotemItemInInventoryTickProcedure {
                 if (!((entity instanceof Player _plrCldRem6 ? _plrCldRem6.getCooldowns().getCooldownPercent(itemstack.getItem(), 0f) * 100 : 0) > 0)) {
                     if (world.isClientSide()) {
                         if (world.isClientSide())
-                            Minecraft.getInstance().gameRenderer.displayItemActivation(new ItemStack(UnusualendModItems.VOID_TOTEM.get()));
+                            Minecraft.getInstance().gameRenderer.displayItemActivation(new ItemStack(UnusualEndItems.VOID_TOTEM.get()));
                     }
                     if (entity instanceof Player _player)
                         _player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) UEConfig.VOID_TOTEM.get());
                     if (entity instanceof Player _player) {
-                        ItemStack _stktoremove = new ItemStack(UnusualendModItems.VOID_TOTEM.get());
+                        ItemStack _stktoremove = new ItemStack(UnusualEndItems.VOID_TOTEM.get());
                         _player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
                     }
                     if (!(entity instanceof ServerPlayer _plr13 && _plr13.level() instanceof ServerLevel

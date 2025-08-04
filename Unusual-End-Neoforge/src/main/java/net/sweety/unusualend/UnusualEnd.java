@@ -4,12 +4,15 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlerEvent;
 import net.neoforged.neoforge.network.handling.IPlayPayloadHandler;
 import net.neoforged.neoforge.network.registration.IPayloadRegistrar;
+import net.sweety.unusualend.configuration.UEConfig;
 import net.sweety.unusualend.init.*;
 import net.sweety.unusualend.network.UnusualendModVariables;
 import net.sweety.unusualend.world.features.StructureFeature;
@@ -24,21 +27,21 @@ public class UnusualEnd {
     public static final Logger LOGGER = LogManager.getLogger(UnusualEnd.class);
     public static final String MODID = "unusualend";
 
-    public UnusualEnd(IEventBus bus) {
+    public UnusualEnd(IEventBus bus, ModContainer container) {
         NeoForge.EVENT_BUS.addListener(this::tick);
         bus.addListener(this::registerNetworking);
-        UnusualendModSounds.REGISTRY.register(bus);
-        UnusualendModBlocks.REGISTRY.register(bus);
+        UnusualEndSounds.REGISTRY.register(bus);
+        UnusualEndBlocks.REGISTRY.register(bus);
         UnusualendModBlockEntities.REGISTRY.register(bus);
-        UnusualendModItems.REGISTRY.register(bus);
+        UnusualEndItems.REGISTRY.register(bus);
         UnusualendModEntities.REGISTRY.register(bus);
         UnusualendModTabs.REGISTRY.register(bus);
-        UnusualendModFeatures.REGISTRY.register(bus);
         StructureFeature.REGISTRY.register(bus);
-        UnusualendModPotions.REGISTRY.register(bus);
+        UnusualEndPotions.REGISTRY.register(bus);
         UnusualendModLootModifier.LOOT_MODIFIERS.register(bus);
         UnusualendModVariables.ATTACHMENT_TYPES.register(bus);
         UnusualEndMiscRegister.register(bus);
+        container.registerConfig(ModConfig.Type.COMMON, UEConfig.SPEC, "unusualend-common.toml");
     }
 
     private static boolean networkingRegistered = false;

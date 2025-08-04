@@ -23,8 +23,8 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
-import net.sweety.unusualend.init.UnusualendModItems;
 
 import java.util.Comparator;
 import java.util.List;
@@ -48,10 +48,10 @@ public class GolemOrbUseProcedure {
 		double loop = 0;
 		double zRadius = 0;
 		double particleAmount = 0;
-		if ((entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualendModItems.GOLEM_ORB.get())) : false)
-				|| (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualendModItems.BLAZING_ORB.get())) : false)
-				|| (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualendModItems.SHULKER_ORB.get())) : false)
-				|| (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualendModItems.WITHERING_ORB.get())) : false)) {
+		if ((entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualEndItems.GOLEM_ORB.get())) : false)
+				|| (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualEndItems.BLAZING_ORB.get())) : false)
+				|| (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualEndItems.SHULKER_ORB.get())) : false)
+				|| (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualEndItems.WITHERING_ORB.get())) : false)) {
 			if (entity instanceof Player) {
 				if (Math.random() < 0.05) {
 					if (world instanceof Level _level) {
@@ -76,18 +76,18 @@ public class GolemOrbUseProcedure {
 									_level.sendParticles(ParticleTypes.POOF, x, y, z, 10, 3, 3, 3, 0);
 								if (world instanceof ServerLevel _level)
 									_level.sendParticles(ParticleTypes.END_ROD, x, y, z, 10, 3, 3, 3, 0);
-								if (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualendModItems.BLAZING_ORB.get())) : false) {
+								if (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualEndItems.BLAZING_ORB.get())) : false) {
 									entityiterator.setSecondsOnFire(10);
 									if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 										_entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 300, 0, false, false));
 									if (world instanceof ServerLevel _level)
 										_level.sendParticles(ParticleTypes.FLAME, x, y, z, 15, 3, 3, 3, 0);
 								}
-								if (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualendModItems.SHULKER_ORB.get())) : false) {
+								if (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualEndItems.SHULKER_ORB.get())) : false) {
 									if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
 										_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 60, 1, false, false));
 								}
-								if (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualendModItems.WITHERING_ORB.get())) : false) {
+								if (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualEndItems.WITHERING_ORB.get())) : false) {
 									if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
 										_entity.addEffect(new MobEffectInstance(MobEffects.WITHER, 60, 1, false, false));
 									if (world instanceof ServerLevel _level)

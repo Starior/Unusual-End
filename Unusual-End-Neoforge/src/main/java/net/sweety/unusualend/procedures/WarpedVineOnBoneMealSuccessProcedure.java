@@ -4,7 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 
 import java.util.Map;
 
@@ -12,7 +12,7 @@ public class WarpedVineOnBoneMealSuccessProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		{
 			BlockPos _bp = BlockPos.containing(x, y, z);
-			BlockState _bs = UnusualendModBlocks.GROWN_WARPED_BUSH.get().defaultBlockState();
+			BlockState _bs = UnusualEndBlocks.GROWN_WARPED_BUSH.get().defaultBlockState();
 			BlockState _bso = world.getBlockState(_bp);
 			for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 				Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());

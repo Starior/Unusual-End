@@ -8,17 +8,17 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.Property;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 
 import java.util.Map;
 
 public class GrowGloopilonProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate) {
-		if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.GLOOPILON_SEEDS.get()) {
+		if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.GLOOPILON_SEEDS.get()) {
 			if (world.isEmptyBlock(BlockPos.containing(x, y - 1, z))) {
 				{
 					BlockPos _bp = BlockPos.containing(x, y, z);
-					BlockState _bs = UnusualendModBlocks.GLOOPILON_STEM.get().defaultBlockState();
+					BlockState _bs = UnusualEndBlocks.GLOOPILON_STEM.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 						Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -30,7 +30,7 @@ public class GrowGloopilonProcedure {
 					}
 					world.setBlock(_bp, _bs, 3);
 				}
-				world.setBlock(BlockPos.containing(x, y - 1, z), UnusualendModBlocks.GLOOPILON_BULB.get().defaultBlockState(), 3);
+				world.setBlock(BlockPos.containing(x, y - 1, z), UnusualEndBlocks.GLOOPILON_BULB.get().defaultBlockState(), 3);
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
 						_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.CHORUS_FLOWER_GROW, SoundSource.BLOCKS, 1, (float) 0.7);
@@ -39,7 +39,7 @@ public class GrowGloopilonProcedure {
 					}
 				}
 			}
-		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.GLOOPILON_BULB.get()) {
+		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.GLOOPILON_BULB.get()) {
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
 					_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.CHORUS_FLOWER_GROW, SoundSource.BLOCKS, 1, (float) 0.7);

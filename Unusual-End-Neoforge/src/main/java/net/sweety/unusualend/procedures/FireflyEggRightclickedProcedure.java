@@ -22,7 +22,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 public class FireflyEggRightclickedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
@@ -30,7 +30,7 @@ public class FireflyEggRightclickedProcedure {
 			return;
         itemstack.shrink(1);
 		if (entity instanceof Player _player)
-			_player.getCooldowns().addCooldown(UnusualendModItems.ENDER_FIREFLY_EGG.get(), 5);
+			_player.getCooldowns().addCooldown(UnusualEndItems.ENDER_FIREFLY_EGG.get(), 5);
 		if (world.isClientSide()) {
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
@@ -40,7 +40,7 @@ public class FireflyEggRightclickedProcedure {
 				}
 			}
 		}
-		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.ENDER_FIREFLY_EGG.get()) {
+		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualEndItems.ENDER_FIREFLY_EGG.get()) {
 			if (entity instanceof LivingEntity _entity)
 				_entity.swing(InteractionHand.MAIN_HAND, true);
 		} else {

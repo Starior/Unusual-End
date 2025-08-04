@@ -4,25 +4,19 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLConstructModEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.BasicItemListing;
-import net.neoforged.neoforge.common.brewing.BrewingRecipeRegistry;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.village.WandererTradesEvent;
 import net.sweety.unusualend.block.entity.*;
-import net.sweety.unusualend.configuration.UEConfig;
 import net.sweety.unusualend.entity.*;
 import net.sweety.unusualend.init.*;
 import net.sweety.unusualend.jei_recipes.BolokTradingRecipe;
 import net.sweety.unusualend.jei_recipes.InfuserRecipe;
-import net.sweety.unusualend.recipes.brewing.*;
 
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
@@ -31,79 +25,57 @@ public class UnusualEndEvents {
     public static void registerWanderingTrades(WandererTradesEvent event) {
         event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, 5),
 
-                new ItemStack(UnusualendModItems.ENDERFIREFLY_BUCKET.get()), 2, 5, 0.05f));
+                new ItemStack(UnusualEndItems.ENDERFIREFLY_BUCKET.get()), 2, 5, 0.05f));
         event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, 15),
 
-                new ItemStack(UnusualendModItems.VOID_TOTEM.get()), 1, 5, 0.05f));
+                new ItemStack(UnusualEndItems.VOID_TOTEM.get()), 1, 5, 0.05f));
     }
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-        event.registerItem(Capabilities.ItemHandler.ITEM, (stack, content) -> stack.getData(UnusualEndMiscRegister.BOLOK_NOTE_INVENTORY), UnusualendModItems.BOLOK_RESEARCH_NOTES.get());
+        event.registerItem(Capabilities.ItemHandler.ITEM, (stack, content) -> stack.getData(UnusualEndMiscRegister.BOLOK_NOTE_INVENTORY), UnusualEndItems.BOLOK_RESEARCH_NOTES.get());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.ANCIENT_PODIUM.get(), (block, side) -> ((AncientPodiumBlockEntity) block).getHandler());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.PURPUR_TANK.get(), (block, side) -> ((PurpurTankBlockEntity) block).getHandler());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.GLOOPSLATE_PEDESTRAL.get(), (block, side) -> ((GloopslatePedestralBlockEntity) block).getHandler());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.BUILDING_INHIBITOR.get(), (block, side) -> ((BuildingInhibitorBlockEntity) block).getHandler());
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.FADING_BLOCK.get(), (block, side) -> ((FadingBlockBlockEntity) block).getHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.FADING_BLOCK.get(), (block, side) -> ((FadingBlockEntity) block).getHandler());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.PEARLESCENT_INFUSER.get(), (block, side) -> ((PearlescentInfuserBlockEntity) block).getHandler());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.WARPED_CHEST.get(), (block, side) -> ((WarpedChestBlockEntity) block).getHandler());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.WARPING_WAYSTONE.get(), (block, side) -> ((WarpingWaystoneBlockEntity) block).getHandler());
     }
     @SubscribeEvent
     public static void register(FMLConstructModEvent event) {
-        event.enqueueWork(() -> ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, UEConfig.SPEC, "unusualend-common.toml"));
         UnusualEndMiscRegister.SERIALIZERS.register("bolok_trading", () -> BolokTradingRecipe.Serializer.INSTANCE);
         UnusualEndMiscRegister.SERIALIZERS.register("infuser", () -> InfuserRecipe.Serializer.INSTANCE);
     }
     @SubscribeEvent
     public static void addComposterItems(FMLCommonSetupEvent event) {
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.CHORUS_CANE_FLOWER.get().asItem(), 0.85f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.CHORUS_CANE.get().asItem(), 0.3f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.BLOOMING_CHORUS_CANE.get().asItem(), 0.3f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.CHORUS_FUNGUS.get().asItem(), 0.65f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.CHORUS_ROOTS.get().asItem(), 0.65f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.ENDSTONE_SPROUTS.get().asItem(), 0.5f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.PURPUR_GRASS.get().asItem(), 0.65f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.FLOWERING_PURPUR_GRASS.get().asItem(), 0.65f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.WARPED_MOSS.get().asItem(), 0.3f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModItems.CHORUS_PIE.get(), 1f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModItems.CHORUS_PETAL.get(), 0.3f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.DRIPPING_GLOOPSTONE.get().asItem(), 0.3f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.GLOOPY_BUSH.get().asItem(), 0.5f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.SHINY_SPIREA.get().asItem(), 0.65f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModItems.WARPED_SPORES.get(), 0.65f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.WARPED_ALGAE.get().asItem(), 0.5f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.SMALL_WARPED_ALGAE.get().asItem(), 0.3f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.WARPED_SPROUTS.get().asItem(), 0.3f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.CRYSTAL_FLOWER.get().asItem(), 1f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModItems.WARPED_BERRIES.get(), 0.85f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.GLOOPY_TENDRILS.get().asItem(), 0.3f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.WARPED_BUSH.get().asItem(), 0.5f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.WARPED_SQUASH.get().asItem(), 0.65f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModItems.WARPED_SQUASH_WEDGE.get(), 0.5f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.SMALL_WARPED_SQUASH.get().asItem(), 0.5f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModItems.GLOOPILON_SLICE.get(), 0.85f);
-        ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.GLOOPILON_SEEDS.get().asItem(), 0.85f);
-
-        event.enqueueWork(() -> {
-            EnderblobEntity.init();
-            EnderlingEntity.init();
-            EnderTrapperEntity.init();
-            EnderBugEntity.init();
-            EndstoneGolemEntity.init();
-            DraglingEntity.init();
-            BolokEntity.init();
-            EnderblobQueenEntity.init();
-            BlockUpdaterEntity.init();
-            SpunklerEntity.init();
-            VoidCrackEntity.init();
-            LargeBubbleEntity.init();
-            WarpedJellyfishEntity.init();
-            VoidBombEntity.init();
-            EnderbulbEntity.init();
-            SmallEnderbulbEntity.init();
-            BlukEntity.init();
-            SummonedDraglingEntity.init();
-        });
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.CHORUS_CANE_FLOWER.get().asItem(), 0.85f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.CHORUS_CANE.get().asItem(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.BLOOMING_CHORUS_CANE.get().asItem(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.CHORUS_FUNGUS.get().asItem(), 0.65f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.CHORUS_ROOTS.get().asItem(), 0.65f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.ENDSTONE_SPROUTS.get().asItem(), 0.5f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.PURPUR_GRASS.get().asItem(), 0.65f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.FLOWERING_PURPUR_GRASS.get().asItem(), 0.65f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.WARPED_MOSS.get().asItem(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndItems.CHORUS_PIE.get(), 1f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndItems.CHORUS_PETAL.get(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.DRIPPING_GLOOPSTONE.get().asItem(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.GLOOPY_BUSH.get().asItem(), 0.5f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.SHINY_SPIREA.get().asItem(), 0.65f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndItems.WARPED_SPORES.get(), 0.65f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.WARPED_ALGAE.get().asItem(), 0.5f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.SMALL_WARPED_ALGAE.get().asItem(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.WARPED_SPROUTS.get().asItem(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.CRYSTAL_FLOWER.get().asItem(), 1f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndItems.WARPED_BERRIES.get(), 0.85f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.GLOOPY_TENDRILS.get().asItem(), 0.3f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.WARPED_BUSH.get().asItem(), 0.5f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.WARPED_SQUASH.get().asItem(), 0.65f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndItems.WARPED_SQUASH_WEDGE.get(), 0.5f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.SMALL_WARPED_SQUASH.get().asItem(), 0.5f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndItems.GLOOPILON_SLICE.get(), 0.85f);
+        ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.GLOOPILON_SEEDS.get().asItem(), 0.85f);
     }
 
     @SubscribeEvent
@@ -126,26 +98,5 @@ public class UnusualEndEvents {
         event.put(UnusualendModEntities.SMALL_ENDERBULB.get(), SmallEnderbulbEntity.createAttributes().build());
         event.put(UnusualendModEntities.BLUK.get(), BlukEntity.createAttributes().build());
         event.put(UnusualendModEntities.SUMMONED_DRAGLING.get(), SummonedDraglingEntity.createAttributes().build());
-    }
-    @SubscribeEvent
-    public static void init(FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            BrewingRecipeRegistry.addRecipe(new LevitationRecipeBrewingRecipe());
-            BrewingRecipeRegistry.addRecipe(new AdvancedHastePotionBrewingRecipe());
-            BrewingRecipeRegistry.addRecipe(new BuildingPotionRecipeBrewingRecipe());
-            BrewingRecipeRegistry.addRecipe(new ChorusTeaBrewingBrewingRecipe());
-            BrewingRecipeRegistry.addRecipe(new ClassicHeavinessPotionBrewingRecipe());
-            BrewingRecipeRegistry.addRecipe(new EndInfectionPotionBrewingRecipe());
-            BrewingRecipeRegistry.addRecipe(new HastePotionBrewingRecipe());
-            BrewingRecipeRegistry.addRecipe(new HealthBoostPotionBrewingRecipe());
-            BrewingRecipeRegistry.addRecipe(new InstantNightVisionBrewingRecipe());
-            BrewingRecipeRegistry.addRecipe(new Regen2BrewBrewingRecipe());
-            BrewingRecipeRegistry.addRecipe(new RegenBrewBrewingRecipe());
-            BrewingRecipeRegistry.addRecipe(new ResistancePotionBrewingRecipe());
-            BrewingRecipeRegistry.addRecipe(new SerenityPotionRecipeBrewingRecipe());
-            BrewingRecipeRegistry.addRecipe(new StrengthPotionBrewingRecipe());
-            BrewingRecipeRegistry.addRecipe(new SwiftStrikesPotionRecipeBrewingRecipe());
-            BrewingRecipeRegistry.addRecipe(new WarpedPotionRecipeBrewingRecipe());
-        });
     }
 }

@@ -5,7 +5,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -26,7 +25,7 @@ import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.procedures.CrystalFlowerMobplayerCollidesWithPlantProcedure;
 import net.sweety.unusualend.procedures.CrystalFlowerUpdateTickProcedure;
 
@@ -53,8 +52,8 @@ public class CrystalFlowerBlock extends FlowerBlock {
 
 	@Override
 	public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
-		return groundState.is(Blocks.GRASS_BLOCK) || groundState.is(Blocks.MYCELIUM) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(UnusualendModBlocks.GLOOPSLATE.get())
-				|| groundState.is(UnusualendModBlocks.SHINY_GLOOPSTONE.get()) || groundState.is(UnusualendModBlocks.GLOOPSTONE.get()) || groundState.is(UnusualendModBlocks.BOUNCY_GLOOPSLATE.get()) || groundState.is(Blocks.DIRT)
+		return groundState.is(Blocks.GRASS_BLOCK) || groundState.is(Blocks.MYCELIUM) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(UnusualEndBlocks.GLOOPSLATE.get())
+				|| groundState.is(UnusualEndBlocks.SHINY_GLOOPSTONE.get()) || groundState.is(UnusualEndBlocks.GLOOPSTONE.get()) || groundState.is(UnusualEndBlocks.BOUNCY_GLOOPSLATE.get()) || groundState.is(Blocks.DIRT)
 				|| groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL) || groundState.is(Blocks.ROOTED_DIRT);
 	}
 

@@ -13,12 +13,12 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.init.UnusualendModEntities;
 
 public class BreakEggProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId(UnusualendModBlocks.CRACKED_ENDERMITE_EGGS.get().defaultBlockState()));
+		world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId(UnusualEndBlocks.CRACKED_ENDERMITE_EGGS.get().defaultBlockState()));
 		if (world instanceof Level _level) {
 			if (!_level.isClientSide()) {
 				_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.TURTLE_EGG_CRACK, SoundSource.BLOCKS, 1, 1);

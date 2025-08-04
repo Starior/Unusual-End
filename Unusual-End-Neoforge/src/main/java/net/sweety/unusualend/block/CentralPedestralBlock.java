@@ -3,7 +3,6 @@ package net.sweety.unusualend.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -94,16 +93,12 @@ public class CentralPedestralBlock extends Block implements SimpleWaterloggedBlo
 	}
 
 	@Override
-	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
-		super.use(blockstate, world, pos, entity, hand, hit);
+	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+		super.useWithoutItem(state, level, pos, player, hitResult);
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-		double hitX = hit.getLocation().x;
-		double hitY = hit.getLocation().y;
-		double hitZ = hit.getLocation().z;
-		Direction direction = hit.getDirection();
-		CentralPedestralOnBlockRightClickedProcedure.execute(world, x, y, z, entity);
+		CentralPedestralOnBlockRightClickedProcedure.execute(level, x, y, z, player);
 		return InteractionResult.SUCCESS;
 	}
 }

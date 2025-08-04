@@ -6,13 +6,13 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.wrapper.InvWrapper;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 import java.util.concurrent.atomic.AtomicReference;
 
 public class ClearSlot3Procedure {
     public static void execute(LevelAccessor world, double x, double y, double z) {
-        if (getItemStack(world, BlockPos.containing(x, y, z), 3).getItem() == UnusualendModItems.INFUSER_INFOS.get()) {
+        if (getItemStack(world, BlockPos.containing(x, y, z), 3).getItem() == UnusualEndItems.INFUSER_INFOS.get()) {
             BlockEntity block = world.getBlockEntity(BlockPos.containing(x, y, z));
             if (block instanceof BaseContainerBlockEntity entity) {
                 final int _slotid = 3;

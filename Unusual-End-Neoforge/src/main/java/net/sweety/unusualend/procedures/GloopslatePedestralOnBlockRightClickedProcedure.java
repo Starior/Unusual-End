@@ -17,8 +17,8 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.wrapper.InvWrapper;
-import net.sweety.unusualend.init.UnusualendModBlocks;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndBlocks;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -26,7 +26,7 @@ public class GloopslatePedestralOnBlockRightClickedProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
         if (entity == null)
             return;
-        if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.PRISMATIC_PEARL.get()) {
+        if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualEndItems.PRISMATIC_PEARL.get()) {
             if (new Object() {
                 public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
                     AtomicInteger _retval = new AtomicInteger(0);
@@ -63,7 +63,7 @@ public class GloopslatePedestralOnBlockRightClickedProcedure {
                 {
                     BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
                     if (_ent instanceof BaseContainerBlockEntity entity1) {
-                        final ItemStack _setstack = new ItemStack(UnusualendModBlocks.PRISMATIC_PEARL_DISPLAY.get()).copy();
+                        final ItemStack _setstack = new ItemStack(UnusualEndBlocks.PRISMATIC_PEARL_DISPLAY.get()).copy();
                         _setstack.setCount(1);
                         InvWrapper wrapper = new InvWrapper(entity1);
                         wrapper.setStackInSlot(0, _setstack);

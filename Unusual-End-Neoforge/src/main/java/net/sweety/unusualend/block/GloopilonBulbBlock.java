@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.procedures.*;
 
 public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
@@ -48,7 +48,7 @@ public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
 
     @Override
     public ItemStack getCloneItemStack(LevelReader pLevel, BlockPos pPos, BlockState pState) {
-        return new ItemStack(UnusualendModBlocks.GLOOPILON_SEEDS.get());
+        return new ItemStack(UnusualEndBlocks.GLOOPILON_SEEDS.get());
     }
 
     @Override

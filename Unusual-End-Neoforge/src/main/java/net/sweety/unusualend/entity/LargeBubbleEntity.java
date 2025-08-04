@@ -17,7 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.init.UnusualendModEntities;
 
 public class LargeBubbleEntity extends Animal {
@@ -47,13 +47,18 @@ public class LargeBubbleEntity extends Animal {
     }
 
     @Override
-    protected float ridingOffset(Entity entity) {
-        return super.ridingOffset(entity) - 1.1f;
+    public boolean isFood(ItemStack itemStack) {
+        return false;
     }
 
-    protected void dropCustomDeathLoot(DamageSource source, int looting, boolean recentlyHitIn) {
-        super.dropCustomDeathLoot(source, looting, recentlyHitIn);
-        this.spawnAtLocation(new ItemStack(UnusualendModBlocks.WARPED_MOSS.get()));
+    @Override
+    public Vec3 getPassengerRidingPosition(Entity entity) {
+        return super.getPassengerRidingPosition(entity).add(0, -1.1f, 0);
+    }
+
+    protected void dropCustomDeathLoot(ServerLevel level, DamageSource source, boolean recentlyHitIn) {
+        super.dropCustomDeathLoot(level, source, recentlyHitIn);
+        this.spawnAtLocation(new ItemStack(UnusualEndBlocks.WARPED_MOSS.get()));
     }
 
     @Override
@@ -74,7 +79,7 @@ public class LargeBubbleEntity extends Animal {
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverWorld, AgeableMob ageable) {
         LargeBubbleEntity retval = UnusualendModEntities.WARPED_BALLOON.get().create(serverWorld);
-        retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null, null);
+        retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null);
         return retval;
     }
 
@@ -107,9 +112,6 @@ public class LargeBubbleEntity extends Animal {
     public void aiStep() {
         super.aiStep();
         this.setNoGravity(true);
-    }
-
-    public static void init() {
     }
 
     public static AttributeSupplier.Builder createAttributes() {

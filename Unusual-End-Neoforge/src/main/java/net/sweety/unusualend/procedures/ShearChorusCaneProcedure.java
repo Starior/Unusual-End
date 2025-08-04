@@ -20,8 +20,8 @@ import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-import net.sweety.unusualend.init.UnusualendModBlocks;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndBlocks;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 import javax.annotation.Nullable;
 import java.util.Map;
@@ -40,7 +40,7 @@ public class ShearChorusCaneProcedure {
 			return;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() instanceof ShearsItem
 				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() instanceof ShearsItem) {
-			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.CHORUS_CANE_FLOWER.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.FLOWERING_PURPUR_GRASS.get()) {
+			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.CHORUS_CANE_FLOWER.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.FLOWERING_PURPUR_GRASS.get()) {
 				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() instanceof ShearsItem) {
 					if (entity instanceof LivingEntity _entity)
 						_entity.swing(InteractionHand.MAIN_HAND, true);
@@ -55,11 +55,11 @@ public class ShearChorusCaneProcedure {
 						_level.playLocalSound(x, y, z, SoundEvents.GROWING_PLANT_CROP, SoundSource.BLOCKS, 1, 1, false);
 					}
 				}
-				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.CHORUS_CANE_FLOWER.get()) {
+				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.CHORUS_CANE_FLOWER.get()) {
 					world.destroyBlock(BlockPos.containing(x, y, z), false);
 					for (int index0 = 0; index0 < Mth.nextInt(RandomSource.create(), 1, 2); index0++) {
 						if (world instanceof ServerLevel _level) {
-							ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 1), (z + 0.5), new ItemStack(UnusualendModItems.CHORUS_PETAL.get()));
+							ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 1), (z + 0.5), new ItemStack(UnusualEndItems.CHORUS_PETAL.get()));
 							entityToSpawn.setPickUpDelay(10);
 							_level.addFreshEntity(entityToSpawn);
 						}
@@ -67,7 +67,7 @@ public class ShearChorusCaneProcedure {
 				} else {
 					{
 						BlockPos _bp = BlockPos.containing(x, y, z);
-						BlockState _bs = UnusualendModBlocks.PURPUR_GRASS.get().defaultBlockState();
+						BlockState _bs = UnusualEndBlocks.PURPUR_GRASS.get().defaultBlockState();
 						BlockState _bso = world.getBlockState(_bp);
 						for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
 							Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
@@ -80,7 +80,7 @@ public class ShearChorusCaneProcedure {
 						world.setBlock(_bp, _bs, 3);
 					}
 					if (world instanceof ServerLevel _level) {
-						ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 1), (z + 0.5), new ItemStack(UnusualendModItems.CHORUS_PETAL.get()));
+						ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 1), (z + 0.5), new ItemStack(UnusualEndItems.CHORUS_PETAL.get()));
 						entityToSpawn.setPickUpDelay(10);
 						_level.addFreshEntity(entityToSpawn);
 					}

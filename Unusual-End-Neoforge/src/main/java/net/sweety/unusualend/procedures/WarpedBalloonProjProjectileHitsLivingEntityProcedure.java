@@ -20,8 +20,8 @@ import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.configuration.UEConfig;
 import net.sweety.unusualend.entity.LargeBubbleEntity;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualendModEntities;
-import net.sweety.unusualend.init.UnusualendModItems;
 
 import java.util.Comparator;
 
@@ -64,7 +64,7 @@ public class WarpedBalloonProjProjectileHitsLivingEntityProcedure {
 						if (!immediatesourceentity.level().isClientSide())
 							immediatesourceentity.discard();
 						if (world instanceof ServerLevel _level) {
-							ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(UnusualendModItems.WARPED_BALLOON.get()));
+							ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(UnusualEndItems.WARPED_BALLOON.get()));
 							entityToSpawn.setPickUpDelay(10);
 							_level.addFreshEntity(entityToSpawn);
 						}
@@ -75,7 +75,7 @@ public class WarpedBalloonProjProjectileHitsLivingEntityProcedure {
 					if (!immediatesourceentity.level().isClientSide())
 						immediatesourceentity.discard();
 					if (world instanceof ServerLevel _level) {
-						ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(UnusualendModItems.WARPED_BALLOON.get()));
+						ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(UnusualEndItems.WARPED_BALLOON.get()));
 						entityToSpawn.setPickUpDelay(10);
 						_level.addFreshEntity(entityToSpawn);
 					}
@@ -86,7 +86,7 @@ public class WarpedBalloonProjProjectileHitsLivingEntityProcedure {
 				if (!immediatesourceentity.level().isClientSide())
 					immediatesourceentity.discard();
 				if (world instanceof ServerLevel _level) {
-					ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(UnusualendModItems.WARPED_BALLOON.get()));
+					ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(UnusualEndItems.WARPED_BALLOON.get()));
 					entityToSpawn.setPickUpDelay(10);
 					_level.addFreshEntity(entityToSpawn);
 				}

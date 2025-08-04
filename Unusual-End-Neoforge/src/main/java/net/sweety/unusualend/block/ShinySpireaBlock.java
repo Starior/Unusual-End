@@ -16,7 +16,7 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 
 public class ShinySpireaBlock extends FlowerBlock {
 	public ShinySpireaBlock() {
@@ -43,7 +43,7 @@ public class ShinySpireaBlock extends FlowerBlock {
 	@Override
 	public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
 		return groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK) || groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL)
-				|| groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualendModBlocks.GLOOPSTONE.get()) || groundState.is(UnusualendModBlocks.GLOOPSLATE.get()) || groundState.is(UnusualendModBlocks.SHINY_GLOOPSTONE.get())
+				|| groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualEndBlocks.GLOOPSTONE.get()) || groundState.is(UnusualEndBlocks.GLOOPSLATE.get()) || groundState.is(UnusualEndBlocks.SHINY_GLOOPSTONE.get())
 				|| groundState.is(Blocks.ROOTED_DIRT);
 	}
 

@@ -9,16 +9,16 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.sweety.unusualend.entity.EnderBugEntity;
 import net.sweety.unusualend.entity.EnderblobEntity;
-import net.sweety.unusualend.init.UnusualendModBlocks;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndBlocks;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 import javax.annotation.Nullable;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class FireFlyRegenProcedure {
 	@SubscribeEvent
 	public static void onEntityDeath(LivingDeathEvent event) {
@@ -40,13 +40,13 @@ public class FireFlyRegenProcedure {
 					entity1.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 300, 1));
 				if (Math.random() < 0.2) {
 					if (world instanceof ServerLevel _level) {
-						ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(UnusualendModItems.ENDER_FIREFLY_EGG.get()));
+						ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(UnusualEndItems.ENDER_FIREFLY_EGG.get()));
 						entityToSpawn.setPickUpDelay(10);
 						_level.addFreshEntity(entityToSpawn);
 					}
 				} else if (Math.random() < 0.2) {
 					if (world instanceof ServerLevel _level) {
-						ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(UnusualendModBlocks.FIREFLY_BULB.get()));
+						ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(UnusualEndBlocks.FIREFLY_BULB.get()));
 						entityToSpawn.setPickUpDelay(10);
 						_level.addFreshEntity(entityToSpawn);
 					}

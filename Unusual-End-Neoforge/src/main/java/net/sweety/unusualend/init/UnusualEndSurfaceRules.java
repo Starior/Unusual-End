@@ -12,7 +12,6 @@ import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.mixins.NoiseGeneratorSettingsAccess;
@@ -27,8 +26,8 @@ public class UnusualEndSurfaceRules {
 		if (hasEndBiomes) {
 			if (chunkGenerator instanceof NoiseBasedChunkGenerator generator) {
 				NoiseGeneratorSettings noiseGeneratorSettings = generator.generatorSettings().value();
-				registerSurfaceRules(UnusualEnd.makeUEID("gloopstone_lands"), noiseGeneratorSettings, UnusualendModBlocks.GLOOPSTONE.get().defaultBlockState(), UnusualendModBlocks.GLOOPSLATE.get().defaultBlockState());
-				registerSurfaceRules(UnusualEnd.makeUEID("gloopstone_midlands"), noiseGeneratorSettings, UnusualendModBlocks.GLOOPSLATE.get().defaultBlockState(), UnusualendModBlocks.GLOOPSLATE.get().defaultBlockState());
+				registerSurfaceRules(UnusualEnd.makeUEID("gloopstone_lands"), noiseGeneratorSettings, UnusualEndBlocks.GLOOPSTONE.get().defaultBlockState(), UnusualEndBlocks.GLOOPSLATE.get().defaultBlockState());
+				registerSurfaceRules(UnusualEnd.makeUEID("gloopstone_midlands"), noiseGeneratorSettings, UnusualEndBlocks.GLOOPSLATE.get().defaultBlockState(), UnusualEndBlocks.GLOOPSLATE.get().defaultBlockState());
 				registerSurfaceRules(UnusualEnd.makeUEID("warped_reef"), noiseGeneratorSettings, Blocks.END_STONE.defaultBlockState(), Blocks.END_STONE.defaultBlockState());
 			}
 		}

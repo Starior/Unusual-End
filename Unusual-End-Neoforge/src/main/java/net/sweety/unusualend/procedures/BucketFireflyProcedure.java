@@ -13,7 +13,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
-import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 public class BucketFireflyProcedure {
 	public static void execute(LevelAccessor world, Entity entity, Entity sourceentity) {
@@ -22,7 +22,7 @@ public class BucketFireflyProcedure {
 		ItemStack entity_bucket = ItemStack.EMPTY;
 		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BUCKET
 				|| (sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.BUCKET) {
-			entity_bucket = new ItemStack(UnusualendModItems.ENDERFIREFLY_BUCKET.get());
+			entity_bucket = new ItemStack(UnusualEndItems.ENDERFIREFLY_BUCKET.get());
 			if (!(new Object() {
 				public String getValue() {
 					CompoundTag dataIndex = new CompoundTag();

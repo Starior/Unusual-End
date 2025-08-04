@@ -21,7 +21,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.procedures.OvergrownWarpedVineOnBlockRightClickedProcedure;
 
 public class GrownWarpedBushBlock extends FlowerBlock {
@@ -48,7 +48,7 @@ public class GrownWarpedBushBlock extends FlowerBlock {
 
 	@Override
 	public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
-		return groundState.is(UnusualendModBlocks.WARPED_END_STONE.get()) || groundState.is(UnusualendModBlocks.WARPED_STONE.get()) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(UnusualendModBlocks.GNEISS.get())
+		return groundState.is(UnusualEndBlocks.WARPED_END_STONE.get()) || groundState.is(UnusualEndBlocks.WARPED_STONE.get()) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(UnusualEndBlocks.GNEISS.get())
 				|| groundState.is(Blocks.END_STONE);
 	}
 

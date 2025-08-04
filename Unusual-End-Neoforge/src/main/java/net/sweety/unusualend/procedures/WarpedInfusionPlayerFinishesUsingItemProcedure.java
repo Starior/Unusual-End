@@ -20,8 +20,8 @@ public class WarpedInfusionPlayerFinishesUsingItemProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		if (entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY.get())) {
-			if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()).getAmplifier() : 0) == 1) {
+		if (entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY)) {
+			if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY).getAmplifier() : 0) == 1) {
 				if (!(entity instanceof ServerPlayer _plr2 && _plr2.level() instanceof ServerLevel
 						&& _plr2.getAdvancements().getOrStartProgress(_plr2.server.getAdvancements().get(UnusualEnd.makeUEID("drink_max_warped_infusion"))).isDone())) {
 					if (entity instanceof ServerPlayer _player) {
@@ -34,21 +34,21 @@ public class WarpedInfusionPlayerFinishesUsingItemProcedure {
 					}
 				}
 			}
-			if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY.get())
-					? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()).getAmplifier()
+			if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY)
+					? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY).getAmplifier()
 					: 0) >= UEConfig.MAX_WARPED_INFUSION.get() - 1) {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-					_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.WARPED_TENACITY.get(),
-                            (entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()).getDuration() : 0) + 1200,
-							entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()).getAmplifier() : 0));
+					_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.WARPED_TENACITY,
+                            (entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY).getDuration() : 0) + 1200,
+							entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY).getAmplifier() : 0));
 			} else {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-					_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.WARPED_TENACITY.get(), 1200,
-                            (entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()).getAmplifier() : 0) + 1));
+					_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.WARPED_TENACITY, 1200,
+                            (entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY).getAmplifier() : 0) + 1));
 			}
 		} else {
 			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-				_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.WARPED_TENACITY.get(), 1200, 0));
+				_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.WARPED_TENACITY, 1200, 0));
 		}
 		if (world.isClientSide()) {
 			if (world instanceof Level _level) {

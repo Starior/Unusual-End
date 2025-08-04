@@ -14,7 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.init.UnusualendModSounds;
+import net.sweety.unusualend.init.UnusualEndSounds;
 
 public class ChorusFluteRightclickedProcedure {
     public static void execute(LevelAccessor world, Entity entity, ItemStack itemstack) {
@@ -38,9 +38,9 @@ public class ChorusFluteRightclickedProcedure {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_CIRCUS.get(), SoundSource.RECORDS, 6, 1);
+                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_CIRCUS.get(), SoundSource.RECORDS, 6, 1);
                     } else {
-                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_CIRCUS.get(), SoundSource.RECORDS, 6, 1, false);
+                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_CIRCUS.get(), SoundSource.RECORDS, 6, 1, false);
                     }
                 }
             }
@@ -48,9 +48,9 @@ public class ChorusFluteRightclickedProcedure {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_CIRCUS.get(), SoundSource.RECORDS, 6, 1);
+                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_CIRCUS.get(), SoundSource.RECORDS, 6, 1);
                     } else {
-                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_CIRCUS.get(), SoundSource.RECORDS, 6, 1, false);
+                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_CIRCUS.get(), SoundSource.RECORDS, 6, 1, false);
                     }
                 }
             }
@@ -58,9 +58,9 @@ public class ChorusFluteRightclickedProcedure {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_STORMS.get(), SoundSource.RECORDS, 6, 1);
+                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_STORMS.get(), SoundSource.RECORDS, 6, 1);
                     } else {
-                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_STORMS.get(), SoundSource.RECORDS, 6, 1, false);
+                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_STORMS.get(), SoundSource.RECORDS, 6, 1, false);
                     }
                 }
             }
@@ -68,9 +68,9 @@ public class ChorusFluteRightclickedProcedure {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_SARIA.get(), SoundSource.RECORDS, 6, 1);
+                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_SARIA.get(), SoundSource.RECORDS, 6, 1);
                     } else {
-                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_SARIA.get(), SoundSource.RECORDS, 6, 1, false);
+                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_SARIA.get(), SoundSource.RECORDS, 6, 1, false);
                     }
                 }
             }
@@ -78,9 +78,9 @@ public class ChorusFluteRightclickedProcedure {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_PARTY.get(), SoundSource.RECORDS, 6, 1);
+                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_PARTY.get(), SoundSource.RECORDS, 6, 1);
                     } else {
-                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_PARTY.get(), SoundSource.RECORDS, 6, 1, false);
+                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_PARTY.get(), SoundSource.RECORDS, 6, 1, false);
                     }
                 }
             }
@@ -88,9 +88,9 @@ public class ChorusFluteRightclickedProcedure {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_DOCKS.get(), SoundSource.RECORDS, 6, 1);
+                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_DOCKS.get(), SoundSource.RECORDS, 6, 1);
                     } else {
-                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_DOCKS.get(), SoundSource.RECORDS, 6, 1, false);
+                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_DOCKS.get(), SoundSource.RECORDS, 6, 1, false);
                     }
                 }
             }
@@ -98,9 +98,9 @@ public class ChorusFluteRightclickedProcedure {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_TAPION.get(), SoundSource.RECORDS, 6, 1);
+                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_TAPION.get(), SoundSource.RECORDS, 6, 1);
                     } else {
-                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_TAPION.get(), SoundSource.RECORDS, 6, 1, false);
+                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_TAPION.get(), SoundSource.RECORDS, 6, 1, false);
                     }
                 }
             }
@@ -108,9 +108,9 @@ public class ChorusFluteRightclickedProcedure {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_DRIFT.get(), SoundSource.RECORDS, 6, 1);
+                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_DRIFT.get(), SoundSource.RECORDS, 6, 1);
                     } else {
-                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_DRIFT.get(), SoundSource.RECORDS, 6, 1, false);
+                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_DRIFT.get(), SoundSource.RECORDS, 6, 1, false);
                     }
                 }
             }
@@ -118,9 +118,9 @@ public class ChorusFluteRightclickedProcedure {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_DOCTOR.get(), SoundSource.RECORDS, 6, 1);
+                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_DOCTOR.get(), SoundSource.RECORDS, 6, 1);
                     } else {
-                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_DOCTOR.get(), SoundSource.RECORDS, 6, 1, false);
+                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_DOCTOR.get(), SoundSource.RECORDS, 6, 1, false);
                     }
                 }
             }
@@ -128,9 +128,9 @@ public class ChorusFluteRightclickedProcedure {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_FISHE.get(), SoundSource.RECORDS, 6, 1);
+                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_FISHE.get(), SoundSource.RECORDS, 6, 1);
                     } else {
-                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_FISHE.get(), SoundSource.RECORDS, 6, 1, false);
+                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_FISHE.get(), SoundSource.RECORDS, 6, 1, false);
                     }
                 }
             }
@@ -138,9 +138,9 @@ public class ChorusFluteRightclickedProcedure {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_ARIA.get(), SoundSource.RECORDS, 6, 1);
+                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_ARIA.get(), SoundSource.RECORDS, 6, 1);
                     } else {
-                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_ARIA.get(), SoundSource.RECORDS, 6, 1, false);
+                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_ARIA.get(), SoundSource.RECORDS, 6, 1, false);
                     }
                 }
             }
@@ -148,9 +148,9 @@ public class ChorusFluteRightclickedProcedure {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_MOOG.get(), SoundSource.RECORDS, 6, 1);
+                        _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_MOOG.get(), SoundSource.RECORDS, 6, 1);
                     } else {
-                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_MOOG.get(), SoundSource.RECORDS, 6, 1, false);
+                        _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_MOOG.get(), SoundSource.RECORDS, 6, 1, false);
                     }
                 }
             }
@@ -160,97 +160,97 @@ public class ChorusFluteRightclickedProcedure {
                 if (random == 1) {
                     if (world instanceof Level _level) {
                         if (!_level.isClientSide()) {
-                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_CIRCUS.get(), SoundSource.RECORDS, 6, 1);
+                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_CIRCUS.get(), SoundSource.RECORDS, 6, 1);
                         } else {
-                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_CIRCUS.get(), SoundSource.RECORDS, 6, 1, false);
+                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_CIRCUS.get(), SoundSource.RECORDS, 6, 1, false);
                         }
                     }
                 } else if (random == 2) {
                     if (world instanceof Level _level) {
                         if (!_level.isClientSide()) {
-                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_TAPION.get(), SoundSource.RECORDS, 6, 1);
+                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_TAPION.get(), SoundSource.RECORDS, 6, 1);
                         } else {
-                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_TAPION.get(), SoundSource.RECORDS, 6, 1, false);
+                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_TAPION.get(), SoundSource.RECORDS, 6, 1, false);
                         }
                     }
                 } else if (random == 3) {
                     if (world instanceof Level _level) {
                         if (!_level.isClientSide()) {
-                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_STRANGE.get(), SoundSource.RECORDS, 6, 1);
+                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_STRANGE.get(), SoundSource.RECORDS, 6, 1);
                         } else {
-                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_STRANGE.get(), SoundSource.RECORDS, 6, 1, false);
+                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_STRANGE.get(), SoundSource.RECORDS, 6, 1, false);
                         }
                     }
                 } else if (random == 4) {
                     if (world instanceof Level _level) {
                         if (!_level.isClientSide()) {
-                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_STORMS.get(), SoundSource.RECORDS, 6, 1);
+                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_STORMS.get(), SoundSource.RECORDS, 6, 1);
                         } else {
-                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_STORMS.get(), SoundSource.RECORDS, 6, 1, false);
+                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_STORMS.get(), SoundSource.RECORDS, 6, 1, false);
                         }
                     }
                 } else if (random == 5) {
                     if (world instanceof Level _level) {
                         if (!_level.isClientSide()) {
-                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_SARIA.get(), SoundSource.RECORDS, 6, 1);
+                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_SARIA.get(), SoundSource.RECORDS, 6, 1);
                         } else {
-                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_SARIA.get(), SoundSource.RECORDS, 6, 1, false);
+                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_SARIA.get(), SoundSource.RECORDS, 6, 1, false);
                         }
                     }
                 } else if (random == 6) {
                     if (world instanceof Level _level) {
                         if (!_level.isClientSide()) {
-                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_PARTY.get(), SoundSource.RECORDS, 6, 1);
+                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_PARTY.get(), SoundSource.RECORDS, 6, 1);
                         } else {
-                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_PARTY.get(), SoundSource.RECORDS, 6, 1, false);
+                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_PARTY.get(), SoundSource.RECORDS, 6, 1, false);
                         }
                     }
                 } else if (random == 7) {
                     if (world instanceof Level _level) {
                         if (!_level.isClientSide()) {
-                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_DOCKS.get(), SoundSource.RECORDS, 6, 1);
+                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_DOCKS.get(), SoundSource.RECORDS, 6, 1);
                         } else {
-                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_DOCKS.get(), SoundSource.RECORDS, 6, 1, false);
+                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_DOCKS.get(), SoundSource.RECORDS, 6, 1, false);
                         }
                     }
                 } else if (random == 8) {
                     if (world instanceof Level _level) {
                         if (!_level.isClientSide()) {
-                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_DRIFT.get(), SoundSource.RECORDS, 6, 1);
+                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_DRIFT.get(), SoundSource.RECORDS, 6, 1);
                         } else {
-                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()),UnusualendModSounds.FLUTE_DRIFT.get(), SoundSource.RECORDS, 6, 1, false);
+                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_DRIFT.get(), SoundSource.RECORDS, 6, 1, false);
                         }
                     }
                 } else if (random == 9) {
                     if (world instanceof Level _level) {
                         if (!_level.isClientSide()) {
-                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_DOCTOR.get(), SoundSource.RECORDS, 6, 1);
+                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_DOCTOR.get(), SoundSource.RECORDS, 6, 1);
                         } else {
-                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_DOCTOR.get(), SoundSource.RECORDS, 6, 1, false);
+                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_DOCTOR.get(), SoundSource.RECORDS, 6, 1, false);
                         }
                     }
                 } else if (random == 10) {
                     if (world instanceof Level _level) {
                         if (!_level.isClientSide()) {
-                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_ARIA.get(), SoundSource.RECORDS, 6, 1);
+                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_ARIA.get(), SoundSource.RECORDS, 6, 1);
                         } else {
-                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_ARIA.get(), SoundSource.RECORDS, 6, 1, false);
+                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_ARIA.get(), SoundSource.RECORDS, 6, 1, false);
                         }
                     }
                 } else if (random == 11) {
                     if (world instanceof Level _level) {
                         if (!_level.isClientSide()) {
-                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_MOOG.get(), SoundSource.RECORDS, 6, 1);
+                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_MOOG.get(), SoundSource.RECORDS, 6, 1);
                         } else {
-                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_MOOG.get(), SoundSource.RECORDS, 6, 1, false);
+                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_MOOG.get(), SoundSource.RECORDS, 6, 1, false);
                         }
                     }
                 } else if (random == 12) {
                     if (world instanceof Level _level) {
                         if (!_level.isClientSide()) {
-                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualendModSounds.FLUTE_FISHE.get(), SoundSource.RECORDS, 6, 1);
+                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_FISHE.get(), SoundSource.RECORDS, 6, 1);
                         } else {
-                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualendModSounds.FLUTE_FISHE.get(), SoundSource.RECORDS, 6, 1, false);
+                            _level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_FISHE.get(), SoundSource.RECORDS, 6, 1, false);
                         }
                     }
                 }

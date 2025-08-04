@@ -8,13 +8,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -34,8 +33,8 @@ public class BuildingInhibitorBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, level, list, flag);
+    public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(itemstack, context, list, flag);
         list.add(Component.translatable("lore.unusualend.need_breath").withStyle(ChatFormatting.DARK_GRAY));
         list.add(Component.translatable("lore.unusualend.when_nearby").withStyle(ChatFormatting.GRAY));
         list.add(Component.translatable("effect.unusualend.disruption"));
@@ -49,13 +48,6 @@ public class BuildingInhibitorBlock extends BaseEntityBlock {
     @Override
     public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
         return 0;
-    }
-
-    @Override
-    public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-        if (player.getInventory().getSelected().getItem() instanceof PickaxeItem tieredItem)
-            return tieredItem.getTier().getLevel() >= 0;
-        return false;
     }
 
     @Override
@@ -77,10 +69,10 @@ public class BuildingInhibitorBlock extends BaseEntityBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (!level.isClientSide())
             this.openScreen(level, pos, player);
-        return super.use(state, level, pos, player, hand, result);
+        return super.useWithoutItem(state, level, pos, player, hitResult);
     }
 
     private void openScreen(Level level, BlockPos pos, Player player) {

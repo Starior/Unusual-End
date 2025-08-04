@@ -1,11 +1,9 @@
 package net.sweety.unusualend.entity;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -26,9 +24,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
-import net.sweety.unusualend.init.UnusualendModEntities;
 import net.sweety.unusualend.procedures.EnderlingOnEntityTickUpdateProcedure;
 import net.sweety.unusualend.procedures.EnderlingOnInitialEntitySpawnProcedure;
 import net.sweety.unusualend.procedures.HasInvisibilityProcedure;
@@ -132,8 +128,8 @@ public class EnderlingEntity extends Monster {
 	}
 
 	@Override
-	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData livingdata, @Nullable CompoundTag tag) {
-		SpawnGroupData retval = super.finalizeSpawn(world, difficulty, reason, livingdata, tag);
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData livingdata) {
+		SpawnGroupData retval = super.finalizeSpawn(world, difficulty, reason, livingdata);
 		EnderlingOnInitialEntitySpawnProcedure.execute(world, this);
 		return retval;
 	}
@@ -156,11 +152,6 @@ public class EnderlingEntity extends Monster {
 	public void aiStep() {
 		super.aiStep();
 		this.setNoGravity(true);
-	}
-
-	public static void init() {
-		SpawnPlacements.register(UnusualendModEntities.UNDEAD_ENDERLING.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-				(entityType, world, reason, pos, random) -> (world.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, world, reason, pos, random)));
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {

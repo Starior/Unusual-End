@@ -12,8 +12,8 @@ import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.wrapper.InvWrapper;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
-import net.sweety.unusualend.init.UnusualendModItems;
 
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -29,7 +29,7 @@ public class PearlescentInfuserUpdateTickProcedure {
                 }
                 return _retval.get();
             }
-        }.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == UnusualendModItems.CITRINE_CHUNK.get()) {
+        }.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == UnusualEndItems.CITRINE_CHUNK.get()) {
             if (new Object() {
                 public double getValue(LevelAccessor world, BlockPos pos, String tag) {
                     BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -85,7 +85,7 @@ public class PearlescentInfuserUpdateTickProcedure {
                 }
                 return stack.get();
             }
-        }.getItemStack(world, BlockPos.containing(x, y, z), 1)).getItem() == UnusualendModItems.SHINY_CRYSTAL.get()) {
+        }.getItemStack(world, BlockPos.containing(x, y, z), 1)).getItem() == UnusualEndItems.SHINY_CRYSTAL.get()) {
             if (new Object() {
                 public double getValue(LevelAccessor world, BlockPos pos, String tag) {
                     BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -141,7 +141,7 @@ public class PearlescentInfuserUpdateTickProcedure {
                 }
                 return _retval.get();
             }
-        }.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == UnusualendModItems.PRISMALITE_GEM.get()) {
+        }.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == UnusualEndItems.PRISMALITE_GEM.get()) {
             if (new Object() {
                 public double getValue(LevelAccessor world, BlockPos pos, String tag) {
                     BlockEntity blockEntity = world.getBlockEntity(pos);

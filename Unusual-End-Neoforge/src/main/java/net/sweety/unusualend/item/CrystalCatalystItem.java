@@ -53,10 +53,9 @@ public class CrystalCatalystItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-		String buff = "none";
-		super.appendHoverText(itemstack, world, list, flag);
-		buff = (itemstack).getOrCreateTag().getString("buff");
+	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, context, list, flag);
+		String buff = (itemstack).getOrCreateTag().getString("buff");
 		if ((itemstack.getOrCreateTag().getString("buff")).equals("")) {
 			itemstack.getOrCreateTag().putString("track", "No Current Buff");
 		}
@@ -68,19 +67,19 @@ public class CrystalCatalystItem extends Item {
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
-		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
+	public InteractionResultHolder<ItemStack> use(Level level, Player entity, InteractionHand hand) {
+		InteractionResultHolder<ItemStack> ar = super.use(level, entity, hand);
 		ItemStack itemstack = ar.getObject();
 		double x = entity.getX();
 		double y = entity.getY();
 		double z = entity.getZ();
-		CrystalCatalystRightclickedProcedure.execute(world, x, y, z, entity, itemstack);
+		CrystalCatalystRightclickedProcedure.execute(level, x, y, z, entity, itemstack);
 		return ar;
 	}
 
 	@Override
-	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
-		super.inventoryTick(itemstack, world, entity, slot, selected);
+	public void inventoryTick(ItemStack itemstack, Level level, Entity entity, int slot, boolean selected) {
+		super.inventoryTick(itemstack, level, entity, slot, selected);
 		CrystalCatalystItemInInventoryTickProcedure.execute(itemstack);
 	}
 }

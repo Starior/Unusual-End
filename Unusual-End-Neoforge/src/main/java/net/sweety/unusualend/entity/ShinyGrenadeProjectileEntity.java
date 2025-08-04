@@ -14,13 +14,13 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualendModEntities;
-import net.sweety.unusualend.init.UnusualendModItems;
 import net.sweety.unusualend.procedures.ShinyGrenadeProjectileProjectileHitsBlockProcedure;
 
 @OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
 public class ShinyGrenadeProjectileEntity extends AbstractArrow implements ItemSupplier {
-	public static final ItemStack PROJECTILE_ITEM = new ItemStack(UnusualendModItems.SHINY_CHARGE.get());
+	public static final ItemStack PROJECTILE_ITEM = new ItemStack(UnusualEndItems.SHINY_CHARGE.get());
 
 	public ShinyGrenadeProjectileEntity(EntityType<? extends ShinyGrenadeProjectileEntity> type, Level world) {
 		super(type, world,ItemStack.EMPTY);

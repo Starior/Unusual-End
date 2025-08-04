@@ -13,21 +13,21 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.ItemFishedEvent;
 import net.sweety.unusualend.UnusualEnd;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class WarpedReefFishProcedure {
     @SubscribeEvent
     public static void onPlayerFishItem(ItemFishedEvent event) {
         execute(event, event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getEntity());
     }
 
-    private static void execute(ItemFishedEvent event, LevelAccessor world, double x, double y, double z, Entity entity) {
+    private static void execute(ItemFishedEvent event, LevelAccessor level, double x, double y, double z, Entity entity) {
         if (entity == null)
             return;
-        if (world.getBiome(BlockPos.containing(x, y, z)).is(UnusualEnd.makeUEID("warped_reef"))) {
+        if (level.getBiome(BlockPos.containing(x, y, z)).is(UnusualEnd.makeUEID("warped_reef"))) {
             if (event != null) {
                 event.setCanceled(true);
             }
@@ -42,9 +42,9 @@ public class WarpedReefFishProcedure {
                     }
                 }
             }
-            if (!world.isClientSide() && world.getServer() != null) {
-                for (ItemStack itemstackiterator : world.getServer().getLootData().getLootTable(new ResourceLocation("minecraft:warped_reef_fishing")).getRandomItems(new LootParams.Builder((ServerLevel) world).create(LootContextParamSets.EMPTY))) {
-                    if (world instanceof ServerLevel _level) {
+            if (!level.isClientSide() && level.getServer() != null) {
+                for (ItemStack itemstackiterator : level.getLevelData().getLootData().getLootTable(ResourceLocation.withDefaultNamespace("warped_reef_fishing")).getRandomItems(new LootParams.Builder((ServerLevel) level).create(LootContextParamSets.EMPTY))) {
+                    if (level instanceof ServerLevel _level) {
                         ItemEntity entityToSpawn = new ItemEntity(_level, (entity.getX()), (entity.getY() + 0.5), (entity.getZ()), itemstackiterator);
                         entityToSpawn.setPickUpDelay(1);
                         _level.addFreshEntity(entityToSpawn);

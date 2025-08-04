@@ -14,24 +14,24 @@ public class WarpedTenacityOnEffectActiveTickProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()).getAmplifier() : 0) >= 5) {
+		if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY).getAmplifier() : 0) >= 5) {
 			if (Math.random() < 0.01) {
 				entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.CRAMMING)),
-						(float) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()).getAmplifier() : 0) / 4));
+						(float) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY).getAmplifier() : 0) / 4));
 			}
 		}
-		if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()).getAmplifier() : 0) >= 4) {
+		if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY).getAmplifier() : 0) >= 4) {
 			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1) > 6) {
 				if (Math.random() < 0.01) {
 					entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.CRAMMING)), 1);
 				}
 			}
 		}
-		if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()).getAmplifier() : 0) >= 3) {
+		if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY).getAmplifier() : 0) >= 3) {
 			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 				_entity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 100, 0));
 		}
-		if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY.get()).getAmplifier() : 0) >= 2) {
+		if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY).getAmplifier() : 0) >= 2) {
 			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 				_entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 100, 0));
 		}

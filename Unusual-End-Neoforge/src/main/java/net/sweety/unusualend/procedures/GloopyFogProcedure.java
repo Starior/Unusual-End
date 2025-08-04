@@ -9,16 +9,13 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ViewportEvent;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.configuration.UEConfig;
 
-import javax.annotation.Nullable;
-
-@Mod.EventBusSubscriber(value = Dist.CLIENT)
+@EventBusSubscriber(value = Dist.CLIENT)
 public class GloopyFogProcedure {
 	public static ViewportEvent.RenderFog provider = null;
 
@@ -39,22 +36,17 @@ public class GloopyFogProcedure {
 
 	@SubscribeEvent
 	public static void renderFog(ViewportEvent.RenderFog event) {
-		provider = event;
 		if (provider.getMode() == FogRenderer.FogMode.FOG_TERRAIN) {
 			ClientLevel level = Minecraft.getInstance().level;
 			Entity entity = provider.getCamera().getEntity();
 			if (level != null && entity != null) {
 				Vec3 pos = entity.getPosition((float) provider.getPartialTick());
-				execute(provider, level, pos.x(), pos.y(), pos.z());
+				execute(level, pos.x(), pos.y(), pos.z());
 			}
 		}
 	}
 
-	public static void execute(LevelAccessor world, double x, double y, double z) {
-		execute(null, world, x, y, z);
-	}
-
-	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z) {
+	private static void execute(LevelAccessor world, double x, double y, double z) {
 		if (world.getBiome(BlockPos.containing(x, y, z)).is(UnusualEnd.makeUEID("gloopstone_midlands")) || world.getBiome(BlockPos.containing(x, y, z)).is(UnusualEnd.makeUEID("gloopstone_lands"))) {
 			if (UEConfig.GLOOPY_FOG.get()) {
 				setDistance(0, 200);
