@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ChorusTeaItem extends Item {
     public ChorusTeaItem() {
-        super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.6f).alwaysEat().build()));
+        super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(2).saturationModifier(0.6f).alwaysEdible().build()));
     }
 
     @Override
@@ -23,13 +23,13 @@ public class ChorusTeaItem extends Item {
     }
 
     @Override
-    public int getUseDuration(ItemStack itemstack) {
+    public int getUseDuration(ItemStack itemstack,LivingEntity entity) {
         return 16;
     }
 
     @Override
-    public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, level, list, flag);
+    public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(itemstack, context, list, flag);
         list.add(Component.translatable("lore.unusualend.clear_effects").withStyle(ChatFormatting.BLUE));
     }
 

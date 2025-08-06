@@ -28,7 +28,6 @@ public class BondLeechingChargeProjectileEntity extends AbstractArrow implements
     public BondLeechingChargeProjectileEntity(EntityType<? extends BondLeechingChargeProjectileEntity> type, LivingEntity entity, Level level) {
         super(type, entity, level, ItemStack.EMPTY, null);
     }
-
     @Override
     @OnlyIn(Dist.CLIENT)
     public ItemStack getItem() {

@@ -11,7 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.network.BolokNotesButtonMessage;
+import net.sweety.unusualend.network.BolokNotesPacket;
 import net.sweety.unusualend.world.inventory.BolokNotesMenu;
 
 import java.util.HashMap;
@@ -76,10 +76,7 @@ public class BolokNotesScreen extends AbstractContainerScreen<BolokNotesMenu> {
     @Override
     public void init() {
         super.init();
-        button_done = Button.builder(Component.translatable("gui.unusualend.bolok_notes.button_done"), e -> {
-            PacketDistributor.SERVER.noArg().send(new BolokNotesButtonMessage(0, x, y, z));
-            BolokNotesButtonMessage.handleButtonAction(entity, 0, x, y, z);
-        }).bounds(this.leftPos + -72, this.topPos + 66, 142, 20).build();
+        button_done = Button.builder(Component.translatable("gui.unusualend.bolok_notes.button_done"), e -> PacketDistributor.sendToServer(new BolokNotesPacket(0, x, y, z))).bounds(this.leftPos - 72, this.topPos + 66, 142, 20).build();
         guistate.put("button:button_done", button_done);
         this.addRenderableWidget(button_done);
     }

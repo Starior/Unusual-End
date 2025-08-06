@@ -14,7 +14,7 @@ public class CrystalFlowerMobplayerCollidesWithPlantProcedure {
 		if (entity == null)
 			return;
 		if (UEConfig.CRYSTAL_NAUSEA.get()) {
-			if (!entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("neoforge:blobqueen_immune")))) {
+			if (!entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse("neoforge:blobqueen_immune")))) {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 120, 0));
 			}

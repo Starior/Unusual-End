@@ -8,7 +8,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
@@ -37,14 +36,6 @@ import java.util.function.UnaryOperator;
 
 public class UnusualEndMiscRegister {
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS = DeferredRegister.create(BuiltInRegistries.RECIPE_SERIALIZER, "unusualend");
-
-    public static final DeferredRegister<PaintingVariant> PAINTINGS = DeferredRegister.create(BuiltInRegistries.PAINTING_VARIANT, UnusualEnd.MODID);
-    public static final DeferredHolder<PaintingVariant, PaintingVariant> END_LANDSCAPE = PAINTINGS.register("end_landscape", () -> new PaintingVariant(16, 16));
-    public static final DeferredHolder<PaintingVariant, PaintingVariant> GLOOP = PAINTINGS.register("gloop", () -> new PaintingVariant(32, 16));
-    public static final DeferredHolder<PaintingVariant, PaintingVariant> STARRY_VOID = PAINTINGS.register("starry_void", () -> new PaintingVariant(48, 16));
-
-    public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPE = DeferredRegister.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES, UnusualEnd.MODID);
-    public static final DeferredHolder<AttachmentType<?>, AttachmentType<BolokResearchNotesInventoryCapability>> BOLOK_NOTE_INVENTORY = ATTACHMENT_TYPE.register("bolok_note_inventory", () -> AttachmentType.serializable(BolokResearchNotesInventoryCapability::new).build());
 
     public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(BuiltInRegistries.MENU, UnusualEnd.MODID);
     public static final DeferredHolder<MenuType<?>, MenuType<PurpurTankGUIMenu>> PURPUR_TANK_GUI = MENUS.register("purpur_tank_gui", () -> IMenuTypeExtension.create(PurpurTankGUIMenu::new));
@@ -99,10 +90,10 @@ public class UnusualEndMiscRegister {
 
     public static void register(IEventBus bus) {
         SERIALIZERS.register(bus);
-        PAINTINGS.register(bus);
         MENUS.register(bus);
         MOB_EFFECTS.register(bus);
         ENCHANTMENT_EFFECTS.register(bus);
+        DATA_COMPONENT_TYPES.register(bus);
         PARTICLES.register(bus);
         FEATURES.register(bus);
     }

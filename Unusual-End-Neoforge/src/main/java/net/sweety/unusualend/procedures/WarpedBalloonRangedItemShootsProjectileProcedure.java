@@ -38,7 +38,6 @@ public class WarpedBalloonRangedItemShootsProjectileProcedure {
                 public Projectile getArrow(Level level, float damage, int knockback) {
                     AbstractArrow entityToSpawn = new WarpedBalloonProjEntity(UnusualendModEntities.WARPED_BALLOON_PROJ.get(), level);
                     entityToSpawn.setBaseDamage(damage);
-                    entityToSpawn.setKnockback(knockback);
                     entityToSpawn.setSilent(true);
                     return entityToSpawn;
                 }

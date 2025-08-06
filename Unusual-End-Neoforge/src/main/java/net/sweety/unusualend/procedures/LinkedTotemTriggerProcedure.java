@@ -17,15 +17,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.living.LivingUseTotemEvent;
 import net.sweety.unusualend.configuration.UEConfig;
-import net.sweety.unusualend.network.UnusualendModVariables;
-
-import javax.annotation.Nullable;
+import net.sweety.unusualend.network.UnusualEndVariables;
 
 @EventBusSubscriber
 public class LinkedTotemTriggerProcedure {
@@ -36,12 +32,13 @@ public class LinkedTotemTriggerProcedure {
         }
     }
 
-    private static void execute(LevelAccessor world, Entity entity, ItemStack itemstack) {
+    private static void execute(LevelAccessor world, Entity entity, ItemStack stack) {
         if (entity == null)
             return;
-        if (itemstack.getOrCreateTag().getBoolean("LinkedTotem")) {
-            if (!(itemstack.getOrCreateTag().getString("TpW")).equals("" + entity.level().dimension())) {
-                if ((itemstack.getOrCreateTag().getString("TpW")).equals("" + Level.OVERWORLD)) {
+
+        if (NBTProcessor.getNBTBoolean(stack, "LinkedTotem")) {
+            if (!NBTProcessor.getNBTString(stack, "TpW").equals("" + entity.level().dimension())) {
+                if (NBTProcessor.getNBTString(stack, "TpW").equals("" + Level.OVERWORLD)) {
                     if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
                         ResourceKey<Level> destinationType = Level.OVERWORLD;
                         if (_player.level().dimension() == destinationType)
@@ -51,13 +48,13 @@ public class LinkedTotemTriggerProcedure {
                             _player.connection.send(new ClientboundGameEventPacket(ClientboundGameEventPacket.WIN_GAME, 0));
                             _player.teleportTo(nextLevel, _player.getX(), _player.getY(), _player.getZ(), _player.getYRot(), _player.getXRot());
                             _player.connection.send(new ClientboundPlayerAbilitiesPacket(_player.getAbilities()));
-                            for (MobEffectInstance _effectinstance : _player.getActiveEffects())
-                                _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance));
+                            for (MobEffectInstance effectInstance : _player.getActiveEffects())
+                                _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), effectInstance, true));
                             _player.connection.send(new ClientboundLevelEventPacket(1032, BlockPos.ZERO, 0, false));
                         }
                     }
                 }
-                if ((itemstack.getOrCreateTag().getString("TpW")).equals("" + Level.NETHER)) {
+                if (NBTProcessor.getNBTString(stack, "TpW").equals("" + Level.NETHER)) {
                     if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
                         ResourceKey<Level> destinationType = Level.NETHER;
                         if (_player.level().dimension() == destinationType)
@@ -68,12 +65,12 @@ public class LinkedTotemTriggerProcedure {
                             _player.teleportTo(nextLevel, _player.getX(), _player.getY(), _player.getZ(), _player.getYRot(), _player.getXRot());
                             _player.connection.send(new ClientboundPlayerAbilitiesPacket(_player.getAbilities()));
                             for (MobEffectInstance _effectinstance : _player.getActiveEffects())
-                                _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance));
+                                _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance, true));
                             _player.connection.send(new ClientboundLevelEventPacket(1032, BlockPos.ZERO, 0, false));
                         }
                     }
                 }
-                if ((itemstack.getOrCreateTag().getString("TpW")).equals("" + Level.END)) {
+                if (NBTProcessor.getNBTString(stack, "TpW").equals("" + Level.END)) {
                     if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
                         ResourceKey<Level> destinationType = Level.END;
                         if (_player.level().dimension() == destinationType)
@@ -84,7 +81,7 @@ public class LinkedTotemTriggerProcedure {
                             _player.teleportTo(nextLevel, _player.getX(), _player.getY(), _player.getZ(), _player.getYRot(), _player.getXRot());
                             _player.connection.send(new ClientboundPlayerAbilitiesPacket(_player.getAbilities()));
                             for (MobEffectInstance _effectinstance : _player.getActiveEffects())
-                                _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance));
+                                _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance, true));
                             _player.connection.send(new ClientboundLevelEventPacket(1032, BlockPos.ZERO, 0, false));
                         }
                     }
@@ -92,12 +89,9 @@ public class LinkedTotemTriggerProcedure {
             }
             entity.setDeltaMovement(new Vec3(0, 0, 0));
             entity.fallDistance = 0;
-            {
-                Entity _ent = entity;
-                _ent.teleportTo((itemstack.getOrCreateTag().getDouble("TpX")), (itemstack.getOrCreateTag().getDouble("TpY")), (itemstack.getOrCreateTag().getDouble("TpZ")));
-                if (_ent instanceof ServerPlayer _serverPlayer)
-                    _serverPlayer.connection.teleport((itemstack.getOrCreateTag().getDouble("TpX")), (itemstack.getOrCreateTag().getDouble("TpY")), (itemstack.getOrCreateTag().getDouble("TpZ")), _ent.getYRot(), _ent.getXRot());
-            }
+            entity.teleportTo(NBTProcessor.getNBTDouble(stack,"TpX"), NBTProcessor.getNBTDouble(stack,"TpY"), NBTProcessor.getNBTDouble(stack,"TpZ"));
+            if (entity instanceof ServerPlayer _serverPlayer)
+                _serverPlayer.connection.teleport(NBTProcessor.getNBTDouble(stack,"TpX"), NBTProcessor.getNBTDouble(stack,"TpY"), NBTProcessor.getNBTDouble(stack,"TpZ"), entity.getYRot(), entity.getXRot());
             if (world instanceof ServerLevel _level)
                 _level.sendParticles(ParticleTypes.PORTAL, (entity.getX()), (entity.getY()), (entity.getZ()), 50, 0.5, 1.5, 0.5, 0);
             if (world instanceof Level _level) {
@@ -108,11 +102,11 @@ public class LinkedTotemTriggerProcedure {
                 }
             }
             if (UEConfig.NEED_ANCHOR.get()) {
-                entity.getPersistentData().putString("TargetDimension", (itemstack.getOrCreateTag().getString("TpW")));
-                entity.getPersistentData().putDouble("TargetX", (itemstack.getOrCreateTag().getDouble("TpX") - 0.5));
-                entity.getPersistentData().putDouble("TargetY", (itemstack.getOrCreateTag().getDouble("TpY")));
-                entity.getPersistentData().putDouble("TargetZ", (itemstack.getOrCreateTag().getDouble("TpZ") - 0.5));
-                UnusualendModVariables.PlayerVariables variables = entity.getData(UnusualendModVariables.PLAYER_VARIABLES.get());
+                entity.getPersistentData().putString("TargetDimension", NBTProcessor.getNBTString(stack,"TpW"));
+                entity.getPersistentData().putDouble("TargetX", NBTProcessor.getNBTDouble(stack,"TpX") - 0.5);
+                entity.getPersistentData().putDouble("TargetY", NBTProcessor.getNBTDouble(stack,"TpY"));
+                entity.getPersistentData().putDouble("TargetZ", NBTProcessor.getNBTDouble(stack,"TpZ") - 0.5);
+                UnusualEndVariables.PlayerVariables variables = entity.getData(UnusualEndVariables.PLAYER_VARIABLES.get());
                 variables.isTeleporting = true;
                 variables.syncPlayerVariables(entity);
             }

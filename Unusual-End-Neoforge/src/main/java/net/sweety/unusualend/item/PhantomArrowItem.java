@@ -10,6 +10,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.entity.PhantomArrowProjectileEntity;
 import net.sweety.unusualend.init.UnusualendModEntities;
+import org.jetbrains.annotations.Nullable;
 
 public class PhantomArrowItem extends ArrowItem {
 	public PhantomArrowItem() {
@@ -21,8 +22,9 @@ public class PhantomArrowItem extends ArrowItem {
 	//	super.appendHoverText(itemstack, level, list, flag);
 	//	list.add(Component.literal("\u00A77Not affected by Gravity"));
 	//}
+
 	@Override
-	public AbstractArrow createArrow(Level worldIn, ItemStack stack, LivingEntity shooter) {
-		return new PhantomArrowProjectileEntity(UnusualendModEntities.PHANTOM_ARROW_PROJECTILE.get(), shooter, worldIn);
+	public AbstractArrow createArrow(Level level, ItemStack ammo, LivingEntity shooter, @Nullable ItemStack weapon) {
+		return new PhantomArrowProjectileEntity(UnusualendModEntities.PHANTOM_ARROW_PROJECTILE.get(), shooter, level);
 	}
 }

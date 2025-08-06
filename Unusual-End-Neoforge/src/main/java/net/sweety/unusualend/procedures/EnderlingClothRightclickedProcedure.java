@@ -22,7 +22,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.scores.PlayerTeam;
 import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
-import net.sweety.unusualend.network.UnusualendModVariables;
+import net.sweety.unusualend.network.UnusualEndVariables;
 
 public class EnderlingClothRightclickedProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
@@ -37,7 +37,7 @@ public class EnderlingClothRightclickedProcedure {
                 _entity.swing(InteractionHand.OFF_HAND, true);
         }
         double _setval = 1200;
-        UnusualendModVariables.PlayerVariables variables = entity.getData(UnusualendModVariables.PLAYER_VARIABLES.get());
+        UnusualEndVariables.PlayerVariables variables = entity.getData(UnusualEndVariables.PLAYER_VARIABLES.get());
         variables.ScrapeOverlay = _setval;
         variables.syncPlayerVariables(entity);
         if (world instanceof ServerLevel _level)
@@ -48,7 +48,7 @@ public class EnderlingClothRightclickedProcedure {
         if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
             _entity.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 1200, 1, false, false));
         if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-            _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.SPECTRAL_STRIDE.get(), 1200, 0, false, false));
+            _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.SPECTRAL_STRIDE, 1200, 0, false, false));
         if (entity instanceof Player _player)
             _player.getCooldowns().addCooldown(UnusualEndItems.SPECTRAL_CLOTH.get(), 100);
         if (world instanceof Level _level)

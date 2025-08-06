@@ -2,21 +2,22 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.sweety.unusualend.init.UnusualEndMiscRegister;
+import net.minecraft.world.level.Level;
+import net.sweety.unusualend.init.UnusualEndEnchantments;
 
 public class CrystalCatalystItemInInventoryTickProcedure {
-	public static void execute(ItemStack itemstack) {
-		if (itemstack.getOrCreateTag().getDouble("cataCooldown") < 400) {
-			itemstack.getOrCreateTag().putDouble("cataCooldown", (itemstack.getOrCreateTag().getDouble("cataCooldown") + 0.3));
-			if (EnchantmentHelper.getItemEnchantmentLevel(UnusualEndMiscRegister.ARCANE_RECOVERY.get(), itemstack) != 0) {
-				if (itemstack.getOrCreateTag().getDouble("cataCooldown") + 0.1 * itemstack.getEnchantmentLevel(UnusualEndMiscRegister.ARCANE_RECOVERY.get()) >= 400) {
-					itemstack.getOrCreateTag().putDouble("cataCooldown", 400);
-				} else {
-					itemstack.getOrCreateTag().putDouble("cataCooldown", (itemstack.getOrCreateTag().getDouble("cataCooldown") + 0.1 * itemstack.getEnchantmentLevel(UnusualEndMiscRegister.ARCANE_RECOVERY.get())));
-				}
-			}
-		} else {
-			itemstack.getOrCreateTag().putDouble("cataCooldown", 400);
-		}
-	}
+    public static void execute(ItemStack stack, Level level) {
+        if (NBTProcessor.getNBTDouble(stack, "cataCooldown") < 400) {
+            NBTProcessor.setNBTDouble(stack, "cataCooldown", (NBTProcessor.getNBTDouble(stack, "cataCooldown") + 0.3));
+            if (EnchantmentHelper.getTagEnchantmentLevel(level.holderOrThrow(UnusualEndEnchantments.ARCANE_RECOVERY), stack) != 0) {
+                if (NBTProcessor.getNBTDouble(stack, "cataCooldown") + 0.1 * stack.getEnchantmentLevel(level.holderOrThrow(UnusualEndEnchantments.ARCANE_RECOVERY)) >= 400) {
+                    NBTProcessor.setNBTDouble(stack, "cataCooldown", 400);
+                } else {
+                    NBTProcessor.setNBTDouble(stack, "cataCooldown", NBTProcessor.getNBTDouble(stack, "cataCooldown") + 0.1 * stack.getEnchantmentLevel(level.holderOrThrow(UnusualEndEnchantments.ARCANE_RECOVERY)));
+                }
+            }
+        } else {
+            NBTProcessor.setNBTDouble(stack, "cataCooldown", 400);
+        }
+    }
 }

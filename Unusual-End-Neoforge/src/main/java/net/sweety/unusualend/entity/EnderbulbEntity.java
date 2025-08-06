@@ -29,11 +29,11 @@ public class EnderbulbEntity extends Monster {
 
 	public EnderbulbEntity(EntityType<EnderbulbEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(1.5f);
 		xpReward = 3;
 		setNoAi(false);
 		this.moveControl = new FlyingMoveControl(this, 10, true);
 	}
+
 	@Override
 	protected PathNavigation createNavigation(Level world) {
 		return new FlyingPathNavigation(this, world);
@@ -131,6 +131,7 @@ public class EnderbulbEntity extends Monster {
 		builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 0.4);
 		builder = builder.add(Attributes.ATTACK_KNOCKBACK, 0.2);
 		builder = builder.add(Attributes.FLYING_SPEED, 0.3);
+		builder = builder.add(Attributes.STEP_HEIGHT, 1.5f);
 		return builder;
 	}
 }

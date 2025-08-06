@@ -12,7 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.network.InfuserGUIButtonMessage;
+import net.sweety.unusualend.network.InfuserGUIPacket;
 import net.sweety.unusualend.procedures.ReturnCitrineProcedure;
 import net.sweety.unusualend.procedures.ReturnPrismaticProcedure;
 import net.sweety.unusualend.procedures.ReturnShinyProcedure;
@@ -164,10 +164,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 	public void init() {
 		super.init();
 		imagebutton_1_base = new ImageButton(this.leftPos - 2, this.topPos + 51, 18, 12,
-				new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_1_base.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_1_base.png")), e -> {
-			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(0, x, y, z));
-			InfuserGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
-		}) {
+				new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_1_base.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_1_base.png")), e -> PacketDistributor.sendToServer(new InfuserGUIPacket(0, x, y, z))) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int x, int y, float partialTicks) {
 				guiGraphics.blit(sprites.get(isActive(), isHoveredOrFocused()), getX(), getY(), 18, 24, width, height, width, height);
@@ -176,8 +173,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		guistate.put("button:imagebutton_1_base", imagebutton_1_base);
 		this.addRenderableWidget(imagebutton_1_base);
 		imagebutton_1_base1 = new ImageButton(this.leftPos + 87, this.topPos + 38, 18, 12, new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_1_base1.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_1_base1.png")), e -> {
-			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(1, x, y, z));
-			InfuserGUIButtonMessage.handleButtonAction(entity, 1, x, y, z);
+			PacketDistributor.sendToServer(new InfuserGUIPacket(1, x, y, z));
 		}) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int x, int y, float partialTicks) {
@@ -187,8 +183,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		guistate.put("button:imagebutton_1_base1", imagebutton_1_base1);
 		this.addRenderableWidget(imagebutton_1_base1);
 		imagebutton_1_base2 = new ImageButton(this.leftPos + 141, this.topPos + 38, 18, 12, new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_1_base2.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_1_base2.png")), e -> {
-			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(2, x, y, z));
-			InfuserGUIButtonMessage.handleButtonAction(entity, 2, x, y, z);
+			PacketDistributor.sendToServer(new InfuserGUIPacket(2, x, y, z));
 		}) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int x, int y, float partialTicks) {
@@ -198,8 +193,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		guistate.put("button:imagebutton_1_base2", imagebutton_1_base2);
 		this.addRenderableWidget(imagebutton_1_base2);
 		imagebutton_4_base = new ImageButton(this.leftPos + 33, this.topPos + 25, 18, 12, new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_4_base.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_4_base.png")), e -> {
-			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(3, x, y, z));
-			InfuserGUIButtonMessage.handleButtonAction(entity, 3, x, y, z);
+			PacketDistributor.sendToServer(new InfuserGUIPacket(3, x, y, z));
 		}) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int x, int y, float partialTicks) {
@@ -209,8 +203,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		guistate.put("button:imagebutton_4_base", imagebutton_4_base);
 		this.addRenderableWidget(imagebutton_4_base);
 		imagebutton_4_base1 = new ImageButton(this.leftPos + 87, this.topPos + 25, 18, 12, new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_4_base1.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_4_base1.png")), e -> {
-			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(4, x, y, z));
-			InfuserGUIButtonMessage.handleButtonAction(entity, 4, x, y, z);
+			PacketDistributor.sendToServer(new InfuserGUIPacket(4, x, y, z));
 		}) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int x, int y, float partialTicks) {
@@ -220,8 +213,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		guistate.put("button:imagebutton_4_base1", imagebutton_4_base1);
 		this.addRenderableWidget(imagebutton_4_base1);
 		imagebutton_4_base2 = new ImageButton(this.leftPos + 141, this.topPos + 25, 18, 12, new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_4_base2.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_4_base2.png")), e -> {
-			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(5, x, y, z));
-			InfuserGUIButtonMessage.handleButtonAction(entity, 5, x, y, z);
+			PacketDistributor.sendToServer(new InfuserGUIPacket(5, x, y, z));
 		}) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int x, int y, float partialTicks) {
@@ -231,8 +223,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		guistate.put("button:imagebutton_4_base2", imagebutton_4_base2);
 		this.addRenderableWidget(imagebutton_4_base2);
 		imagebutton_8_base = new ImageButton(this.leftPos + 33, this.topPos + 12, 18, 12, new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_8_base.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_8_base.png")), e -> {
-			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(6, x, y, z));
-			InfuserGUIButtonMessage.handleButtonAction(entity, 6, x, y, z);
+			PacketDistributor.sendToServer(new InfuserGUIPacket(6, x, y, z));
 		}) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int x, int y, float partialTicks) {
@@ -242,8 +233,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		guistate.put("button:imagebutton_8_base", imagebutton_8_base);
 		this.addRenderableWidget(imagebutton_8_base);
 		imagebutton_8_base1 = new ImageButton(this.leftPos + 87, this.topPos + 12, 18, 12, new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_8_base1.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_8_base1.png")), e -> {
-			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(7, x, y, z));
-			InfuserGUIButtonMessage.handleButtonAction(entity, 7, x, y, z);
+			PacketDistributor.sendToServer(new InfuserGUIPacket(7, x, y, z));
 		}) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int x, int y, float partialTicks) {
@@ -253,8 +243,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		guistate.put("button:imagebutton_8_base1", imagebutton_8_base1);
 		this.addRenderableWidget(imagebutton_8_base1);
 		imagebutton_8_base2 = new ImageButton(this.leftPos + 141, this.topPos + 12, 18, 12, new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_8_base2.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_8_base2.png")), e -> {
-			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(8, x, y, z));
-			InfuserGUIButtonMessage.handleButtonAction(entity, 8, x, y, z);
+			PacketDistributor.sendToServer(new InfuserGUIPacket(8, x, y, z));
 		}) {
 			@Override
 			public void renderWidget(GuiGraphics guiGraphics, int x, int y, float partialTicks) {

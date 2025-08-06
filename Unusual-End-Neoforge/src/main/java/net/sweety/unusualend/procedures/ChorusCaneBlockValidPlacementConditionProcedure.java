@@ -10,6 +10,6 @@ public class ChorusCaneBlockValidPlacementConditionProcedure {
 	public static boolean execute(LevelAccessor world, double x, double y, double z) {
 		return (world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualEndBlocks.CHORUS_CANE.get() || (world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualEndBlocks.BLOOMING_CHORUS_CANE.get()
 				|| (world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualEndBlocks.PURPUR_EMBEDDED_END_STONE.get()
-				|| (world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(new ResourceLocation("chorus_lib:end_stones")));
+				|| (world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(ResourceLocation.parse("chorus_lib:end_stones")));
 	}
 }

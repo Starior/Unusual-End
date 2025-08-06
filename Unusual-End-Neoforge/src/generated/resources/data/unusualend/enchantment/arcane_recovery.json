@@ -1,0 +1,19 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.unusualend.arcane_recovery"
+  },
+  "exclusive_set": "#minecraft:curse",
+  "max_cost": {
+    "base": 20,
+    "per_level_above_first": 5
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 3,
+    "per_level_above_first": 5
+  },
+  "slots": [],
+  "supported_items": "#unusualend:arcane_enchantable",
+  "weight": 5
+}

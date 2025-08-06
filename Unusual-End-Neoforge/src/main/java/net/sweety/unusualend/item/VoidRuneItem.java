@@ -5,13 +5,14 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.sweety.unusualend.procedures.NBTProcessor;
 import net.sweety.unusualend.procedures.VoidRuneItemInHandTickProcedure;
-import net.sweety.unusualend.procedures.VoidRuneMakeItemGlowProcedure;
 import net.sweety.unusualend.procedures.VoidRuneRightclickedProcedure;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class VoidRuneItem extends Item {
 	}
 
 	@Override
-	public int getUseDuration(ItemStack itemstack) {
+	public int getUseDuration(ItemStack itemstack, LivingEntity entity) {
 		return 32;
 	}
 
@@ -38,14 +39,14 @@ public class VoidRuneItem extends Item {
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public boolean isFoil(ItemStack itemstack) {
-		return VoidRuneMakeItemGlowProcedure.execute(itemstack);
+	public boolean isFoil(ItemStack stack) {
+		return NBTProcessor.getNBTDouble(stack,"XP") > 0;
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
-		double xp = itemstack.getOrCreateTag().getDouble("XP");
-		super.appendHoverText(itemstack, context, list, flag);
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		double xp = NBTProcessor.getNBTDouble(stack,"XP");
+		super.appendHoverText(stack, context, list, flag);
 		list.add(Component.literal("\u00A77When Sneaking:"));
 		list.add(Component.literal("\u00A79Slowly store Experience"));
 		list.add(Component.literal("\u00A77When Right-Clicking:"));
@@ -54,10 +55,10 @@ public class VoidRuneItem extends Item {
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
-		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
+	public InteractionResultHolder<ItemStack> use(Level level, Player entity, InteractionHand hand) {
+		InteractionResultHolder<ItemStack> ar = super.use(level, entity, hand);
 		ItemStack itemstack = ar.getObject();
-		VoidRuneRightclickedProcedure.execute(world, entity, itemstack);
+		VoidRuneRightclickedProcedure.execute(level, entity, itemstack);
 		return ar;
 	}
 

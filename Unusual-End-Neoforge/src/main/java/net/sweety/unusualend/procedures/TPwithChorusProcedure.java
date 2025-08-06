@@ -14,7 +14,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -26,22 +25,19 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.configuration.UEConfig;
 import net.sweety.unusualend.init.UnusualEndItems;
-import net.sweety.unusualend.network.UnusualendModVariables;
+import net.sweety.unusualend.network.UnusualEndVariables;
 
 public class TPwithChorusProcedure {
-    public static void execute(LevelAccessor world, Entity entity, ItemStack itemstack) {
+    public static void execute(LevelAccessor world, LivingEntity entity, ItemStack stack) {
         if (entity == null)
             return;
-        if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualEndItems.PRISMATIC_MIRROR.get()) {
-            if (entity instanceof LivingEntity _entity)
-                _entity.swing(InteractionHand.MAIN_HAND, true);
-        } else {
-            if (entity instanceof LivingEntity _entity)
-                _entity.swing(InteractionHand.OFF_HAND, true);
-        }
-        if (itemstack.getOrCreateTag().getBoolean("LinkedMirror")) {
-            if (!(itemstack.getOrCreateTag().getString("TpW")).equals("" + entity.level().dimension())) {
-                if ((itemstack.getOrCreateTag().getString("TpW")).equals("" + Level.OVERWORLD)) {
+        if (entity.getMainHandItem().getItem() == UnusualEndItems.PRISMATIC_MIRROR.get()) {
+            entity.swing(InteractionHand.MAIN_HAND, true);
+        } else
+            entity.swing(InteractionHand.OFF_HAND, true);
+        if (NBTProcessor.getNBTBoolean(stack, "LinkedMirror")) {
+            if (!NBTProcessor.getNBTString(stack, "TpW").equals("" + entity.level().dimension())) {
+                if (NBTProcessor.getNBTString(stack, "TpW").equals("" + Level.OVERWORLD)) {
                     if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
                         ResourceKey<Level> destinationType = Level.OVERWORLD;
                         if (_player.level().dimension() == destinationType)
@@ -52,12 +48,12 @@ public class TPwithChorusProcedure {
                             _player.teleportTo(nextLevel, _player.getX(), _player.getY(), _player.getZ(), _player.getYRot(), _player.getXRot());
                             _player.connection.send(new ClientboundPlayerAbilitiesPacket(_player.getAbilities()));
                             for (MobEffectInstance _effectinstance : _player.getActiveEffects())
-                                _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance));
+                                _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance, true));
                             _player.connection.send(new ClientboundLevelEventPacket(1032, BlockPos.ZERO, 0, false));
                         }
                     }
                 }
-                if ((itemstack.getOrCreateTag().getString("TpW")).equals("" + Level.NETHER)) {
+                if (NBTProcessor.getNBTString(stack, "TpW").equals("" + Level.NETHER)) {
                     if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
                         ResourceKey<Level> destinationType = Level.NETHER;
                         if (_player.level().dimension() == destinationType)
@@ -68,12 +64,12 @@ public class TPwithChorusProcedure {
                             _player.teleportTo(nextLevel, _player.getX(), _player.getY(), _player.getZ(), _player.getYRot(), _player.getXRot());
                             _player.connection.send(new ClientboundPlayerAbilitiesPacket(_player.getAbilities()));
                             for (MobEffectInstance _effectinstance : _player.getActiveEffects())
-                                _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance));
+                                _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance, true));
                             _player.connection.send(new ClientboundLevelEventPacket(1032, BlockPos.ZERO, 0, false));
                         }
                     }
                 }
-                if ((itemstack.getOrCreateTag().getString("TpW")).equals("" + Level.END)) {
+                if (NBTProcessor.getNBTString(stack, "TpW").equals("" + Level.END)) {
                     if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
                         ResourceKey<Level> destinationType = Level.END;
                         if (_player.level().dimension() == destinationType)
@@ -84,21 +80,18 @@ public class TPwithChorusProcedure {
                             _player.teleportTo(nextLevel, _player.getX(), _player.getY(), _player.getZ(), _player.getYRot(), _player.getXRot());
                             _player.connection.send(new ClientboundPlayerAbilitiesPacket(_player.getAbilities()));
                             for (MobEffectInstance _effectinstance : _player.getActiveEffects())
-                                _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance));
+                                _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance, true));
                             _player.connection.send(new ClientboundLevelEventPacket(1032, BlockPos.ZERO, 0, false));
                         }
                     }
                 }
             }
             entity.fallDistance = 0;
-            {
-                Entity _ent = entity;
-                _ent.teleportTo((itemstack.getOrCreateTag().getDouble("TpX")), (itemstack.getOrCreateTag().getDouble("TpY")), (itemstack.getOrCreateTag().getDouble("TpZ")));
-                if (_ent instanceof ServerPlayer _serverPlayer)
-                    _serverPlayer.connection.teleport((itemstack.getOrCreateTag().getDouble("TpX")), (itemstack.getOrCreateTag().getDouble("TpY")), (itemstack.getOrCreateTag().getDouble("TpZ")), _ent.getYRot(), _ent.getXRot());
-            }
+            entity.teleportTo(NBTProcessor.getNBTDouble(stack, "TpX"), NBTProcessor.getNBTDouble(stack, "TpY"), NBTProcessor.getNBTDouble(stack, "TpZ"));
+            if (entity instanceof ServerPlayer _serverPlayer)
+                _serverPlayer.connection.teleport(NBTProcessor.getNBTDouble(stack, "TpX"), NBTProcessor.getNBTDouble(stack, "TpY"), NBTProcessor.getNBTDouble(stack, "TpZ"), entity.getYRot(), entity.getXRot());
             if (entity instanceof Player _player)
-                _player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) UEConfig.PRISMATIC_MIRROR.get());
+                _player.getCooldowns().addCooldown(stack.getItem(), (int) (double) UEConfig.PRISMATIC_MIRROR.get());
             if (world instanceof ServerLevel _level)
                 _level.sendParticles(ParticleTypes.PORTAL, (entity.getX()), (entity.getY()), (entity.getZ()), 50, 0.5, 1.5, 0.5, 0);
             if (world instanceof Level _level) {
@@ -119,20 +112,14 @@ public class TPwithChorusProcedure {
                     return false;
                 }
             }.checkGamemode(entity))) {
-                {
-                    ItemStack _ist = itemstack;
-                    if (_ist.hurt(1, RandomSource.create(), null)) {
-                        _ist.shrink(1);
-                        _ist.setDamageValue(0);
-                    }
-                }
+                stack.hurtAndBreak(1, entity, entity.getEquipmentSlotForItem(stack));
             }
             if (UEConfig.NEED_ANCHOR.get()) {
-                entity.getPersistentData().putString("TargetDimension", (itemstack.getOrCreateTag().getString("TpW")));
-                entity.getPersistentData().putDouble("TargetX", (itemstack.getOrCreateTag().getDouble("TpX") - 0.5));
-                entity.getPersistentData().putDouble("TargetY", (itemstack.getOrCreateTag().getDouble("TpY")));
-                entity.getPersistentData().putDouble("TargetZ", (itemstack.getOrCreateTag().getDouble("TpZ") - 0.5));
-                UnusualendModVariables.PlayerVariables variables = entity.getData(UnusualendModVariables.PLAYER_VARIABLES.get());
+                entity.getPersistentData().putString("TargetDimension", NBTProcessor.getNBTString(stack, "TpW"));
+                entity.getPersistentData().putDouble("TargetX", NBTProcessor.getNBTDouble(stack, "TpX") - 0.5);
+                entity.getPersistentData().putDouble("TargetY", NBTProcessor.getNBTDouble(stack, "TpY"));
+                entity.getPersistentData().putDouble("TargetZ", NBTProcessor.getNBTDouble(stack, "TpZ") - 0.5);
+                UnusualEndVariables.PlayerVariables variables = entity.getData(UnusualEndVariables.PLAYER_VARIABLES.get());
                 variables.isTeleporting = true;
                 variables.syncPlayerVariables(entity);
             }
@@ -198,7 +185,7 @@ public class TPwithChorusProcedure {
                                 _player.teleportTo(nextLevel, _player.getX(), _player.getY(), _player.getZ(), _player.getYRot(), _player.getXRot());
                                 _player.connection.send(new ClientboundPlayerAbilitiesPacket(_player.getAbilities()));
                                 for (MobEffectInstance _effectinstance : _player.getActiveEffects())
-                                    _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance));
+                                    _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance, true));
                                 _player.connection.send(new ClientboundLevelEventPacket(1032, BlockPos.ZERO, 0, false));
                             }
                         }
@@ -220,7 +207,7 @@ public class TPwithChorusProcedure {
                                 _player.teleportTo(nextLevel, _player.getX(), _player.getY(), _player.getZ(), _player.getYRot(), _player.getXRot());
                                 _player.connection.send(new ClientboundPlayerAbilitiesPacket(_player.getAbilities()));
                                 for (MobEffectInstance _effectinstance : _player.getActiveEffects())
-                                    _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance));
+                                    _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance, true));
                                 _player.connection.send(new ClientboundLevelEventPacket(1032, BlockPos.ZERO, 0, false));
                             }
                         }
@@ -242,40 +229,39 @@ public class TPwithChorusProcedure {
                                 _player.teleportTo(nextLevel, _player.getX(), _player.getY(), _player.getZ(), _player.getYRot(), _player.getXRot());
                                 _player.connection.send(new ClientboundPlayerAbilitiesPacket(_player.getAbilities()));
                                 for (MobEffectInstance _effectinstance : _player.getActiveEffects())
-                                    _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance));
+                                    _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance, true));
                                 _player.connection.send(new ClientboundLevelEventPacket(1032, BlockPos.ZERO, 0, false));
                             }
                         }
                     }
                 }
                 {
-                    Entity _ent = entity;
-                    _ent.teleportTo(
+                    entity.teleportTo(
                             (((entity instanceof ServerPlayer _player && !_player.level().isClientSide())
-                                    ? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getX() : _player.level().getLevelData().getXSpawn())
+                                    ? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getX() : _player.level().getLevelData().getSpawnPos().getX())
                                     : 0) + 0.5),
                             ((entity instanceof ServerPlayer _player && !_player.level().isClientSide())
-                                    ? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getY() : _player.level().getLevelData().getYSpawn())
+                                    ? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getY() : _player.level().getLevelData().getSpawnPos().getY())
                                     : 0),
                             (((entity instanceof ServerPlayer _player && !_player.level().isClientSide())
-                                    ? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getZ() : _player.level().getLevelData().getZSpawn())
+                                    ? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getZ() : _player.level().getLevelData().getSpawnPos().getZ())
                                     : 0) + 0.5));
-                    if (_ent instanceof ServerPlayer _serverPlayer)
+                    if (entity instanceof ServerPlayer _serverPlayer)
                         _serverPlayer.connection.teleport(
                                 (((entity instanceof ServerPlayer _player && !_player.level().isClientSide())
-                                        ? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getX() : _player.level().getLevelData().getXSpawn())
+                                        ? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getX() : _player.level().getLevelData().getSpawnPos().getX())
                                         : 0) + 0.5),
                                 ((entity instanceof ServerPlayer _player && !_player.level().isClientSide())
-                                        ? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getY() : _player.level().getLevelData().getYSpawn())
+                                        ? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getY() : _player.level().getLevelData().getSpawnPos().getY())
                                         : 0),
                                 (((entity instanceof ServerPlayer _player && !_player.level().isClientSide())
-                                        ? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getZ() : _player.level().getLevelData().getZSpawn())
+                                        ? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getZ() : _player.level().getLevelData().getSpawnPos().getZ())
                                         : 0) + 0.5),
-                                _ent.getYRot(), _ent.getXRot());
+                                entity.getYRot(), entity.getXRot());
                 }
                 entity.fallDistance = 0;
-                if (entity instanceof Player _player)
-                    _player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) UEConfig.PRISMATIC_MIRROR.get());
+                if (entity instanceof Player player)
+                    player.getCooldowns().addCooldown(stack.getItem(), (int) (double) UEConfig.PRISMATIC_MIRROR.get());
                 if (world instanceof ServerLevel _level)
                     _level.sendParticles(ParticleTypes.PORTAL, (entity.getX()), (entity.getY()), (entity.getZ()), 50, 0.5, 1.5, 0.5, 0);
                 if (world instanceof Level _level) {
@@ -296,13 +282,7 @@ public class TPwithChorusProcedure {
                         return false;
                     }
                 }.checkGamemode(entity))) {
-                    {
-                        ItemStack _ist = itemstack;
-                        if (_ist.hurt(1, RandomSource.create(), null)) {
-                            _ist.shrink(1);
-                            _ist.setDamageValue(0);
-                        }
-                    }
+                    stack.hurtAndBreak(1, entity, entity.getEquipmentSlotForItem(stack));
                 }
             } else {
                 if (entity instanceof Player _player && !_player.level().isClientSide())

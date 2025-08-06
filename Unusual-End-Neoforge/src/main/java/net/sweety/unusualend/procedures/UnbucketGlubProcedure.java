@@ -26,12 +26,12 @@ import net.sweety.unusualend.init.UnusualendModEntities;
 import java.util.Comparator;
 
 public class UnbucketGlubProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, Direction direction, Entity entity, ItemStack itemstack) {
+	public static void execute(LevelAccessor world, double x, double y, double z, Direction direction, Entity entity, ItemStack stack) {
 		if (direction == null || entity == null)
 			return;
 		String name = "";
 		if (!entity.isShiftKeyDown()) {
-			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == itemstack.getItem()) {
+			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == stack.getItem()) {
 				if (!(new Object() {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
@@ -53,7 +53,7 @@ public class UnbucketGlubProcedure {
 				}
 				if (entity instanceof LivingEntity _entity)
 					_entity.swing(InteractionHand.MAIN_HAND, true);
-			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == itemstack.getItem()) {
+			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == stack.getItem()) {
 				if (!(new Object() {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
@@ -76,11 +76,8 @@ public class UnbucketGlubProcedure {
 				if (entity instanceof LivingEntity _entity)
 					_entity.swing(InteractionHand.OFF_HAND, true);
 			}
-			if (world instanceof ServerLevel _level) {
-				Entity entityToSpawn = UnusualendModEntities.GLUB.get().spawn(_level, BlockPos.containing(x + direction.getStepX(), y + direction.getStepY(), z + direction.getStepZ()), MobSpawnType.MOB_SUMMONED);
-				if (entityToSpawn != null) {
-				}
-			}
+			if (world instanceof ServerLevel _level)
+				UnusualendModEntities.GLUB.get().spawn(_level, BlockPos.containing(x + direction.getStepX(), y + direction.getStepY(), z + direction.getStepZ()), MobSpawnType.MOB_SUMMONED);
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
 					_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.BUCKET_FILL_FISH, SoundSource.NEUTRAL, 1, 1);
@@ -89,8 +86,8 @@ public class UnbucketGlubProcedure {
 				}
 			}
 			if (!world.getEntitiesOfClass(WarpedJellyfishEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).isEmpty()
-					&& itemstack.getOrCreateTag().getBoolean("isNamed")) {
-				name = itemstack.getDisplayName().getString();
+					&& NBTProcessor.getNBTBoolean(stack,"isNamed")) {
+				name = stack.getDisplayName().getString();
 				name = name.substring(1, (name).length() - 1);
 				world.getEntitiesOfClass(WarpedJellyfishEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
 					Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
@@ -98,13 +95,13 @@ public class UnbucketGlubProcedure {
 					}
 				}.compareDistOf((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ()))).findFirst().orElse(null).setCustomName(Component.literal(name));
 			}
-			if (itemstack.getOrCreateTag().getDouble("tagHealth") != 0) {
+			if (NBTProcessor.getNBTDouble(stack,"tagHealth") != 0) {
 				if (((Entity) world.getEntitiesOfClass(WarpedJellyfishEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
 					Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
 						return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
 					}
 				}.compareDistOf((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ()))).findFirst().orElse(null)) instanceof LivingEntity _entity)
-					_entity.setHealth((float) itemstack.getOrCreateTag().getDouble("tagHealth"));
+					_entity.setHealth((float) NBTProcessor.getNBTDouble(stack,"tagHealth"));
 			}
 		}
 	}

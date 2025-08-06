@@ -20,7 +20,7 @@ import net.sweety.unusualend.init.UnusualEndBlocks;
 
 public class GloopyBushBlock extends FlowerBlock {
 	public GloopyBushBlock() {
-		super(() -> MobEffects.LEVITATION, 100,
+		super(MobEffects.LEVITATION, 100,
 				BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).sound(SoundType.NETHER_SPROUTS).instabreak().speedFactor(0.9f).noCollission().replaceable().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
 	}
 

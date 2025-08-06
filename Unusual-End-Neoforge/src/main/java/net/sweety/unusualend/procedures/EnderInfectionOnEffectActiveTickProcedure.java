@@ -32,7 +32,7 @@ public class EnderInfectionOnEffectActiveTickProcedure {
         double Z = 0;
         if (entity instanceof EnderblobEntity || entity instanceof Endermite) {
             if (entity instanceof LivingEntity _entity)
-                _entity.removeEffect(UnusualEndMiscRegister.ENDER_INFECTION.get());
+                _entity.removeEffect(UnusualEndMiscRegister.ENDER_INFECTION);
         }
         if (Math.random() < 0.5) {
             Entity _ent = entity;

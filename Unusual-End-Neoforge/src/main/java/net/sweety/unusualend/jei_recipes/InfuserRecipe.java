@@ -1,20 +1,17 @@
 package net.sweety.unusualend.jei_recipes;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.SimpleContainer;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
-public class InfuserRecipe implements Recipe<SimpleContainer> {
+public class InfuserRecipe implements Recipe<CraftingInput> {
     private final ItemStack output;
     private final NonNullList<Ingredient> recipeItems;
 
@@ -24,18 +21,17 @@ public class InfuserRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public boolean matches(SimpleContainer pContainer, Level pLevel) {
-        return false;
-        //return recipeItems.get(0).test(pContainer.getItem(1));
-    }
-
-    @Override
     public NonNullList<Ingredient> getIngredients() {
         return recipeItems;
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer pContainer, RegistryAccess access) {
+    public boolean matches(CraftingInput craftingInput, Level level) {
+        return false;
+    }
+
+    @Override
+    public ItemStack assemble(CraftingInput craftingInput, HolderLookup.Provider provider) {
         return output;
     }
 
@@ -45,7 +41,7 @@ public class InfuserRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess access) {
+    public ItemStack getResultItem(HolderLookup.Provider provider) {
         return output.copy();
     }
 
@@ -68,9 +64,9 @@ public class InfuserRecipe implements Recipe<SimpleContainer> {
 
     public static class Serializer implements RecipeSerializer<InfuserRecipe> {
         public static final Serializer INSTANCE = new Serializer();
-        private static final Codec<InfuserRecipe> CODEC = RecordCodecBuilder.create(
+        private static final MapCodec<InfuserRecipe> CODEC = RecordCodecBuilder.mapCodec(
                 builder -> builder.group(
-                                ItemStack.ITEM_WITH_COUNT_CODEC.fieldOf("output").forGetter(recipe -> recipe.output),
+                                ItemStack.STRICT_CODEC.fieldOf("output").forGetter(recipe -> recipe.output),
                                 Ingredient.CODEC_NONEMPTY
                                         .listOf()
                                         .fieldOf("ingredients")
@@ -90,38 +86,30 @@ public class InfuserRecipe implements Recipe<SimpleContainer> {
                         )
                         .apply(builder, InfuserRecipe::new)
         );
+        public static final StreamCodec<RegistryFriendlyByteBuf, InfuserRecipe> STREAM_CODEC = StreamCodec.of(InfuserRecipe.Serializer::toNetwork, InfuserRecipe.Serializer::fromNetwork);
 
-//        @Override
-//        public InfuserRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
-//            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "output"));
-//            JsonArray ingredients = GsonHelper.getAsJsonArray(pSerializedRecipe, "ingredients");
-//            NonNullList<Ingredient> inputs = NonNullList.withSize(2, Ingredient.EMPTY);
-//            for (int i = 0; i < inputs.size(); i++) {
-//                inputs.set(i, Ingredient.fromJson(ingredients.get(i), false));
-//            }
-//            return new InfuserRecipe(output, inputs);
-//        }
 
         @Override
-        public Codec<InfuserRecipe> codec() {
+        public MapCodec<InfuserRecipe> codec() {
             return CODEC;
         }
-
         @Override
-        public InfuserRecipe fromNetwork(FriendlyByteBuf buf) {
-            NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
-            inputs.replaceAll(ignored -> Ingredient.fromNetwork(buf));
-            ItemStack output = buf.readItem();
+        public StreamCodec<RegistryFriendlyByteBuf, InfuserRecipe> streamCodec() {
+            return STREAM_CODEC;
+        }
+
+        private static InfuserRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
+            NonNullList<Ingredient> inputs = NonNullList.withSize(buffer.readInt(), Ingredient.EMPTY);
+            ItemStack output = ItemStack.STREAM_CODEC.decode(buffer);
             return new InfuserRecipe(output, inputs);
         }
 
-        @Override
-        public void toNetwork(FriendlyByteBuf buf, InfuserRecipe recipe) {
-            buf.writeInt(recipe.getIngredients().size());
+        private static void toNetwork(RegistryFriendlyByteBuf buffer, InfuserRecipe recipe) {
+            buffer.writeInt(recipe.getIngredients().size());
             for (Ingredient ing : recipe.getIngredients()) {
-                ing.toNetwork(buf);
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, ing);
             }
-            buf.writeItem(recipe.getResultItem(null));
+            ItemStack.STREAM_CODEC.encode(buffer, recipe.getResultItem(null));
         }
     }
 }

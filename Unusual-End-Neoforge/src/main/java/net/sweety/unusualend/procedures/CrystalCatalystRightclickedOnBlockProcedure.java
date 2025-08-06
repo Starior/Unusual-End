@@ -43,18 +43,15 @@ public class CrystalCatalystRightclickedOnBlockProcedure {
                         if (player instanceof ServerPlayer _player) {
                             AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("obtain_catalyst"));
                             AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
-                            if (!_ap.isDone()) {
-                                Iterator _iterator = _ap.getRemainingCriteria().iterator();
-                                while (_iterator.hasNext())
-                                    _player.getAdvancements().award(_adv, (String) _iterator.next());
-                            }
+                            if (!_ap.isDone())
+                                for (String s : _ap.getRemainingCriteria()) _player.getAdvancements().award(_adv, s);
                         }
                     }
                     if (!player.getCooldowns().isOnCooldown((player.getMainHandItem().getItem())))
                         player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 10);
 
-                    player.getMainHandItem().getOrCreateTag().putDouble("Catalyser", 1);
-                    player.getMainHandItem().getOrCreateTag().putString("buff", (Component.translatable("text.unusualend.catalyst_description_beacon").getString()));
+                    NBTProcessor.setNBTDouble(player.getMainHandItem(),"Catalyser", 1);
+                    NBTProcessor.setNBTString(player.getMainHandItem(),"buff", (Component.translatable("text.unusualend.catalyst_description_beacon").getString()));
                     if (player.getMainHandItem().is(UnusualEndItems.CRYSTAL_CATALYST.get()))
                         player.swing(InteractionHand.MAIN_HAND, true);
                     else
@@ -85,7 +82,7 @@ public class CrystalCatalystRightclickedOnBlockProcedure {
                         if (player instanceof Player _player)
                             _player.getCooldowns().addCooldown((player instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 10);
                     }
-                    (player instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("Catalyser", 2);
+                    NBTProcessor.setNBTDouble(player.getMainHandItem(),"Catalyser", 2);
                     if ((player instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualEndItems.CRYSTAL_CATALYST.get()) {
                         if (player instanceof LivingEntity _entity)
                             _entity.swing(InteractionHand.MAIN_HAND, true);
@@ -102,7 +99,7 @@ public class CrystalCatalystRightclickedOnBlockProcedure {
                     }
                     if (level instanceof ServerLevel _level)
                         _level.sendParticles(ParticleTypes.SPLASH, (x + 0.5), (y + 0.5), (z + 0.5), 15, 0.4, 0.4, 0.4, 1);
-                    (player instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putString("buff", (Component.translatable("text.unusualend.catalyst_description_conduit").getString()));
+                    NBTProcessor.setNBTString(player.getMainHandItem(),"buff", (Component.translatable("text.unusualend.catalyst_description_conduit").getString()));
                 } else if ((level.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.PEARLESCENT_INFUSER.get()) {
                     if (!(player instanceof Player _player ? _player.getCooldowns().isOnCooldown((player instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) : false)) {
                         if (player instanceof Player _player)
@@ -120,7 +117,7 @@ public class CrystalCatalystRightclickedOnBlockProcedure {
                             }
                         }
                     }
-                    (player instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("Catalyser", 3);
+                    NBTProcessor.setNBTDouble(player.getMainHandItem(),"Catalyser", 3);
                     if ((player instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualEndItems.CRYSTAL_CATALYST.get()) {
                         if (player instanceof LivingEntity _entity)
                             _entity.swing(InteractionHand.MAIN_HAND, true);
@@ -137,7 +134,7 @@ public class CrystalCatalystRightclickedOnBlockProcedure {
                     }
                     if (level instanceof ServerLevel _level)
                         _level.sendParticles(ParticleTypes.WITCH, (x + 0.5), (y + 0.5), (z + 0.5), 15, 0.4, 0.4, 0.4, 1);
-                    (player instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putString("buff", (Component.translatable("text.unusualend.catalyst_description_infuser").getString()));
+                    NBTProcessor.setNBTString(player.getMainHandItem(),"buff", (Component.translatable("text.unusualend.catalyst_description_infuser").getString()));
                 }
             }
         }

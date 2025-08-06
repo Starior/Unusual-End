@@ -14,11 +14,10 @@ public class SpunklerEntityIsHurtProcedure {
 	public static void execute(LevelAccessor world, Entity immediatesourceentity, Entity sourceentity) {
 		if (immediatesourceentity == null || sourceentity == null)
 			return;
-		double dis = 0;
 		if (sourceentity == immediatesourceentity) {
 			sourceentity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, UnusualEnd.makeUEID("trapper_damages")))), 4);
 			if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-				_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.HEAVINESS.get(), 20, 0));
+				_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.HEAVINESS, 20, 0));
 		}
 	}
 }

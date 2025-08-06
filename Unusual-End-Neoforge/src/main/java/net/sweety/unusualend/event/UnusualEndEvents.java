@@ -1,8 +1,12 @@
 package net.sweety.unusualend.event;
 
+import net.minecraft.world.Difficulty;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -11,28 +15,27 @@ import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.BasicItemListing;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.village.WandererTradesEvent;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.sweety.unusualend.block.entity.*;
 import net.sweety.unusualend.entity.*;
 import net.sweety.unusualend.init.*;
+import net.sweety.unusualend.item.BolokResearchNotesItem;
 import net.sweety.unusualend.jei_recipes.BolokTradingRecipe;
 import net.sweety.unusualend.jei_recipes.InfuserRecipe;
+import net.sweety.unusualend.network.BolokNotesPacket;
+import net.sweety.unusualend.network.InfuserGUIPacket;
+import net.sweety.unusualend.network.UnusualEndVariables;
+import net.sweety.unusualend.procedures.SpunklerNaturalEntitySpawningConditionProcedure;
 
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class UnusualEndEvents {
     @SubscribeEvent
-    public static void registerWanderingTrades(WandererTradesEvent event) {
-        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, 5),
-
-                new ItemStack(UnusualEndItems.ENDERFIREFLY_BUCKET.get()), 2, 5, 0.05f));
-        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, 15),
-
-                new ItemStack(UnusualEndItems.VOID_TOTEM.get()), 1, 5, 0.05f));
-    }
-    @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-        event.registerItem(Capabilities.ItemHandler.ITEM, (stack, content) -> stack.getData(UnusualEndMiscRegister.BOLOK_NOTE_INVENTORY), UnusualEndItems.BOLOK_RESEARCH_NOTES.get());
+        event.registerItem(Capabilities.ItemHandler.ITEM, (stack, content) -> stack.getCapability(BolokResearchNotesItem.NOTES_ITEM_HANDLER), UnusualEndItems.BOLOK_RESEARCH_NOTES.get());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.ANCIENT_PODIUM.get(), (block, side) -> ((AncientPodiumBlockEntity) block).getHandler());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.PURPUR_TANK.get(), (block, side) -> ((PurpurTankBlockEntity) block).getHandler());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.GLOOPSLATE_PEDESTRAL.get(), (block, side) -> ((GloopslatePedestralBlockEntity) block).getHandler());
@@ -42,11 +45,52 @@ public class UnusualEndEvents {
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.WARPED_CHEST.get(), (block, side) -> ((WarpedChestBlockEntity) block).getHandler());
         event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.WARPING_WAYSTONE.get(), (block, side) -> ((WarpingWaystoneBlockEntity) block).getHandler());
     }
+
+    @SubscribeEvent
+    public static void registerSpawnConditions(RegisterSpawnPlacementsEvent event) {
+        event.register(UnusualendModEntities.BLUK.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
+        event.register(UnusualendModEntities.BOLOK.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
+        event.register(UnusualendModEntities.UNDEAD_ENDERLING.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
+        event.register(UnusualendModEntities.ENDER_BLOB.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
+        event.register(UnusualendModEntities.SMALL_ENDERBULB.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
+        event.register(UnusualendModEntities.ENDERBULB.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
+        event.register(UnusualendModEntities.GLUB.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, level, reason, pos, random) -> {
+                    int x = pos.getX();
+                    int y = pos.getY();
+                    int z = pos.getZ();
+                    return SpunklerNaturalEntitySpawningConditionProcedure.execute(level, x, y, z);
+                }, RegisterSpawnPlacementsEvent.Operation.AND);
+        event.register(UnusualendModEntities.SPUNKLER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, level, reason, pos, random) -> {
+                    int x = pos.getX();
+                    int y = pos.getY();
+                    int z = pos.getZ();
+                    return SpunklerNaturalEntitySpawningConditionProcedure.execute(level, x, y, z);
+                }, RegisterSpawnPlacementsEvent.Operation.AND);
+
+    }
+
     @SubscribeEvent
     public static void register(FMLConstructModEvent event) {
         UnusualEndMiscRegister.SERIALIZERS.register("bolok_trading", () -> BolokTradingRecipe.Serializer.INSTANCE);
         UnusualEndMiscRegister.SERIALIZERS.register("infuser", () -> InfuserRecipe.Serializer.INSTANCE);
     }
+
+    @SubscribeEvent
+    public static void registerPayloads(final RegisterPayloadHandlersEvent event) {
+        PayloadRegistrar registrar = event.registrar("1.0");
+        registrar.playToServer(BolokNotesPacket.TYPE, BolokNotesPacket.STREAM_CODEC, BolokNotesPacket::handle);
+        registrar.playToServer(InfuserGUIPacket.TYPE, InfuserGUIPacket.STREAM_CODEC, InfuserGUIPacket::handle);
+        registrar.playToServer(UnusualEndVariables.PlayerVariablesSyncPacket.TYPE, UnusualEndVariables.PlayerVariablesSyncPacket.STREAM_CODEC, UnusualEndVariables.PlayerVariablesSyncPacket::handle);
+    }
+
     @SubscribeEvent
     public static void addComposterItems(FMLCommonSetupEvent event) {
         ComposterBlock.COMPOSTABLES.put(UnusualEndBlocks.CHORUS_CANE_FLOWER.get().asItem(), 0.85f);

@@ -50,9 +50,9 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
                 if (entity instanceof LivingEntity _entity)
                     _entity.removeEffect(MobEffects.LEVITATION);
             }
-            if (entity instanceof LivingEntity _livEnt3 && _livEnt3.hasEffect(UnusualEndMiscRegister.ENDER_INFECTION.get())) {
+            if (entity instanceof LivingEntity _livEnt3 && _livEnt3.hasEffect(UnusualEndMiscRegister.ENDER_INFECTION)) {
                 if (entity instanceof LivingEntity _entity)
-                    _entity.removeEffect(UnusualEndMiscRegister.ENDER_INFECTION.get());
+                    _entity.removeEffect(UnusualEndMiscRegister.ENDER_INFECTION);
             }
         }
         if (!((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) == null)) {
@@ -69,7 +69,7 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
                         + Math.pow((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getZ() - entity.getZ(), 2));
                 if (!((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) == null)) {
                     if ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                        _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.CRYSTALLIZATION.get(), 100, 0, false, false));
+                        _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.CRYSTALLIZATION, 100, 0, false, false));
                     for (int index0 = 0; index0 < Mth.nextInt(RandomSource.create(), 2, 3); index0++) {
                         if (world instanceof Level _level) {
                             if (!_level.isClientSide()) {
@@ -173,14 +173,14 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
                     final Vec3 _center = new Vec3(x, y, z);
                     List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(14 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
                     for (Entity entityiterator : _entfound) {
-                        if (!entityiterator.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("neoforge:blobqueen_immune")))) {
+                        if (!entityiterator.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse("neoforge:blobqueen_immune")))) {
                             entityiterator.invulnerableTime = 0;
                             entityiterator.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.FELL_OUT_OF_WORLD)), 8);
                             if (!world.isClientSide()) {
                                 if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                                    _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.ENDER_INFECTION.get(), 400, 0, false, false));
+                                    _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.ENDER_INFECTION, 400, 0, false, false));
                                 if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                                    _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.CRYSTALLIZATION.get(), 100, 0, false, false));
+                                    _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.CRYSTALLIZATION, 100, 0, false, false));
                             }
                             entityiterator.invulnerableTime = 0;
                             entityiterator.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.FELL_OUT_OF_WORLD)), 6);

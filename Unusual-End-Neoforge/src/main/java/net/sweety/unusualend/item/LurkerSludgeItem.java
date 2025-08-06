@@ -9,6 +9,6 @@ import net.minecraft.world.item.Rarity;
 
 public class LurkerSludgeItem extends Item {
 	public LurkerSludgeItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).effect(new MobEffectInstance(MobEffects.LEVITATION, 200, 0), 1.0F).nutrition(2).saturationMod(0.3f).alwaysEat().build()));
+		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).effect(new MobEffectInstance(MobEffects.LEVITATION, 200, 0), 1.0F).nutrition(2).saturationModifier(0.3f).alwaysEdible().build()));
 	}
 }

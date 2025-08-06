@@ -11,12 +11,13 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.init.UnusualendModJeiPlugin;
 
 public class InfuserRecipeCategory implements IRecipeCategory<InfuserRecipe> {
-	public final static ResourceLocation UID = new ResourceLocation("unusualend", "infuser");
-	public final static ResourceLocation TEXTURE = new ResourceLocation("unusualend", "textures/screens/pearlescent_infuser_jei.png");
+	public final static ResourceLocation UID = UnusualEnd.makeUEID("infuser");
+	public final static ResourceLocation TEXTURE = UnusualEnd.makeUEID("textures/screens/pearlescent_infuser_jei.png");
 	private final IDrawable background;
 	private final IDrawable icon;
 

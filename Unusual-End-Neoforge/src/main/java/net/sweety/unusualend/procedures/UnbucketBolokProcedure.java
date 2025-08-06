@@ -89,7 +89,7 @@ public class UnbucketBolokProcedure {
 				}
 			}
 			if (!world.getEntitiesOfClass(BolokEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).isEmpty()
-					&& itemstack.getOrCreateTag().getBoolean("isNamed")) {
+					&& NBTProcessor.getNBTBoolean(itemstack,"isNamed")) {
 				name = itemstack.getDisplayName().getString();
 				name = name.substring(1, (name).length() - 1);
 				world.getEntitiesOfClass(BolokEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
@@ -98,13 +98,13 @@ public class UnbucketBolokProcedure {
 					}
 				}.compareDistOf((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ()))).findFirst().orElse(null).setCustomName(Component.literal(name));
 			}
-			if (itemstack.getOrCreateTag().getDouble("tagHealth") != 0) {
+			if (NBTProcessor.getNBTDouble(itemstack,"tagHealth") != 0) {
 				if (((Entity) world.getEntitiesOfClass(BolokEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
 					Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
 						return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
 					}
 				}.compareDistOf((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ()))).findFirst().orElse(null)) instanceof LivingEntity _entity)
-					_entity.setHealth((float) itemstack.getOrCreateTag().getDouble("tagHealth"));
+					_entity.setHealth((float) NBTProcessor.getNBTDouble(itemstack,"tagHealth"));
 			}
 		}
 	}

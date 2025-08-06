@@ -22,12 +22,12 @@ import net.sweety.unusualend.procedures.ShinyGrenadeProjectileProjectileHitsBloc
 public class ShinyGrenadeProjectileEntity extends AbstractArrow implements ItemSupplier {
 	public static final ItemStack PROJECTILE_ITEM = new ItemStack(UnusualEndItems.SHINY_CHARGE.get());
 
-	public ShinyGrenadeProjectileEntity(EntityType<? extends ShinyGrenadeProjectileEntity> type, Level world) {
-		super(type, world,ItemStack.EMPTY);
+	public ShinyGrenadeProjectileEntity(EntityType<? extends ShinyGrenadeProjectileEntity> type, Level level) {
+		super(type, level);
 	}
 
-	public ShinyGrenadeProjectileEntity(EntityType<? extends ShinyGrenadeProjectileEntity> type, LivingEntity entity, Level world) {
-		super(type, entity, world,ItemStack.EMPTY);
+	public ShinyGrenadeProjectileEntity(EntityType<? extends ShinyGrenadeProjectileEntity> type, LivingEntity entity, Level level) {
+		super(type, entity, level,ItemStack.EMPTY,null);
 	}
 	@Override
 	@OnlyIn(Dist.CLIENT)
@@ -37,6 +37,11 @@ public class ShinyGrenadeProjectileEntity extends AbstractArrow implements ItemS
 
 	@Override
 	protected ItemStack getPickupItem() {
+		return PROJECTILE_ITEM;
+	}
+
+	@Override
+	protected ItemStack getDefaultPickupItem() {
 		return PROJECTILE_ITEM;
 	}
 
@@ -66,16 +71,15 @@ public class ShinyGrenadeProjectileEntity extends AbstractArrow implements ItemS
 	}
 
 	public static ShinyGrenadeProjectileEntity shoot(Level world, LivingEntity entity, RandomSource source) {
-		return shoot(world, entity, source, 0.5f, 0.1, 0);
+		return shoot(world, entity, source, 0.5f, 0.1);
 	}
 
-	public static ShinyGrenadeProjectileEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage, int knockback) {
+	public static ShinyGrenadeProjectileEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage) {
 		ShinyGrenadeProjectileEntity entityarrow = new ShinyGrenadeProjectileEntity(UnusualendModEntities.SHINY_GRENADE_PROJECTILE.get(), entity, world);
 		entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);
 		entityarrow.setSilent(true);
 		entityarrow.setCritArrow(false);
 		entityarrow.setBaseDamage(damage);
-		entityarrow.setKnockback(knockback);
 		world.addFreshEntity(entityarrow);
 		world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.TNT_PRIMED, SoundSource.PLAYERS, 1, 1f / (random.nextFloat() * 0.5f + 1) + (power / 2));
 		return entityarrow;
@@ -89,7 +93,6 @@ public class ShinyGrenadeProjectileEntity extends AbstractArrow implements ItemS
 		entityarrow.shoot(dx, dy - entityarrow.getY() + Math.hypot(dx, dz) * 0.2F, dz, 0.5f * 2, 12.0F);
 		entityarrow.setSilent(true);
 		entityarrow.setBaseDamage(0.1);
-		entityarrow.setKnockback(0);
 		entityarrow.setCritArrow(false);
 		entity.level().addFreshEntity(entityarrow);
 		entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.TNT_PRIMED, SoundSource.PLAYERS, 1, 1f / (RandomSource.create().nextFloat() * 0.5f + 1));

@@ -8,7 +8,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -25,38 +24,33 @@ import net.sweety.unusualend.entity.EnderblobEntity;
 import net.sweety.unusualend.init.UnusualEndItems;
 
 public class EnderblobRightClickedOnEntityProcedure {
-    public static void execute(LevelAccessor world, Entity entity, Player player) {
+    public static void execute(LevelAccessor level, Entity entity, Player player) {
         if (entity == null || player == null)
             return;
         if (player.getMainHandItem().is(Items.BRUSH)) {
             if ((entity instanceof EnderblobEntity _datEntI ? _datEntI.getEntityData().get(EnderblobEntity.DATA_BrushTimer) : 0) == 0) {
-                if (!player.isCreative()) {
-                    ItemStack _ist = player.getMainHandItem();
-                    if (_ist.hurt(1, RandomSource.create(), null)) {
-                        _ist.shrink(1);
-                        _ist.setDamageValue(0);
-                    }
-                }
+                if (!player.isCreative())
+                    player.getMainHandItem().hurtAndBreak(1,player,player.getEquipmentSlotForItem(player.getMainHandItem()));
                 player.swing(InteractionHand.MAIN_HAND, true);
-                if (world instanceof ServerLevel _level) {
+                if (level instanceof ServerLevel _level) {
                     ItemEntity entityToSpawn = new ItemEntity(_level, (entity.getX()), (entity.getY() + 0.3), (entity.getZ()), new ItemStack(UnusualEndItems.ENDERBLOB_MOULT.get()));
                     entityToSpawn.setPickUpDelay(10);
                     _level.addFreshEntity(entityToSpawn);
                 }
-                entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)), (float) 0.1);
-                if (world instanceof ServerLevel _level)
+                entity.hurt(new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)), (float) 0.1);
+                if (level instanceof ServerLevel _level)
                     _level.getServer().getCommands().performPrefixedCommand(
                             new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getX()), (entity.getY() + 0.2), (entity.getZ())), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
                             "particle minecraft:block unusualend:enderblob_block ~ ~ ~ 0.3 0.3 0.3 0 15");
-                if (world.isClientSide()) {
-                    if (world instanceof Level _level) {
+                if (level.isClientSide()) {
+                    if (level instanceof Level _level) {
                         if (!_level.isClientSide()) {
                             _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), SoundEvents.BRUSH_GENERIC, SoundSource.NEUTRAL, 1, (float) 1.3);
                         } else {
                             _level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), SoundEvents.BRUSH_GENERIC, SoundSource.NEUTRAL, 1, (float) 1.3, false);
                         }
                     }
-                    if (world instanceof Level _level) {
+                    if (level instanceof Level _level) {
                         if (!_level.isClientSide()) {
                             _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), SoundEvents.ITEM_PICKUP, SoundSource.NEUTRAL, 1, (float) 0.85);
                         } else {

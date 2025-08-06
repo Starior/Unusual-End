@@ -36,9 +36,8 @@ public class CitrineCandleOnTickUpdateProcedure {
 				List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(128 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 				for (Entity entityiterator : _entfound) {
 					if ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip5 ? blockstate.getValue(_getip5) : -1) == 1) {
-						if (entityiterator instanceof Phantom) {
-							entityiterator.setSecondsOnFire(30);
-						}
+						if (entityiterator instanceof Phantom)
+							entityiterator.setRemainingFireTicks(600);
 					}
 					if ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip9 ? blockstate.getValue(_getip9) : -1) == 2) {
 						if (entityiterator instanceof EnderlingEntity) {

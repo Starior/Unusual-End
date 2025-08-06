@@ -15,19 +15,28 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.capabilities.BlockCapability;
+import net.neoforged.neoforge.capabilities.ItemCapability;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.procedures.BolokResearchNotesRightclickedProcedure;
 import net.sweety.unusualend.world.inventory.BolokNotesMenu;
 
 import java.util.List;
 
 public class BolokResearchNotesItem extends Item {
+    public static final ItemCapability<IItemHandler, Void> NOTES_ITEM_HANDLER =
+            ItemCapability.createVoid(
+                    UnusualEnd.makeUEID("notes_item_handler"),
+                    IItemHandler.class);
+
     public BolokResearchNotesItem() {
         super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
     }
 
     @Override
-    public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, level, list, flag);
+    public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(itemstack, context, list, flag);
         list.add(Component.literal("\u00A78Detailled explanations of the"));
         list.add(Component.literal("\u00A78Bolok's related mechanics"));
     }

@@ -30,9 +30,9 @@ public class SerenityOnEffectActiveTickProcedure {
 				_level.sendParticles(ParticleTypes.SPLASH, x, (y + 1), z, 30, 1, 0.5, 1, 0);
 			DivideSerenityProcedure.execute(entity);
 		}
-		if (entity instanceof LivingEntity _livEnt10 && _livEnt10.hasEffect(UnusualEndMiscRegister.ENDER_INFECTION.get())) {
+		if (entity instanceof LivingEntity _livEnt10 && _livEnt10.hasEffect(UnusualEndMiscRegister.ENDER_INFECTION)) {
 			if (entity instanceof LivingEntity _entity)
-				_entity.removeEffect(UnusualEndMiscRegister.ENDER_INFECTION.get());
+				_entity.removeEffect(UnusualEndMiscRegister.ENDER_INFECTION);
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.PORTAL, x, (y + 1), z, 30, 1, 0.5, 1, 0);
 			DivideSerenityProcedure.execute(entity);

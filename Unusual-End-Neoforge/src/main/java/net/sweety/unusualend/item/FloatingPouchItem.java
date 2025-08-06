@@ -23,16 +23,16 @@ public class FloatingPouchItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, level, list, flag);
+	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, context, list, flag);
 		list.add(Component.translatable("lore.unusualend.when_rightclick").withStyle(ChatFormatting.GRAY));
 		list.add(Component.translatable("lore.unusualend.floating_pouch_1").withStyle(ChatFormatting.BLUE));
 	}
 
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
-		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		FloatingPouchRightclickedProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity, ar.getObject());
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+		InteractionResultHolder<ItemStack> ar = super.use(level, player, hand);
+		FloatingPouchRightclickedProcedure.execute(level, player.getX(), player.getY(), player.getZ(), player, ar.getObject());
 		return ar;
 	}
 }

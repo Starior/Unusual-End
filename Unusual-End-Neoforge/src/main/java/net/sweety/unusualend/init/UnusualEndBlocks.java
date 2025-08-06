@@ -29,7 +29,7 @@ public class UnusualEndBlocks {
 	public static final DeferredBlock<FireflyBulbBlock> FIREFLY_BULB = REGISTRY.register("firefly_bulb", () -> new FireflyBulbBlock());
 	public static final DeferredBlock<EnderBlobBlock> ENDERBLOB_BLOCK = REGISTRY.register("enderblob_block", () -> new EnderBlobBlock());
 	public static final DeferredBlock<TeleportationAnchorBlock> TELEPORTATION_ANCHOR = REGISTRY.register("teleportation_anchor", () -> new TeleportationAnchorBlock());
-	public static final DeferredBlock<WeakendstonebricksBlock> WEAK_END_STONE_BRICKS = REGISTRY.register("weak_end_stone_bricks", () -> new WeakendstonebricksBlock());
+	public static final DeferredBlock<WeakEndStoneBricksBlock> WEAK_END_STONE_BRICKS = REGISTRY.register("weak_end_stone_bricks", () -> new WeakEndStoneBricksBlock());
 	public static final DeferredBlock<ShulkerShooterBlock> SHULKER_SHOOTER = REGISTRY.register("shulker_shooter", () -> new ShulkerShooterBlock());
 	public static final DeferredBlock<GolemAltarBlock> GOLEM_ALTAR = REGISTRY.register("golem_altar", () -> new GolemAltarBlock());
 	public static final DeferredBlock<Block> SPECTRAL_BLOCK = REGISTRY.register("spectral_block", () -> new PhantomBlock());
@@ -82,7 +82,7 @@ public class UnusualEndBlocks {
 	public static final DeferredBlock<ShinyGloopstoneBlock> SHINY_GLOOPSTONE = REGISTRY.register("shiny_gloopstone", () -> new ShinyGloopstoneBlock());
 	public static final DeferredBlock<GloopstoneLampBlock> GLOOPSTONE_LAMP = REGISTRY.register("gloopstone_lamp", () -> new GloopstoneLampBlock());
 	public static final DeferredBlock<PolishedGloopstoneBlock> POLISHED_GLOOPSTONE = REGISTRY.register("polished_gloopstone", () -> new PolishedGloopstoneBlock());
-	public static final DeferredBlock<GloopstoneTilesBlock> GLOOPSTONE_BRICKS = REGISTRY.register("gloopstone_bricks", () -> new GloopstoneTilesBlock());
+	public static final DeferredBlock<GloopstoneBricksBlock> GLOOPSTONE_BRICKS = REGISTRY.register("gloopstone_bricks", () -> new GloopstoneBricksBlock());
 	public static final DeferredBlock<PolishedGneissStairsBlock> POLISHED_GNEISS_STAIRS = REGISTRY.register("polished_gneiss_stairs", () -> new PolishedGneissStairsBlock());
 	public static final DeferredBlock<PolishedGneissSlabBlock> POLISHED_GNEISS_SLAB = REGISTRY.register("polished_gneiss_slab", () -> new PolishedGneissSlabBlock());
 	public static final DeferredBlock<GneissBricksStairsBlock> GNEISS_BRICK_STAIRS = REGISTRY.register("gneiss_brick_stairs", () -> new GneissBricksStairsBlock());

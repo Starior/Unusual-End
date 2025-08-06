@@ -8,13 +8,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.sweety.unusualend.procedures.ChorusJuiceItemPlayerFinishesUsingItemProcedure;
+import net.sweety.unusualend.init.UnusualEndMiscRegister;
 
 import java.util.List;
 
 public class ChorusJuiceItemItem extends Item {
 	public ChorusJuiceItemItem() {
-		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(1).saturationMod(0.3f).alwaysEat().build()));
+		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(1).saturationModifier(0.3f).alwaysEdible().build()));
 	}
 
 	@Override
@@ -23,8 +23,8 @@ public class ChorusJuiceItemItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, level, list, flag);
+	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, context, list, flag);
 		list.add(Component.translatable("lore.unusualend.clear_infection").withStyle(ChatFormatting.BLUE));
 	}
 
@@ -32,10 +32,7 @@ public class ChorusJuiceItemItem extends Item {
 	public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
 		ItemStack retval = new ItemStack(Items.GLASS_BOTTLE);
 		super.finishUsingItem(itemstack, world, entity);
-		double x = entity.getX();
-		double y = entity.getY();
-		double z = entity.getZ();
-		ChorusJuiceItemPlayerFinishesUsingItemProcedure.execute(entity);
+		entity.removeEffect(UnusualEndMiscRegister.ENDER_INFECTION);
 		if (itemstack.isEmpty()) {
 			return retval;
 		} else {

@@ -11,6 +11,8 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
+import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
+import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.event.entity.item.ItemTossEvent;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.client.gui.BolokNotesScreen;
@@ -21,15 +23,11 @@ import net.sweety.unusualend.procedures.*;
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
 public class UnusualEndForgeClient {
     @SubscribeEvent
-    public static void renderOverlay(RenderGuiEvent.Pre event) {
+    public static void renderOverlay(RenderGuiLayerEvent.Pre event) {
         Player player = Minecraft.getInstance().player;
-        if (player != null && player.hasEffect(UnusualEndMiscRegister.CRYSTALLIZATION.get())) {
-            if (VanillaGuiLayers.PLAYER_HEALTH.type() == event.getOverlay()) {
+        if (player != null && player.hasEffect(UnusualEndMiscRegister.CRYSTALLIZATION)) {
+            if (event.getName().equals(VanillaGuiLayers.ARMOR_LEVEL) || event.getName().equals(VanillaGuiLayers.PLAYER_HEALTH))
                 event.setCanceled(true);
-            }
-            if (VanillaGuiLayers.ARMOR_LEVEL.type() == event.getOverlay()) {
-                event.setCanceled(true);
-            }
         }
     }
 

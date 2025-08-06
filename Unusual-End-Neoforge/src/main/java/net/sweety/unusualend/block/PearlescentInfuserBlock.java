@@ -84,10 +84,9 @@ public class PearlescentInfuserBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public InteractionResult use(BlockState blockstate, Level pLevel, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		super.use(blockstate, pLevel, pos, player, hand, hit);
-		if (!pLevel.isClientSide())
-			this.openScreen(pLevel, pos, player);
+	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+		if (!level.isClientSide())
+			this.openScreen(level, pos, player);
 		return InteractionResult.SUCCESS;
 	}
 	private void openScreen(Level level, BlockPos pos, Player player) {

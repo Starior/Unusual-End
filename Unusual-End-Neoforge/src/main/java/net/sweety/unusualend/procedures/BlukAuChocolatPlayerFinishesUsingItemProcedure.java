@@ -12,8 +12,7 @@ public class BlukAuChocolatPlayerFinishesUsingItemProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		double random = 0;
-		if (UEConfig.CHOCOLAT_BLUK.get() == true) {
+		if (UEConfig.CHOCOLAT_BLUK.get()) {
 			if (world.isClientSide()) {
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {

@@ -33,7 +33,7 @@ import net.sweety.unusualend.init.UnusualendModEntities;
 import java.util.Comparator;
 
 public class UnbucketFireflyProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, Direction direction, Entity entity, ItemStack itemstack) {
+	public static void execute(LevelAccessor world, double x, double y, double z, Direction direction, Entity entity, ItemStack stack) {
 		if (direction == null || entity == null)
 			return;
 		String name = "";
@@ -51,7 +51,7 @@ public class UnbucketFireflyProcedure {
 					}
 				}
 			}
-			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == itemstack.getItem()) {
+			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == stack.getItem()) {
 				if (!(new Object() {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
@@ -73,7 +73,7 @@ public class UnbucketFireflyProcedure {
 				}
 				if (entity instanceof LivingEntity _entity)
 					_entity.swing(InteractionHand.MAIN_HAND, true);
-			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == itemstack.getItem()) {
+			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == stack.getItem()) {
 				if (!(new Object() {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
@@ -96,13 +96,13 @@ public class UnbucketFireflyProcedure {
 				if (entity instanceof LivingEntity _entity)
 					_entity.swing(InteractionHand.OFF_HAND, true);
 			}
-			if (itemstack.getOrCreateTag().getBoolean("isBaby")) {
-				if (itemstack.getOrCreateTag().getBoolean("isTamed")) {
+			if (NBTProcessor.getNBTBoolean(stack,"isBaby")) {
+				if (NBTProcessor.getNBTBoolean(stack,"isTamed")) {
 					if (world instanceof ServerLevel _level)
 						_level.getServer().getCommands().performPrefixedCommand(
 								new CommandSourceStack(CommandSource.NULL, new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null)
 										.withSuppressedOutput(),
-								("summon unusualend:ender_firefly ~ ~ ~ {Age:-6000,Owner:" + itemstack.getOrCreateTag().getString("Owner") + "}"));
+								("summon unusualend:ender_firefly ~ ~ ~ {Age:-6000,Owner:" + NBTProcessor.getNBTString(stack,"Owner") + "}"));
 				} else {
 					if (world instanceof ServerLevel _level)
 						_level.getServer().getCommands().performPrefixedCommand(
@@ -111,12 +111,12 @@ public class UnbucketFireflyProcedure {
 								"summon unusualend:ender_firefly ~ ~ ~ {Age:-6000}");
 				}
 			} else {
-				if (itemstack.getOrCreateTag().getBoolean("isTamed")) {
+				if (NBTProcessor.getNBTBoolean(stack,"isTamed")) {
 					if (world instanceof ServerLevel _level)
 						_level.getServer().getCommands().performPrefixedCommand(
 								new CommandSourceStack(CommandSource.NULL, new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null)
 										.withSuppressedOutput(),
-								("summon unusualend:ender_firefly ~ ~ ~ {Owner:" + itemstack.getOrCreateTag().getString("Owner") + "}"));
+								("summon unusualend:ender_firefly ~ ~ ~ {Owner:" + NBTProcessor.getNBTString(stack,"Owner") + "}"));
 				} else {
 					if (world instanceof ServerLevel _level) {
 						Entity entityToSpawn = UnusualendModEntities.ENDER_FIREFLY.get().spawn(_level, BlockPos.containing(x + direction.getStepX(), y + direction.getStepY(), z + direction.getStepZ()), MobSpawnType.MOB_SUMMONED);
@@ -133,22 +133,22 @@ public class UnbucketFireflyProcedure {
 				}
 			}
 			if (!world.getEntitiesOfClass(EnderBugEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).isEmpty()
-					&& itemstack.getOrCreateTag().getBoolean("isNamed")) {
-				name = itemstack.getDisplayName().getString();
-				name = name.substring(1, (int) ((name).length() - 1));
-				((Entity) world.getEntitiesOfClass(EnderBugEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
+					&& NBTProcessor.getNBTBoolean(stack,"isNamed")) {
+				name = stack.getDisplayName().getString();
+				name = name.substring(1, (name).length() - 1);
+				world.getEntitiesOfClass(EnderBugEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
 					Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
 						return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
 					}
-				}.compareDistOf((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ()))).findFirst().orElse(null)).setCustomName(Component.literal(name));
+				}.compareDistOf((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ()))).findFirst().orElse(null).setCustomName(Component.literal(name));
 			}
-			if (itemstack.getOrCreateTag().getDouble("tagHealth") != 0) {
+			if (NBTProcessor.getNBTDouble(stack,"tagHealth") != 0) {
 				if (((Entity) world.getEntitiesOfClass(EnderBugEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
 					Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
 						return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
 					}
 				}.compareDistOf((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ()))).findFirst().orElse(null)) instanceof LivingEntity _entity)
-					_entity.setHealth((float) itemstack.getOrCreateTag().getDouble("tagHealth"));
+					_entity.setHealth((float) NBTProcessor.getNBTDouble(stack,"tagHealth"));
 			}
 		}
 	}

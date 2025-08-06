@@ -26,7 +26,7 @@ public class GloopyTendrilsBlock extends FlowerBlock {
     public static final BooleanProperty GLOOPY = BooleanProperty.create("gloopy");
 
     public GloopyTendrilsBlock() {
-        super(() -> MobEffects.WEAKNESS, 100, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).sound(SoundType.ROOTS).strength(0.1f, 0f).speedFactor(0.8f).jumpFactor(0.9f).noCollission().replaceable()
+        super(MobEffects.WEAKNESS, 100, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).sound(SoundType.ROOTS).strength(0.1f, 0f).speedFactor(0.8f).jumpFactor(0.9f).noCollission().replaceable()
                 .offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
         this.defaultBlockState().setValue(GLOOPY, true);
     }

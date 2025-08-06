@@ -27,7 +27,7 @@ public class LeechingChargeProjectileHitsLivingEntityProcedure {
 		if (!(entity == sourceentity || (entity instanceof TamableAnimal _tamIsTamedBy && sourceentity instanceof LivingEntity _livEnt ? _tamIsTamedBy.isOwnedBy(_livEnt) : false))) {
 			if (entity instanceof LivingEntity _livEnt2 && _livEnt2.hasEffect(MobEffects.REGENERATION)) {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-					_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.CRYSTALLIZATION.get(), 20, 0));
+					_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.CRYSTALLIZATION, 20, 0));
 				duration_buff = 40;
 			} else {
 				duration_buff = 0;

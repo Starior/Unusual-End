@@ -21,29 +21,25 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
 
 import java.util.Comparator;
 import java.util.List;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber
 public class GolemOrbUseProcedure {
 	@SubscribeEvent
-	public static void onEntityAttacked(LivingHurtEvent event) {
-		if (event != null && event.getEntity() != null) {
-			execute(event, event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getEntity());
-		}
+	public static void onEntityAttacked(LivingIncomingDamageEvent event) {
+		if (event != null)
+			execute(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getEntity());
 	}
 
-	private static void execute(LivingHurtEvent event, LevelAccessor world, double x, double y, double z, Entity entity) {
+	private static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		double sx = 0;
-		double sy = 0;
-		double sz = 0;
 		double xRadius = 0;
 		double loop = 0;
 		double zRadius = 0;
@@ -71,13 +67,13 @@ public class GolemOrbUseProcedure {
 								if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
 									_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1, false, false));
 								if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
-									_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.HEAVINESS.get(), 60, 1, false, false));
+									_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.HEAVINESS, 60, 1, false, false));
 								if (world instanceof ServerLevel _level)
 									_level.sendParticles(ParticleTypes.POOF, x, y, z, 10, 3, 3, 3, 0);
 								if (world instanceof ServerLevel _level)
 									_level.sendParticles(ParticleTypes.END_ROD, x, y, z, 10, 3, 3, 3, 0);
 								if (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualEndItems.BLAZING_ORB.get())) : false) {
-									entityiterator.setSecondsOnFire(10);
+									entityiterator.setRemainingFireTicks(200);
 									if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 										_entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 300, 0, false, false));
 									if (world instanceof ServerLevel _level)

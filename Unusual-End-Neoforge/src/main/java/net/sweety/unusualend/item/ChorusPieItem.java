@@ -7,6 +7,6 @@ import net.minecraft.world.item.Rarity;
 
 public class ChorusPieItem extends Item {
 	public ChorusPieItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(8).saturationMod(0.6f).build()));
+		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(8).saturationModifier(0.6f).build()));
 	}
 }

@@ -20,7 +20,7 @@ import net.sweety.unusualend.init.UnusualEndBlocks;
 
 public class WarpedSproutsBlock extends FlowerBlock {
 	public WarpedSproutsBlock() {
-		super(() -> MobEffects.LEVITATION, 100,
+		super(MobEffects.LEVITATION, 100,
 				BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).sound(SoundType.NETHER_SPROUTS).instabreak().noCollission().replaceable().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
 	}
 

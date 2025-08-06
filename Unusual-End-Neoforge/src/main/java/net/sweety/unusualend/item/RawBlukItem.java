@@ -3,6 +3,7 @@ package net.sweety.unusualend.item;
 
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -11,11 +12,11 @@ import net.minecraft.world.item.Rarity;
 public class RawBlukItem extends Item {
 	public RawBlukItem() {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON)
-				.food((new FoodProperties.Builder()).effect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 1), 0.8F).effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 0), 0.5F).nutrition(4).saturationMod(0.4f).meat().build()));
+				.food((new FoodProperties.Builder()).effect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 1), 0.8F).effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 0), 0.5F).nutrition(4).saturationModifier(0.4f).build()));
 	}
 
 	@Override
-	public int getUseDuration(ItemStack itemstack) {
+	public int getUseDuration(ItemStack itemstack, LivingEntity entity) {
 		return 48;
 	}
 }

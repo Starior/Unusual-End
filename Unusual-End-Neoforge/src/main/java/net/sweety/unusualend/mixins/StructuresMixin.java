@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Structure.class)
 public abstract class StructuresMixin {
-	@Inject(method = "Lnet/minecraft/world/level/levelgen/structure/Structure;isValidBiome(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationStub;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Z", at = @At("RETURN"), cancellable = true)
+	@Inject(method = "isValidBiome(Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationStub;Lnet/minecraft/world/level/levelgen/structure/Structure$GenerationContext;)Z", at = @At("RETURN"), cancellable = true)
 	private static void UE_stopGenericStructureVoidGen_S(Structure.GenerationStub generationStub, Structure.GenerationContext generationContext, CallbackInfoReturnable<Boolean> cir) {
 		int yPos = generationStub.position().getY();
 		if (yPos <= generationContext.chunkGenerator().getMinY() + 8) {

@@ -65,9 +65,9 @@ public class SpunklerEntity extends Monster {
 	}
 
 	@Override
-	public void playerTouch(Player sourceentity) {
-		super.playerTouch(sourceentity);
-		SpunklerPlayerCollidesWithThisEntityProcedure.execute(this.level(), this, sourceentity);
+	public void playerTouch(Player player) {
+		super.playerTouch(player);
+		SpunklerPlayerCollidesWithThisEntityProcedure.execute(this.level(), this, player);
 	}
 
 	@Override

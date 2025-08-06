@@ -12,37 +12,38 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 
 public class VoidRuneItemInHandTickProcedure {
-	public static void execute(LevelAccessor world, Entity entity, ItemStack itemstack) {
-		if (entity == null)
-			return;
-		if (entity.isShiftKeyDown()) {
-			if ((entity instanceof Player _plr ? _plr.experienceLevel : 0) > 0) {
-				if (entity instanceof Player _player)
-					_player.giveExperiencePoints(-(5));
-				itemstack.getOrCreateTag().putDouble("XP", (itemstack.getOrCreateTag().getDouble("XP") + 5));
-				if (world.isClientSide()) {
-					if (Math.random() < 0.2) {
-						if (world instanceof Level _level) {
-							if (!_level.isClientSide()) {
-								_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, (float) 0.1,
-										(float) Mth.nextDouble(RandomSource.create(), 0.5, 0.7));
-							} else {
-								_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, (float) 0.1,
-										(float) Mth.nextDouble(RandomSource.create(), 0.5, 0.7), false);
-							}
-						}
-					}
-					if (world instanceof Level _level) {
-						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), SoundEvents.POINTED_DRIPSTONE_DRIP_LAVA_INTO_CAULDRON, SoundSource.PLAYERS,
-									1, (float) 0.5);
-						} else {
-							_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), SoundEvents.POINTED_DRIPSTONE_DRIP_LAVA_INTO_CAULDRON, SoundSource.PLAYERS, 1, (float) 0.5,
-									false);
-						}
-					}
-				}
-			}
-		}
-	}
+    public static void execute(LevelAccessor world, Entity entity, ItemStack stack) {
+        if (entity == null)
+            return;
+        if (entity.isShiftKeyDown()) {
+            if ((entity instanceof Player _plr ? _plr.experienceLevel : 0) > 0) {
+                if (entity instanceof Player _player)
+                    _player.giveExperiencePoints(-(5));
+                NBTProcessor.setNBTDouble(stack, "XP", NBTProcessor.getNBTDouble(stack, "XP") + 5);
+                NBTProcessor.setNBTDouble(stack,"XP", NBTProcessor.getNBTDouble(stack,"XP") + 5);
+                if (world.isClientSide()) {
+                    if (Math.random() < 0.2) {
+                        if (world instanceof Level _level) {
+                            if (!_level.isClientSide()) {
+                                _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, (float) 0.1,
+                                        (float) Mth.nextDouble(RandomSource.create(), 0.5, 0.7));
+                            } else {
+                                _level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, (float) 0.1,
+                                        (float) Mth.nextDouble(RandomSource.create(), 0.5, 0.7), false);
+                            }
+                        }
+                    }
+                    if (world instanceof Level _level) {
+                        if (!_level.isClientSide()) {
+                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), SoundEvents.POINTED_DRIPSTONE_DRIP_LAVA_INTO_CAULDRON, SoundSource.PLAYERS,
+                                    1, (float) 0.5);
+                        } else {
+                            _level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), SoundEvents.POINTED_DRIPSTONE_DRIP_LAVA_INTO_CAULDRON, SoundSource.PLAYERS, 1, (float) 0.5,
+                                    false);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

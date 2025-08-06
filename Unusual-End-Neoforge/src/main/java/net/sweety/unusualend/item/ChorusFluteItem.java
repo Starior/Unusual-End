@@ -5,10 +5,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.procedures.ChorusFluteRightclickedProcedure;
+import net.sweety.unusualend.procedures.NBTProcessor;
 
 import java.util.List;
 
@@ -23,27 +25,28 @@ public class ChorusFluteItem extends Item {
     }
 
     @Override
-    public int getUseDuration(ItemStack itemstack) {
+    public int getUseDuration(ItemStack itemstack, LivingEntity entity) {
         return 100;
     }
 
     @Override
-    public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-        super.appendHoverText(itemstack, world, list, flag);
-        String track = (itemstack).getOrCreateTag().getString("track");
-        if ((itemstack.getOrCreateTag().getString("track")).isEmpty()) {
-            itemstack.getOrCreateTag().putString("track", "All Tracks");
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(stack, context, list, flag);
+
+        String track = NBTProcessor.getNBTString(stack, "track");
+        if (NBTProcessor.getNBTString(stack, "track").isEmpty()) {
+            NBTProcessor.setNBTString(stack, "track", "All Tracks");
         }
         list.add(Component.literal("\u00A77" + ((track))));
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
         if (!player.isUsingItem())
-            ChorusFluteRightclickedProcedure.execute(world, player, itemstack);
-        if (getUseDuration(itemstack) <= 0)
-            finishUsingItem(itemstack, world, player);
+            ChorusFluteRightclickedProcedure.execute(level, player, itemstack);
+        if (getUseDuration(itemstack, player) <= 0)
+            finishUsingItem(itemstack, level, player);
         else
             player.startUsingItem(hand);
         return new InteractionResultHolder<>(InteractionResult.SUCCESS, itemstack);

@@ -94,7 +94,6 @@ public class CentralPedestralBlock extends Block implements SimpleWaterloggedBlo
 
 	@Override
 	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-		super.useWithoutItem(state, level, pos, player, hitResult);
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();

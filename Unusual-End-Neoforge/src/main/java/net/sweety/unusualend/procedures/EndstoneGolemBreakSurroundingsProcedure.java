@@ -44,9 +44,9 @@ public class EndstoneGolemBreakSurroundingsProcedure {
 				_level.sendParticles(ParticleTypes.EXPLOSION_EMITTER, x, y, z, 15, 1, 1, 1, 0);
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.GENERIC_EXPLODE, SoundSource.NEUTRAL, 1, 1);
+					_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.GENERIC_EXPLODE.value(), SoundSource.NEUTRAL, 1, 1);
 				} else {
-					_level.playLocalSound(x, y, z, SoundEvents.GENERIC_EXPLODE, SoundSource.NEUTRAL, 1, 1, false);
+					_level.playLocalSound(x, y, z, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.NEUTRAL, 1, 1, false);
 				}
 			}
 		}

@@ -1,11 +1,14 @@
 
 package net.sweety.unusualend.item;
 
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
 import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.init.UnusualEndItems;
 
@@ -24,8 +27,9 @@ public class MoultDaggerItem extends SwordItem {
 				return -2f;
 			}
 
-			public int getLevel() {
-				return 2;
+			@Override
+			public TagKey<Block> getIncorrectBlocksForDrops() {
+				return BlockTags.INCORRECT_FOR_IRON_TOOL;
 			}
 
 			public int getEnchantmentValue() {
@@ -35,6 +39,6 @@ public class MoultDaggerItem extends SwordItem {
 			public Ingredient getRepairIngredient() {
 				return Ingredient.of(new ItemStack(UnusualEndItems.END_BLOB.get()), new ItemStack(UnusualEndBlocks.ENDERBLOB_BLOCK.get()));
 			}
-		}, 3, -3f, new Item.Properties());
+		}, new Item.Properties());
 	}
 }

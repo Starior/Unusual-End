@@ -19,7 +19,6 @@ public class VoidBombEntity extends PathfinderMob {
 
 	public VoidBombEntity(EntityType<VoidBombEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
 		xpReward = 0;
 		setNoAi(false);
 		setPersistenceRequired();

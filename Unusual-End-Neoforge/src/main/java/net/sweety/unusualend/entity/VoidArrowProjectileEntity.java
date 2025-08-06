@@ -21,80 +21,84 @@ import net.sweety.unusualend.procedures.VoidArrowProjectileWhileProjectileFlying
 
 @OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
 public class VoidArrowProjectileEntity extends AbstractArrow implements ItemSupplier {
-	public static final ItemStack PROJECTILE_ITEM = new ItemStack(Items.ARROW);
+    public static final ItemStack PROJECTILE_ITEM = new ItemStack(Items.ARROW);
 
-	public VoidArrowProjectileEntity(EntityType<? extends VoidArrowProjectileEntity> type, Level world) {
-		super(type, world,PROJECTILE_ITEM);
-	}
+    public VoidArrowProjectileEntity(EntityType<? extends VoidArrowProjectileEntity> type, Level level) {
+        super(type, level);
+    }
 
-	public VoidArrowProjectileEntity(EntityType<? extends VoidArrowProjectileEntity> type, LivingEntity entity, Level world) {
-		super(type, entity, world,PROJECTILE_ITEM);
-	}
-	@Override
-	@OnlyIn(Dist.CLIENT)
-	public ItemStack getItem() {
-		return PROJECTILE_ITEM;
-	}
+    public VoidArrowProjectileEntity(EntityType<? extends VoidArrowProjectileEntity> type, LivingEntity entity, Level level) {
+        super(type, entity, level, PROJECTILE_ITEM, null);
+    }
 
-	@Override
-	protected ItemStack getPickupItem() {
-		return PROJECTILE_ITEM;
-	}
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    public ItemStack getItem() {
+        return PROJECTILE_ITEM;
+    }
 
-	@Override
-	protected void doPostHurtEffects(LivingEntity entity) {
-		super.doPostHurtEffects(entity);
-		entity.setArrowCount(entity.getArrowCount() - 1);
-	}
+    @Override
+    protected ItemStack getPickupItem() {
+        return PROJECTILE_ITEM;
+    }
 
-	@Override
-	public void playerTouch(Player entity) {
-		super.playerTouch(entity);
-		VoidArrowProjectileProjectileHitsLivingEntityProcedure.execute(entity);
-	}
+    @Override
+    protected ItemStack getDefaultPickupItem() {
+        return PROJECTILE_ITEM;
+    }
 
-	@Override
-	public void onHitEntity(EntityHitResult entityHitResult) {
-		super.onHitEntity(entityHitResult);
-		VoidArrowProjectileProjectileHitsLivingEntityProcedure.execute(entityHitResult.getEntity());
-	}
+    @Override
+    protected void doPostHurtEffects(LivingEntity entity) {
+        super.doPostHurtEffects(entity);
+        entity.setArrowCount(entity.getArrowCount() - 1);
+    }
 
-	@Override
-	public void tick() {
-		super.tick();
-		VoidArrowProjectileWhileProjectileFlyingTickProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ());
-		if (this.inGround)
-			this.discard();
-	}
+    @Override
+    public void playerTouch(Player entity) {
+        super.playerTouch(entity);
+        VoidArrowProjectileProjectileHitsLivingEntityProcedure.execute(entity);
+    }
 
-	public static VoidArrowProjectileEntity shoot(Level world, LivingEntity entity, RandomSource source) {
-		return shoot(world, entity, source, 1.2f, 3.5, 0);
-	}
+    @Override
+    public void onHitEntity(EntityHitResult entityHitResult) {
+        super.onHitEntity(entityHitResult);
+        VoidArrowProjectileProjectileHitsLivingEntityProcedure.execute(entityHitResult.getEntity());
+    }
 
-	public static VoidArrowProjectileEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage, int knockback) {
-		VoidArrowProjectileEntity entityarrow = new VoidArrowProjectileEntity(UnusualendModEntities.VOID_ARROW_PROJECTILE.get(), entity, world);
-		entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);
-		entityarrow.setSilent(true);
-		entityarrow.setCritArrow(false);
-		entityarrow.setBaseDamage(damage);
-		entityarrow.setKnockback(knockback);
-		world.addFreshEntity(entityarrow);
-		world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.EVOKER_CAST_SPELL, SoundSource.PLAYERS, 1, 1f / (random.nextFloat() * 0.5f + 1) + (power / 2));
-		return entityarrow;
-	}
+    @Override
+    public void tick() {
+        super.tick();
+        VoidArrowProjectileWhileProjectileFlyingTickProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ());
+        if (this.inGround)
+            this.discard();
+    }
 
-	public static VoidArrowProjectileEntity shoot(LivingEntity entity, LivingEntity target) {
-		VoidArrowProjectileEntity entityarrow = new VoidArrowProjectileEntity(UnusualendModEntities.VOID_ARROW_PROJECTILE.get(), entity, entity.level());
-		double dx = target.getX() - entity.getX();
-		double dy = target.getY() + target.getEyeHeight() - 1.1;
-		double dz = target.getZ() - entity.getZ();
-		entityarrow.shoot(dx, dy - entityarrow.getY() + Math.hypot(dx, dz) * 0.2F, dz, 1.2f * 2, 12.0F);
-		entityarrow.setSilent(true);
-		entityarrow.setBaseDamage(3.5);
-		entityarrow.setKnockback(0);
-		entityarrow.setCritArrow(false);
-		entity.level().addFreshEntity(entityarrow);
-		entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.EVOKER_CAST_SPELL, SoundSource.PLAYERS, 1, 1f / (RandomSource.create().nextFloat() * 0.5f + 1));
-		return entityarrow;
-	}
+    public static VoidArrowProjectileEntity shoot(Level world, LivingEntity entity, RandomSource source) {
+        return shoot(world, entity, source, 1.2f, 3.5);
+    }
+
+    public static VoidArrowProjectileEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage) {
+        VoidArrowProjectileEntity entityarrow = new VoidArrowProjectileEntity(UnusualendModEntities.VOID_ARROW_PROJECTILE.get(), entity, world);
+        entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);
+        entityarrow.setSilent(true);
+        entityarrow.setCritArrow(false);
+        entityarrow.setBaseDamage(damage);
+        world.addFreshEntity(entityarrow);
+        world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.EVOKER_CAST_SPELL, SoundSource.PLAYERS, 1, 1f / (random.nextFloat() * 0.5f + 1) + (power / 2));
+        return entityarrow;
+    }
+
+    public static VoidArrowProjectileEntity shoot(LivingEntity entity, LivingEntity target) {
+        VoidArrowProjectileEntity entityarrow = new VoidArrowProjectileEntity(UnusualendModEntities.VOID_ARROW_PROJECTILE.get(), entity, entity.level());
+        double dx = target.getX() - entity.getX();
+        double dy = target.getY() + target.getEyeHeight() - 1.1;
+        double dz = target.getZ() - entity.getZ();
+        entityarrow.shoot(dx, dy - entityarrow.getY() + Math.hypot(dx, dz) * 0.2F, dz, 1.2f * 2, 12.0F);
+        entityarrow.setSilent(true);
+        entityarrow.setBaseDamage(3.5);
+        entityarrow.setCritArrow(false);
+        entity.level().addFreshEntity(entityarrow);
+        entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.EVOKER_CAST_SPELL, SoundSource.PLAYERS, 1, 1f / (RandomSource.create().nextFloat() * 0.5f + 1));
+        return entityarrow;
+    }
 }

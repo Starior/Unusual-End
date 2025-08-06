@@ -23,7 +23,7 @@ public class BreachLinkedEffectStartedappliedProcedure {
 			if (entity instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.cant_open_breach").getString())), true);
 			if (entity instanceof LivingEntity _entity)
-				_entity.removeEffect(UnusualEndMiscRegister.BREACH_LINKED.get());
+				_entity.removeEffect(UnusualEndMiscRegister.BREACH_LINKED);
 		}
 	}
 }

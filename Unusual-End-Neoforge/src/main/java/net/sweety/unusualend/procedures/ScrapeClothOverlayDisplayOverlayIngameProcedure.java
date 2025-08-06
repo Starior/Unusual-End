@@ -1,13 +1,13 @@
 package net.sweety.unusualend.procedures;
 
 import net.minecraft.world.entity.Entity;
-import net.sweety.unusualend.network.UnusualendModVariables;
+import net.sweety.unusualend.network.UnusualEndVariables;
 
 public class ScrapeClothOverlayDisplayOverlayIngameProcedure {
 	public static boolean execute(Entity entity) {
 		if (entity == null)
 			return false;
-		UnusualendModVariables.PlayerVariables variables = entity.getData(UnusualendModVariables.PLAYER_VARIABLES.get());
+		UnusualEndVariables.PlayerVariables variables = entity.getData(UnusualEndVariables.PLAYER_VARIABLES.get());
 		return variables.ScrapeOverlay > 0;
 	}
 }

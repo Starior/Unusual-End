@@ -15,7 +15,7 @@ import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.sweety.unusualend.procedures.OnRightClickOnAnchorProcedure;
+import net.sweety.unusualend.procedures.NBTProcessor;
 import net.sweety.unusualend.procedures.PrismaticPearlItemGlowProcedure;
 import net.sweety.unusualend.procedures.TPwithChorusProcedure;
 
@@ -49,9 +49,9 @@ public class PrismaticMirrorItem extends Item {
         double TpY;
         double TpZ;
         super.appendHoverText(stack, context, list, flag);
-        TpX = OnRightClickOnAnchorProcedure.getNBTDouble(stack, "TpX");
-        TpY = OnRightClickOnAnchorProcedure.getNBTDouble(stack, "TpY");
-        TpZ = OnRightClickOnAnchorProcedure.getNBTDouble(stack, "TpZ");
+        TpX = NBTProcessor.getNBTDouble(stack, "TpX");
+        TpY = NBTProcessor.getNBTDouble(stack, "TpY");
+        TpZ = NBTProcessor.getNBTDouble(stack, "TpZ");
         super.appendHoverText(stack, context, list, flag);
         list.add(Component.translatable("lore.unusualend.when_rightclick").withStyle(ChatFormatting.GRAY));
         list.add(Component.translatable("lore.unusualend.warp_spawn").withStyle(ChatFormatting.BLUE));
@@ -61,8 +61,8 @@ public class PrismaticMirrorItem extends Item {
     }
 
     @Override
-    public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
-        TPwithChorusProcedure.execute(world, entity, itemstack);
+    public ItemStack finishUsingItem(ItemStack itemstack, Level level, LivingEntity entity) {
+        TPwithChorusProcedure.execute(level, entity, itemstack);
         return itemstack;
     }
 

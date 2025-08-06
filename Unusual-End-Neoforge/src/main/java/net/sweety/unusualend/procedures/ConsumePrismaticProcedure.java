@@ -40,7 +40,7 @@ public class ConsumePrismaticProcedure {
 						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 				}
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-					_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.SWIFT_STRIKES.get(), (int) (value * 6000), 0, false, false));
+					_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.SWIFT_STRIKES, (int) (value * 6000), 0, false, false));
 				InfuserEffectsProcedure.execute(world, x, y, z, entity);
 			} else {
 				InvalidBaseProcedure.execute(world, x, y, z, entity);

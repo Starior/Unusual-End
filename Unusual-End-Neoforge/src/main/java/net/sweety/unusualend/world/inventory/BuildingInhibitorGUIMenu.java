@@ -127,7 +127,7 @@ public class BuildingInhibitorGUIMenu extends AbstractContainerMenu implements S
                 }
                 Slot slot = this.slots.get(i);
                 ItemStack itemstack = slot.getItem();
-                if (slot.mayPlace(itemstack) && !itemstack.isEmpty() && ItemStack.isSameItemSameTags(stack, itemstack)) {
+                if (slot.mayPlace(itemstack) && !itemstack.isEmpty() && ItemStack.isSameItem(stack, itemstack)) {
                     int j = itemstack.getCount() + stack.getCount();
                     int maxSize = Math.min(slot.getMaxStackSize(), stack.getMaxStackSize());
                     if (j <= maxSize) {

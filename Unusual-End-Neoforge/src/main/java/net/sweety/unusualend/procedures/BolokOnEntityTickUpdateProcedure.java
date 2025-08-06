@@ -27,7 +27,7 @@ public class BolokOnEntityTickUpdateProcedure {
 						_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 60, 0));
 				}
 			} else {
-				if (!(entity.getPersistentData().getBoolean("coords") == true)) {
+				if (!(entity.getPersistentData().getBoolean("coords"))) {
 					entity.getPersistentData().putBoolean("coords", true);
 					entity.getPersistentData().putDouble("x", x);
 					entity.getPersistentData().putDouble("y", y);

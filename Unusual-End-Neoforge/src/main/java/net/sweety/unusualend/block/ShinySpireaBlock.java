@@ -20,7 +20,7 @@ import net.sweety.unusualend.init.UnusualEndBlocks;
 
 public class ShinySpireaBlock extends FlowerBlock {
 	public ShinySpireaBlock() {
-		super(() -> MobEffects.LEVITATION, 100,
+		super(MobEffects.LEVITATION, 100,
 				BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.FUNGUS).instabreak().speedFactor(0.9f).lightLevel(s -> 8).noCollission().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
 	}
 

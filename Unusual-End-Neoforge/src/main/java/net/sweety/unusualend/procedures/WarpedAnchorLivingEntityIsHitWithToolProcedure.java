@@ -24,6 +24,6 @@ public class WarpedAnchorLivingEntityIsHitWithToolProcedure {
 			}
 		}
 		if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-			_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.HEAVINESS.get(), 100, 1));
+			_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.HEAVINESS, 100, 1));
 	}
 }

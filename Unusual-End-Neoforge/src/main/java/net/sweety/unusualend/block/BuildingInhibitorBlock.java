@@ -72,7 +72,7 @@ public class BuildingInhibitorBlock extends BaseEntityBlock {
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (!level.isClientSide())
             this.openScreen(level, pos, player);
-        return super.useWithoutItem(state, level, pos, player, hitResult);
+        return InteractionResult.SUCCESS;
     }
 
     private void openScreen(Level level, BlockPos pos, Player player) {

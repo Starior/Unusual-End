@@ -1,20 +1,17 @@
 package net.sweety.unusualend.jei_recipes;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.SimpleContainer;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
-public class BolokTradingRecipe implements Recipe<SimpleContainer> {
+public class BolokTradingRecipe implements Recipe<CraftingInput> {
     private final ItemStack output;
     private final NonNullList<Ingredient> recipeItems;
 
@@ -24,21 +21,17 @@ public class BolokTradingRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public boolean matches(SimpleContainer pContainer, Level pLevel) {
-        if (pLevel.isClientSide()) {
-            return false;
-        }
-        return false;
-        //return recipeItems.get(0).test(pContainer.getItem(1));
-    }
-
-    @Override
     public NonNullList<Ingredient> getIngredients() {
         return recipeItems;
     }
 
     @Override
-    public ItemStack assemble(SimpleContainer pContainer, RegistryAccess access) {
+    public boolean matches(CraftingInput craftingInput, Level level) {
+        return false;
+    }
+
+    @Override
+    public ItemStack assemble(CraftingInput craftingInput, HolderLookup.Provider provider) {
         return output;
     }
 
@@ -48,7 +41,7 @@ public class BolokTradingRecipe implements Recipe<SimpleContainer> {
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess access) {
+    public ItemStack getResultItem(HolderLookup.Provider provider) {
         return output.copy();
     }
 
@@ -72,16 +65,16 @@ public class BolokTradingRecipe implements Recipe<SimpleContainer> {
 
     public static class Serializer implements RecipeSerializer<BolokTradingRecipe> {
         public static final Serializer INSTANCE = new Serializer();
-        private static final Codec<BolokTradingRecipe> CODEC = RecordCodecBuilder.create(
+        private static final MapCodec<BolokTradingRecipe> CODEC = RecordCodecBuilder.mapCodec(
                 builder -> builder.group(
-                                ItemStack.ITEM_WITH_COUNT_CODEC.fieldOf("output").forGetter(recipe -> recipe.output),
+                                ItemStack.STRICT_CODEC.fieldOf("output").forGetter(recipe -> recipe.output),
                                 Ingredient.CODEC_NONEMPTY
                                         .listOf()
                                         .fieldOf("ingredients")
                                         .flatXmap(
                                                 ingredients -> {
                                                     Ingredient[] aingredient = ingredients
-                                                            .toArray(Ingredient[]::new); // Skip the empty check and create the array.
+                                                            .toArray(Ingredient[]::new);
                                                     if (aingredient.length == 0) {
                                                         return DataResult.error(() -> "No ingredients found in custom recipe");
                                                     } else {
@@ -94,27 +87,30 @@ public class BolokTradingRecipe implements Recipe<SimpleContainer> {
                         )
                         .apply(builder, BolokTradingRecipe::new)
         );
+        public static final StreamCodec<RegistryFriendlyByteBuf, BolokTradingRecipe> STREAM_CODEC = StreamCodec.of(BolokTradingRecipe.Serializer::toNetwork, BolokTradingRecipe.Serializer::fromNetwork);
 
         @Override
-        public Codec<BolokTradingRecipe> codec() {
+        public MapCodec<BolokTradingRecipe> codec() {
             return CODEC;
         }
 
         @Override
-        public BolokTradingRecipe fromNetwork(FriendlyByteBuf buf) {
-            NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
-            inputs.replaceAll(ignored -> Ingredient.fromNetwork(buf));
-            ItemStack output = buf.readItem();
+        public StreamCodec<RegistryFriendlyByteBuf, BolokTradingRecipe> streamCodec() {
+            return STREAM_CODEC;
+        }
+
+        private static BolokTradingRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
+            NonNullList<Ingredient> inputs = NonNullList.withSize(buffer.readInt(), Ingredient.EMPTY);
+            ItemStack output = ItemStack.STREAM_CODEC.decode(buffer);
             return new BolokTradingRecipe(output, inputs);
         }
 
-        @Override
-        public void toNetwork(FriendlyByteBuf buf, BolokTradingRecipe recipe) {
-            buf.writeInt(recipe.getIngredients().size());
+        private static void toNetwork(RegistryFriendlyByteBuf buffer, BolokTradingRecipe recipe) {
+            buffer.writeInt(recipe.getIngredients().size());
             for (Ingredient ing : recipe.getIngredients()) {
-                ing.toNetwork(buf);
+                Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, ing);
             }
-            buf.writeItem(recipe.getResultItem(null));
+            ItemStack.STREAM_CODEC.encode(buffer, recipe.getResultItem(null));
         }
     }
 }

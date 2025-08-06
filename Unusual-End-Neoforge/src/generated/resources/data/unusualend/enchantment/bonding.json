@@ -1,0 +1,21 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.unusualend.bonding"
+  },
+  "exclusive_set": "unusualend:benevolence",
+  "max_cost": {
+    "base": 24,
+    "per_level_above_first": 4
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 18,
+    "per_level_above_first": 2
+  },
+  "slots": [
+    "head"
+  ],
+  "supported_items": "#unusualend:leeching_wand_enchantable",
+  "weight": 5
+}

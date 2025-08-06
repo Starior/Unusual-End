@@ -17,7 +17,7 @@ public class BolokEntityIsHurtProcedure {
 		if (entity == null || sourceentity == null)
 			return;
 		if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-			_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.HEAVINESS.get(), 100, 0));
+			_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.HEAVINESS, 100, 0));
 		if (world instanceof ServerLevel _level)
 			_level.getServer().getCommands().performPrefixedCommand(
 					new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getX()), (entity.getY()), (entity.getZ())), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),

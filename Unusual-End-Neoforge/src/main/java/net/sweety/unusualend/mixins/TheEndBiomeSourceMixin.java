@@ -2,6 +2,7 @@ package net.sweety.unusualend.mixins;
 
 import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -23,13 +24,14 @@ import java.util.function.Supplier;
 
 @Mixin(TheEndBiomeSource.class)
 public class TheEndBiomeSourceMixin extends BiomeSourceMixin {
+	@Unique
 	private final List<Supplier<Object>> overrides = new ArrayList<>();
 	@Unique
 	private boolean biomeMapModified = false;
 	@Shadow
 	@Mutable
 	@Final
-	static Codec<TheEndBiomeSource> CODEC;
+    public static MapCodec<TheEndBiomeSource> CODEC;
 
 	/**
 	 * Modifies the codec, so it calls the static factory method that gives us access to the
@@ -37,7 +39,7 @@ public class TheEndBiomeSourceMixin extends BiomeSourceMixin {
 	 */
 	@Inject(method = "<clinit>", at = @At("TAIL"))
 	private static void modifyCodec(CallbackInfo ci) {
-		CODEC = RecordCodecBuilder.create((instance) -> instance.group(RegistryOps.retrieveGetter(Registries.BIOME)).apply(instance, instance.stable(TheEndBiomeSource::create)));
+		CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(RegistryOps.retrieveGetter(Registries.BIOME)).apply(instance, instance.stable(TheEndBiomeSource::create)));
 	}
 
 	/**

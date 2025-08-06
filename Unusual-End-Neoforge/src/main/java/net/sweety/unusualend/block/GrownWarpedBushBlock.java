@@ -3,7 +3,6 @@ package net.sweety.unusualend.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
@@ -26,7 +25,7 @@ import net.sweety.unusualend.procedures.OvergrownWarpedVineOnBlockRightClickedPr
 
 public class GrownWarpedBushBlock extends FlowerBlock {
 	public GrownWarpedBushBlock() {
-		super(() -> MobEffects.MOVEMENT_SPEED, 100,
+		super(MobEffects.MOVEMENT_SPEED, 100,
 				BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).sound(SoundType.ROOTS).strength(1f, 1f).lightLevel(s -> 8).noCollission().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
 	}
 
@@ -60,9 +59,8 @@ public class GrownWarpedBushBlock extends FlowerBlock {
 	}
 
 	@Override
-	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
-		super.use(blockstate, world, pos, entity, hand, hit);
-		OvergrownWarpedVineOnBlockRightClickedProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+		OvergrownWarpedVineOnBlockRightClickedProcedure.execute(level, pos.getX(), pos.getY(), pos.getZ());
 		return InteractionResult.SUCCESS;
 	}
 }

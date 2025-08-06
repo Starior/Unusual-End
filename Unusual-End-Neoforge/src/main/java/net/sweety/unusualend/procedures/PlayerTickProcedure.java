@@ -23,7 +23,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.sweety.unusualend.BiomeMusicLibrary;
 import net.sweety.unusualend.entity.EnderblobQueenEntity;
 import net.sweety.unusualend.entity.EndstoneGolemEntity;
-import net.sweety.unusualend.network.UnusualendModVariables;
+import net.sweety.unusualend.network.UnusualEndVariables;
 
 @EventBusSubscriber
 public class PlayerTickProcedure {
@@ -40,7 +40,7 @@ public class PlayerTickProcedure {
             return;
         double MusicID;
         if (world.isClientSide()) {
-            UnusualendModVariables.PlayerVariables variables = entity.getData(UnusualendModVariables.PLAYER_VARIABLES.get());
+            UnusualEndVariables.PlayerVariables variables = entity.getData(UnusualEndVariables.PLAYER_VARIABLES.get());
             MusicID = variables.PlayerMusic;
             BiomeMusicLibrary.playTrack((int) MusicID);
         }
@@ -51,7 +51,7 @@ public class PlayerTickProcedure {
             return;
         if (!accessor.isClientSide()) {
             if (!onReturnMusic(accessor, x, y, z, entity)) {
-                UnusualendModVariables.PlayerVariables variables = entity.getData(UnusualendModVariables.PLAYER_VARIABLES.get());
+                UnusualEndVariables.PlayerVariables variables = entity.getData(UnusualEndVariables.PLAYER_VARIABLES.get());
                 variables.PlayerMusic = -1;
                 variables.syncPlayerVariables(entity);
             }
@@ -61,7 +61,7 @@ public class PlayerTickProcedure {
     private static void overlayUpdate(LevelAccessor world, double x, double y, double z, Entity entity) {
         if (entity == null)
             return;
-        UnusualendModVariables.PlayerVariables variables = entity.getData(UnusualendModVariables.PLAYER_VARIABLES.get());
+        UnusualEndVariables.PlayerVariables variables = entity.getData(UnusualEndVariables.PLAYER_VARIABLES.get());
         if (variables.ScrapeOverlay == 1) {
             variables.ScrapeOverlay = 0;
             variables.syncPlayerVariables(entity);
@@ -96,7 +96,7 @@ public class PlayerTickProcedure {
         if (entity == null)
             return false;
         boolean music = false;
-        UnusualendModVariables.PlayerVariables variables = entity.getData(UnusualendModVariables.PLAYER_VARIABLES.get());
+        UnusualEndVariables.PlayerVariables variables = entity.getData(UnusualEndVariables.PLAYER_VARIABLES.get());
         if (!accessor.getEntitiesOfClass(EndstoneGolemEntity.class, AABB.ofSize(new Vec3(x, y, z), 100, 100, 100), e -> true).isEmpty()) {
             variables.PlayerMusic = 0;
             variables.syncPlayerVariables(entity);

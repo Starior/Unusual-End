@@ -2,6 +2,7 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementProgress;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -33,15 +34,11 @@ public class BucketGlubProcedure {
 					return dataIndex.getString("CustomName");
 				}
 			}.getValue()).isEmpty()) {
-				entity_bucket.setHoverName(Component.literal((entity.getDisplayName().getString())));
-				entity_bucket.getOrCreateTag().putBoolean("isNamed", true);
+				entity_bucket.set(DataComponents.CUSTOM_NAME,Component.literal((entity.getDisplayName().getString())));
+				NBTProcessor.setNBTBoolean(entity_bucket,"isNamed", true);
 			}
-			entity_bucket.getOrCreateTag().putDouble("tagHealth", (entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1));
-			if (entity instanceof LivingEntity _livEnt10 && _livEnt10.isBaby()) {
-				entity_bucket.getOrCreateTag().putBoolean("isBaby", true);
-			} else {
-				entity_bucket.getOrCreateTag().putBoolean("isBaby", false);
-			}
+			NBTProcessor.setNBTDouble(entity_bucket,"tagHealth", (entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1));
+            NBTProcessor.setNBTBoolean(entity_bucket,"isBaby", entity instanceof LivingEntity _livEnt10 && _livEnt10.isBaby());
 			if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BUCKET) {
 				if (!entity.level().isClientSide())
 					entity.discard();

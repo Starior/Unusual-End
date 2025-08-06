@@ -12,7 +12,7 @@ import net.minecraft.world.level.Level;
 
 public class EnderStewItem extends Item {
 	public EnderStewItem() {
-		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.8f).build()));
+		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(7).saturationModifier(0.8f).build()));
 	}
 
 	@Override

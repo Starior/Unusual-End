@@ -3,6 +3,8 @@ package net.sweety.unusualend.procedures;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -43,9 +45,10 @@ public class WarpedReefFishProcedure {
                 }
             }
             if (!level.isClientSide() && level.getServer() != null) {
-                for (ItemStack itemstackiterator : level.getLevelData().getLootData().getLootTable(ResourceLocation.withDefaultNamespace("warped_reef_fishing")).getRandomItems(new LootParams.Builder((ServerLevel) level).create(LootContextParamSets.EMPTY))) {
+                for (ItemStack itemStack : level.getServer().reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.withDefaultNamespace("warped_reef_fishing")))
+                        .getRandomItems(new LootParams.Builder((ServerLevel) level).create(LootContextParamSets.EMPTY))) {
                     if (level instanceof ServerLevel _level) {
-                        ItemEntity entityToSpawn = new ItemEntity(_level, (entity.getX()), (entity.getY() + 0.5), (entity.getZ()), itemstackiterator);
+                        ItemEntity entityToSpawn = new ItemEntity(_level, (entity.getX()), (entity.getY() + 0.5), (entity.getZ()), itemStack);
                         entityToSpawn.setPickUpDelay(1);
                         _level.addFreshEntity(entityToSpawn);
                     }

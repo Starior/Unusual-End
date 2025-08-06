@@ -1,11 +1,14 @@
 
 package net.sweety.unusualend.item;
 
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
 import net.sweety.unusualend.init.UnusualEndItems;
 
 public class SpectralShovelItem extends ShovelItem {
@@ -23,8 +26,9 @@ public class SpectralShovelItem extends ShovelItem {
 				return 3.5f;
 			}
 
-			public int getLevel() {
-				return 3;
+			@Override
+			public TagKey<Block> getIncorrectBlocksForDrops() {
+				return BlockTags.INCORRECT_FOR_DIAMOND_TOOL;
 			}
 
 			public int getEnchantmentValue() {
@@ -34,6 +38,6 @@ public class SpectralShovelItem extends ShovelItem {
 			public Ingredient getRepairIngredient() {
 				return Ingredient.of(new ItemStack(UnusualEndItems.PEARLESCENT_INGOT.get()));
 			}
-		}, 1, -3f, new Item.Properties());
+		},  new Item.Properties());
 	}
 }

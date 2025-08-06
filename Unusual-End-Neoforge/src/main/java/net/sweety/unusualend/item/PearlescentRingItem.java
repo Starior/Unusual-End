@@ -51,8 +51,8 @@ public class PearlescentRingItem extends Item {
 	}
 
 	@Override
-	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
-		super.inventoryTick(itemstack, world, entity, slot, selected);
-		PearlescentRingInventoryTickProcedure.execute(itemstack);
+	public void inventoryTick(ItemStack itemstack, Level level, Entity entity, int slot, boolean selected) {
+		super.inventoryTick(itemstack, level, entity, slot, selected);
+		PearlescentRingInventoryTickProcedure.execute(itemstack,level);
 	}
 }

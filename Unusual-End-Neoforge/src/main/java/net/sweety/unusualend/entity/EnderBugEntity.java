@@ -378,33 +378,33 @@ public class EnderBugEntity extends TamableAnimal {
     }
 
     @Override
-    public InteractionResult mobInteract(Player sourceentity, InteractionHand hand) {
-        ItemStack itemstack = sourceentity.getItemInHand(hand);
+    public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        ItemStack itemstack = player.getItemInHand(hand);
         InteractionResult retval = InteractionResult.sidedSuccess(this.level().isClientSide());
         Item item = itemstack.getItem();
         if (itemstack.getItem() instanceof SpawnEggItem) {
-            retval = super.mobInteract(sourceentity, hand);
+            retval = super.mobInteract(player, hand);
         } else if (this.level().isClientSide()) {
-            retval = (this.isTame() && this.isOwnedBy(sourceentity) || this.isFood(itemstack)) ? InteractionResult.sidedSuccess(this.level().isClientSide()) : InteractionResult.PASS;
+            retval = (this.isTame() && this.isOwnedBy(player) || this.isFood(itemstack)) ? InteractionResult.sidedSuccess(this.level().isClientSide()) : InteractionResult.PASS;
         } else {
             if (this.isTame()) {
-                if (this.isOwnedBy(sourceentity)) {
-                    if (item.isEdible() && this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
-                        this.usePlayerItem(sourceentity, hand, itemstack);
-                        this.heal((float) item.getFoodProperties().getNutrition());
+                if (this.isOwnedBy(player)) {
+                    if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
+                        this.usePlayerItem(player, hand, itemstack);
+                        this.heal((float) item.getFoodProperties(itemstack,player).nutrition());
                         retval = InteractionResult.sidedSuccess(this.level().isClientSide());
                     } else if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
-                        this.usePlayerItem(sourceentity, hand, itemstack);
+                        this.usePlayerItem(player, hand, itemstack);
                         this.heal(4);
                         retval = InteractionResult.sidedSuccess(this.level().isClientSide());
                     } else {
-                        retval = super.mobInteract(sourceentity, hand);
+                        retval = super.mobInteract(player, hand);
                     }
                 }
             } else if (this.isFood(itemstack)) {
-                this.usePlayerItem(sourceentity, hand, itemstack);
+                this.usePlayerItem(player, hand, itemstack);
                 if (this.random.nextInt(3) == 0) {
-                    this.tame(sourceentity);
+                    this.tame(player);
                     this.level().broadcastEntityEvent(this, (byte) 7);
                 } else {
                     this.level().broadcastEntityEvent(this, (byte) 6);
@@ -412,7 +412,7 @@ public class EnderBugEntity extends TamableAnimal {
                 this.setPersistenceRequired();
                 retval = InteractionResult.sidedSuccess(this.level().isClientSide());
             } else {
-                retval = super.mobInteract(sourceentity, hand);
+                retval = super.mobInteract(player, hand);
                 if (retval == InteractionResult.SUCCESS || retval == InteractionResult.CONSUME)
                     this.setPersistenceRequired();
             }
@@ -422,7 +422,7 @@ public class EnderBugEntity extends TamableAnimal {
         double z = this.getZ();
         Entity entity = this;
         Level world = this.level();
-        BucketFireflyProcedure.execute(world, entity, sourceentity);
+        BucketFireflyProcedure.execute(world, entity, player);
         return retval;
     }
 
@@ -435,7 +435,7 @@ public class EnderBugEntity extends TamableAnimal {
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverWorld, AgeableMob ageable) {
         EnderBugEntity retval = UnusualendModEntities.ENDER_FIREFLY.get().create(serverWorld);
-        retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null, null);
+        retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null);
         return retval;
     }
 

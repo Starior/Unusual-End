@@ -34,7 +34,8 @@ public class ChorusFluteRightclickedProcedure {
                 }
             }
         }
-        if ((itemstack.getOrCreateTag().getString("track")).equals("Circus")) {
+
+        if (NBTProcessor.getNBTString(itemstack,"track").equals("Circus")) {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
@@ -44,7 +45,7 @@ public class ChorusFluteRightclickedProcedure {
                     }
                 }
             }
-        } else if ((itemstack.getOrCreateTag().getString("track")).equals("Suspicious")) {
+        } else if (NBTProcessor.getNBTString(itemstack,"track").equals("Suspicious")) {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
@@ -54,7 +55,7 @@ public class ChorusFluteRightclickedProcedure {
                     }
                 }
             }
-        } else if ((itemstack.getOrCreateTag().getString("track")).equals("Storms")) {
+        } else if (NBTProcessor.getNBTString(itemstack,"track").equals("Storms")) {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
@@ -64,7 +65,7 @@ public class ChorusFluteRightclickedProcedure {
                     }
                 }
             }
-        } else if ((itemstack.getOrCreateTag().getString("track")).equals("Saria")) {
+        } else if (NBTProcessor.getNBTString(itemstack,"track").equals("Saria")) {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
@@ -74,7 +75,7 @@ public class ChorusFluteRightclickedProcedure {
                     }
                 }
             }
-        } else if ((itemstack.getOrCreateTag().getString("track")).equals("Party")) {
+        } else if (NBTProcessor.getNBTString(itemstack,"track").equals("Party")) {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
@@ -84,7 +85,7 @@ public class ChorusFluteRightclickedProcedure {
                     }
                 }
             }
-        } else if ((itemstack.getOrCreateTag().getString("track")).equals("Docks")) {
+        } else if (NBTProcessor.getNBTString(itemstack,"track").equals("Docks")) {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
@@ -94,7 +95,7 @@ public class ChorusFluteRightclickedProcedure {
                     }
                 }
             }
-        } else if ((itemstack.getOrCreateTag().getString("track")).equals("Tapion")) {
+        } else if (NBTProcessor.getNBTString(itemstack,"track").equals("Tapion")) {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
@@ -104,7 +105,7 @@ public class ChorusFluteRightclickedProcedure {
                     }
                 }
             }
-        } else if ((itemstack.getOrCreateTag().getString("track")).equals("Drift")) {
+        } else if (NBTProcessor.getNBTString(itemstack,"track").equals("Drift")) {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
@@ -114,7 +115,7 @@ public class ChorusFluteRightclickedProcedure {
                     }
                 }
             }
-        } else if ((itemstack.getOrCreateTag().getString("track")).equals("Doctor")) {
+        } else if (NBTProcessor.getNBTString(itemstack,"track").equals("Doctor")) {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
@@ -124,7 +125,7 @@ public class ChorusFluteRightclickedProcedure {
                     }
                 }
             }
-        } else if ((itemstack.getOrCreateTag().getString("track")).equals("Fishe")) {
+        } else if (NBTProcessor.getNBTString(itemstack,"track").equals("Fishe")) {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
@@ -134,7 +135,7 @@ public class ChorusFluteRightclickedProcedure {
                     }
                 }
             }
-        } else if ((itemstack.getOrCreateTag().getString("track")).equals("Aria")) {
+        } else if (NBTProcessor.getNBTString(itemstack,"track").equals("Aria")) {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
@@ -144,7 +145,7 @@ public class ChorusFluteRightclickedProcedure {
                     }
                 }
             }
-        } else if ((itemstack.getOrCreateTag().getString("track")).equals("Moog")) {
+        } else if (NBTProcessor.getNBTString(itemstack,"track").equals("Moog")) {
             if (!world.isClientSide()) {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {

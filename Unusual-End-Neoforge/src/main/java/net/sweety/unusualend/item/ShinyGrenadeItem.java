@@ -28,7 +28,7 @@ public class ShinyGrenadeItem extends Item {
 	}
 
 	@Override
-	public int getUseDuration(ItemStack itemstack) {
+	public int getUseDuration(ItemStack itemstack,LivingEntity entity) {
 		return 36000;
 	}
 
@@ -38,8 +38,8 @@ public class ShinyGrenadeItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, level, list, flag);
+	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, context, list, flag);
 		list.add(Component.translatable("lore.unusualend.when_rightclick").withStyle(ChatFormatting.GRAY));
 		list.add(Component.literal("lore.unusualend.monster_efficient").withStyle(ChatFormatting.BLUE));
 	}
@@ -64,12 +64,7 @@ public class ShinyGrenadeItem extends Item {
 					projectile.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
 				} else {
 					if (stack.isDamageableItem()) {
-						if (stack.hurt(1, world.getRandom(), player)) {
-							stack.shrink(1);
-							stack.setDamageValue(0);
-							if (stack.isEmpty())
-								player.getInventory().removeItem(stack);
-						}
+						stack.hurtAndBreak(1,player,player.getEquipmentSlotForItem(stack));
 					} else {
 						stack.shrink(1);
 						if (stack.isEmpty())

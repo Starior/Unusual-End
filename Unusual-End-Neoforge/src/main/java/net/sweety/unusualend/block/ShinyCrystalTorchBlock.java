@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -53,8 +54,8 @@ public class ShinyCrystalTorchBlock extends Block implements SimpleWaterloggedBl
 	}
 
 	@Override
-	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, level, list, flag);
+	public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, context, list, flag);
 		list.add(Component.translatable("lore.unusualend.place_underwater").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
@@ -66,12 +67,7 @@ public class ShinyCrystalTorchBlock extends Block implements SimpleWaterloggedBl
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return switch (state.getValue(FACING)) {
-			default -> switch (state.getValue(FACE)) {
-				case FLOOR -> box(6, 0, 6, 10, 11, 10);
-				case WALL -> box(11, 3, 6, 16, 13, 10);
-				case CEILING -> box(0, 0, 0, 0, 0, 0);
-			};
-			case SOUTH -> switch (state.getValue(FACE)) {
+            case SOUTH -> switch (state.getValue(FACE)) {
 				case FLOOR -> box(6, 0, 6, 10, 11, 10);
 				case WALL -> box(6, 3, 0, 10, 13, 5);
 				case CEILING -> box(0, 0, 0, 0, 0, 0);
@@ -91,7 +87,12 @@ public class ShinyCrystalTorchBlock extends Block implements SimpleWaterloggedBl
 				case WALL -> box(11, 3, 6, 16, 13, 10);
 				case CEILING -> box(0, 0, 0, 0, 0, 0);
 			};
-		};
+            default -> switch (state.getValue(FACE)) {
+                case FLOOR -> box(6, 0, 6, 10, 11, 10);
+                case WALL -> box(11, 3, 6, 16, 13, 10);
+                case CEILING -> box(0, 0, 0, 0, 0, 0);
+            };
+        };
 	}
 
 	@Override

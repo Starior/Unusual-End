@@ -9,33 +9,29 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.init.UnusualEndItems;
 
 public class VoidRuneRightclickedProcedure {
-	public static void execute(LevelAccessor world, Entity entity, ItemStack itemstack) {
-		if (entity == null)
-			return;
-		if (!entity.isShiftKeyDown()) {
-			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualEndItems.VOID_RUNE.get()) {
-				if (entity instanceof LivingEntity _entity)
-					_entity.swing(InteractionHand.MAIN_HAND, true);
-			} else {
-				if (entity instanceof LivingEntity _entity)
-					_entity.swing(InteractionHand.OFF_HAND, true);
-			}
-			if (entity instanceof Player _player)
-				_player.giveExperiencePoints((int) itemstack.getOrCreateTag().getDouble("XP"));
-			itemstack.getOrCreateTag().putDouble("XP", 0);
-			if (world.isClientSide()) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 1, 2);
-					} else {
-						_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 1, 2, false);
-					}
-				}
-			}
-		}
-	}
+    public static void execute(Level level, Entity entity, ItemStack stack) {
+        if (entity == null)
+            return;
+        if (!entity.isShiftKeyDown()) {
+            if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualEndItems.VOID_RUNE.get()) {
+                if (entity instanceof LivingEntity _entity)
+                    _entity.swing(InteractionHand.MAIN_HAND, true);
+            } else {
+                if (entity instanceof LivingEntity _entity)
+                    _entity.swing(InteractionHand.OFF_HAND, true);
+            }
+            if (entity instanceof Player player)
+                player.giveExperiencePoints((int) NBTProcessor.getNBTDouble(stack, "XP"));
+            NBTProcessor.setNBTDouble(stack, "XP", 0);
+            if (level.isClientSide()) {
+                if (!level.isClientSide()) {
+                    level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 1, 2);
+                } else
+                    level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 1, 2, false);
+            }
+        }
+    }
 }

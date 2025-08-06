@@ -3,11 +3,12 @@ package net.sweety.unusualend.effect;
 
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
-import net.sweety.unusualend.procedures.HeavinessOnEffectActiveTickProcedure;
 
 public class HeavinessMobEffect extends MobEffect {
     public HeavinessMobEffect() {
@@ -18,7 +19,11 @@ public class HeavinessMobEffect extends MobEffect {
 
     @Override
     public boolean applyEffectTick(LivingEntity entity, int amplifier) {
-        HeavinessOnEffectActiveTickProcedure.execute(entity);
+        if (entity.hasEffect(MobEffects.LEVITATION)) {
+            entity.setDeltaMovement(new Vec3((entity.getDeltaMovement().x()),
+                    (entity.getDeltaMovement().y() - (entity.getEffect(UnusualEndMiscRegister.HEAVINESS).getAmplifier()) * 0.03),
+                    (entity.getDeltaMovement().z())));
+        }
         return super.applyEffectTick(entity, amplifier);
     }
 

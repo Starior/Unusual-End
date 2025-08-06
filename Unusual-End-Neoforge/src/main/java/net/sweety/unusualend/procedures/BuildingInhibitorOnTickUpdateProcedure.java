@@ -132,7 +132,7 @@ public class BuildingInhibitorOnTickUpdateProcedure {
                             }.getValue(level, pos, "Owner")).equals(entityiterator.getStringUUID())) {
                                 nearby = true;
                                 if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                                    _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.DISRUPTION.get(), 140, 0, true, true));
+                                    _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.DISRUPTION, 140, 0, true, true));
                             }
                         }
                     }

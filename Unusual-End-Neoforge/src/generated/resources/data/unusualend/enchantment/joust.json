@@ -1,0 +1,20 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.unusualend.joust"
+  },
+  "max_cost": {
+    "base": 10,
+    "per_level_above_first": 4
+  },
+  "max_level": 2,
+  "min_cost": {
+    "base": 2,
+    "per_level_above_first": 2
+  },
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#unusualend:spear_enchantable",
+  "weight": 5
+}

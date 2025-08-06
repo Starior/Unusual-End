@@ -7,6 +7,6 @@ import net.minecraft.world.item.Rarity;
 
 public class EndBlobJellyItem extends Item {
 	public EndBlobJellyItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.5f).alwaysEat().build()));
+		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(4).saturationModifier(0.5f).alwaysEdible().build()));
 	}
 }

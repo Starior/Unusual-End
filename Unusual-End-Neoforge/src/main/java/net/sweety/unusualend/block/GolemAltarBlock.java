@@ -4,8 +4,9 @@ package net.sweety.unusualend.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -51,12 +52,12 @@ public class GolemAltarBlock extends Block {
 	}
 
 	@Override
-	public InteractionResult use(BlockState blockstate, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		super.use(blockstate, level, pos, player, hand, hit);
+	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+		super.useItemOn(stack, state, level, pos, player, hand, hitResult);
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
 		GolemAltarOnBlockRightClickedProcedure.execute(level, x, y, z, player);
-		return InteractionResult.SUCCESS;
+		return ItemInteractionResult.SUCCESS;
 	}
 }

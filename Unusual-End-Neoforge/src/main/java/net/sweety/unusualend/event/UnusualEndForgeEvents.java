@@ -6,6 +6,7 @@ import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -16,11 +17,14 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Endermite;
 import net.minecraft.world.entity.monster.Shulker;
@@ -40,6 +44,7 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.BasicItemListing;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
@@ -54,11 +59,12 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.event.village.WandererTradesEvent;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.configuration.UEConfig;
 import net.sweety.unusualend.entity.*;
 import net.sweety.unusualend.init.*;
-import net.sweety.unusualend.network.UnusualendModVariables;
+import net.sweety.unusualend.network.UnusualEndVariables;
 import net.sweety.unusualend.procedures.*;
 import net.sweety.unusualend.world.inventory.InfuserGUIMenu;
 import top.theillusivec4.curios.api.CuriosApi;
@@ -92,34 +98,13 @@ public class UnusualEndForgeEvents {
     }
 
     @SubscribeEvent
-    public static void registerSpawnConditions(RegisterSpawnPlacementsEvent event) {
-        event.register(UnusualendModEntities.BLUK.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
-        event.register(UnusualendModEntities.BOLOK.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
-        event.register(UnusualendModEntities.UNDEAD_ENDERLING.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
-        event.register(UnusualendModEntities.ENDER_BLOB.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
-        event.register(UnusualendModEntities.SMALL_ENDERBULB.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
-        event.register(UnusualendModEntities.ENDERBULB.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
-        event.register(UnusualendModEntities.GLUB.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, level, reason, pos, random) -> {
-                    int x = pos.getX();
-                    int y = pos.getY();
-                    int z = pos.getZ();
-                    return SpunklerNaturalEntitySpawningConditionProcedure.execute(level, x, y, z);
-                }, RegisterSpawnPlacementsEvent.Operation.AND);
-        event.register(UnusualendModEntities.SPUNKLER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (entityType, level, reason, pos, random) -> {
-                    int x = pos.getX();
-                    int y = pos.getY();
-                    int z = pos.getZ();
-                    return SpunklerNaturalEntitySpawningConditionProcedure.execute(level, x, y, z);
-                }, RegisterSpawnPlacementsEvent.Operation.AND);
+    public static void registerWanderingTrades(WandererTradesEvent event) {
+        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, 5),
 
+                new ItemStack(UnusualEndItems.ENDERFIREFLY_BUCKET.get()), 2, 5, 0.05f));
+        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, 15),
+
+                new ItemStack(UnusualEndItems.VOID_TOTEM.get()), 1, 5, 0.05f));
     }
 
     @SubscribeEvent
@@ -146,7 +131,7 @@ public class UnusualEndForgeEvents {
         Level level = player.level();
         if (player.containerMenu instanceof InfuserGUIMenu)
             InfuserGUIWhileThisGUIIsOpenTickProcedure.execute(player);
-        UnusualendModVariables.PlayerVariables variables = player.getData(UnusualendModVariables.PLAYER_VARIABLES.get());
+        UnusualEndVariables.PlayerVariables variables = player.getData(UnusualEndVariables.PLAYER_VARIABLES.get());
         if (variables.isTeleporting) {
             if ((player.getPersistentData().getString("TargetDimension")).equals("" + player.level().dimension())) {
                 if (!((level.getBlockState(BlockPos.containing(player.getPersistentData().getDouble("TargetX"), player.getPersistentData().getDouble("TargetY") - 1, player.getPersistentData().getDouble("TargetZ"))))
@@ -663,6 +648,33 @@ public class UnusualEndForgeEvents {
                             _datEntSetL.getEntityData().set(SummonedDraglingEntity.DATA_atk, false);
                     }
                 });
+            }
+            if (entity.hasEffect(UnusualEndMiscRegister.SERENITY)) {
+                if (event.getSource().is(DamageTypes.FALL)) {
+                    entity.fallDistance = 0;
+                    if (level instanceof ServerLevel _level)
+                        _level.sendParticles(ParticleTypes.POOF, x, (y + 1), z, 30, 1, 0.5, 1, 0);
+                    DivideSerenityProcedure.execute(entity);
+                }
+            }
+            if (entity instanceof SmallEnderbulbEntity) {
+                if (sourceEntity instanceof Frog) {
+                    entity.hurt(new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)), 20);
+                }
+            }
+            if (sourceEntity instanceof EnderBugEntity) {
+                if (entity instanceof Endermite || entity instanceof EnderblobEntity || entity instanceof EnderbulbEntity || entity instanceof SmallEnderbulbEntity) {
+                    entity.hurt(new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)), 15);
+                }
+            }
+            if (entity instanceof Player) {
+                if (event.getSource().is(DamageTypes.FALL)) {
+                    if (level.getBlockState(BlockPos.containing(x, y - 1, z)).is(UnusualEndBlocks.BOUNCY_GLOOPSLATE.get())) {
+                        if (amount < 3) {
+                            entity.fallDistance = 0;
+                        }
+                    }
+                }
             }
         }
     }

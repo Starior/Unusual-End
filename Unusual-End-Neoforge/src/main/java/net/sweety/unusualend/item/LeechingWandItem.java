@@ -35,12 +35,12 @@ public class LeechingWandItem extends Item {
 
     @Override
     public boolean isBarVisible(ItemStack stack) {
-        return stack.getDamageValue() > 0 || stack.getOrCreateTag().getDouble("rayCooldown") < 400 && stack.getOrCreateTag().getDouble("rayCooldown") > 0 || stack.getDamageValue() > 0 && stack.getOrCreateTag().getDouble("rayCooldown") < 400;
+        return stack.getDamageValue() > 0 || StringToDoubleData.getData(stack,"rayCooldown") < 400 && StringToDoubleData.getData(stack,"rayCooldown") > 0 || stack.getDamageValue() > 0 && StringToDoubleData.getData(stack,"rayCooldown") < 400;
     }
 
     @Override
     public int getBarColor(ItemStack stack) {
-        if (stack.getOrCreateTag().getDouble("rayCooldown") < 400) {
+        if (StringToDoubleData.getData(stack,"rayCooldown") < 400) {
             return 16400310;
         }
         return Mth.hsvToRgb(Math.max(0.0F, 1.0F - (float) stack.getDamageValue() / stack.getMaxDamage()) / 3.0F, 1.0F, 1.0F);
@@ -48,8 +48,8 @@ public class LeechingWandItem extends Item {
 
     @Override
     public int getBarWidth(ItemStack stack) {
-        if (stack.getOrCreateTag().getDouble("rayCooldown") < 400) {
-            return (int) (stack.getOrCreateTag().getDouble("rayCooldown") * 0.0025f * 14f);
+        if (StringToDoubleData.getData(stack,"rayCooldown") < 400) {
+            return (int) (StringToDoubleData.getData(stack,"rayCooldown") * 0.0025f * 14f);
         }
         return Math.round(13.0F - (float) stack.getDamageValue() / stack.getMaxDamage() * 13.0F);
     }

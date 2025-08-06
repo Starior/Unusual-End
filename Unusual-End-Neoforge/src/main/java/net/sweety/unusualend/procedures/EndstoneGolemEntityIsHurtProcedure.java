@@ -73,7 +73,7 @@ public class EndstoneGolemEntityIsHurtProcedure {
 					}
 				}
 				if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-					_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.DISRUPTION.get(), 600, 0));
+					_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.DISRUPTION, 600, 0));
 				if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60, 0));
 				if (world instanceof ServerLevel _level) {
@@ -92,7 +92,7 @@ public class EndstoneGolemEntityIsHurtProcedure {
 					}
 				}
 				if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-					_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.DISRUPTION.get(), 900, 0));
+					_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.DISRUPTION, 900, 0));
 				EndstoneGolemBreakSurroundingsProcedure.execute(world, x, y, z);
 				for (int index0 = 0; index0 < 3; index0++) {
 					if (world instanceof ServerLevel _level) {

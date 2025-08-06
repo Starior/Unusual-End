@@ -12,11 +12,11 @@ import net.minecraft.world.level.Level;
 
 public class BlukSkewerItem extends Item {
 	public BlukSkewerItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.8f).build()));
+		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(7).saturationModifier(0.8f).build()));
 	}
 
 	@Override
-	public int getUseDuration(ItemStack itemstack) {
+	public int getUseDuration(ItemStack itemstack,LivingEntity entity) {
 		return 64;
 	}
 

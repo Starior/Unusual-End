@@ -11,7 +11,7 @@ public class EnderlingScrapLeggingsTickEventProcedure {
 			return;
 		if (entity.isSprinting()) {
 			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-				_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.SPECTRAL_STRIDE.get(), 2, 0, false, false));
+				_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.SPECTRAL_STRIDE, 2, 0, false, false));
 		}
 	}
 }

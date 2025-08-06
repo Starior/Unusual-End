@@ -15,7 +15,7 @@ import net.minecraft.world.level.Level;
 
 public class BlobStewItem extends Item {
 	public BlobStewItem() {
-		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).effect(new MobEffectInstance(MobEffects.JUMP, 200, 0), 1.0F).nutrition(6).saturationMod(0.6f).alwaysEat().build()));
+		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).effect(new MobEffectInstance(MobEffects.JUMP, 200, 0), 1.0F).nutrition(6).saturationModifier(0.6f).alwaysEdible().build()));
 	}
 
 	@Override
