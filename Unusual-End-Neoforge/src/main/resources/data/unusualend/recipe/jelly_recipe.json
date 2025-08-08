@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "unusualend:end_blob"
   },
-  "result": "unusualend:end_blob_jelly"
+  "result": {
+    "id": "unusualend:end_blob_jelly",
+    "count": 1
+  }
 }

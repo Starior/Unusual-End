@@ -5,11 +5,11 @@
       "item": "unusualend:prismalite_gem"
     },
     {
-      "tag": "forge:prismatic_base"
+      "tag": "neoforge:prismatic_base"
     }
   ],
   "output": {
-    "item": "unusualend:creative_swift_strikes",
+    "id": "unusualend:creative_swift_strikes",
     "count": 1
   }
 }

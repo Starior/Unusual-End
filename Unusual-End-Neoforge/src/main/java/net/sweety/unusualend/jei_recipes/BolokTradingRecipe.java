@@ -10,6 +10,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
 
 public class BolokTradingRecipe implements Recipe<CraftingInput> {
     private final ItemStack output;
@@ -100,17 +101,24 @@ public class BolokTradingRecipe implements Recipe<CraftingInput> {
         }
 
         private static BolokTradingRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
-            NonNullList<Ingredient> inputs = NonNullList.withSize(buffer.readInt(), Ingredient.EMPTY);
             ItemStack output = ItemStack.STREAM_CODEC.decode(buffer);
+            int count = buffer.readVarInt();
+            NonNullList<Ingredient> inputs = NonNullList.withSize(count, Ingredient.EMPTY);
+
+            for (int i = 0; i < count; i++) {
+                SizedIngredient sized = SizedIngredient.STREAM_CODEC.decode(buffer);
+                inputs.set(i, sized.ingredient());
+            }
             return new BolokTradingRecipe(output, inputs);
         }
 
         private static void toNetwork(RegistryFriendlyByteBuf buffer, BolokTradingRecipe recipe) {
-            buffer.writeInt(recipe.getIngredients().size());
-            for (Ingredient ing : recipe.getIngredients()) {
-                Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, ing);
+            ItemStack.STREAM_CODEC.encode(buffer, recipe.output);
+            buffer.writeVarInt(recipe.getIngredients().size());
+            for (Ingredient ing : recipe.recipeItems) {
+                SizedIngredient sized = new SizedIngredient(ing, 1);
+                SizedIngredient.STREAM_CODEC.encode(buffer, sized);
             }
-            ItemStack.STREAM_CODEC.encode(buffer, recipe.getResultItem(null));
         }
     }
 }

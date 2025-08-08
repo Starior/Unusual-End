@@ -4,5 +4,8 @@
   "ingredient": {
     "item": "unusualend:endstone_tiles"
   },
-  "result": "unusualend:endstone_pillar"
+  "result": {
+    "id": "unusualend:endstone_pillar",
+    "count": 1
+  }
 }

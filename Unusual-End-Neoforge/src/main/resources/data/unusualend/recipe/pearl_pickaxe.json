@@ -10,6 +10,6 @@
     "item": "unusualend:pearlescent_ingot"
   },
   "result": {
-    "item": "unusualend:pearlescent_pickaxe"
+    "id": "unusualend:pearlescent_pickaxe"
   }
 }

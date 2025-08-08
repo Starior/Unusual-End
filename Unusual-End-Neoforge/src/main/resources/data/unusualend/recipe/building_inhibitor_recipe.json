@@ -18,7 +18,7 @@
     }
   },
   "result": {
-    "item": "unusualend:building_inhibitor",
+    "id": "unusualend:building_inhibitor",
     "count": 1
   }
 }

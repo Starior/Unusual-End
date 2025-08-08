@@ -41,7 +41,7 @@ public class PlayerTickProcedure {
         double MusicID;
         if (world.isClientSide()) {
             UnusualEndVariables.PlayerVariables variables = entity.getData(UnusualEndVariables.PLAYER_VARIABLES.get());
-            MusicID = variables.PlayerMusic;
+            MusicID = variables.playerMusic;
             BiomeMusicLibrary.playTrack((int) MusicID);
         }
     }
@@ -52,7 +52,7 @@ public class PlayerTickProcedure {
         if (!accessor.isClientSide()) {
             if (!onReturnMusic(accessor, x, y, z, entity)) {
                 UnusualEndVariables.PlayerVariables variables = entity.getData(UnusualEndVariables.PLAYER_VARIABLES.get());
-                variables.PlayerMusic = -1;
+                variables.playerMusic = -1;
                 variables.syncPlayerVariables(entity);
             }
         }
@@ -62,8 +62,8 @@ public class PlayerTickProcedure {
         if (entity == null)
             return;
         UnusualEndVariables.PlayerVariables variables = entity.getData(UnusualEndVariables.PLAYER_VARIABLES.get());
-        if (variables.ScrapeOverlay == 1) {
-            variables.ScrapeOverlay = 0;
+        if (variables.scrapeOverlay == 1) {
+            variables.scrapeOverlay = 0;
             variables.syncPlayerVariables(entity);
             if (world instanceof ServerLevel _level)
                 _level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
@@ -82,11 +82,11 @@ public class PlayerTickProcedure {
             }
             if (world instanceof ServerLevel _level)
                 _level.sendParticles(ParticleTypes.POOF, x, (y + 1), z, 10, 0.5, 0.5, 0.5, 0);
-        } else if (variables.ScrapeOverlay > 0) {
-            variables.ScrapeOverlay = variables.ScrapeOverlay - 1;
+        } else if (variables.scrapeOverlay > 0) {
+            variables.scrapeOverlay = variables.scrapeOverlay - 1;
             variables.syncPlayerVariables(entity);
             if (!(entity instanceof LivingEntity living && living.hasEffect(MobEffects.INVISIBILITY))) {
-                variables.ScrapeOverlay = 1;
+                variables.scrapeOverlay = 1;
                 variables.syncPlayerVariables(entity);
             }
         }
@@ -98,15 +98,15 @@ public class PlayerTickProcedure {
         boolean music = false;
         UnusualEndVariables.PlayerVariables variables = entity.getData(UnusualEndVariables.PLAYER_VARIABLES.get());
         if (!accessor.getEntitiesOfClass(EndstoneGolemEntity.class, AABB.ofSize(new Vec3(x, y, z), 100, 100, 100), e -> true).isEmpty()) {
-            variables.PlayerMusic = 0;
+            variables.playerMusic = 0;
             variables.syncPlayerVariables(entity);
             music = true;
         } else if (!accessor.getEntitiesOfClass(EnderblobQueenEntity.class, AABB.ofSize(new Vec3(x, y, z), 100, 100, 100), e -> true).isEmpty()) {
-            variables.PlayerMusic = 1;
+            variables.playerMusic = 1;
             variables.syncPlayerVariables(entity);
             music = true;
         } else {
-            variables.PlayerMusic = -1;
+            variables.playerMusic = -1;
             variables.syncPlayerVariables(entity);
         }
         return music;

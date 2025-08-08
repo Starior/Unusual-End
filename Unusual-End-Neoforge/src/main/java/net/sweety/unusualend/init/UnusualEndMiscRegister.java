@@ -1,7 +1,6 @@
 package net.sweety.unusualend.init;
 
 import com.mojang.serialization.MapCodec;
-import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -13,18 +12,13 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.effect.*;
 import net.sweety.unusualend.enchantment.BoloksFuryEnchantment;
-import net.sweety.unusualend.enchantment.BoloksHeadEnchantment;
 import net.sweety.unusualend.enchantment.BoloksWingsEnchantment;
-import net.sweety.unusualend.item.data.StringToDoubleData;
-import net.sweety.unusualend.item.inventory.BolokResearchNotesInventoryCapability;
 import net.sweety.unusualend.world.features.*;
 import net.sweety.unusualend.world.inventory.BolokNotesMenu;
 import net.sweety.unusualend.world.inventory.BuildingInhibitorGUIMenu;
@@ -32,7 +26,6 @@ import net.sweety.unusualend.world.inventory.InfuserGUIMenu;
 import net.sweety.unusualend.world.inventory.PurpurTankGUIMenu;
 
 import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
 
 public class UnusualEndMiscRegister {
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS = DeferredRegister.create(BuiltInRegistries.RECIPE_SERIALIZER, "unusualend");
@@ -58,24 +51,12 @@ public class UnusualEndMiscRegister {
             DeferredRegister.create(Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE, UnusualEnd.MODID);
     public static final Supplier<MapCodec<? extends EnchantmentEntityEffect>> BOLOKS_FURY = ENCHANTMENT_EFFECTS.register("boloks_fury", () -> BoloksFuryEnchantment.CODEC);
     public static final Supplier<MapCodec<? extends EnchantmentEntityEffect>> BOLOKS_WINGS = ENCHANTMENT_EFFECTS.register("boloks_wings", () -> BoloksWingsEnchantment.CODEC);
-    public static final Supplier<MapCodec<? extends EnchantmentEntityEffect>> BOLOKS_HEAD = ENCHANTMENT_EFFECTS.register("boloks_head", () -> BoloksHeadEnchantment.CODEC);
 
     public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, UnusualEnd.MODID);
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> BOLOK_PARTICLE = PARTICLES.register("bolok_particle", () -> new SimpleParticleType(true));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> PINK_FLAME = PARTICLES.register("pink_flame", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> WARPED_BUBBLES = PARTICLES.register("warped_bubbles", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> CITRINE_SHINE = PARTICLES.register("citrine_shine", () -> new SimpleParticleType(false));
-
-    public static final DeferredRegister<DataComponentType<?>> DATA_COMPONENT_TYPES =
-            DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, UnusualEnd.MODID);
-
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<StringToDoubleData>> STRING_TO_DOUBLE_DATA = register("string_to_double_data",
-            builder -> builder.persistent(StringToDoubleData.CODEC));
-
-    private static <T> DeferredHolder<DataComponentType<?>, DataComponentType<T>> register(String name,
-                                                                                           UnaryOperator<DataComponentType.Builder<T>> builderOperator) {
-        return DATA_COMPONENT_TYPES.register(name, () -> builderOperator.apply(DataComponentType.builder()).build());
-    }
 
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(BuiltInRegistries.FEATURE, UnusualEnd.MODID);
     public static final DeferredHolder<Feature<?>, PurpurIsland1FeatureFeature> PURPUR_ISLAND_1_FEATURE = FEATURES.register("purpur_island_1_feature", PurpurIsland1FeatureFeature::new);
@@ -93,7 +74,6 @@ public class UnusualEndMiscRegister {
         MENUS.register(bus);
         MOB_EFFECTS.register(bus);
         ENCHANTMENT_EFFECTS.register(bus);
-        DATA_COMPONENT_TYPES.register(bus);
         PARTICLES.register(bus);
         FEATURES.register(bus);
     }

@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "item": "unusualend:gneiss_pillar",
+    "id": "unusualend:gneiss_pillar",
     "count": 1
   }
 }

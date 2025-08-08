@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "item": "minecraft:warped_wart_block",
+    "id": "minecraft:warped_wart_block",
     "count": 1
   }
 }

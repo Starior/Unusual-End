@@ -1,6 +1,7 @@
 
 package net.sweety.unusualend.item;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -9,6 +10,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.procedures.VoidMirrorRightclickedProcedure;
 
@@ -16,7 +18,7 @@ import java.util.List;
 
 public class VoidMirrorItem extends Item {
 	public VoidMirrorItem() {
-		super(new Item.Properties().durability(500).rarity(Rarity.UNCOMMON));
+		super(new Item.Properties().durability(500).rarity(Rarity.UNCOMMON).component(DataComponents.CUSTOM_DATA, CustomData.EMPTY));
 	}
 
 	@Override

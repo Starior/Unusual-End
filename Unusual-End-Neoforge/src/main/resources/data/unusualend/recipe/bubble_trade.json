@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "item": "unusualend:warped_bubble",
+    "id": "unusualend:warped_bubble",
     "count": 2
   }
 }

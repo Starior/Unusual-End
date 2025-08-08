@@ -4,10 +4,34 @@
     "translate": "enchantment.unusualend.boloks_head"
   },
   "effects": {
-    "minecraft:hit_block": [
+    "minecraft:damage_protection": [
       {
         "effect": {
-          "type": "unusualend:boloks_head"
+          "type": "minecraft:add",
+          "value": {
+            "type": "minecraft:linear",
+            "base": 6.0,
+            "per_level_above_first": 6.0
+          }
+        },
+        "requirements": {
+          "condition": "minecraft:damage_source_properties",
+          "predicate": {
+            "tags": [
+              {
+                "expected": true,
+                "id": "minecraft:bypasses_armor"
+              },
+              {
+                "expected": false,
+                "id": "minecraft:bypasses_invulnerability"
+              },
+              {
+                "expected": false,
+                "id": "minecraft:panic_causes"
+              }
+            ]
+          }
         }
       }
     ]

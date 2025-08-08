@@ -13,7 +13,7 @@
     }
   ],
   "result": {
-    "item": "unusualend:chorus_juice"
+    "id": "unusualend:chorus_juice"
   },
   "container": {
     "item": "minecraft:glass_bottle"

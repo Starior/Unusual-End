@@ -6,5 +6,7 @@
   "ingredient": {
     "item": "unusualend:gloopilon_slice"
   },
-  "result": "unusualend:prismalite_shard"
+  "result": {
+    "id": "unusualend:prismalite_shard"
+  }
 }

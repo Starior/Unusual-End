@@ -16,7 +16,7 @@
     }
   ],
   "result": {
-    "item": "unusualend:chorus_tea"
+    "id": "unusualend:chorus_tea"
   },
   "container": {
     "item": "minecraft:glass_bottle"

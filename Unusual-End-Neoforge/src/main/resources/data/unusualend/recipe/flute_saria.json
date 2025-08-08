@@ -8,12 +8,16 @@
       "item": "unusualend:chorus_flute"
     },
     "A": {
-      "tag": "forge:chorus_petals"
+      "tag": "neoforge:chorus_petals"
     }
   },
   "result": {
-    "item": "unusualend:chorus_flute",
+    "id": "unusualend:chorus_flute",
     "count": 1,
-    "nbt": "{track:\"Saria\"}"
+    "components": {
+      "minecraft:custom_data": {
+        "track": "Saria"
+      }
+    }
   }
 }

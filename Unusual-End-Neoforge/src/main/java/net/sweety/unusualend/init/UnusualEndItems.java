@@ -124,8 +124,8 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> GLOOPSTONE_BRICK_WALL = block(UnusualEndBlocks.GLOOPSTONE_BRICK_WALL);
     public static final DeferredHolder<Item, DeferredSpawnEggItem> BOLOK_SPAWN_EGG = REGISTRY.register("bolok_spawn_egg", () -> new DeferredSpawnEggItem(UnusualendModEntities.BOLOK, -15059298, -12998000, new Item.Properties()));
     public static final DeferredHolder<Item, BolokScaleItem> BOLOK_SCALE = REGISTRY.register("bolok_scale", () -> new BolokScaleItem());
-    public static final DeferredHolder<Item, BolokBootsItem.Chestplate> WARPED_CHESTPLATE = REGISTRY.register("warped_chestplate", () -> new BolokBootsItem.Chestplate());
-    public static final DeferredHolder<Item, BolokBootsItem.Boots> WARPED_BOOTS = REGISTRY.register("warped_boots", () -> new BolokBootsItem.Boots());
+    public static final DeferredHolder<Item, BolokItem.Chestplate> WARPED_CHESTPLATE = REGISTRY.register("warped_chestplate", () -> new BolokItem.Chestplate());
+    public static final DeferredHolder<Item, BolokItem.Boots> WARPED_BOOTS = REGISTRY.register("warped_boots", () -> new BolokItem.Boots());
     public static final DeferredHolder<Item, ShinyCrystalItem> SHINY_CRYSTAL = REGISTRY.register("shiny_crystal", () -> new ShinyCrystalItem());
     public static final DeferredHolder<Item, BlockItem> SHINY_CRYSTAL_BLOCK = block(UnusualEndBlocks.SHINY_CRYSTAL_BLOCK);
     public static final DeferredHolder<Item, BlockItem> BOLOK_SCALE_BLOCK = block(UnusualEndBlocks.BOLOK_SCALE_BLOCK);

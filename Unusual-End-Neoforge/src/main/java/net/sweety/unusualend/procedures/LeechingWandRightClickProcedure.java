@@ -22,7 +22,6 @@ import net.sweety.unusualend.entity.LeechingChargeProjectileEntity;
 import net.sweety.unusualend.init.UnusualEndEnchantments;
 import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualendModEntities;
-import net.sweety.unusualend.item.data.StringToDoubleData;
 
 @EventBusSubscriber
 public class LeechingWandRightClickProcedure {
@@ -38,7 +37,7 @@ public class LeechingWandRightClickProcedure {
             return;
         ItemStack stack = player.getMainHandItem();
         if (stack.is(UnusualEndItems.LEECHING_WAND.get())) {
-            if (StringToDoubleData.getData(stack,"rayCooldown") >= 400) {
+            if (NBTProcessor.getNBTDouble(stack,"rayCooldown") >= 400) {
                 player.swing(InteractionHand.MAIN_HAND, true);
                 if (level instanceof Level _level) {
                     if (!_level.isClientSide()) {

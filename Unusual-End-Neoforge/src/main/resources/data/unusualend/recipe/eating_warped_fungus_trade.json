@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "item": "unusualend:warped_spores",
+    "id": "unusualend:warped_spores",
     "count": 1
   }
 }

@@ -4,5 +4,8 @@
   "ingredient": {
     "item": "unusualend:polished_purpur_bricks"
   },
-  "result": "unusualend:polished_raw_purpur_brick_wall"
+  "result": {
+    "id": "unusualend:polished_raw_purpur_brick_wall",
+    "count": 1
+  }
 }

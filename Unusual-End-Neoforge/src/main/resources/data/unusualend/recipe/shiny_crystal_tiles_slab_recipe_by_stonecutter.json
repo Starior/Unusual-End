@@ -4,5 +4,8 @@
   "ingredient": {
     "item": "unusualend:shiny_crystal_tiles"
   },
-  "result": "unusualend:shiny_crystal_tiles_slab"
+  "result": {
+    "id": "unusualend:shiny_crystal_tiles_slab",
+    "count": 1
+  }
 }

@@ -8,7 +8,7 @@
   ],
   "key": {
     "a": {
-      "tag": "forge:glass/colorless"
+      "tag": "neoforge:glass/colorless"
     },
     "b": {
       "item": "minecraft:ender_eye"
@@ -18,7 +18,7 @@
     }
   },
   "result": {
-    "item": "minecraft:end_crystal",
+    "id": "minecraft:end_crystal",
     "count": 1
   }
 }

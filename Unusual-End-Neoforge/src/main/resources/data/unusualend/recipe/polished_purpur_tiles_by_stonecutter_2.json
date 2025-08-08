@@ -4,5 +4,8 @@
   "ingredient": {
     "item": "unusualend:polished_purpur_tiles"
   },
-  "result": "unusualend:chiseled_polished_purpur_tiles"
+  "result": {
+    "id": "unusualend:chiseled_polished_purpur_tiles",
+    "count": 1
+  }
 }

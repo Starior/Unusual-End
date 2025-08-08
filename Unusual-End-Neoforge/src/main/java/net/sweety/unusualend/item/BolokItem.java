@@ -17,12 +17,12 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public abstract class BolokBootsItem extends ArmorItem {
-    public BolokBootsItem(ArmorItem.Type type, Item.Properties properties) {
+public abstract class BolokItem extends ArmorItem {
+    public BolokItem(ArmorItem.Type type, Item.Properties properties) {
         super(ModArmorMaterials.BOLOK_ARMOR_MATERIAL, type, properties);
     }
 
-    public static class Chestplate extends BolokBootsItem {
+    public static class Chestplate extends BolokItem {
         public Chestplate() {
             super(ArmorItem.Type.CHESTPLATE, new Item.Properties());
         }
@@ -42,7 +42,7 @@ public abstract class BolokBootsItem extends ArmorItem {
         }
     }
 
-    public static class Boots extends BolokBootsItem {
+    public static class Boots extends BolokItem {
         public Boots() {
             super(ArmorItem.Type.BOOTS, new Item.Properties());
         }

@@ -31,7 +31,7 @@
     }
   ],
   "result": {
-    "item": "minecraft:horn_coral_block",
+    "id": "minecraft:horn_coral_block",
     "count": 8
   }
 }

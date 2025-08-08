@@ -120,7 +120,7 @@ public class TPwithChorusProcedure {
                 entity.getPersistentData().putDouble("TargetY", NBTProcessor.getNBTDouble(stack, "TpY"));
                 entity.getPersistentData().putDouble("TargetZ", NBTProcessor.getNBTDouble(stack, "TpZ") - 0.5);
                 UnusualEndVariables.PlayerVariables variables = entity.getData(UnusualEndVariables.PLAYER_VARIABLES.get());
-                variables.isTeleporting = true;
+                variables.teleporting = true;
                 variables.syncPlayerVariables(entity);
             }
         } else {

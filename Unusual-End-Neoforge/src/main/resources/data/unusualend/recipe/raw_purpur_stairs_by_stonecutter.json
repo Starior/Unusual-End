@@ -4,5 +4,8 @@
   "ingredient": {
     "item": "unusualend:raw_purpur_block"
   },
-  "result": "unusualend:raw_purpur_block_stairs"
+  "result": {
+    "id": "unusualend:raw_purpur_block_stairs",
+    "count": 1
+  }
 }

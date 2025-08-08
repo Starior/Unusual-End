@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "item": "unusualend:chiseled_gneiss_brick",
+    "id": "unusualend:chiseled_gneiss_brick",
     "count": 1
   }
 }

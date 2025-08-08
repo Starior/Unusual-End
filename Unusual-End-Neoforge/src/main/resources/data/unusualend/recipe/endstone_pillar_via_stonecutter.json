@@ -4,5 +4,7 @@
   "ingredient": {
     "item": "minecraft:end_stone"
   },
-  "result": "unusualend:endstone_pillar"
+  "result": {
+    "id": "unusualend:endstone_pillar"
+  }
 }

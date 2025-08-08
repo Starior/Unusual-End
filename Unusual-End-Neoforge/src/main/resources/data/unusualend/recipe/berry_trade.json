@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "item": "unusualend:warped_berries",
+    "id": "unusualend:warped_berries",
     "count": 1
   }
 }

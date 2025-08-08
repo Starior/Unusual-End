@@ -13,7 +13,7 @@
     }
   ],
   "result": {
-    "item": "unusualend:warped_stew"
+    "id": "unusualend:warped_stew"
   },
   "container": {
     "item": "minecraft:bowl"

@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "item": "minecraft:enchanted_book",
+    "id": "minecraft:enchanted_book",
     "count": 1,
     "nbt": "{StoredEnchantments: [{lvl:1s, id:\"unusualend:boloks_head\"}]}"
   }

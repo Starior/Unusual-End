@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "unusualend:raw_bluk"
   },
-  "result": "unusualend:cooked_bluk"
+  "result": {
+    "id": "unusualend:cooked_bluk",
+    "count": 1
+  }
 }

@@ -3,8 +3,6 @@ package net.sweety.unusualend.event;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.SpawnPlacementTypes;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -13,10 +11,8 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLConstructModEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.common.BasicItemListing;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
-import net.neoforged.neoforge.event.village.WandererTradesEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.sweety.unusualend.block.entity.*;
@@ -88,7 +84,7 @@ public class UnusualEndEvents {
         PayloadRegistrar registrar = event.registrar("1.0");
         registrar.playToServer(BolokNotesPacket.TYPE, BolokNotesPacket.STREAM_CODEC, BolokNotesPacket::handle);
         registrar.playToServer(InfuserGUIPacket.TYPE, InfuserGUIPacket.STREAM_CODEC, InfuserGUIPacket::handle);
-        registrar.playToServer(UnusualEndVariables.PlayerVariablesSyncPacket.TYPE, UnusualEndVariables.PlayerVariablesSyncPacket.STREAM_CODEC, UnusualEndVariables.PlayerVariablesSyncPacket::handle);
+        registrar.playBidirectional(UnusualEndVariables.PlayerVariablesSyncPacket.TYPE, UnusualEndVariables.PlayerVariablesSyncPacket.STREAM_CODEC, UnusualEndVariables.PlayerVariablesSyncPacket::handle);
     }
 
     @SubscribeEvent

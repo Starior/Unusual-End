@@ -9,22 +9,19 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.sweety.unusualend.init.UnusualEndMiscRegister;
-import net.sweety.unusualend.item.data.StringToDoubleData;
+import net.sweety.unusualend.procedures.NBTProcessor;
 import net.sweety.unusualend.procedures.PearlescentRingInventoryTickProcedure;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class PearlescentRingItem extends Item {
 	public PearlescentRingItem() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).component(UnusualEndMiscRegister.STRING_TO_DOUBLE_DATA.get(),
-				new StringToDoubleData(new HashMap<>())));
+		super(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
 	}
 
 	@Override
 	public boolean isBarVisible(ItemStack stack) {
-        return StringToDoubleData.getData(stack, "ringCooldown") < 400 && StringToDoubleData.getData(stack, "ringCooldown") > 0;
+        return NBTProcessor.getNBTDouble(stack, "ringCooldown") < 400 && NBTProcessor.getNBTDouble(stack, "ringCooldown") > 0;
     }
 
 	@Override
@@ -34,7 +31,7 @@ public class PearlescentRingItem extends Item {
 
 	@Override
 	public int getBarWidth(ItemStack stack) {
-		return (int) (StringToDoubleData.getData(stack, "ringCooldown") * 0.0025f * 14f);
+		return (int) (NBTProcessor.getNBTDouble(stack, "ringCooldown") * 0.0025f * 14f);
 	}
 
 	@Override

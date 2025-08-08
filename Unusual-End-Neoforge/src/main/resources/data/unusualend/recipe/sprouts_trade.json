@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "item": "unusualend:warped_sprouts",
+    "id": "unusualend:warped_sprouts",
     "count": 1
   }
 }

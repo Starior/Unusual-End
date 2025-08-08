@@ -31,7 +31,7 @@
     }
   ],
   "result": {
-    "item": "minecraft:fire_coral_block",
+    "id": "minecraft:fire_coral_block",
     "count": 8
   }
 }

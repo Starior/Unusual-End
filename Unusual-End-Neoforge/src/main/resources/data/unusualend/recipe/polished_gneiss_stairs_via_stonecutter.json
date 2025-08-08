@@ -4,5 +4,7 @@
   "ingredient": {
     "item": "unusualend:polished_gneiss"
   },
-  "result": "unusualend:polished_gneiss_stairs"
+  "result": {
+    "id": "unusualend:polished_gneiss_stairs"
+  }
 }

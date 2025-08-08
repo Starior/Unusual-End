@@ -1,19 +1,24 @@
 package net.sweety.unusualend.init;
 
+import net.minecraft.advancements.critereon.DamageSourcePredicate;
+import net.minecraft.advancements.critereon.TagPredicate;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.minecraft.world.item.enchantment.EnchantmentTarget;
+import net.minecraft.world.item.enchantment.LevelBasedValue;
+import net.minecraft.world.item.enchantment.effects.AddValue;
+import net.minecraft.world.level.storage.loot.predicates.DamageSourceCondition;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.datagen.tags.UnusualEndTags;
 import net.sweety.unusualend.enchantment.BoloksFuryEnchantment;
-import net.sweety.unusualend.enchantment.BoloksHeadEnchantment;
 import net.sweety.unusualend.enchantment.BoloksWingsEnchantment;
 
 public class UnusualEndEnchantments {
@@ -64,7 +69,8 @@ public class UnusualEndEnchantments {
                 Enchantment.dynamicCost(20, 5),
                 2,
                 EquipmentSlotGroup.HEAD))
-                .withEffect(EnchantmentEffectComponents.HIT_BLOCK, new BoloksHeadEnchantment()));
+                .withEffect(EnchantmentEffectComponents.DAMAGE_PROTECTION, new AddValue(LevelBasedValue.perLevel(6.0F)), DamageSourceCondition.hasDamageSource(DamageSourcePredicate.Builder.damageType()
+                        .tag(TagPredicate.is(DamageTypeTags.BYPASSES_ARMOR)).tag(TagPredicate.isNot(DamageTypeTags.BYPASSES_INVULNERABILITY)).tag(TagPredicate.isNot(DamageTypeTags.PANIC_CAUSES)))));
         register(context, EVERLASTING, Enchantment.enchantment(Enchantment.definition(
                         (items.getOrThrow(ItemTags.ARMOR_ENCHANTABLE)),
                         (items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE)),

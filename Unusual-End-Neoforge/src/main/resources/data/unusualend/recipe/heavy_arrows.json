@@ -13,11 +13,11 @@
       "item": "minecraft:stick"
     },
     "C": {
-      "tag": "forge:chorus_petals"
+      "tag": "neoforge:chorus_petals"
     }
   },
   "result": {
-    "item": "minecraft:tipped_arrow",
+    "id": "minecraft:tipped_arrow",
     "count": 8,
     "nbt": "{Potion:\"unusualend:heaviness_potion\"}"
   }

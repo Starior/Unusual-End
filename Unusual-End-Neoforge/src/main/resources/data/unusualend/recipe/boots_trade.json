@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "item": "unusualend:warped_boots",
+    "id": "unusualend:warped_boots",
     "count": 1
   }
 }

@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "item": "unusualend:warped_squash_wedge",
+    "id": "unusualend:warped_squash_wedge",
     "count": 1
   },
   "neoforge:conditions": [

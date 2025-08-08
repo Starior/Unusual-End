@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "minecraft:end_stone_bricks"
   },
-  "result": "unusualend:weak_end_stone_bricks"
+  "result": {
+    "id": "unusualend:weak_end_stone_bricks",
+    "count": 1
+  }
 }

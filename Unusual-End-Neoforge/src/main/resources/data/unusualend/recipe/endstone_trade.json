@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "item": "unusualend:warped_end_stone",
+    "id": "unusualend:warped_end_stone",
     "count": 1
   }
 }

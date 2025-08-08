@@ -19,7 +19,6 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualendModEntities;
-import net.sweety.unusualend.item.data.StringToDoubleData;
 import top.theillusivec4.curios.api.CuriosApi;
 
 @EventBusSubscriber
@@ -41,7 +40,7 @@ public class PearlescentRingTriggerProcedure {
                     CuriosApi.getCuriosHelper().findCurios(lv, UnusualEndItems.PEARLESCENT_RING.get()).forEach(item -> {
                         ItemStack stackIterator = item.stack();
                         if (!((sourceEntity instanceof Player _plrCldRem3 ? _plrCldRem3.getCooldowns().getCooldownPercent(UnusualEndItems.PEARLESCENT_RING.get(), 0f) * 100 : 0) > 0)) {
-                            if (StringToDoubleData.getData(stackIterator, "ringCooldown") >= 400) {
+                            if (NBTProcessor.getNBTDouble(stackIterator, "ringCooldown") >= 400) {
                                 sourceEntity.getPersistentData().putBoolean("wasRingUsed", true);
                                 if (world instanceof ServerLevel _serverLevel) {
                                     Entity entitytospawn = UnusualendModEntities.SUMMONED_DRAGLING.get().spawn(_serverLevel,
@@ -96,7 +95,7 @@ public class PearlescentRingTriggerProcedure {
                                             _toTame.tame(_owner);
                                     }
                                 }
-                                StringToDoubleData.putData(stackIterator, "ringCooldown", 0);
+                                NBTProcessor.setNBTDouble(stackIterator, "ringCooldown", 0);
                                 if (sourceEntity instanceof Player _player)
                                     _player.getCooldowns().addCooldown(UnusualEndItems.PEARLESCENT_RING.get(), 10);
                             }
@@ -107,7 +106,7 @@ public class PearlescentRingTriggerProcedure {
         }
         if ((sourceEntity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == UnusualEndItems.PEARLESCENT_RING.get()) {
             if (!((sourceEntity instanceof Player _plrCldRem42 ? _plrCldRem42.getCooldowns().getCooldownPercent(UnusualEndItems.PEARLESCENT_RING.get(), 0f) * 100 : 0) > 0)) {
-                if (sourceEntity instanceof LivingEntity _livEnt && StringToDoubleData.getData(_livEnt.getOffhandItem(),"ringCooldown") >= 400) {
+                if (sourceEntity instanceof LivingEntity _livEnt && NBTProcessor.getNBTDouble(_livEnt.getOffhandItem(),"ringCooldown") >= 400) {
                     if (world instanceof ServerLevel _serverLevel) {
                         Entity entitytospawn = UnusualendModEntities.SUMMONED_DRAGLING.get()
                                 .spawn(_serverLevel,
@@ -165,7 +164,7 @@ public class PearlescentRingTriggerProcedure {
                                 _toTame.tame(_owner);
                         }
                     }
-                    StringToDoubleData.putData(_livEnt.getOffhandItem(), "ringCooldown", 0);
+                    NBTProcessor.setNBTDouble(_livEnt.getOffhandItem(), "ringCooldown", 0);
                     if (sourceEntity instanceof Player player)
                         player.getCooldowns().addCooldown(UnusualEndItems.PEARLESCENT_RING.get(), 10);
                 }

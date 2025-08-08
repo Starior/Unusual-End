@@ -35,7 +35,6 @@ public class UnusualEnd {
         UnusualendModTabs.REGISTRY.register(bus);
         StructureFeature.REGISTRY.register(bus);
         UnusualEndPotions.REGISTRY.register(bus);
-        UnusualEndLootModifier.LOOT_MODIFIERS.register(bus);
         UnusualEndVariables.ATTACHMENT_TYPES.register(bus);
         UnusualEndMiscRegister.register(bus);
         container.registerConfig(ModConfig.Type.COMMON, UEConfig.SPEC, "unusualend-common.toml");

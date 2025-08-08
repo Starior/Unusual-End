@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "item": "unusualend:scale_horse_armor",
+    "id": "unusualend:scale_horse_armor",
     "count": 1
   }
 }

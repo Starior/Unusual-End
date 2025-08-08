@@ -8,6 +8,6 @@ public class ScrapeClothOverlayDisplayOverlayIngameProcedure {
 		if (entity == null)
 			return false;
 		UnusualEndVariables.PlayerVariables variables = entity.getData(UnusualEndVariables.PLAYER_VARIABLES.get());
-		return variables.ScrapeOverlay > 0;
+		return variables.scrapeOverlay > 0;
 	}
 }

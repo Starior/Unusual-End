@@ -28,14 +28,12 @@ import java.util.function.Supplier;
 public class UnusualEndVariables {
     public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES, UnusualEnd.MODID);
     public static final Supplier<AttachmentType<PlayerVariables>> PLAYER_VARIABLES = ATTACHMENT_TYPES.register("player_variables",
-            () -> AttachmentType.serializable(iAttachmentHolder -> new PlayerVariables(0, 0, 0, false, 0, 0, 0)).build());
+            () -> AttachmentType.serializable(PlayerVariables::new).build());
 
 
     @EventBusSubscriber
     public static class EventBusVariableHandlers {
-
         @SubscribeEvent
-
         public static void onPlayerLoggedInSyncPlayerVariables(PlayerEvent.PlayerLoggedInEvent event) {
             if (event.getEntity() instanceof ServerPlayer player)
                 player.getData(PLAYER_VARIABLES).syncPlayerVariables(event.getEntity());
@@ -47,7 +45,6 @@ public class UnusualEndVariables {
         public static void onPlayerRespawnedSyncPlayerVariables(PlayerEvent.PlayerRespawnEvent event) {
 
             if (event.getEntity() instanceof ServerPlayer player)
-
                 player.getData(PLAYER_VARIABLES).syncPlayerVariables(event.getEntity());
 
         }
@@ -68,12 +65,17 @@ public class UnusualEndVariables {
 
         public static void clonePlayer(PlayerEvent.Clone event) {
 
-            PlayerVariables original = event.getOriginal().getData(PLAYER_VARIABLES);
-
-            PlayerVariables clone = new PlayerVariables(original.tpX, original.tpY, original.tpZ, original.isTeleporting, original.PlayerMusic, original.SpectralSwing, original.ScrapeOverlay);
-
-            clone.PlayerMusic = original.PlayerMusic;
-            event.getEntity().setData(PLAYER_VARIABLES, clone);
+            PlayerVariables oldVars = event.getOriginal()
+                    .getData(PLAYER_VARIABLES.get());
+            PlayerVariables newVars = new PlayerVariables();
+            newVars.tpX = oldVars.tpX;
+            newVars.tpY = oldVars.tpY;
+            newVars.tpZ = oldVars.tpZ;
+            newVars.teleporting = oldVars.teleporting;
+            newVars.playerMusic = oldVars.playerMusic;
+            newVars.spectralSwing = oldVars.spectralSwing;
+            newVars.scrapeOverlay = oldVars.scrapeOverlay;
+            event.getEntity().setData(PLAYER_VARIABLES, newVars);
         }
     }
 
@@ -82,26 +84,16 @@ public class UnusualEndVariables {
         public double tpX = 0;
         public double tpY = 0;
         public double tpZ = 0;
-        public boolean isTeleporting = false;
-        public double PlayerMusic = -1.0;
+        public boolean teleporting = false;
+        public double playerMusic = -1.0;
 
-        public PlayerVariables(double tpX, double tpY, double tpZ, boolean isTeleporting, double playerMusic, double spectralSwing, double scrapeOverlay) {
-            this.tpX = tpX;
-            this.tpY = tpY;
-            this.tpZ = tpZ;
-            this.isTeleporting = isTeleporting;
-            PlayerMusic = playerMusic;
-            SpectralSwing = spectralSwing;
-            ScrapeOverlay = scrapeOverlay;
-        }
-
-        public double SpectralSwing = 0;
-        public double ScrapeOverlay = 0;
+        public double spectralSwing = 0;
+        public double scrapeOverlay = 0;
 
 
         public void syncPlayerVariables(Entity entity) {
             if (entity instanceof ServerPlayer serverPlayer)
-                PacketDistributor.sendToServer(new PlayerVariablesSyncPacket(this));
+                PacketDistributor.sendToPlayer(serverPlayer, new PlayerVariablesSyncPacket(this));
         }
 
         @Override
@@ -110,10 +102,10 @@ public class UnusualEndVariables {
             nbt.putDouble("tpX", tpX);
             nbt.putDouble("tpY", tpY);
             nbt.putDouble("tpZ", tpZ);
-            nbt.putBoolean("isTeleporting", isTeleporting);
-            nbt.putDouble("PlayerMusic", PlayerMusic);
-            nbt.putDouble("SpectralSwing", SpectralSwing);
-            nbt.putDouble("ScrapeOverlay", ScrapeOverlay);
+            nbt.putBoolean("isTeleporting", teleporting);
+            nbt.putDouble("PlayerMusic", playerMusic);
+            nbt.putDouble("SpectralSwing", spectralSwing);
+            nbt.putDouble("ScrapeOverlay", scrapeOverlay);
             return nbt;
         }
 
@@ -122,10 +114,10 @@ public class UnusualEndVariables {
             tpX = tag.getDouble("tpX");
             tpY = tag.getDouble("tpY");
             tpZ = tag.getDouble("tpZ");
-            isTeleporting = tag.getBoolean("isTeleporting");
-            PlayerMusic = tag.getDouble("PlayerMusic");
-            SpectralSwing = tag.getDouble("SpectralSwing");
-            ScrapeOverlay = tag.getDouble("ScrapeOverlay");
+            teleporting = tag.getBoolean("isTeleporting");
+            playerMusic = tag.getDouble("PlayerMusic");
+            spectralSwing = tag.getDouble("SpectralSwing");
+            scrapeOverlay = tag.getDouble("ScrapeOverlay");
         }
     }
 
@@ -137,6 +129,7 @@ public class UnusualEndVariables {
         public static final StreamCodec<FriendlyByteBuf, PlayerVariablesSyncPacket> STREAM_CODEC = new StreamCodec<>() {
             @Override
             public PlayerVariablesSyncPacket decode(FriendlyByteBuf buf) {
+                PlayerVariables variables = new PlayerVariables();
                 double x = buf.readDouble();
                 double y = buf.readDouble();
                 double z = buf.readDouble();
@@ -144,7 +137,14 @@ public class UnusualEndVariables {
                 double playerMusic = buf.readDouble();
                 double spectralSwing = buf.readDouble();
                 double scrapeOverlay = buf.readDouble();
-                return new PlayerVariablesSyncPacket(new PlayerVariables(x, y, z, isTeleporting, playerMusic, spectralSwing, scrapeOverlay));
+                variables.scrapeOverlay = scrapeOverlay;
+                variables.spectralSwing = spectralSwing;
+                variables.playerMusic = playerMusic;
+                variables.teleporting = isTeleporting;
+                variables.tpZ = z;
+                variables.tpY = y;
+                variables.tpX = x;
+                return new PlayerVariablesSyncPacket(variables);
             }
 
             @Override
@@ -152,10 +152,10 @@ public class UnusualEndVariables {
                 buf.writeDouble(packet.data.tpX);
                 buf.writeDouble(packet.data.tpY);
                 buf.writeDouble(packet.data.tpZ);
-                buf.writeBoolean(packet.data.isTeleporting);
-                buf.writeDouble(packet.data.PlayerMusic);
-                buf.writeDouble(packet.data.SpectralSwing);
-                buf.writeDouble(packet.data.ScrapeOverlay);
+                buf.writeBoolean(packet.data.teleporting);
+                buf.writeDouble(packet.data.playerMusic);
+                buf.writeDouble(packet.data.spectralSwing);
+                buf.writeDouble(packet.data.scrapeOverlay);
             }
         };
 

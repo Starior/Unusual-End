@@ -5,10 +5,8 @@
       "type": "minecraft:count",
       "count": {
         "type": "uniform",
-        "value": {
-          "min_inclusive": 1,
-          "max_inclusive": 3
-        }
+        "min_inclusive": 1,
+        "max_inclusive": 5
       }
     },
     {
@@ -26,10 +24,8 @@
       "xz_spread": 0,
       "y_spread": {
         "type": "uniform",
-        "value": {
-          "min_inclusive": -1,
-          "max_inclusive": 1
-        }
+        "min_inclusive": -1,
+        "max_inclusive": 1
       }
     },
     {

@@ -12,8 +12,12 @@
     }
   },
   "result": {
-    "item": "unusualend:chorus_flute",
+    "id": "unusualend:chorus_flute",
     "count": 1,
-    "nbt": "{track:\"Docks\"}"
+    "components": {
+      "minecraft:custom_data": {
+        "track": "Docks"
+      }
+    }
   }
 }

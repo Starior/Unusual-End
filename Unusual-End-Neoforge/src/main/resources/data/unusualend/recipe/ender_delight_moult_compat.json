@@ -6,8 +6,11 @@
   "ingredient": {
     "item": "unusualend:enderblob_moult"
   },
-  "result": "endersdelight:mite_crust",
-  "conditions": [
+  "result": {
+    "id": "endersdelight:mite_crust",
+    "count": 1
+  },
+  "neoforge:conditions": [
     {
       "modid": "endersdelight",
       "type": "neoforge:mod_loaded"

@@ -15,7 +15,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -38,7 +37,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -49,7 +47,6 @@ import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.ItemAttributeModifierEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
-import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
@@ -132,7 +129,7 @@ public class UnusualEndForgeEvents {
         if (player.containerMenu instanceof InfuserGUIMenu)
             InfuserGUIWhileThisGUIIsOpenTickProcedure.execute(player);
         UnusualEndVariables.PlayerVariables variables = player.getData(UnusualEndVariables.PLAYER_VARIABLES.get());
-        if (variables.isTeleporting) {
+        if (variables.teleporting) {
             if ((player.getPersistentData().getString("TargetDimension")).equals("" + player.level().dimension())) {
                 if (!((level.getBlockState(BlockPos.containing(player.getPersistentData().getDouble("TargetX"), player.getPersistentData().getDouble("TargetY") - 1, player.getPersistentData().getDouble("TargetZ"))))
                         .getBlock() == UnusualEndBlocks.TELEPORTATION_ANCHOR.get())) {
@@ -154,7 +151,7 @@ public class UnusualEndForgeEvents {
                             level.playLocalSound((player.getX()), (player.getY()), (player.getZ()), SoundEvents.ENDER_EYE_DEATH, SoundSource.PLAYERS, 1, 1, false);
                     }
                 }
-                variables.isTeleporting = false;
+                variables.teleporting = false;
                 variables.syncPlayerVariables(player);
             }
         }

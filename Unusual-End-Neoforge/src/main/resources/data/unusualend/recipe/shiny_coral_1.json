@@ -31,7 +31,7 @@
     }
   ],
   "result": {
-    "item": "minecraft:tube_coral",
+    "id": "minecraft:tube_coral",
     "count": 8
   }
 }

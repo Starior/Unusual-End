@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "unusualend:bolok_fin"
   },
-  "result": "unusualend:cooked_bolok_fin"
+  "result": {
+    "id": "unusualend:cooked_bolok_fin",
+    "count": 1
+  }
 }

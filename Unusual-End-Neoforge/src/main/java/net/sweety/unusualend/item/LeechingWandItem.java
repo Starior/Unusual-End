@@ -2,6 +2,7 @@
 package net.sweety.unusualend.item;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
@@ -9,18 +10,16 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
-import net.sweety.unusualend.init.UnusualEndMiscRegister;
-import net.sweety.unusualend.item.data.StringToDoubleData;
 import net.sweety.unusualend.procedures.LeechingWandItemInInventoryTickProcedure;
+import net.sweety.unusualend.procedures.NBTProcessor;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class LeechingWandItem extends Item {
     public LeechingWandItem() {
-        super(new Item.Properties().durability(256).rarity(Rarity.COMMON).component(
-                UnusualEndMiscRegister.STRING_TO_DOUBLE_DATA.get(), new StringToDoubleData(new HashMap<>())));
+        super(new Item.Properties().durability(256).rarity(Rarity.COMMON).component(DataComponents.CUSTOM_DATA, CustomData.EMPTY));
     }
 
     @Override
@@ -35,12 +34,12 @@ public class LeechingWandItem extends Item {
 
     @Override
     public boolean isBarVisible(ItemStack stack) {
-        return stack.getDamageValue() > 0 || StringToDoubleData.getData(stack,"rayCooldown") < 400 && StringToDoubleData.getData(stack,"rayCooldown") > 0 || stack.getDamageValue() > 0 && StringToDoubleData.getData(stack,"rayCooldown") < 400;
+        return stack.getDamageValue() > 0 || NBTProcessor.getNBTDouble(stack, "rayCooldown") < 400 && NBTProcessor.getNBTDouble(stack, "rayCooldown") > 0 || stack.getDamageValue() > 0 && NBTProcessor.getNBTDouble(stack, "rayCooldown") < 400;
     }
 
     @Override
     public int getBarColor(ItemStack stack) {
-        if (StringToDoubleData.getData(stack,"rayCooldown") < 400) {
+        if (NBTProcessor.getNBTDouble(stack, "rayCooldown") < 400) {
             return 16400310;
         }
         return Mth.hsvToRgb(Math.max(0.0F, 1.0F - (float) stack.getDamageValue() / stack.getMaxDamage()) / 3.0F, 1.0F, 1.0F);
@@ -48,8 +47,8 @@ public class LeechingWandItem extends Item {
 
     @Override
     public int getBarWidth(ItemStack stack) {
-        if (StringToDoubleData.getData(stack,"rayCooldown") < 400) {
-            return (int) (StringToDoubleData.getData(stack,"rayCooldown") * 0.0025f * 14f);
+        if (NBTProcessor.getNBTDouble(stack, "rayCooldown") < 400) {
+            return (int) (NBTProcessor.getNBTDouble(stack, "rayCooldown") * 0.0025f * 14f);
         }
         return Math.round(13.0F - (float) stack.getDamageValue() / stack.getMaxDamage() * 13.0F);
     }

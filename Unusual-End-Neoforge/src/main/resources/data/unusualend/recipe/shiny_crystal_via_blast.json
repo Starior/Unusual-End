@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "unusualend:shiny_gloopstone"
   },
-  "result": "unusualend:shiny_crystal"
+  "result": {
+    "id": "unusualend:shiny_crystal",
+    "count": 1
+  }
 }

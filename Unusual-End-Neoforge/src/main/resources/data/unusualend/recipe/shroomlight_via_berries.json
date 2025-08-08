@@ -14,7 +14,7 @@
     }
   },
   "result": {
-    "item": "minecraft:shroomlight",
+    "id": "minecraft:shroomlight",
     "count": 1
   }
 }

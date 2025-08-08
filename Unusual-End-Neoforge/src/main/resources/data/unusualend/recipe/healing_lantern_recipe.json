@@ -21,7 +21,7 @@
     }
   },
   "result": {
-    "item": "unusualend:healing_lantern",
+    "id": "unusualend:healing_lantern",
     "count": 1
   }
 }

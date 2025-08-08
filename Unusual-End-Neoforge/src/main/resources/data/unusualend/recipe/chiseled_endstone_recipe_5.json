@@ -4,5 +4,7 @@
   "ingredient": {
     "item": "minecraft:end_stone"
   },
-  "result": "unusualend:chiseled_endstone_work"
+  "result": {
+    "id": "unusualend:chiseled_endstone_work"
+  }
 }

@@ -7,11 +7,11 @@
   ],
   "key": {
     "a": {
-      "tag": "forge:glass/colorless"
+      "tag": "neoforge:glass/colorless"
     }
   },
   "result": {
-    "item": "unusualend:chiseled_glass",
+    "id": "unusualend:chiseled_glass",
     "count": 4
   }
 }

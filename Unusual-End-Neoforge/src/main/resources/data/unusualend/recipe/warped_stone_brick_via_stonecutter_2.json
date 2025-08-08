@@ -4,5 +4,8 @@
   "ingredient": {
     "item": "unusualend:warped_stone"
   },
-  "result": "unusualend:warped_stone_bricks"
+  "result": {
+    "id": "unusualend:warped_stone_bricks",
+    "count": 1
+  }
 }

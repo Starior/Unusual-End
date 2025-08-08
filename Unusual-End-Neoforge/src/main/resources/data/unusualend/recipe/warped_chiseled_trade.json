@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "item": "unusualend:chiseled_polished_warped_stone",
+    "id": "unusualend:chiseled_polished_warped_stone",
     "count": 1
   }
 }

@@ -6,7 +6,7 @@
     }
   ],
   "output": {
-    "item": "minecraft:warped_roots",
+    "id": "minecraft:warped_roots",
     "count": 1
   }
 }

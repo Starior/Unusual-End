@@ -5,11 +5,11 @@
       "item": "unusualend:shiny_crystal"
     },
     {
-      "tag": "forge:shiny_base"
+      "tag": "neoforge:shiny_base"
     }
   ],
   "output": {
-    "item": "unusualend:creative_health_boost",
+    "id": "unusualend:creative_health_boost",
     "count": 1
   }
 }

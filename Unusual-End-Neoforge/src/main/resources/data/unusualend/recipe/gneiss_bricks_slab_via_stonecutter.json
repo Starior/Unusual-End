@@ -4,5 +4,8 @@
   "ingredient": {
     "item": "unusualend:gneiss_bricks"
   },
-  "result": "unusualend:gneiss_brick_slab"
+  "result": {
+    "id": "unusualend:gneiss_brick_slab",
+    "count": 1
+  }
 }

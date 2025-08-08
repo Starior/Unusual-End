@@ -6,5 +6,8 @@
   "ingredient": {
     "item": "unusualend:polished_purpur_tiles"
   },
-  "result": "minecraft:purpur_block"
+  "result": {
+    "id": "minecraft:purpur_block",
+    "count": 1
+  }
 }

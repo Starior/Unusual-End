@@ -8,6 +8,6 @@
     "item": "unusualend:golem_orb"
   },
   "result": {
-    "item": "unusualend:music_disc_endstone_golem_theme"
+    "id": "unusualend:music_disc_endstone_golem_theme"
   }
 }

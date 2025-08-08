@@ -17,47 +17,48 @@ import net.sweety.unusualend.configuration.UEConfig;
 
 @EventBusSubscriber(value = Dist.CLIENT)
 public class GloopyFogProcedure {
-	public static ViewportEvent.RenderFog provider = null;
+    public static ViewportEvent.RenderFog provider = null;
 
-	public static void setDistance(float start, float end) {
-		provider.setNearPlaneDistance(start);
-		provider.setFarPlaneDistance(end);
-		if (!provider.isCanceled()) {
-			provider.setCanceled(true);
-		}
-	}
+    public static void setDistance(float start, float end) {
+        provider.setNearPlaneDistance(start);
+        provider.setFarPlaneDistance(end);
+        if (!provider.isCanceled()) {
+            provider.setCanceled(true);
+        }
+    }
 
-	public static void setShape(FogShape shape) {
-		provider.setFogShape(shape);
-		if (!provider.isCanceled()) {
-			provider.setCanceled(true);
-		}
-	}
+    public static void setShape(FogShape shape) {
+        provider.setFogShape(shape);
+        if (!provider.isCanceled()) {
+            provider.setCanceled(true);
+        }
+    }
 
-	@SubscribeEvent
-	public static void renderFog(ViewportEvent.RenderFog event) {
-		if (provider.getMode() == FogRenderer.FogMode.FOG_TERRAIN) {
-			ClientLevel level = Minecraft.getInstance().level;
-			Entity entity = provider.getCamera().getEntity();
-			if (level != null && entity != null) {
-				Vec3 pos = entity.getPosition((float) provider.getPartialTick());
-				execute(level, pos.x(), pos.y(), pos.z());
-			}
-		}
-	}
+    @SubscribeEvent
+    public static void renderFog(ViewportEvent.RenderFog event) {
+        provider = event;
+        if (provider.getMode() == FogRenderer.FogMode.FOG_TERRAIN) {
+            ClientLevel level = Minecraft.getInstance().level;
+            Entity entity = provider.getCamera().getEntity();
+            if (level != null && entity != null) {
+                Vec3 pos = entity.getPosition((float) provider.getPartialTick());
+                execute(level, pos.x(), pos.y(), pos.z());
+            }
+        }
+    }
 
-	private static void execute(LevelAccessor world, double x, double y, double z) {
-		if (world.getBiome(BlockPos.containing(x, y, z)).is(UnusualEnd.makeUEID("gloopstone_midlands")) || world.getBiome(BlockPos.containing(x, y, z)).is(UnusualEnd.makeUEID("gloopstone_lands"))) {
-			if (UEConfig.GLOOPY_FOG.get()) {
-				setDistance(0, 200);
-				setShape(FogShape.CYLINDER);
-			}
-		}
-		if (world.getBiome(BlockPos.containing(x, y, z)).is(UnusualEnd.makeUEID("warped_reef"))) {
-			if (UEConfig.WARPED_FOG.get()) {
-				setDistance(10, 200);
-				setShape(FogShape.SPHERE);
-			}
-		}
-	}
+    private static void execute(LevelAccessor world, double x, double y, double z) {
+        if (world.getBiome(BlockPos.containing(x, y, z)).is(UnusualEnd.makeUEID("gloopstone_midlands")) || world.getBiome(BlockPos.containing(x, y, z)).is(UnusualEnd.makeUEID("gloopstone_lands"))) {
+            if (UEConfig.GLOOPY_FOG.get()) {
+                setDistance(0, 200);
+                setShape(FogShape.CYLINDER);
+            }
+        }
+        if (world.getBiome(BlockPos.containing(x, y, z)).is(UnusualEnd.makeUEID("warped_reef"))) {
+            if (UEConfig.WARPED_FOG.get()) {
+                setDistance(10, 200);
+                setShape(FogShape.SPHERE);
+            }
+        }
+    }
 }

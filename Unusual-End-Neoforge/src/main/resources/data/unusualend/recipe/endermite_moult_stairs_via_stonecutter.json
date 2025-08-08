@@ -4,5 +4,8 @@
   "ingredient": {
     "item": "unusualend:enderblob_moult_bricks"
   },
-  "result": "unusualend:enderblob_moult_brick_slab"
+  "result": {
+    "id": "unusualend:enderblob_moult_brick_slab",
+    "count": 1
+  }
 }
