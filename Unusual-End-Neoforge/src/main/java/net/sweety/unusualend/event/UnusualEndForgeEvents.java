@@ -64,7 +64,6 @@ import net.sweety.unusualend.init.*;
 import net.sweety.unusualend.network.UnusualEndVariables;
 import net.sweety.unusualend.procedures.*;
 import net.sweety.unusualend.world.inventory.InfuserGUIMenu;
-import top.theillusivec4.curios.api.CuriosApi;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME)
 public class UnusualEndForgeEvents {
@@ -276,9 +275,9 @@ public class UnusualEndForgeEvents {
             CitrineTalismanTriggerProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
         }
         if (ModList.get().isLoaded("curios")) {
-            if (sourceEntity instanceof LivingEntity livingEntity && CuriosApi.getCuriosHelper().findEquippedCurio(UnusualEndItems.CITRINE_AMULET.get(), livingEntity).isPresent()) {
-                CitrineTalismanTriggerProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
-            }
+//            if (sourceEntity instanceof LivingEntity livingEntity && CuriosApi.getCuriosHelper().findEquippedCurio(UnusualEndItems.CITRINE_AMULET.get(), livingEntity).isPresent()) {
+//                CitrineTalismanTriggerProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+//            }
         }
         if (entity instanceof LargeBubbleEntity) {
             if (entity.level() instanceof ServerLevel _level)
