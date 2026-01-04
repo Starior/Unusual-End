@@ -19,7 +19,10 @@
               },
               {
                 "data": {
-                  "Name": "unusualend:small_warped_squash"
+                  "Name": "unusualend:small_warped_squash",
+                  "Properties": {
+                    "waterlogged": "false"
+                  }
                 },
                 "weight": 2
               }

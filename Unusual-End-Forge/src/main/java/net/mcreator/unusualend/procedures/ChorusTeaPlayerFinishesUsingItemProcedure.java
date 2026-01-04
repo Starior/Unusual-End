@@ -1,7 +1,7 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 
 public class ChorusTeaPlayerFinishesUsingItemProcedure {
 	public static void execute(Entity entity) {

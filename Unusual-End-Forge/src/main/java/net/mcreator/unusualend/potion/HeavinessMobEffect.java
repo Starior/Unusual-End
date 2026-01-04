@@ -1,15 +1,13 @@
 
 package net.mcreator.unusualend.potion;
 
-import net.minecraftforge.common.ForgeMod;
-
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.effect.MobEffect;
-
 import net.mcreator.unusualend.procedures.HeavinessOnEffectActiveTickProcedure;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraftforge.common.ForgeMod;
 
 public class HeavinessMobEffect extends MobEffect {
 	public HeavinessMobEffect() {

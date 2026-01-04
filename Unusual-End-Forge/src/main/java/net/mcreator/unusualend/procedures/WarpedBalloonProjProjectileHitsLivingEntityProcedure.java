@@ -1,30 +1,29 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.animal.WaterAnimal;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.tags.TagKey;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.core.BlockPos;
-import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.Advancement;
-
-import net.mcreator.unusualend.init.UnusualendModItems;
-import net.mcreator.unusualend.init.UnusualendModEntities;
-import net.mcreator.unusualend.entity.LargeBubbleEntity;
+import net.mcreator.unusualend.UnusualEnd;
 import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.entity.LargeBubbleEntity;
+import net.mcreator.unusualend.init.UnusualendModEntities;
+import net.mcreator.unusualend.init.UnusualendModItems;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementProgress;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.WaterAnimal;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.Comparator;
 
@@ -42,7 +41,7 @@ public class WarpedBalloonProjProjectileHitsLivingEntityProcedure {
 							entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 						}
 					}
-					UnusualendMod.queueServerWork(1, () -> {
+					UnusualEnd.queueServerWork(1, () -> {
 						entity.startRiding(((Entity) world.getEntitiesOfClass(LargeBubbleEntity.class, AABB.ofSize(new Vec3(x, y, z), 4, 4, 4), e -> true).stream().sorted(new Object() {
 							Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
 								return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));

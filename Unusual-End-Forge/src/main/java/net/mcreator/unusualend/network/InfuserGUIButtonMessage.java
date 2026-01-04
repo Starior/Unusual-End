@@ -1,24 +1,22 @@
 
 package net.mcreator.unusualend.network;
 
-import net.minecraftforge.network.NetworkEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-
-import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.core.BlockPos;
-
-import net.mcreator.unusualend.world.inventory.InfuserGUIMenu;
-import net.mcreator.unusualend.procedures.ConsumeShinyProcedure;
-import net.mcreator.unusualend.procedures.ConsumePrismaticProcedure;
+import net.mcreator.unusualend.UnusualEnd;
 import net.mcreator.unusualend.procedures.ConsumeCitrineProcedure;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.procedures.ConsumePrismaticProcedure;
+import net.mcreator.unusualend.procedures.ConsumeShinyProcedure;
+import net.mcreator.unusualend.world.inventory.InfuserGUIMenu;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.network.NetworkEvent;
 
-import java.util.function.Supplier;
 import java.util.HashMap;
+import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class InfuserGUIButtonMessage {
@@ -95,6 +93,6 @@ public class InfuserGUIButtonMessage {
 
 	@SubscribeEvent
 	public static void registerMessage(FMLCommonSetupEvent event) {
-		UnusualendMod.addNetworkMessage(InfuserGUIButtonMessage.class, InfuserGUIButtonMessage::buffer, InfuserGUIButtonMessage::new, InfuserGUIButtonMessage::handler);
+		UnusualEnd.addNetworkMessage(InfuserGUIButtonMessage.class, InfuserGUIButtonMessage::buffer, InfuserGUIButtonMessage::new, InfuserGUIButtonMessage::handler);
 	}
 }

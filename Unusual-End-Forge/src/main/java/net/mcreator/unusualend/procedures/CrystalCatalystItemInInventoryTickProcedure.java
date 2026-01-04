@@ -1,9 +1,8 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.ItemStack;
-
 import net.mcreator.unusualend.init.UnusualendModEnchantments;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
 public class CrystalCatalystItemInInventoryTickProcedure {
 	public static void execute(ItemStack itemstack) {

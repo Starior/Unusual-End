@@ -1,9 +1,9 @@
 
 package net.mcreator.unusualend.item;
 
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.HorseArmorItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 
 public class ScaleHorseArmorItem extends HorseArmorItem {
 	public ScaleHorseArmorItem() {

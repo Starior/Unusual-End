@@ -1,11 +1,11 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.level.Level;
 
 public class BlukOnEntityTickUpdateProcedure {
 	public static void execute(double x, double y, double z, Entity entity) {

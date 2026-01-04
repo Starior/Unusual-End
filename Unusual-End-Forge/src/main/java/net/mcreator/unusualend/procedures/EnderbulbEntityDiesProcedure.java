@@ -1,16 +1,15 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Mth;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.BlockPos;
-
 import net.mcreator.unusualend.init.UnusualendModEntities;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 
 public class EnderbulbEntityDiesProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {

@@ -1,18 +1,17 @@
 
 package net.mcreator.unusualend.enchantment;
 
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.EquipmentSlot;
-
+import net.mcreator.unusualend.ModEnchants;
 import net.mcreator.unusualend.init.UnusualendModItems;
-import net.mcreator.unusualend.SpearEnchant;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.enchantment.Enchantment;
 
 public class JoustEnchantment extends Enchantment {
 	public JoustEnchantment(EquipmentSlot... slots) {
-		super(Enchantment.Rarity.COMMON, SpearEnchant.WARPED_SPEAR, slots);
+		super(Enchantment.Rarity.COMMON, ModEnchants.WARPED_SPEAR, slots);
 	}
 
 	@Override

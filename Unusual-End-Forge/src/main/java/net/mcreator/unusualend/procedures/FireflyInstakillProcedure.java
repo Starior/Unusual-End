@@ -1,22 +1,20 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.entity.monster.Endermite;
-import net.minecraft.world.entity.animal.frog.Frog;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.core.registries.Registries;
-
-import net.mcreator.unusualend.entity.SmallEnderbulbEntity;
-import net.mcreator.unusualend.entity.EnderbulbEntity;
-import net.mcreator.unusualend.entity.EnderblobEntity;
 import net.mcreator.unusualend.entity.EnderBugEntity;
+import net.mcreator.unusualend.entity.EnderblobEntity;
+import net.mcreator.unusualend.entity.EnderbulbEntity;
+import net.mcreator.unusualend.entity.SmallEnderbulbEntity;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.animal.frog.Frog;
+import net.minecraft.world.entity.monster.Endermite;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
 import javax.annotation.Nullable;
 

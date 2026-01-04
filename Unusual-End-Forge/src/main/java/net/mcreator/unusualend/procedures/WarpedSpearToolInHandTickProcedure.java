@@ -1,14 +1,13 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.effect.MobEffectInstance;
-
-import net.mcreator.unusualend.init.UnusualendModMobEffects;
 import net.mcreator.unusualend.init.UnusualendModEnchantments;
+import net.mcreator.unusualend.init.UnusualendModMobEffects;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
 public class WarpedSpearToolInHandTickProcedure {
 	public static void execute(Entity entity) {

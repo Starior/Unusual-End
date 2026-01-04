@@ -1,10 +1,9 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.core.BlockPos;
-
 import net.mcreator.unusualend.init.UnusualendModBlocks;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 
 public class BolokNaturalEntitySpawningConditionProcedure {
 	public static boolean execute(LevelAccessor world, double x, double y, double z) {

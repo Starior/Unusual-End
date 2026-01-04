@@ -1,24 +1,22 @@
 package net.mcreator.unusualend.client.gui;
 
-import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.network.chat.Component;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.components.ImageButton;
-import net.minecraft.client.gui.GuiGraphics;
-
-import net.mcreator.unusualend.world.inventory.InfuserGUIMenu;
-import net.mcreator.unusualend.procedures.ReturnShinyProcedure;
-import net.mcreator.unusualend.procedures.ReturnPrismaticProcedure;
-import net.mcreator.unusualend.procedures.ReturnCitrineProcedure;
+import com.mojang.blaze3d.systems.RenderSystem;
+import net.mcreator.unusualend.UnusualEnd;
 import net.mcreator.unusualend.network.InfuserGUIButtonMessage;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.procedures.ReturnCitrineProcedure;
+import net.mcreator.unusualend.procedures.ReturnPrismaticProcedure;
+import net.mcreator.unusualend.procedures.ReturnShinyProcedure;
+import net.mcreator.unusualend.world.inventory.InfuserGUIMenu;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.ImageButton;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 
 import java.util.HashMap;
-
-import com.mojang.blaze3d.systems.RenderSystem;
 
 public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 	private final static HashMap<String, Object> guistate = InfuserGUIMenu.guistate;
@@ -165,7 +163,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		super.init();
 		imagebutton_1_base = new ImageButton(this.leftPos + 33, this.topPos + 38, 18, 12, 0, 0, 12, new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_1_base.png"), 18, 24, e -> {
 			if (true) {
-				UnusualendMod.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(0, x, y, z));
+				UnusualEnd.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(0, x, y, z));
 				InfuserGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
 			}
 		});
@@ -173,7 +171,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		this.addRenderableWidget(imagebutton_1_base);
 		imagebutton_1_base1 = new ImageButton(this.leftPos + 87, this.topPos + 38, 18, 12, 0, 0, 12, new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_1_base1.png"), 18, 24, e -> {
 			if (true) {
-				UnusualendMod.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(1, x, y, z));
+				UnusualEnd.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(1, x, y, z));
 				InfuserGUIButtonMessage.handleButtonAction(entity, 1, x, y, z);
 			}
 		});
@@ -181,7 +179,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		this.addRenderableWidget(imagebutton_1_base1);
 		imagebutton_1_base2 = new ImageButton(this.leftPos + 141, this.topPos + 38, 18, 12, 0, 0, 12, new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_1_base2.png"), 18, 24, e -> {
 			if (true) {
-				UnusualendMod.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(2, x, y, z));
+				UnusualEnd.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(2, x, y, z));
 				InfuserGUIButtonMessage.handleButtonAction(entity, 2, x, y, z);
 			}
 		});
@@ -189,7 +187,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		this.addRenderableWidget(imagebutton_1_base2);
 		imagebutton_4_base = new ImageButton(this.leftPos + 33, this.topPos + 25, 18, 12, 0, 0, 12, new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_4_base.png"), 18, 24, e -> {
 			if (true) {
-				UnusualendMod.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(3, x, y, z));
+				UnusualEnd.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(3, x, y, z));
 				InfuserGUIButtonMessage.handleButtonAction(entity, 3, x, y, z);
 			}
 		});
@@ -197,7 +195,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		this.addRenderableWidget(imagebutton_4_base);
 		imagebutton_4_base1 = new ImageButton(this.leftPos + 87, this.topPos + 25, 18, 12, 0, 0, 12, new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_4_base1.png"), 18, 24, e -> {
 			if (true) {
-				UnusualendMod.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(4, x, y, z));
+				UnusualEnd.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(4, x, y, z));
 				InfuserGUIButtonMessage.handleButtonAction(entity, 4, x, y, z);
 			}
 		});
@@ -205,7 +203,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		this.addRenderableWidget(imagebutton_4_base1);
 		imagebutton_4_base2 = new ImageButton(this.leftPos + 141, this.topPos + 25, 18, 12, 0, 0, 12, new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_4_base2.png"), 18, 24, e -> {
 			if (true) {
-				UnusualendMod.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(5, x, y, z));
+				UnusualEnd.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(5, x, y, z));
 				InfuserGUIButtonMessage.handleButtonAction(entity, 5, x, y, z);
 			}
 		});
@@ -213,7 +211,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		this.addRenderableWidget(imagebutton_4_base2);
 		imagebutton_8_base = new ImageButton(this.leftPos + 33, this.topPos + 12, 18, 12, 0, 0, 12, new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_8_base.png"), 18, 24, e -> {
 			if (true) {
-				UnusualendMod.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(6, x, y, z));
+				UnusualEnd.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(6, x, y, z));
 				InfuserGUIButtonMessage.handleButtonAction(entity, 6, x, y, z);
 			}
 		});
@@ -221,7 +219,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		this.addRenderableWidget(imagebutton_8_base);
 		imagebutton_8_base1 = new ImageButton(this.leftPos + 87, this.topPos + 12, 18, 12, 0, 0, 12, new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_8_base1.png"), 18, 24, e -> {
 			if (true) {
-				UnusualendMod.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(7, x, y, z));
+				UnusualEnd.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(7, x, y, z));
 				InfuserGUIButtonMessage.handleButtonAction(entity, 7, x, y, z);
 			}
 		});
@@ -229,7 +227,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		this.addRenderableWidget(imagebutton_8_base1);
 		imagebutton_8_base2 = new ImageButton(this.leftPos + 141, this.topPos + 12, 18, 12, 0, 0, 12, new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_8_base2.png"), 18, 24, e -> {
 			if (true) {
-				UnusualendMod.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(8, x, y, z));
+				UnusualEnd.PACKET_HANDLER.sendToServer(new InfuserGUIButtonMessage(8, x, y, z));
 				InfuserGUIButtonMessage.handleButtonAction(entity, 8, x, y, z);
 			}
 		});

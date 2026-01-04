@@ -1,14 +1,13 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.Entity;
-
 import net.mcreator.unusualend.init.UnusualendModItems;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 
-import java.util.function.Supplier;
 import java.util.Map;
+import java.util.function.Supplier;
 
 public class InfuserGUIWhileThisGUIIsOpenTickProcedure {
 	public static void execute(Entity entity) {

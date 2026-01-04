@@ -1,21 +1,19 @@
 package net.mcreator.unusualend.client.gui;
 
-import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.network.chat.Component;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.GuiGraphics;
-
-import net.mcreator.unusualend.world.inventory.BolokNotesMenu;
+import com.mojang.blaze3d.systems.RenderSystem;
+import net.mcreator.unusualend.UnusualEnd;
 import net.mcreator.unusualend.network.BolokNotesButtonMessage;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.world.inventory.BolokNotesMenu;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 
 import java.util.HashMap;
-
-import com.mojang.blaze3d.systems.RenderSystem;
 
 public class BolokNotesScreen extends AbstractContainerScreen<BolokNotesMenu> {
 	private final static HashMap<String, Object> guistate = BolokNotesMenu.guistate;
@@ -74,7 +72,7 @@ public class BolokNotesScreen extends AbstractContainerScreen<BolokNotesMenu> {
 		super.init();
 		button_done = Button.builder(Component.translatable("gui.unusualend.bolok_notes.button_done"), e -> {
 			if (true) {
-				UnusualendMod.PACKET_HANDLER.sendToServer(new BolokNotesButtonMessage(0, x, y, z));
+				UnusualEnd.PACKET_HANDLER.sendToServer(new BolokNotesButtonMessage(0, x, y, z));
 				BolokNotesButtonMessage.handleButtonAction(entity, 0, x, y, z);
 			}
 		}).bounds(this.leftPos + -72, this.topPos + 66, 142, 20).build();

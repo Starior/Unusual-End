@@ -4,49 +4,22 @@
  */
 package net.mcreator.unusualend.init;
 
-import net.minecraftforge.registries.RegistryObject;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.EntityType;
+import net.mcreator.unusualend.UnusualEnd;
+import net.mcreator.unusualend.entity.*;
 import net.minecraft.world.entity.Entity;
-
-import net.mcreator.unusualend.entity.WarpedJellyfishEntity;
-import net.mcreator.unusualend.entity.WarpedBalloonProjEntity;
-import net.mcreator.unusualend.entity.WanderingPearlProjectileEntity;
-import net.mcreator.unusualend.entity.VoidCrackEntity;
-import net.mcreator.unusualend.entity.VoidBombEntity;
-import net.mcreator.unusualend.entity.VoidArrowProjectileEntity;
-import net.mcreator.unusualend.entity.SummonedDraglingEntity;
-import net.mcreator.unusualend.entity.SpunklerEntity;
-import net.mcreator.unusualend.entity.SmallEnderbulbEntity;
-import net.mcreator.unusualend.entity.ShinyGrenadeProjectileEntity;
-import net.mcreator.unusualend.entity.PhantomArrowProjectileEntity;
-import net.mcreator.unusualend.entity.LeechingChargeProjectileEntity;
-import net.mcreator.unusualend.entity.LargeBubbleEntity;
-import net.mcreator.unusualend.entity.EndstoneGolemEntity;
-import net.mcreator.unusualend.entity.EnderlingEntity;
-import net.mcreator.unusualend.entity.EnderbulbEntity;
-import net.mcreator.unusualend.entity.EnderblobQueenEntity;
-import net.mcreator.unusualend.entity.EnderblobEntity;
-import net.mcreator.unusualend.entity.EnderTrapperEntity;
-import net.mcreator.unusualend.entity.EnderBugEntity;
-import net.mcreator.unusualend.entity.DraglingEntity;
-import net.mcreator.unusualend.entity.BondLeechingChargeProjectileEntity;
-import net.mcreator.unusualend.entity.BolokEntity;
-import net.mcreator.unusualend.entity.BlukEntity;
-import net.mcreator.unusualend.entity.BlockUpdaterEntity;
-import net.mcreator.unusualend.entity.BenevolentLeechingChargeProjectileEntity;
-import net.mcreator.unusualend.UnusualendMod;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UnusualendModEntities {
-	public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, UnusualendMod.MODID);
+	public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, UnusualEnd.MODID);
 	public static final RegistryObject<EntityType<EnderblobEntity>> ENDER_BLOB = register("ender_blob",
 			EntityType.Builder.<EnderblobEntity>of(EnderblobEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(EnderblobEntity::new)
 

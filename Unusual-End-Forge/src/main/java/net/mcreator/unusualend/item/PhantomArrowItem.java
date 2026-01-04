@@ -1,16 +1,15 @@
 
 package net.mcreator.unusualend.item;
 
-import net.minecraft.world.level.Level;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ArrowItem;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.LivingEntity;
-
-import net.mcreator.unusualend.init.UnusualendModEntities;
 import net.mcreator.unusualend.entity.PhantomArrowProjectileEntity;
+import net.mcreator.unusualend.init.UnusualendModEntities;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.item.ArrowItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.Level;
 
 public class PhantomArrowItem extends ArrowItem {
 	public PhantomArrowItem() {

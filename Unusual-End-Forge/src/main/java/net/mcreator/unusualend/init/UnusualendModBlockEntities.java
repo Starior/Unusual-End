@@ -4,26 +4,16 @@
  */
 package net.mcreator.unusualend.init;
 
-import net.minecraftforge.registries.RegistryObject;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.DeferredRegister;
-
-import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.mcreator.unusualend.UnusualEnd;
+import net.mcreator.unusualend.block.entity.*;
 import net.minecraft.world.level.block.Block;
-
-import net.mcreator.unusualend.block.entity.WarpingWaystoneBlockEntity;
-import net.mcreator.unusualend.block.entity.WarpedChestBlockEntity;
-import net.mcreator.unusualend.block.entity.PurpurTankBlockEntity;
-import net.mcreator.unusualend.block.entity.PearlescentInfuserBlockEntity;
-import net.mcreator.unusualend.block.entity.GloopslatePedestralBlockEntity;
-import net.mcreator.unusualend.block.entity.FadingBlockBlockEntity;
-import net.mcreator.unusualend.block.entity.CelestialFluidBlockEntity;
-import net.mcreator.unusualend.block.entity.BuildingInhibitorBlockEntity;
-import net.mcreator.unusualend.block.entity.AncientPodiumBlockEntity;
-import net.mcreator.unusualend.UnusualendMod;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class UnusualendModBlockEntities {
-	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, UnusualendMod.MODID);
+	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, UnusualEnd.MODID);
 	public static final RegistryObject<BlockEntityType<?>> PURPUR_TANK = register("purpur_tank", UnusualendModBlocks.PURPUR_TANK, PurpurTankBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> FADING_BLOCK = register("fading_block", UnusualendModBlocks.FADING_BLOCK, FadingBlockBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> WARPING_WAYSTONE = register("warping_waystone", UnusualendModBlocks.WARPING_WAYSTONE, WarpingWaystoneBlockEntity::new);

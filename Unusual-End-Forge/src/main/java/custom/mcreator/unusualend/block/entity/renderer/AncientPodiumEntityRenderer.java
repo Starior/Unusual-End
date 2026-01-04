@@ -1,25 +1,23 @@
 package custom.mcreator.unusualend.block.entity.renderer;
 
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.core.BlockPos;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.LightTexture;
-import net.minecraft.client.Minecraft;
-
-import net.mcreator.unusualend.init.UnusualendModItems;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
-import net.mcreator.unusualend.block.entity.AncientPodiumBlockEntity;
-
-import com.mojang.math.Axis;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
+import net.mcreator.unusualend.block.entity.AncientPodiumBlockEntity;
+import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.init.UnusualendModItems;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.LightTexture;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LightLayer;
 
 public class AncientPodiumEntityRenderer implements BlockEntityRenderer<AncientPodiumBlockEntity> {
 	public AncientPodiumEntityRenderer(BlockEntityRendererProvider.Context context) {

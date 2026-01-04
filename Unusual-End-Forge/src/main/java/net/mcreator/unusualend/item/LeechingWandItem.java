@@ -2,24 +2,22 @@
 //desc
 package net.mcreator.unusualend.item;
 
-import net.minecraft.world.level.Level;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.util.Mth;
-import net.minecraft.network.chat.Component;
-
-import net.mcreator.unusualend.procedures.LeechingWandItemInInventoryTickProcedure;
-import net.mcreator.unusualend.init.UnusualendModEnchantments;
-
-import java.util.Set;
-import java.util.List;
-
 import com.google.common.collect.ImmutableSet;
+import net.mcreator.unusualend.init.UnusualendModEnchantments;
+import net.mcreator.unusualend.procedures.LeechingWandItemInInventoryTickProcedure;
+import net.minecraft.network.chat.Component;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.Level;
+
+import java.util.List;
+import java.util.Set;
 
 public class LeechingWandItem extends Item {
 	public LeechingWandItem() {

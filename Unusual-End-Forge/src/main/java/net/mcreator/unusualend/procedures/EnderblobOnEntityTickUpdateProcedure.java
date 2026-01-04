@@ -1,8 +1,7 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.entity.Entity;
-
 import net.mcreator.unusualend.entity.EnderblobEntity;
+import net.minecraft.world.entity.Entity;
 
 public class EnderblobOnEntityTickUpdateProcedure {
 	public static void execute(Entity entity) {

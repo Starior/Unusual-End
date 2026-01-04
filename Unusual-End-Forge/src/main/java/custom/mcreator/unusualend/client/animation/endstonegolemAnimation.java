@@ -1,9 +1,9 @@
 package custom.mcreator.unusualend.client.animation;
 
-import net.minecraft.client.animation.KeyframeAnimations;
-import net.minecraft.client.animation.Keyframe;
-import net.minecraft.client.animation.AnimationDefinition;
 import net.minecraft.client.animation.AnimationChannel;
+import net.minecraft.client.animation.AnimationDefinition;
+import net.minecraft.client.animation.Keyframe;
+import net.minecraft.client.animation.KeyframeAnimations;
 
 public class endstonegolemAnimation {
 	public static final AnimationDefinition WALK = AnimationDefinition.Builder.withLength(2f).looping()

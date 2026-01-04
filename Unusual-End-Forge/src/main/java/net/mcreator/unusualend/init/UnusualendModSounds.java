@@ -4,17 +4,15 @@
  */
 package net.mcreator.unusualend.init;
 
-import net.minecraftforge.registries.RegistryObject;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.DeferredRegister;
-
-import net.minecraft.sounds.SoundEvent;
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.resources.ResourceLocation;
-
-import net.mcreator.unusualend.UnusualendMod;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class UnusualendModSounds {
-	public static final DeferredRegister<SoundEvent> REGISTRY = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, UnusualendMod.MODID);
+	public static final DeferredRegister<SoundEvent> REGISTRY = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, UnusualEnd.MODID);
 	public static final RegistryObject<SoundEvent> MUSIC_DISC_FLYING_SHIPS = REGISTRY.register("music_disc_flying_ships", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("unusualend", "music_disc_flying_ships")));
 	public static final RegistryObject<SoundEvent> MUSIC_DISC_ENDSTONE_GOLEM_THEME = REGISTRY.register("music_disc_endstone_golem_theme",
 			() -> SoundEvent.createVariableRangeEvent(new ResourceLocation("unusualend", "music_disc_endstone_golem_theme")));

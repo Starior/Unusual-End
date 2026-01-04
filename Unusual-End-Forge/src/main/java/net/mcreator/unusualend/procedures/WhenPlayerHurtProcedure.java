@@ -1,36 +1,30 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.BlockPos;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.CommandSource;
-
-import net.mcreator.unusualend.init.UnusualendModMobEffects;
-import net.mcreator.unusualend.init.UnusualendModItems;
-import net.mcreator.unusualend.entity.VoidCrackEntity;
-import net.mcreator.unusualend.entity.VoidBombEntity;
-import net.mcreator.unusualend.entity.SummonedDraglingEntity;
-import net.mcreator.unusualend.entity.EnderbulbEntity;
-import net.mcreator.unusualend.entity.DraglingEntity;
+import net.mcreator.unusualend.UnusualEnd;
 import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.entity.*;
+import net.mcreator.unusualend.init.UnusualendModItems;
+import net.mcreator.unusualend.init.UnusualendModMobEffects;
+import net.minecraft.commands.CommandSource;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
 
@@ -101,7 +95,7 @@ public class WhenPlayerHurtProcedure {
 			if ((sourceentity instanceof DraglingEntity _datEntL28 && _datEntL28.getEntityData().get(DraglingEntity.DATA_atk)) == true) {
 				if (sourceentity instanceof DraglingEntity _datEntSetL)
 					_datEntSetL.getEntityData().set(DraglingEntity.DATA_atk, false);
-				UnusualendMod.queueServerWork(1, () -> {
+				UnusualEnd.queueServerWork(1, () -> {
 					if (sourceentity instanceof DraglingEntity _datEntSetL)
 						_datEntSetL.getEntityData().set(DraglingEntity.DATA_atk, true);
 				});
@@ -109,7 +103,7 @@ public class WhenPlayerHurtProcedure {
 				if (sourceentity instanceof DraglingEntity _datEntSetL)
 					_datEntSetL.getEntityData().set(DraglingEntity.DATA_atk, true);
 			}
-			UnusualendMod.queueServerWork(20, () -> {
+			UnusualEnd.queueServerWork(20, () -> {
 				if ((sourceentity instanceof DraglingEntity _datEntL33 && _datEntL33.getEntityData().get(DraglingEntity.DATA_atk)) == true) {
 					if (sourceentity instanceof DraglingEntity _datEntSetL)
 						_datEntSetL.getEntityData().set(DraglingEntity.DATA_atk, false);
@@ -120,7 +114,7 @@ public class WhenPlayerHurtProcedure {
 			if ((sourceentity instanceof SummonedDraglingEntity _datEntL37 && _datEntL37.getEntityData().get(SummonedDraglingEntity.DATA_atk)) == true) {
 				if (sourceentity instanceof SummonedDraglingEntity _datEntSetL)
 					_datEntSetL.getEntityData().set(SummonedDraglingEntity.DATA_atk, false);
-				UnusualendMod.queueServerWork(1, () -> {
+				UnusualEnd.queueServerWork(1, () -> {
 					if (sourceentity instanceof SummonedDraglingEntity _datEntSetL)
 						_datEntSetL.getEntityData().set(SummonedDraglingEntity.DATA_atk, true);
 				});
@@ -128,7 +122,7 @@ public class WhenPlayerHurtProcedure {
 				if (sourceentity instanceof SummonedDraglingEntity _datEntSetL)
 					_datEntSetL.getEntityData().set(SummonedDraglingEntity.DATA_atk, true);
 			}
-			UnusualendMod.queueServerWork(20, () -> {
+			UnusualEnd.queueServerWork(20, () -> {
 				if ((sourceentity instanceof SummonedDraglingEntity _datEntL42 && _datEntL42.getEntityData().get(SummonedDraglingEntity.DATA_atk)) == true) {
 					if (sourceentity instanceof SummonedDraglingEntity _datEntSetL)
 						_datEntSetL.getEntityData().set(SummonedDraglingEntity.DATA_atk, false);

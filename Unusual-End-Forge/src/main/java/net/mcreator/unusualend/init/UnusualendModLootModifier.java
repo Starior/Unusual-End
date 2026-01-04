@@ -1,35 +1,28 @@
 package net.mcreator.unusualend.init;
 
-import org.checkerframework.checker.units.qual.m;
-
-import net.minecraftforge.registries.RegistryObject;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.common.loot.LootModifier;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
-
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.item.ItemStack;
+import com.google.common.base.Suppliers;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.resources.ResourceLocation;
-
-import net.mcreator.unusualend.UnusualendMod;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraftforge.common.loot.IGlobalLootModifier;
+import net.minecraftforge.common.loot.LootModifier;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.Codec;
-
-import com.google.common.base.Suppliers;
-
-@Mod.EventBusSubscriber(modid = UnusualendMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = UnusualEnd.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UnusualendModLootModifier {
 	public static class UnusualendModLootTableModifier extends LootModifier {
 		public static final Supplier<Codec<UnusualendModLootTableModifier>> CODEC = Suppliers

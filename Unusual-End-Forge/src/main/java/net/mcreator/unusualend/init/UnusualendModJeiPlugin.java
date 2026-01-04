@@ -1,24 +1,22 @@
 
 package net.mcreator.unusualend.init;
 
-import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.client.Minecraft;
-
-import net.mcreator.unusualend.jei_recipes.InfuserRecipeCategory;
-import net.mcreator.unusualend.jei_recipes.InfuserRecipe;
-import net.mcreator.unusualend.jei_recipes.BolokTradingRecipeCategory;
-import net.mcreator.unusualend.jei_recipes.BolokTradingRecipe;
-
-import mezz.jei.api.registration.IRecipeRegistration;
-import mezz.jei.api.registration.IRecipeCategoryRegistration;
-import mezz.jei.api.registration.IRecipeCatalystRegistration;
-import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.IModPlugin;
+import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.registration.IRecipeCatalystRegistration;
+import mezz.jei.api.registration.IRecipeCategoryRegistration;
+import mezz.jei.api.registration.IRecipeRegistration;
+import net.mcreator.unusualend.jei_recipes.BolokTradingRecipe;
+import net.mcreator.unusualend.jei_recipes.BolokTradingRecipeCategory;
+import net.mcreator.unusualend.jei_recipes.InfuserRecipe;
+import net.mcreator.unusualend.jei_recipes.InfuserRecipeCategory;
+import net.minecraft.client.Minecraft;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeManager;
 
-import java.util.Objects;
 import java.util.List;
+import java.util.Objects;
 
 @JeiPlugin
 public class UnusualendModJeiPlugin implements IModPlugin {

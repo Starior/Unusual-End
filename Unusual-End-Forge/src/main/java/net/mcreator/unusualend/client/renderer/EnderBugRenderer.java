@@ -1,16 +1,14 @@
 
 package net.mcreator.unusualend.client.renderer;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.client.renderer.entity.layers.EyesLayer;
-import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.RenderType;
-
-import net.mcreator.unusualend.entity.EnderBugEntity;
-import net.mcreator.unusualend.client.model.Modelender_firefly;
-
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.mcreator.unusualend.client.model.Modelender_firefly;
+import net.mcreator.unusualend.entity.EnderBugEntity;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.layers.EyesLayer;
+import net.minecraft.resources.ResourceLocation;
 
 public class EnderBugRenderer extends MobRenderer<EnderBugEntity, Modelender_firefly<EnderBugEntity>> {
 	public EnderBugRenderer(EntityRendererProvider.Context context) {

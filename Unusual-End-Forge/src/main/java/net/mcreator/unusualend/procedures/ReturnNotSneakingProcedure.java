@@ -1,7 +1,7 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.entity.Entity;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.Entity;
 
 public class ReturnNotSneakingProcedure {
 	public static boolean execute(Entity entity) {

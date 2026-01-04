@@ -1,12 +1,11 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.network.chat.Component;
-
 import net.mcreator.unusualend.init.UnusualendModMobEffects;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 
 public class DivideSerenityProcedure {
 	public static void execute(Entity entity) {

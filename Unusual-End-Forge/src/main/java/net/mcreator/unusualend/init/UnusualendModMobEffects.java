@@ -4,25 +4,15 @@
  */
 package net.mcreator.unusualend.init;
 
-import net.minecraftforge.registries.RegistryObject;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.DeferredRegister;
-
+import net.mcreator.unusualend.UnusualEnd;
+import net.mcreator.unusualend.potion.*;
 import net.minecraft.world.effect.MobEffect;
-
-import net.mcreator.unusualend.potion.WarpedTenacityMobEffect;
-import net.mcreator.unusualend.potion.SwiftStrikesMobEffect;
-import net.mcreator.unusualend.potion.SpectralStrideMobEffect;
-import net.mcreator.unusualend.potion.SerenityMobEffect;
-import net.mcreator.unusualend.potion.HeavinessMobEffect;
-import net.mcreator.unusualend.potion.EnderInfectionMobEffect;
-import net.mcreator.unusualend.potion.CrystallizationMobEffect;
-import net.mcreator.unusualend.potion.BuildingFatigueMobEffect;
-import net.mcreator.unusualend.potion.BreachLinkedMobEffect;
-import net.mcreator.unusualend.UnusualendMod;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class UnusualendModMobEffects {
-	public static final DeferredRegister<MobEffect> REGISTRY = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, UnusualendMod.MODID);
+	public static final DeferredRegister<MobEffect> REGISTRY = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, UnusualEnd.MODID);
 	public static final RegistryObject<MobEffect> ENDER_INFECTION = REGISTRY.register("ender_infection", () -> new EnderInfectionMobEffect());
 	public static final RegistryObject<MobEffect> DISRUPTION = REGISTRY.register("disruption", () -> new BuildingFatigueMobEffect());
 	public static final RegistryObject<MobEffect> HEAVINESS = REGISTRY.register("heaviness", () -> new HeavinessMobEffect());

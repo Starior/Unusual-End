@@ -1,14 +1,13 @@
 
 package net.mcreator.unusualend.enchantment;
 
-import net.minecraft.world.item.enchantment.Enchantment;
+import net.mcreator.unusualend.ModEnchants;
 import net.minecraft.world.entity.EquipmentSlot;
-
-import net.mcreator.unusualend.ElytraEnchant;
+import net.minecraft.world.item.enchantment.Enchantment;
 
 public class BoloksWingsEnchantment extends Enchantment {
 	public BoloksWingsEnchantment(EquipmentSlot... slots) {
-		super(Enchantment.Rarity.VERY_RARE, ElytraEnchant.ELYTRA, slots);
+		super(Enchantment.Rarity.VERY_RARE, ModEnchants.ELYTRA, slots);
 	}
 
 	@Override

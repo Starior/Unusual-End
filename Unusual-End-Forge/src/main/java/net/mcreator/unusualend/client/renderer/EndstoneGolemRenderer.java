@@ -1,12 +1,11 @@
 
 package net.mcreator.unusualend.client.renderer;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-
-import net.mcreator.unusualend.entity.EndstoneGolemEntity;
 import net.mcreator.unusualend.client.model.Modelendstonegolem;
+import net.mcreator.unusualend.entity.EndstoneGolemEntity;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.resources.ResourceLocation;
 
 public class EndstoneGolemRenderer extends MobRenderer<EndstoneGolemEntity, Modelendstonegolem<EndstoneGolemEntity>> {
 	public EndstoneGolemRenderer(EntityRendererProvider.Context context) {

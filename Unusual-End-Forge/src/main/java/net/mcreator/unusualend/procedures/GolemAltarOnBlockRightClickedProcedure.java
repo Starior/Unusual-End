@@ -1,41 +1,35 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.items.ItemHandlerHelper;
-
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.network.chat.Component;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.BlockPos;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.CommandSource;
-import net.minecraft.client.Minecraft;
-import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.Advancement;
-
-import net.mcreator.unusualend.init.UnusualendModEntities;
+import net.mcreator.unusualend.UnusualEnd;
 import net.mcreator.unusualend.entity.EndstoneGolemEntity;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.init.UnusualendModEntities;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementProgress;
+import net.minecraft.client.Minecraft;
+import net.minecraft.commands.CommandSource;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.GameType;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec2;
+import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.items.ItemHandlerHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.List;
 import java.util.Comparator;
+import java.util.List;
 
 public class GolemAltarOnBlockRightClickedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -69,14 +63,14 @@ public class GolemAltarOnBlockRightClickedProcedure {
 			}
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.FIREWORK, (x + 0.5), (y + 1), (z + 0.5), 10, 0, 0, 0, 0.1);
-			UnusualendMod.queueServerWork(10, () -> {
+			UnusualEnd.queueServerWork(10, () -> {
 				if (world instanceof ServerLevel _level) {
 					LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
 					entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
 					entityToSpawn.setVisualOnly(true);
 					_level.addFreshEntity(entityToSpawn);
 				}
-				UnusualendMod.queueServerWork(20, () -> {
+				UnusualEnd.queueServerWork(20, () -> {
 					if (world instanceof ServerLevel _level) {
 						LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
 						entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
@@ -85,7 +79,7 @@ public class GolemAltarOnBlockRightClickedProcedure {
 					}
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.FIREWORK, (x + 0.5), (y + 1), (z + 0.5), 5, 0, 0, 0, 0.1);
-					UnusualendMod.queueServerWork(5, () -> {
+					UnusualEnd.queueServerWork(5, () -> {
 						if (world instanceof ServerLevel _level) {
 							LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
 							entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
@@ -93,7 +87,7 @@ public class GolemAltarOnBlockRightClickedProcedure {
 							_level.addFreshEntity(entityToSpawn);
 						}
 						EndstoneGolemBreakSurroundingsProcedure.execute(world, x, y - 1, z);
-						UnusualendMod.queueServerWork(10, () -> {
+						UnusualEnd.queueServerWork(10, () -> {
 							if (world instanceof ServerLevel _level) {
 								LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
 								entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
@@ -102,7 +96,7 @@ public class GolemAltarOnBlockRightClickedProcedure {
 							}
 							if (world instanceof ServerLevel _level)
 								_level.sendParticles(ParticleTypes.EXPLOSION, (x + 0.5), y, (z + 0.5), 10, 0.5, 0.5, 0.5, 0);
-							UnusualendMod.queueServerWork(10, () -> {
+							UnusualEnd.queueServerWork(10, () -> {
 								if (world instanceof ServerLevel _level) {
 									LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
 									entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));

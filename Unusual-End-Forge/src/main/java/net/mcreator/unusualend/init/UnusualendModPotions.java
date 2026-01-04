@@ -1,21 +1,15 @@
-
-/*
- *    MCreator note: This file will be REGENERATED on each build.
- */
 package net.mcreator.unusualend.init;
 
-import net.minecraftforge.registries.RegistryObject;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.DeferredRegister;
-
-import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.effect.MobEffects;
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.world.effect.MobEffectInstance;
-
-import net.mcreator.unusualend.UnusualendMod;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 public class UnusualendModPotions {
-	public static final DeferredRegister<Potion> REGISTRY = DeferredRegister.create(ForgeRegistries.POTIONS, UnusualendMod.MODID);
+	public static final DeferredRegister<Potion> REGISTRY = DeferredRegister.create(ForgeRegistries.POTIONS, UnusualEnd.MODID);
 	public static final RegistryObject<Potion> END_INFECTION = REGISTRY.register("end_infection", () -> new Potion(new MobEffectInstance(UnusualendModMobEffects.ENDER_INFECTION.get(), 3600, 0, false, true)));
 	public static final RegistryObject<Potion> LEVITATION = REGISTRY.register("levitation", () -> new Potion(new MobEffectInstance(MobEffects.LEVITATION, 400, 0, false, true)));
 	public static final RegistryObject<Potion> BUILDING_POTION = REGISTRY.register("building_potion", () -> new Potion(new MobEffectInstance(UnusualendModMobEffects.DISRUPTION.get(), 9600, 0, false, true)));

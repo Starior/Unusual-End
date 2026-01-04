@@ -1,7 +1,7 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 public class FadingBlockEmittedRedstonePowerProcedure {
 	public static double execute(BlockState blockstate) {

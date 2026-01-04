@@ -1,19 +1,18 @@
 
 package net.mcreator.unusualend.potion;
 
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.ai.attributes.AttributeMap;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.effect.MobEffect;
-
-import net.mcreator.unusualend.procedures.EnderInfectionOnEffectActiveTickProcedure;
-import net.mcreator.unusualend.procedures.EnderInfectionEffectExpiresProcedure;
 import net.mcreator.unusualend.init.UnusualendModItems;
+import net.mcreator.unusualend.procedures.EnderInfectionEffectExpiresProcedure;
+import net.mcreator.unusualend.procedures.EnderInfectionOnEffectActiveTickProcedure;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeMap;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class EnderInfectionMobEffect extends MobEffect {
 	public EnderInfectionMobEffect() {

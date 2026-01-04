@@ -1,23 +1,21 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraftforge.registries.ForgeRegistries;
-
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Mth;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.network.chat.Component;
-import net.minecraft.core.BlockPos;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.CommandSource;
-
+import net.mcreator.unusualend.UnusualEnd;
 import net.mcreator.unusualend.init.UnusualendModBlocks;
-import net.mcreator.unusualend.UnusualendMod;
+import net.minecraft.commands.CommandSource;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.phys.Vec2;
+import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class ChorusCaneUpdateTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -43,7 +41,7 @@ public class ChorusCaneUpdateTickProcedure {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.note_block.flute")), SoundSource.BLOCKS, (float) 0.3, (float) (Mth.nextDouble(RandomSource.create(), 50, 70) * 0.01), false);
 					}
 				}
-				UnusualendMod.queueServerWork(4, () -> {
+				UnusualEnd.queueServerWork(4, () -> {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
 							_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.note_block.flute")), SoundSource.BLOCKS, (float) 0.3,
@@ -52,7 +50,7 @@ public class ChorusCaneUpdateTickProcedure {
 							_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.note_block.flute")), SoundSource.BLOCKS, (float) 0.3, (float) (Mth.nextDouble(RandomSource.create(), 50, 70) * 0.01), false);
 						}
 					}
-					UnusualendMod.queueServerWork(4, () -> {
+					UnusualEnd.queueServerWork(4, () -> {
 						if (world instanceof Level _level) {
 							if (!_level.isClientSide()) {
 								_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.note_block.flute")), SoundSource.BLOCKS, (float) 0.3,

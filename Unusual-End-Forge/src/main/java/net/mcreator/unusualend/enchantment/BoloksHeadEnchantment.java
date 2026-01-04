@@ -1,11 +1,11 @@
 
 package net.mcreator.unusualend.enchantment;
 
-import net.minecraft.world.item.enchantment.EnchantmentCategory;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
 public class BoloksHeadEnchantment extends Enchantment {
 	public BoloksHeadEnchantment(EquipmentSlot... slots) {

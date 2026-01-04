@@ -1,12 +1,11 @@
 
 package net.mcreator.unusualend.item;
 
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.InteractionResult;
-
 import net.mcreator.unusualend.procedures.UnbucketFireflyProcedure;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.context.UseOnContext;
 
 public class EnderfireflyBucketItem extends Item {
 	public EnderfireflyBucketItem() {

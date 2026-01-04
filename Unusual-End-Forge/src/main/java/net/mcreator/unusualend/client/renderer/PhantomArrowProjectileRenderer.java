@@ -1,19 +1,17 @@
 package net.mcreator.unusualend.client.renderer;
 
-import net.minecraft.util.Mth;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.MultiBufferSource;
-
-import net.mcreator.unusualend.entity.PhantomArrowProjectileEntity;
-import net.mcreator.unusualend.client.model.ModelArrowModelEntity;
-
-import com.mojang.math.Axis;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
+import net.mcreator.unusualend.client.model.ModelArrowModelEntity;
+import net.mcreator.unusualend.entity.PhantomArrowProjectileEntity;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 
 public class PhantomArrowProjectileRenderer extends EntityRenderer<PhantomArrowProjectileEntity> {
 	private static final ResourceLocation texture = new ResourceLocation("unusualend:textures/entities/phantom_arrow_render.png");

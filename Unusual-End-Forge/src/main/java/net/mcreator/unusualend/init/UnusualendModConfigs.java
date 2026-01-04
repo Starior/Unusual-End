@@ -1,15 +1,14 @@
 package net.mcreator.unusualend.init;
 
-import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-
+import net.mcreator.unusualend.UnusualEnd;
 import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
-import net.mcreator.unusualend.UnusualendMod;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
 
-@Mod.EventBusSubscriber(modid = UnusualendMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = UnusualEnd.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UnusualendModConfigs {
 	@SubscribeEvent
 	public static void register(FMLConstructModEvent event) {

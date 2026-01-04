@@ -1,7 +1,7 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 public class GloopilonSproutCanBoneMealBeUsedOnThisBlockProcedure {
 	public static boolean execute(double y, BlockState blockstate) {

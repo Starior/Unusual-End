@@ -1,8 +1,7 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.entity.Entity;
-
 import net.mcreator.unusualend.entity.EndstoneGolemEntity;
+import net.minecraft.world.entity.Entity;
 
 public class CanGolemMoveProcedure {
 	public static boolean execute(Entity entity) {

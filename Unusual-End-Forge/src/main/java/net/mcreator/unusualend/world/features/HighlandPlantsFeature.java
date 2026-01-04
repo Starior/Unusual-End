@@ -1,12 +1,11 @@
 
 package net.mcreator.unusualend.world.features;
 
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleRandomFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.SimpleRandomSelectorFeature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.WorldGenLevel;
-
 import net.mcreator.unusualend.procedures.EndPlantsAdditionsProcedure;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import net.minecraft.world.level.levelgen.feature.SimpleRandomSelectorFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.SimpleRandomFeatureConfiguration;
 
 public class HighlandPlantsFeature extends SimpleRandomSelectorFeature {
 	public HighlandPlantsFeature() {

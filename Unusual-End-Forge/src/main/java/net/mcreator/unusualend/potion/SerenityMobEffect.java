@@ -1,11 +1,10 @@
 
 package net.mcreator.unusualend.potion;
 
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.effect.MobEffect;
-
 import net.mcreator.unusualend.procedures.SerenityOnEffectActiveTickProcedure;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
 
 public class SerenityMobEffect extends MobEffect {
 	public SerenityMobEffect() {

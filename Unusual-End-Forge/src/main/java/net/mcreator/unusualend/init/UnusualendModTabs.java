@@ -4,18 +4,16 @@
  */
 package net.mcreator.unusualend.init;
 
-import net.minecraftforge.registries.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
-
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.network.chat.Component;
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.core.registries.Registries;
-
-import net.mcreator.unusualend.UnusualendMod;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
 
 public class UnusualendModTabs {
-	public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, UnusualendMod.MODID);
+	public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, UnusualEnd.MODID);
 	public static final RegistryObject<CreativeModeTab> UNUSUAL_END_WARPED_REEF = REGISTRY.register("unusual_end_warped_reef",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.unusualend.unusual_end_warped_reef")).icon(() -> new ItemStack(UnusualendModBlocks.WARPED_ALGAE.get())).displayItems((parameters, tabData) -> {
 				tabData.accept(UnusualendModBlocks.GNEISS.get().asItem());

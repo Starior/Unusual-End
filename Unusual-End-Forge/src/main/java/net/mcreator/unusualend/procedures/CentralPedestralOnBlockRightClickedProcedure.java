@@ -1,32 +1,30 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
+import net.mcreator.unusualend.entity.VoidCrackEntity;
+import net.mcreator.unusualend.init.UnusualendModBlocks;
+import net.mcreator.unusualend.init.UnusualendModEntities;
+import net.mcreator.unusualend.init.UnusualendModParticleTypes;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.network.chat.Component;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.BlockPos;
-
-import net.mcreator.unusualend.init.UnusualendModParticleTypes;
-import net.mcreator.unusualend.init.UnusualendModEntities;
-import net.mcreator.unusualend.init.UnusualendModBlocks;
-import net.mcreator.unusualend.entity.VoidCrackEntity;
-import net.mcreator.unusualend.UnusualendMod;
-
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.List;
 import java.util.Comparator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class CentralPedestralOnBlockRightClickedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -168,7 +166,7 @@ public class CentralPedestralOnBlockRightClickedProcedure {
 				entityToSpawn.setVisualOnly(true);
 				_level.addFreshEntity(entityToSpawn);
 			}
-			UnusualendMod.queueServerWork(1, () -> {
+			UnusualEnd.queueServerWork(1, () -> {
 				if (world instanceof ServerLevel _level) {
 					LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
 					entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 5, y, z + 5)));
@@ -176,7 +174,7 @@ public class CentralPedestralOnBlockRightClickedProcedure {
 					_level.addFreshEntity(entityToSpawn);
 				}
 				world.destroyBlock(BlockPos.containing(x + 5, y, z + 5), false);
-				UnusualendMod.queueServerWork(1, () -> {
+				UnusualEnd.queueServerWork(1, () -> {
 					if (world instanceof ServerLevel _level) {
 						LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
 						entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x - 5, y, z - 5)));
@@ -184,7 +182,7 @@ public class CentralPedestralOnBlockRightClickedProcedure {
 						_level.addFreshEntity(entityToSpawn);
 					}
 					world.destroyBlock(BlockPos.containing(x - 5, y, z - 5), false);
-					UnusualendMod.queueServerWork(1, () -> {
+					UnusualEnd.queueServerWork(1, () -> {
 						if (world instanceof ServerLevel _level) {
 							LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
 							entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x - 5, y, z + 5)));
@@ -192,7 +190,7 @@ public class CentralPedestralOnBlockRightClickedProcedure {
 							_level.addFreshEntity(entityToSpawn);
 						}
 						world.destroyBlock(BlockPos.containing(x - 5, y, z + 5), false);
-						UnusualendMod.queueServerWork(1, () -> {
+						UnusualEnd.queueServerWork(1, () -> {
 							if (world instanceof ServerLevel _level) {
 								LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
 								entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 5, y, z - 5)));
@@ -200,7 +198,7 @@ public class CentralPedestralOnBlockRightClickedProcedure {
 								_level.addFreshEntity(entityToSpawn);
 							}
 							world.destroyBlock(BlockPos.containing(x + 5, y, z - 5), false);
-							UnusualendMod.queueServerWork(1, () -> {
+							UnusualEnd.queueServerWork(1, () -> {
 								if (world instanceof ServerLevel _level) {
 									LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
 									entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 8, y, z)));
@@ -208,7 +206,7 @@ public class CentralPedestralOnBlockRightClickedProcedure {
 									_level.addFreshEntity(entityToSpawn);
 								}
 								world.destroyBlock(BlockPos.containing(x + 8, y, z), false);
-								UnusualendMod.queueServerWork(1, () -> {
+								UnusualEnd.queueServerWork(1, () -> {
 									if (world instanceof ServerLevel _level) {
 										LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
 										entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x - 8, y, z)));
@@ -216,7 +214,7 @@ public class CentralPedestralOnBlockRightClickedProcedure {
 										_level.addFreshEntity(entityToSpawn);
 									}
 									world.destroyBlock(BlockPos.containing(x - 8, y, z), false);
-									UnusualendMod.queueServerWork(1, () -> {
+									UnusualEnd.queueServerWork(1, () -> {
 										if (world instanceof ServerLevel _level) {
 											LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
 											entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z + 8)));
@@ -224,7 +222,7 @@ public class CentralPedestralOnBlockRightClickedProcedure {
 											_level.addFreshEntity(entityToSpawn);
 										}
 										world.destroyBlock(BlockPos.containing(x, y, z + 8), false);
-										UnusualendMod.queueServerWork(1, () -> {
+										UnusualEnd.queueServerWork(1, () -> {
 											if (world instanceof ServerLevel _level) {
 												LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
 												entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z - 8)));
@@ -244,7 +242,7 @@ public class CentralPedestralOnBlockRightClickedProcedure {
 														}
 													}.compareDistOf(x, y, z)).findFirst().orElse(null)).discard();
 											}
-											UnusualendMod.queueServerWork(20, () -> {
+											UnusualEnd.queueServerWork(20, () -> {
 												if (world instanceof ServerLevel _level)
 													_level.sendParticles((SimpleParticleType) (UnusualendModParticleTypes.PINK_FLAME.get()), x, y, z, 80, 2, 2, 2, 0);
 												if (world instanceof ServerLevel _level)

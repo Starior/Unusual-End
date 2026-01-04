@@ -1,39 +1,37 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
+import net.mcreator.unusualend.entity.EnderTrapperEntity;
+import net.mcreator.unusualend.init.UnusualendModEntities;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementProgress;
+import net.minecraft.commands.CommandSource;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.Difficulty;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec2;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.Difficulty;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.network.chat.Component;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.core.BlockPos;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.CommandSource;
-import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.Advancement;
-
-import net.mcreator.unusualend.init.UnusualendModEntities;
-import net.mcreator.unusualend.entity.EnderTrapperEntity;
-import net.mcreator.unusualend.UnusualendMod;
-
-import java.util.List;
 import java.util.Comparator;
+import java.util.List;
 
 public class InfectedEndstoneEntityWalksOnTheBlockProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -78,7 +76,7 @@ public class InfectedEndstoneEntityWalksOnTheBlockProcedure {
 											if (_ent instanceof ServerPlayer _serverPlayer)
 												_serverPlayer.connection.teleport((entityiterator.getX()), (entityiterator.getY() + 0.25), (entityiterator.getZ()), _ent.getYRot(), _ent.getXRot());
 										}
-										UnusualendMod.queueServerWork(2, () -> {
+										UnusualEnd.queueServerWork(2, () -> {
 											{
 												Entity _ent = entityiterator;
 												_ent.teleportTo((entityiterator.getX()), (entityiterator.getY() + 0.25), (entityiterator.getZ()));
@@ -93,7 +91,7 @@ public class InfectedEndstoneEntityWalksOnTheBlockProcedure {
 															("tp @s ~ ~ ~ facing entity " + entity));
 												}
 											}
-											UnusualendMod.queueServerWork(1, () -> {
+											UnusualEnd.queueServerWork(1, () -> {
 												{
 													Entity _ent = entityiterator;
 													_ent.teleportTo((entityiterator.getX()), (entityiterator.getY() + 0.25), (entityiterator.getZ()));
@@ -112,7 +110,7 @@ public class InfectedEndstoneEntityWalksOnTheBlockProcedure {
 													_level.getServer().getCommands().performPrefixedCommand(
 															new CommandSourceStack(CommandSource.NULL, new Vec3((x + 0.5), (y + 1), (z + 0.5)), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
 															"particle dust_color_transition 0.976 1.000 0.620 1.5 0.706 0.451 0.725 ~ ~0.2 ~ 0.3 0.3 0.3 0 20");
-												UnusualendMod.queueServerWork(1, () -> {
+												UnusualEnd.queueServerWork(1, () -> {
 													{
 														Entity _ent = entityiterator;
 														if (!_ent.level().isClientSide() && _ent.getServer() != null) {
@@ -137,7 +135,7 @@ public class InfectedEndstoneEntityWalksOnTheBlockProcedure {
 																_player.getAdvancements().award(_adv, criteria);
 														}
 													}
-													UnusualendMod.queueServerWork(10, () -> {
+													UnusualEnd.queueServerWork(10, () -> {
 														if (!entityiterator.level().isClientSide())
 															entityiterator.discard();
 													});

@@ -1,18 +1,16 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.CommandSource;
-
+import net.mcreator.unusualend.UnusualEnd;
 import net.mcreator.unusualend.entity.EnderblobQueenEntity;
-import net.mcreator.unusualend.UnusualendMod;
+import net.minecraft.commands.CommandSource;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
 import javax.annotation.Nullable;
 
@@ -70,7 +68,7 @@ public class BlobQueenAttackAnimProcedure {
                 swing_offset = swing_offset - 0.1;
                 swing_curve = swing_curve - original_curve / 10;
             }
-            UnusualendMod.queueServerWork(11, () -> {
+            UnusualEnd.queueServerWork(11, () -> {
                 sourceentity.setSprinting(false);
             });
         }

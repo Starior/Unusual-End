@@ -1,13 +1,12 @@
 
 package net.mcreator.unusualend.item;
 
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.HoeItem;
-
 import net.mcreator.unusualend.init.UnusualendModItems;
+import net.minecraft.world.item.HoeItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.crafting.Ingredient;
 
 public class SpectralHoeItem extends HoeItem {
 	public SpectralHoeItem() {

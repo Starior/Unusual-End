@@ -1,7 +1,7 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 
 public class CloseGUIProcedure {
 	public static void execute(Entity entity) {

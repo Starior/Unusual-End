@@ -1,12 +1,11 @@
 
 package net.mcreator.unusualend.item;
 
-import net.minecraftforge.registries.ForgeRegistries;
-
-import net.minecraft.world.item.RecordItem;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.Item;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.RecordItem;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class MusicDiscEndstoneGolemThemeItem extends RecordItem {
 	public MusicDiscEndstoneGolemThemeItem() {

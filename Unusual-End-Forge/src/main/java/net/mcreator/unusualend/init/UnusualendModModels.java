@@ -4,34 +4,11 @@
  */
 package net.mcreator.unusualend.init;
 
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.mcreator.unusualend.client.model.*;
 import net.minecraftforge.api.distmarker.Dist;
-
-import net.mcreator.unusualend.client.model.Modelwarped_jellyfish;
-import net.mcreator.unusualend.client.model.Modelvoid_explosive;
-import net.mcreator.unusualend.client.model.Modeltameddragling;
-import net.mcreator.unusualend.client.model.Modelstructure_spawn;
-import net.mcreator.unusualend.client.model.Modelspunkler;
-import net.mcreator.unusualend.client.model.Modelspirit_mask_base;
-import net.mcreator.unusualend.client.model.Modelsmall_enderbulb;
-import net.mcreator.unusualend.client.model.Modelqueen;
-import net.mcreator.unusualend.client.model.Modelglub;
-import net.mcreator.unusualend.client.model.Modelendstonegolem;
-import net.mcreator.unusualend.client.model.Modelendertrapper118;
-import net.mcreator.unusualend.client.model.Modelenderling_mask;
-import net.mcreator.unusualend.client.model.Modelenderling;
-import net.mcreator.unusualend.client.model.Modelenderbulb;
-import net.mcreator.unusualend.client.model.Modelenderblob;
-import net.mcreator.unusualend.client.model.Modelender_firefly;
-import net.mcreator.unusualend.client.model.Modeldragling;
-import net.mcreator.unusualend.client.model.Modelchorus_helmet;
-import net.mcreator.unusualend.client.model.Modelbubble;
-import net.mcreator.unusualend.client.model.Modelbolok;
-import net.mcreator.unusualend.client.model.Modelbluk;
-import net.mcreator.unusualend.client.model.ModelCustomModel;
-import net.mcreator.unusualend.client.model.ModelArrowModelEntity;
+import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = {Dist.CLIENT})
 public class UnusualendModModels {

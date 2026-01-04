@@ -1,13 +1,12 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.client.Minecraft;
-
 import net.mcreator.unusualend.init.UnusualendModMobEffects;
+import net.minecraft.client.Minecraft;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.GameType;
 
 public class IsCristallizedProcedure {
 	public static boolean execute(Entity entity) {

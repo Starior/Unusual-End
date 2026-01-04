@@ -1,12 +1,11 @@
 
 package net.mcreator.unusualend.client.renderer;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-
-import net.mcreator.unusualend.entity.EnderbulbEntity;
 import net.mcreator.unusualend.client.model.Modelenderbulb;
+import net.mcreator.unusualend.entity.EnderbulbEntity;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.resources.ResourceLocation;
 
 public class EnderbulbRenderer extends MobRenderer<EnderbulbEntity, Modelenderbulb<EnderbulbEntity>> {
 	public EnderbulbRenderer(EntityRendererProvider.Context context) {

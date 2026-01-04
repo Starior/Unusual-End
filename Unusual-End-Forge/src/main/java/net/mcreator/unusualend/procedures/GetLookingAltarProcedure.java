@@ -1,14 +1,13 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.core.BlockPos;
-
 import net.mcreator.unusualend.init.UnusualendModBlocks;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.level.LevelAccessor;
 
 public class GetLookingAltarProcedure {
 	public static boolean execute(LevelAccessor world, Entity entity) {

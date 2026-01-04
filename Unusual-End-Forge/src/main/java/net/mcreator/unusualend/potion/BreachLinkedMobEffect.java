@@ -1,13 +1,12 @@
 
 package net.mcreator.unusualend.potion;
 
-import net.minecraft.world.entity.ai.attributes.AttributeMap;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.effect.MobEffect;
-
-import net.mcreator.unusualend.procedures.BreachLinkedEffectStartedappliedProcedure;
 import net.mcreator.unusualend.procedures.BreachLinkedEffectExpiresProcedure;
+import net.mcreator.unusualend.procedures.BreachLinkedEffectStartedappliedProcedure;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeMap;
 
 public class BreachLinkedMobEffect extends MobEffect {
 	public BreachLinkedMobEffect() {

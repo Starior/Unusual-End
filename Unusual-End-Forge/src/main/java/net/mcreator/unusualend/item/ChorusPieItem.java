@@ -1,9 +1,9 @@
 
 package net.mcreator.unusualend.item;
 
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 
 public class ChorusPieItem extends Item {
 	public ChorusPieItem() {

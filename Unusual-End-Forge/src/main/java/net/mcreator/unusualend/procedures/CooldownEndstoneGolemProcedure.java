@@ -1,37 +1,34 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.BlockPos;
-
-import net.mcreator.unusualend.init.UnusualendModMobEffects;
-import net.mcreator.unusualend.init.UnusualendModBlocks;
-import net.mcreator.unusualend.entity.EndstoneGolemEntity;
+import net.mcreator.unusualend.UnusualEnd;
 import net.mcreator.unusualend.entity.DraglingEntity;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.entity.EndstoneGolemEntity;
+import net.mcreator.unusualend.init.UnusualendModBlocks;
+import net.mcreator.unusualend.init.UnusualendModMobEffects;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
 import javax.annotation.Nullable;
-
-import java.util.List;
 import java.util.Comparator;
+import java.util.List;
 
 @Mod.EventBusSubscriber
 public class CooldownEndstoneGolemProcedure {
@@ -57,7 +54,7 @@ public class CooldownEndstoneGolemProcedure {
 					}
 					if (sourceentity instanceof EndstoneGolemEntity _datEntSetI)
 						_datEntSetI.getEntityData().set(EndstoneGolemEntity.DATA_push, 1);
-					UnusualendMod.queueServerWork(4, () -> {
+					UnusualEnd.queueServerWork(4, () -> {
 						entity.invulnerableTime = 0;
 						entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.EXPLOSION)), (float) amount);
 						if (world instanceof ServerLevel _level)

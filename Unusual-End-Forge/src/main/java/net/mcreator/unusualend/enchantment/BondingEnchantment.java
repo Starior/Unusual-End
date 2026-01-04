@@ -1,17 +1,16 @@
 
 package net.mcreator.unusualend.enchantment;
 
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.entity.EquipmentSlot;
-
+import net.mcreator.unusualend.ModEnchants;
 import net.mcreator.unusualend.init.UnusualendModEnchantments;
-import net.mcreator.unusualend.LeechingWandEnchant;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.enchantment.Enchantment;
 
 import java.util.List;
 
 public class BondingEnchantment extends Enchantment {
 	public BondingEnchantment(EquipmentSlot... slots) {
-		super(Enchantment.Rarity.COMMON, LeechingWandEnchant.LEECHING_WAND, slots);
+		super(Enchantment.Rarity.COMMON, ModEnchants.LEECHING_WAND, slots);
 	}
 
 	public int getMinCost(int i) {

@@ -1,13 +1,12 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.InteractionHand;
-
-import net.mcreator.unusualend.init.UnusualendModItems;
 import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.init.UnusualendModItems;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 
 public class ShinyGrenadeRangedItemUsedProcedure {
 	public static void execute(Entity entity, ItemStack itemstack) {

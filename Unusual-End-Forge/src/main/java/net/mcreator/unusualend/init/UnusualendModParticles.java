@@ -4,10 +4,14 @@
  */
 package net.mcreator.unusualend.init;
 
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
+import net.mcreator.unusualend.client.particle.BolokParticleParticle;
+import net.mcreator.unusualend.client.particle.CitrineShineParticle;
+import net.mcreator.unusualend.client.particle.PinkFlameParticle;
+import net.mcreator.unusualend.client.particle.WarpedBubblesParticle;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class UnusualendModParticles {

@@ -1,17 +1,16 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.util.RandomSource;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.client.Minecraft;
-
+import net.mcreator.unusualend.UnusualEnd;
 import net.mcreator.unusualend.init.UnusualendModEnchantments;
-import net.mcreator.unusualend.UnusualendMod;
+import net.minecraft.client.Minecraft;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.GameType;
+import net.minecraft.world.level.LevelAccessor;
 
 public class LeechingWandItemInInventoryTickProcedure {
 	public static void execute(LevelAccessor world, Entity entity, ItemStack itemstack) {
@@ -30,7 +29,7 @@ public class LeechingWandItemInInventoryTickProcedure {
 			itemstack.getOrCreateTag().putDouble("rayCooldown", 400);
 		}
 		if (itemstack.getOrCreateTag().getBoolean("rayEnd") == true) {
-			UnusualendMod.queueServerWork(20, () -> {
+			UnusualEnd.queueServerWork(20, () -> {
 				if (itemstack.getOrCreateTag().getBoolean("rayEnd") == true) {
 					if (!(new Object() {
 						public boolean checkGamemode(Entity _ent) {

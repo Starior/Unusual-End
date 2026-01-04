@@ -1,8 +1,8 @@
 
 package net.mcreator.unusualend.item;
 
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 
 public class BlobLensItem extends Item {
 	public BlobLensItem() {

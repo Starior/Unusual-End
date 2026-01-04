@@ -4,7 +4,7 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="unusualend"
-version="2.3.0"
+version="2.3.1"
 displayName="Unusual End"
 displayURL="https://www.curseforge.com/members/sweetygamer/projects"
 logoFile="logo.png"
@@ -12,14 +12,12 @@ credits="Sweetygamer / The Unusual Squad"
 authors="Sweetygamer"
 description="Enhance your End experience !"
 
-# Start of user code block mod configuration
-# End of user code block mod configuration
 
 [[dependencies.unusualend]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.20.1]"
-    ordering="AFTER"
+    ordering="NONE"
     side="BOTH"
 
 [[dependencies.unusualend]]
@@ -36,13 +34,13 @@ description="Enhance your End experience !"
     ordering="NONE"
     side="BOTH"
 [[dependencies.unusualend]]
-    modId="Farmer's_Delight"
+    modId="farmersdelight"
     mandatory=false
     versionRange="[0,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.unusualend]]
-    modId="Endergetic_Expansion"
+    modId="endergetic"
     mandatory=false
     versionRange="[0,)"
     ordering="NONE"
@@ -66,19 +64,25 @@ description="Enhance your End experience !"
     ordering="NONE"
     side="BOTH"
 [[dependencies.unusualend]]
-    modId="Stalwart_Dungeons"
+    modId="stalwart_dungeons"
     mandatory=false
     versionRange="[0,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.unusualend]]
-    modId="Create"
+    modId="create"
     mandatory=false
     versionRange="[0,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.unusualend]]
     modId="suggestion_provider_fix"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.unusualend]]
+    modId="attribute_fix"
     mandatory=false
     versionRange="[0,)"
     ordering="NONE"
@@ -96,7 +100,7 @@ description="Enhance your End experience !"
     ordering="NONE"
     side="BOTH"
 [[dependencies.unusualend]]
-    modId="CuriosAPI"
+    modId="curiosapi"
     mandatory=false
     versionRange="[0,)"
     ordering="NONE"
@@ -108,6 +112,3 @@ description="Enhance your End experience !"
     ordering="NONE"
     side="BOTH"
 
-
-# Start of user code block dependencies configuration
-# End of user code block dependencies configuration

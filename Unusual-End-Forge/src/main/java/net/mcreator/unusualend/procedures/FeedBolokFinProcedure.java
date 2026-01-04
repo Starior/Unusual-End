@@ -1,29 +1,27 @@
 package net.mcreator.unusualend.procedures;
 
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.animal.Wolf;
-import net.minecraft.world.entity.TamableAnimal;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.client.Minecraft;
-
-import net.mcreator.unusualend.init.UnusualendModItems;
+import net.mcreator.unusualend.UnusualEnd;
 import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.init.UnusualendModItems;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.entity.animal.Wolf;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.GameType;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
 import javax.annotation.Nullable;
 
@@ -72,7 +70,7 @@ public class FeedBolokFinProcedure {
 						if (world instanceof ServerLevel _level)
 							_level.sendParticles(ParticleTypes.HEART, (entity.getX()), (entity.getY()), (entity.getZ()), 10, 0.3, 0.5, 0.3, 0);
 						entity.getPersistentData().putBoolean("CooldownBolok", true);
-						UnusualendMod.queueServerWork(200, () -> {
+						UnusualEnd.queueServerWork(200, () -> {
 							entity.getPersistentData().putBoolean("CooldownBolok", false);
 						});
 					}
@@ -103,7 +101,7 @@ public class FeedBolokFinProcedure {
 						if (world instanceof ServerLevel _level)
 							_level.sendParticles(ParticleTypes.HEART, (entity.getX()), (entity.getY()), (entity.getZ()), 10, 0.3, 0.5, 0.3, 0);
 						entity.getPersistentData().putBoolean("CooldownBolok", true);
-						UnusualendMod.queueServerWork(200, () -> {
+						UnusualEnd.queueServerWork(200, () -> {
 							entity.getPersistentData().putBoolean("CooldownBolok", false);
 						});
 					}

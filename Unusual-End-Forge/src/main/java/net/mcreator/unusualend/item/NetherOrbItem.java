@@ -2,15 +2,10 @@
 //desc
 package net.mcreator.unusualend.item;
 
-import net.minecraft.world.level.Level;
-import net.minecraft.world.item.UseAnim;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Item;
-import net.minecraft.network.chat.Component;
-
 import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.Level;
 
 import java.util.List;
 

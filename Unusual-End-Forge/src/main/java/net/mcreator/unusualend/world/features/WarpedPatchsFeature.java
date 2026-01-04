@@ -1,12 +1,11 @@
 
 package net.mcreator.unusualend.world.features;
 
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
-import net.minecraft.world.level.levelgen.feature.RandomPatchFeature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.WorldGenLevel;
-
 import net.mcreator.unusualend.procedures.InfestedEndstoneAdditionalGenerationConditionProcedure;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import net.minecraft.world.level.levelgen.feature.RandomPatchFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 
 public class WarpedPatchsFeature extends RandomPatchFeature {
 	public WarpedPatchsFeature() {

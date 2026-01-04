@@ -1,22 +1,19 @@
 package custom.mcreator.unusualend.event;
 
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.api.distmarker.Dist;
-
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-
-import net.mcreator.unusualend.init.UnusualendModBlockEntities;
-import net.mcreator.unusualend.block.entity.GloopslatePedestralBlockEntity;
-import net.mcreator.unusualend.block.entity.AncientPodiumBlockEntity;
-import net.mcreator.unusualend.UnusualendMod;
-
-import custom.mcreator.unusualend.block.entity.renderer.GloopslatePedestralEntityRenderer;
 import custom.mcreator.unusualend.block.entity.renderer.AncientPodiumEntityRenderer;
+import custom.mcreator.unusualend.block.entity.renderer.GloopslatePedestralEntityRenderer;
+import net.mcreator.unusualend.UnusualEnd;
+import net.mcreator.unusualend.block.entity.AncientPodiumBlockEntity;
+import net.mcreator.unusualend.block.entity.GloopslatePedestralBlockEntity;
+import net.mcreator.unusualend.init.UnusualendModBlockEntities;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = UnusualendMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = UnusualEnd.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventBusClientEvents {
 	@SubscribeEvent
 	public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {

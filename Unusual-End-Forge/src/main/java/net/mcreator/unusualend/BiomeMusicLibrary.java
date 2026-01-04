@@ -1,15 +1,14 @@
 package net.mcreator.unusualend;
 
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.api.distmarker.Dist;
-
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.Musics;
-import net.minecraft.sounds.Music;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.client.sounds.MusicManager;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.sounds.MusicManager;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.Music;
+import net.minecraft.sounds.Musics;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.registries.ForgeRegistries;
 
 @OnlyIn(Dist.CLIENT)
 public class BiomeMusicLibrary {

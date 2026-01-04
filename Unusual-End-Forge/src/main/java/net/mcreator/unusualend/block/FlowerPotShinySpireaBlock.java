@@ -1,14 +1,11 @@
 
 package net.mcreator.unusualend.block;
 
-import org.checkerframework.checker.units.qual.s;
-
-import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.FlowerPotBlock;
-import net.minecraft.world.level.block.Blocks;
-
 import net.mcreator.unusualend.init.UnusualendModBlocks;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.PushReaction;
 
 public class FlowerPotShinySpireaBlock extends FlowerPotBlock {
 	public FlowerPotShinySpireaBlock() {

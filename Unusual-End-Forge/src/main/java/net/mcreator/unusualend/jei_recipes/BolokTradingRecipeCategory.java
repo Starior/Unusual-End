@@ -1,20 +1,18 @@
 
 package net.mcreator.unusualend.jei_recipes;
 
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.network.chat.Component;
-
-import net.mcreator.unusualend.init.UnusualendModJeiPlugin;
-import net.mcreator.unusualend.init.UnusualendModItems;
-
-import mezz.jei.api.recipe.category.IRecipeCategory;
-import mezz.jei.api.recipe.RecipeIngredientRole;
-import mezz.jei.api.recipe.IFocusGroup;
-import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.gui.drawable.IDrawable;
-import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.mcreator.unusualend.init.UnusualendModItems;
+import net.mcreator.unusualend.init.UnusualendModJeiPlugin;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 
 public class BolokTradingRecipeCategory implements IRecipeCategory<BolokTradingRecipe> {
 	public final static ResourceLocation UID = new ResourceLocation("unusualend", "bolok_trading");
