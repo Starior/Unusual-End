@@ -1,23 +1,13 @@
 {
-  "type": "create:deploying",
-  "ingredients": [
-    {
-      "tag": "minecraft:music_discs"
-    },
-    {
-      "item": "unusualend:golem_orb"
-    }
-  ],
-  "results": [
-    {
-      "id": "unusualend:music_disc_endstone_golem_theme"
-    }
-  ],
-  "keepHeldItem": false,
-  "neoforge:conditions": [
-    {
-      "modid": "create",
-      "type": "neoforge:mod_loaded"
-    }
-  ]
+  "type": "minecraft:smithing_transform",
+  "template": [],
+  "base": {
+    "tag": "minecraft:music_discs"
+  },
+  "addition": {
+    "item": "unusualend:golem_orb"
+  },
+  "result": {
+    "id": "unusualend:music_disc_endstone_golem_theme"
+  }
 }
