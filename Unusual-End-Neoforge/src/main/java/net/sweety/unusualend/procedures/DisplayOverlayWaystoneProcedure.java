@@ -15,6 +15,12 @@ public class DisplayOverlayWaystoneProcedure {
 	public static boolean execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return false;
+		// Check item first to avoid raycast into unloaded chunks when player is not holding waystone item
+		var tag = ItemTags.create(ResourceLocation.parse("neoforge:can_teleport_to_warping_waystone"));
+		if (!(entity instanceof LivingEntity liv))
+			return false;
+		if (!liv.getMainHandItem().is(tag) && !liv.getOffhandItem().is(tag))
+			return false;
 		double raydistance = 0;
 		double lookY = 0;
 		double lookZ = 0;

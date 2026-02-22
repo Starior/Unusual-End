@@ -29,6 +29,10 @@ public class TeleportToWarpingWaystoneProcedure {
     private static void execute(PlayerInteractEvent.RightClickItem event, Level level, double x, double y, double z, Player player) {
         if (player == null)
             return;
+        // Skip raycast entirely if player is not holding a waystone-teleport item (avoids blocking server when looking at unloaded chunks)
+        var tag = ItemTags.create(ResourceLocation.parse("neoforge:can_teleport_to_warping_waystone"));
+        if (!player.getMainHandItem().is(tag) && !player.getOffhandItem().is(tag))
+            return;
         double raydistance;
         double lookX = 0;
         double lookY = 0;
