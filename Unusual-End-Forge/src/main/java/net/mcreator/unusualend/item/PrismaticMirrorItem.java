@@ -45,9 +45,9 @@ public class PrismaticMirrorItem extends Item {
 		double TpY = 0;
 		double TpZ = 0;
 		super.appendHoverText(itemstack, world, list, flag);
-		TpX = (Double) ((itemstack).getOrCreateTag().getDouble("TpX"));
-		TpY = (Double) ((itemstack).getOrCreateTag().getDouble("TpY"));
-		TpZ = (Double) ((itemstack).getOrCreateTag().getDouble("TpZ"));
+		TpX = (itemstack).getOrCreateTag().getDouble("TpX");
+		TpY = (itemstack).getOrCreateTag().getDouble("TpY");
+		TpZ = (itemstack).getOrCreateTag().getDouble("TpZ");
 		super.appendHoverText(itemstack, world, list, flag);
 		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_rightclick").getString()));
 		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.warp_spawn").getString()));

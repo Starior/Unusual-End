@@ -45,11 +45,8 @@ public class CrystalCatalystItem extends Item {
 
 	@Override
 	public boolean isBarVisible(ItemStack stack) {
-		if (stack.getDamageValue() > 0 || stack.getOrCreateTag().getDouble("cataCooldown") < 400 && stack.getOrCreateTag().getDouble("cataCooldown") > 0 || stack.getDamageValue() > 0 && stack.getOrCreateTag().getDouble("cataCooldown") < 400) {
-			return true;
-		}
-		return false;
-	}
+        return stack.getDamageValue() > 0 || stack.getOrCreateTag().getDouble("cataCooldown") < 400 && stack.getOrCreateTag().getDouble("cataCooldown") > 0 || stack.getDamageValue() > 0 && stack.getOrCreateTag().getDouble("cataCooldown") < 400;
+    }
 
 	@Override
 	public int getBarColor(ItemStack stack) {
@@ -64,7 +61,7 @@ public class CrystalCatalystItem extends Item {
 		if (stack.getOrCreateTag().getDouble("cataCooldown") < 400) {
 			return (int) (stack.getOrCreateTag().getDouble("cataCooldown") * 0.0025f * 14f);
 		}
-		return (int) Math.round(13.0F - (float) stack.getDamageValue() / stack.getMaxDamage() * 13.0F);
+		return Math.round(13.0F - (float) stack.getDamageValue() / stack.getMaxDamage() * 13.0F);
 	}
 
 	@Override
@@ -76,7 +73,7 @@ public class CrystalCatalystItem extends Item {
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		String buff = "none";
 		super.appendHoverText(itemstack, world, list, flag);
-		buff = (String) ((itemstack).getOrCreateTag().getString("buff"));
+		buff = (itemstack).getOrCreateTag().getString("buff");
 		if ((itemstack.getOrCreateTag().getString("buff")).equals("")) {
 			itemstack.getOrCreateTag().putString("buff", Component.translatable("text.unusualend.no_buff_defined").getString());
 		}

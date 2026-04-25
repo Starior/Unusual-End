@@ -46,7 +46,7 @@ public class VoidRuneItem extends Item {
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		double xp = 0;
 		super.appendHoverText(itemstack, world, list, flag);
-		xp = (Double) ((itemstack).getOrCreateTag().getDouble("XP"));
+		xp = (itemstack).getOrCreateTag().getDouble("XP");
 		list.add(Component.literal("\u00A77When Sneaking:"));
 		list.add(Component.literal("\u00A79Slowly store Experience"));
 		list.add(Component.literal("\u00A77When Right-Clicking:"));
@@ -58,9 +58,6 @@ public class VoidRuneItem extends Item {
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
 		ItemStack itemstack = ar.getObject();
-		double x = entity.getX();
-		double y = entity.getY();
-		double z = entity.getZ();
 		VoidRuneRightclickedProcedure.execute(world, entity, itemstack);
 		return ar;
 	}

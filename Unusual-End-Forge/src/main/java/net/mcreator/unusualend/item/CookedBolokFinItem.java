@@ -2,7 +2,7 @@
 //desc
 package net.mcreator.unusualend.item;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -25,8 +25,8 @@ public class CookedBolokFinItem extends Item {
 
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-		double minute = (ConfigurationFileConfiguration.COOKED_BOLOK_FIN_TIME.get() / 60);
-		double seconds = (ConfigurationFileConfiguration.COOKED_BOLOK_FIN_TIME.get() - (Math.floor(minute) * 60));
+		double minute = (Config.COOKED_BOLOK_FIN_TIME.get() / 60);
+		double seconds = (Config.COOKED_BOLOK_FIN_TIME.get() - (Math.floor(minute) * 60));
 		String time = new java.text.DecimalFormat("00").format(minute) + ":" + new java.text.DecimalFormat("00").format(seconds);
 		super.appendHoverText(itemstack, level, list, flag);
 		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.wolf_food").getString()));

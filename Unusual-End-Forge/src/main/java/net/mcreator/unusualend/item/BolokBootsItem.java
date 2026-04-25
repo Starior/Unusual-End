@@ -70,13 +70,12 @@ public abstract class BolokBootsItem extends ArmorItem {
 
 		@Override
 		public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-			super.appendHoverText(itemstack, level, list, flag);
-			list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_hurt").getString()));
-			list.add(Component.literal("\u00A79" + Component.translatable("effect.minecraft.speed").getString() + " (0:03)"));
-			list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.inflict_heavy").getString() + " II (0:03)"));
-			list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.to_attacker").getString()));
-		}
-
+            super.appendHoverText(itemstack, level, list, flag);
+            list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_hurt").getString()));
+            list.add(Component.literal("\u00A79" + Component.translatable("effect.minecraft.speed").getString() + " (0:03)"));
+            list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.inflict_heavy").getString() + " II (0:03)"));
+            list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.to_attacker").getString()));
+        }
 		@Override
 		public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
 			return "unusualend:textures/models/armor/warped_bolok__layer_1.png";

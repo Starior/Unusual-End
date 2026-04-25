@@ -1,7 +1,7 @@
 
 package net.mcreator.unusualend.item;
 
-import net.mcreator.unusualend.client.model.Modelspirit_mask_base;
+import net.mcreator.unusualend.client.model.ModelSpiritMaskBase;
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
@@ -81,7 +81,7 @@ public abstract class SpiritGrimItem extends ArmorItem {
 				@Override
 				public HumanoidModel getHumanoidArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel defaultModel) {
 					HumanoidModel armorModel = new HumanoidModel(new ModelPart(Collections.emptyList(),
-							Map.of("head", new Modelspirit_mask_base(Minecraft.getInstance().getEntityModels().bakeLayer(Modelspirit_mask_base.LAYER_LOCATION)).head, "hat", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "body",
+							Map.of("head", new ModelSpiritMaskBase(Minecraft.getInstance().getEntityModels().bakeLayer(ModelSpiritMaskBase.LAYER_LOCATION)).head, "hat", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "body",
 									new ModelPart(Collections.emptyList(), Collections.emptyMap()), "right_arm", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "left_arm",
 									new ModelPart(Collections.emptyList(), Collections.emptyMap()), "right_leg", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "left_leg",
 									new ModelPart(Collections.emptyList(), Collections.emptyMap()))));

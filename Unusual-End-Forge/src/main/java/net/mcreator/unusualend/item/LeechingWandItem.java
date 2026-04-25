@@ -42,11 +42,8 @@ public class LeechingWandItem extends Item {
 
 	@Override
 	public boolean isBarVisible(ItemStack stack) {
-		if (stack.getDamageValue() > 0 || stack.getOrCreateTag().getDouble("rayCooldown") < 400 && stack.getOrCreateTag().getDouble("rayCooldown") > 0 || stack.getDamageValue() > 0 && stack.getOrCreateTag().getDouble("rayCooldown") < 400) {
-			return true;
-		}
-		return false;
-	}
+        return stack.getDamageValue() > 0 || stack.getOrCreateTag().getDouble("rayCooldown") < 400 && stack.getOrCreateTag().getDouble("rayCooldown") > 0 || stack.getDamageValue() > 0 && stack.getOrCreateTag().getDouble("rayCooldown") < 400;
+    }
 
 	@Override
 	public int getBarColor(ItemStack stack) {
@@ -61,7 +58,7 @@ public class LeechingWandItem extends Item {
 		if (stack.getOrCreateTag().getDouble("rayCooldown") < 400) {
 			return (int) (stack.getOrCreateTag().getDouble("rayCooldown") * 0.0025f * 14f);
 		}
-		return (int) Math.round(13.0F - (float) stack.getDamageValue() / stack.getMaxDamage() * 13.0F);
+		return Math.round(13.0F - (float) stack.getDamageValue() / stack.getMaxDamage() * 13.0F);
 	}
 
 	@Override
