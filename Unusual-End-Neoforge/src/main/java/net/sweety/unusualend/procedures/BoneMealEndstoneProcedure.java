@@ -2,7 +2,11 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -48,6 +52,17 @@ public class BoneMealEndstoneProcedure {
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BONE_MEAL) {
 			if (UEConfig.REGULAR_BONEMEAL.get() == true) {
 				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.INFESTED_END_STONE.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Blocks.END_STONE) {
+					// If BCLib/BetterEnd moss is nearby, let their bonemeal handle spread (convert block to moss)
+					TagKey<Block> mossSource = TagKey.create(Registries.BLOCK, ResourceLocation.parse("bclib:bonemeal/source/end_stone"));
+					for (int dx = -1; dx <= 1; dx++) {
+						for (int dy = -1; dy <= 1; dy++) {
+							for (int dz = -1; dz <= 1; dz++) {
+								if (world.getBlockState(BlockPos.containing(x + dx, y + dy, z + dz)).is(mossSource)) {
+									return;
+								}
+							}
+						}
+					}
 					if (!(new Object() {
 						public boolean checkGamemode(Entity _ent) {
 							if (_ent instanceof ServerPlayer _serverPlayer) {
